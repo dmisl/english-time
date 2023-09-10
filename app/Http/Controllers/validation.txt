@@ -1,0 +1,22 @@
+$validated = request->validated
+([
+    ...
+])
+
+
+required - обовязкове до заповненя
+nullable - необовязкове до заповнення
+string - тип даних string (строка)
+integer - тип даних integer (число)
+array - тип даних array (масив)
+email - має бути email
+exists:users,email - такий email повинен існувати в базі даних
+unique:users,email - такого email не може існувати в базі даних
+file - це повинен бути file
+max:50 - максимальна кількість символів - 50
+min:50 - мінімум кількість символів - 50
+in:male,female - або male або female
+digits:6 - має бути 6 символів
+boolean - true або false
+accepted - має бути підтверджено
+confirmed - для пароля при реєстрації

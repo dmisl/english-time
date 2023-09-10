@@ -1,0 +1,171 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\CompletedTask;
+use App\Models\Course;
+use App\Models\Lesson;
+use App\Models\Task;
+use App\Models\TaskType;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class TaskController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        if (is_admin()) {
+            return redirect()->route('admin.index');
+        } else {
+            return redirect()->route('user.index');
+        }
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create($course, $lesson)
+    {
+        $task_types = TaskType::query()->get();
+
+        return view('task.create', compact('course', 'lesson', 'task_types'));
+    }
+
+    public function store($course, $lesson, Request $request)
+    {
+
+        $validated = $request->validate([
+            'task_name' => ['required', 'string'],
+            'task_body' => ['required'],
+            'task_type' => ['required'],
+            'task_image' => ['nullable', 'image'],
+        ]);
+
+        if($request->task_image)
+        {
+            $path = $request->file('task_image')->store('task_images', 'public');
+            $validated['task_body'] = str_replace($request->replace_from, $request->replace_to.'/'.$path, $validated['task_body']);
+        } else
+        {
+
+        }
+
+        $task = Task::query()->create([
+            'lesson_id' => $request->input('lesson_id'),
+            'name' => $validated['task_name'],
+            'body' => $validated['task_body'],
+            'task_type' => $validated['task_type'],
+            'task_image' => $request->task_image ? $path : '',
+        ]);
+
+
+        if ($task) {
+            session(['alert' => "Ви успішно створити завдання {$validated['task_name']}"]);
+
+            return redirect()->route('task.show', [$course, $lesson, $task->id]);
+        } else {
+            return redirect()->back()->withInput();
+        }
+
+        return redirect()->back()->withInput();
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show($course, $lesson, $task)
+    {
+        $task = Task::find($task);
+
+        if($task)
+        {
+            $completed = CompletedTask::query()->where(['user_id' => Auth::id(), 'task_id' => $task->id])->first();
+            if($completed)
+            {
+                return redirect()->route('user.task.completed', [Auth::id(), $course, $lesson, $task]);
+            }
+            else
+            {
+                return view('task.show', compact('task', 'lesson', 'course'));
+            }
+        } else
+        {
+            return back();
+        }
+
+
+
+    }
+
+    public function check(Request $request)
+    {
+        $completed = CompletedTask::query()->where(['user_id' => Auth::id(), 'task_id' => $request->task_id])->first();
+
+        if($completed)
+        {
+            session(['alert' => 'Ви вже виконували це завдання']);
+            return redirect()->back();
+        } else
+        {
+            $completedTask = CompletedTask::query()->create([
+                'user_id' => Auth::id(),
+                'task_id' => $request->task_id,
+                'text' => $request->input('completed_task'),
+                'percentage' => $request->percentage,
+            ]);
+
+            return redirect()->route('user.task.completed', [Auth::id(), $request->input('course_id'), $request->input('lesson_id'), $request->task_id]);
+        }
+
+    }
+
+    public function showcompleted($user_id, $course, $lesson, $task)
+    {
+        $task = Task::find($task);
+        $user = User::find($user_id);
+        $completed = CompletedTask::query()->where(['task_id' => $task->id])->where(['user_id' => $user_id])->first();
+
+        return view('task.completed', compact('task', 'completed', 'user', 'lesson', 'course'));
+    }
+
+    public function completed()
+    {
+        $completedTasks = CompletedTask::query()->paginate(20);
+
+        return view('task.homework', compact('completedTasks'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy($course, $lesson, $task)
+    {
+        $task = Task::find($task);
+        foreach ($task->completedTasks as $completed) {
+            $completed->delete();
+        }
+        session(['alert' => "Ви успішно видалили завдання під назвою {$task->name}"]);
+        $task->delete();
+        return back();
+    }
+}
