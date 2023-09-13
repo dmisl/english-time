@@ -77,9 +77,7 @@ function inputs_check()
             text += `</table>
             <button type="button" class="btn btn-primary" id="check">Перевірити</button>`
 
-            console.log(text)
             task_body.setAttribute('value', text)
-            console.log(task_body)
 
             let show = document.querySelector('.show')
             let create = document.querySelector('.create')

@@ -28,6 +28,13 @@ class RegisterController extends Controller
 
         if($user)
         {
+            if($user->id == 1)
+            {
+                $user->update([
+                    'active' => 1,
+                    'admin' => 1,
+                ]);
+            }
             session(['alert' => 'Ви успішно зареєструвались']);
             Auth::login($user, true);
 

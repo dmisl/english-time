@@ -3,7 +3,7 @@
         <div class="d-flex justify-content-between">
             <div>
                 <a class="text-decoration-none {{ active_link('home.index') }}" href="{{ route('home.index') }}">
-                    <h2>MyEnglish</h2>
+                    <h2>{{ env('APP_NAME') }}</h2>
                 </a>
             </div>
             <div>
