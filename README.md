@@ -19,9 +19,16 @@ After which we create an .env file in the project folder, copying the prepared t
 Enter the following commands into the console
 ```
 php artisan key:generate
-php artisan storage:link
 php artisan migrate
 ```
+
+After entering these commands, you need to rename the storage folder from the ../public/ folder to some other name and enter the command
+```
+php artisan storage:link
+```
+
+Then transfer all files from the folder you renamed to the /public/storage folder
+
 You're done :) The project is successfully installed on your computer, but that's not all
 
 ## How this project works

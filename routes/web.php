@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 // Home
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('dark_mode', [HomeController::class, 'dark_mode'])->name('home.dark_mode');
 
 // Login + Registration
 

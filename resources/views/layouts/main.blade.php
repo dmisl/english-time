@@ -7,6 +7,61 @@
         @yield('main.title', 'English')
     </title>
     <style>
+        body
+        {
+            transition: 1s;
+        }
+
+        .dark_mode
+        {
+            height: 25px;
+            width: 50px;
+            margin-left: 15px;
+            display: flex;
+        }
+
+        .dark_mode input[type=checkbox]{
+            height: 0;
+            width: 0;
+            visibility: hidden;
+        }
+
+        .dark_mode label {
+            cursor: pointer;
+            text-indent: -9999px;
+            width: 50px;
+            height: 25px;
+            background: grey;
+            display: block;
+            border-radius: 100px;
+            position: relative;
+        }
+
+        .dark_mode label:after {
+            content: '';
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            width: 23px;
+            height: 23px;
+            background: #fff;
+            border-radius: 23px;
+            transition: 0.5s;
+        }
+
+        .dark_mode input:checked + label {
+            background: #292928;
+        }
+
+        .dark_mode input:checked + label:after {
+            left: calc(100% - 1px);
+            transform: translateX(-100%);
+        }
+
+        .dark_mode label:active:after {
+        width: 30px;
+        }
+
         .fi_input
         {
             height: 35px;
@@ -120,5 +175,21 @@
         @include('includes.footer')
 
     </div>
+
+    <script>
+        let dark_mode_input = document.querySelector('#dark_mode_input')
+        let dark_mode_label = document.querySelector('.dark_mode_label')
+
+        dark_mode_label.addEventListener('click', function () {
+            if(!dark_mode_input.checked)
+            {
+                document.body.setAttribute('data-bs-theme', 'dark')
+            } else
+            {
+                document.body.removeAttribute('data-bs-theme')
+            }
+        })
+
+    </script>
 </body>
 </html>
