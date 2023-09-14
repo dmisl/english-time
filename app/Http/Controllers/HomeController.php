@@ -22,7 +22,7 @@ class HomeController extends Controller
             $cookie = Cookie::forget('dark_mode');
             $cookie = Cookie::forever('dark_mode', 'dark');
         } else
-        {   
+        {
             $cookie = Cookie::forget('dark_mode');
             $cookie = Cookie::forever('dark_mode', 'light');
         }

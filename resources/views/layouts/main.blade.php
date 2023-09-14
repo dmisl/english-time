@@ -117,13 +117,20 @@
             width: 100%;
         }
 
-        .input{
+        .input
+        {
             width: 200px;
             height: 42px;
-            background-color: lightblue;
+            background-color: rgb(98, 153, 235);
             border-radius: 10px;
             margin: 5px;
         }
+
+        .input h3
+        {
+            margin-top: 6px;
+        }
+
         .input_label
         {
             position:relative;
@@ -133,17 +140,17 @@
         {
             position: relative;
             top: 5px;
-            background-color: lightblue;
+            background-color: rgb(7, 92, 219);
+            color: white;
             border-radius: 10px;
             cursor: pointer;
             margin: 0 auto;
             padding: 3px 10px;
-            border: 1px solid black;
             text-align: center
         }
         .answers, #add_answers
         {
-            background-color: lightblue;
+            color: white;
             width: 80%;
             margin: 0 auto;
             border-radius: 10px;
@@ -163,6 +170,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" integrity="sha512-t4GWSVZO1eC8BM339Xd7Uphw5s17a86tIZIj8qRxhnKub6WoyhnrxeCIMeAqBPgdZGlCcG2PrZjMc+Wr78+5Xg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js" integrity="sha512-3dZ9wIrMMij8rOH7X3kLfXAzwtcHpuYpEgQg1OA4QAob1e81H8ntUQmQm3pBudqIoySO5j0tHN4ENzA6+n2r4w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.tiny.cloud/1/tf00vuqa2n38x4aqny9piahlbvyngwss47cp0wqq0hfbyvij/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 </head>
 <body>
     <div class='d-flex flex-column justify-content-between min-vh-100 text-center'>
@@ -212,7 +220,6 @@
                 }, 1000);
             }
         }
-
     </script>
 </body>
 </html>

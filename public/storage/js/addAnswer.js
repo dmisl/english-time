@@ -8,9 +8,11 @@ let text = ''
 
 
 add_answer.addEventListener('click', function () {
+    add_answer.setAttribute('hidden', '')
     adding.removeAttribute('hidden')
 })
 answer_accept.addEventListener('click', function () {
+    add_answer.removeAttribute('hidden')
     let value = answer_input.value.toLowerCase()
     answers.innerHTML += `<label value="${value}" class="answer" draggable="true">` + answer_input.value + `</label>`
     answer_input.value = ''
@@ -23,7 +25,7 @@ answer_accept.addEventListener('click', function () {
 next.addEventListener('click', function () {
     next.setAttribute('hidden', '')
     let answerss = document.querySelectorAll('.answer')
-    text += `<div class="answers my-3" style="border: 1px solid black;">
+    text += `<div class="answers my-3 border">
     <h2>Відповіді:</h2>`
     let arr = []
     for (let i = 0; i < answerss.length; i++) {
@@ -65,7 +67,7 @@ next.addEventListener('click', function () {
                 </table>
             </div>
             <div>
-                <table class="table table-info table-bordered mt-2 mb-0 inputs">
+                <table class="table table-primary table-bordered mt-2 mb-0 inputs">
 
 
         `
@@ -93,7 +95,7 @@ next.addEventListener('click', function () {
                 </table>
             </div>
             <div>
-                <table class="table table-info table-bordered input_adding" hidden>
+                <table class="table table-primary table-bordered input_adding" hidden>
                     <tr>
                         <td style="width: 47%">
                             <input type="text" placeholder="Слово" class="form-control text-center input_word">

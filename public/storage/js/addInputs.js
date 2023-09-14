@@ -58,7 +58,7 @@ function inputs_check()
                         <td style="width: 50%">Переклад</td>
                     </tr>
                 </table>
-                <table class="table table-info table-bordered mt-2 mb-3 mx-auto" style="width: 80%;">
+                <table class="table table-primary table-bordered mt-2 mb-3 mx-auto" style="width: 80%;">
             `
             let answerss = document.querySelectorAll('.answer')
             let wordss = document.querySelectorAll('.word')

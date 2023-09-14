@@ -74,7 +74,7 @@
                     </li>
 
                     @endif
-                    <form action="{{ route('home.dark_mode') }}" method="GET">
+                    <form id="dark_mode_form" action="{{ route('home.dark_mode') }}" method="GET">
                         <li class="mt-1">
                             <div class="dark_mode mt-0 p-0">
                                 <input {{ dark_mode() }} type="checkbox" name="dark_mode" id="dark_mode_input" /><label class="dark_mode_label" for="dark_mode_input">Toggle</label>

@@ -22,10 +22,10 @@ function addAnswers()
                         <input placeholder="Впишіть відповідь" class="answer_input" draggable="true">
                         <label class="answer_accept" style="padding: 3px 7px; cursor:pointer"><img style="width: 20px;" src="${accept_icon}" alt=""></label>
                     </label>
-                    <label class="answer_add">+</label>
+                    <label class="answer_add" hidden>+</label>
                     `
     next_section.innerHTML = `
-    <div hidden class="bg-info mx-auto next" style="width: 30%; border: 1px solid black; border-radius: 10px; cursor:pointer; user-select: none;">
+    <div hidden class="next bg-primary bg-gradient border mx-auto text-light" role="button" style="width: 30%; border-radius: 10px; user-select: none;">
         <h5 class="py-2" >Перейти до наступного етапу</h5>
     </div>`
     let scriptEle = document.createElement("script");
@@ -47,12 +47,12 @@ function addAnswers()
             </table>
         </div>
         <div>
-            <table class="table table-info table-bordered mt-2 mb-0 inputs">
+            <table class="table table-primary table-bordered mt-2 mb-0 inputs">
 
             </table>
         </div>
         <div>
-            <table class="table table-info table-bordered input_adding">
+            <table class="table table-primary table-bordered input_adding">
                 <tr>
                     <td style="width: 47%">
                         <input type="text" placeholder="Слово" class="form-control text-center input_word">

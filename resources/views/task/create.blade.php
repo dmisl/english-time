@@ -5,7 +5,7 @@
 
 <x-form action="{{ route('task.store', [$course, $lesson]) }}" enctype="multipart/form-data">
     <div class="container" id="container">
-        
+
         <a href="{{ route('lesson.show', [$course, $lesson]) }}">Назад</a>
 
         <div class="row mt-5">
@@ -19,11 +19,11 @@
                             <x-label class="text-start">
                                 Назва завдання
                             </x-label>
-                            <input type="text" class="form-control task_name" style="border: 1px solid black;">
+                            <input type="text" class="form-control task_name border">
                         </x-form-item>
                         <x-form-item>
                             <div class="my-3 form-floating m-0" style="width: 100%;"">
-                                <select name="task_type" style="border: 1px solid black;" class="form-select task_type" id="floatingSelect" aria-label="Floating label select example">
+                                <select name="task_type" class="form-select task_type border" id="floatingSelect" aria-label="Floating label select example">
                                     <option></option>
                                     <option {{ selected('1', old('task_type')) }} value="1">Перекласти</option>
                                     <option {{ selected('2', old('task_type')) }} value="2">Заповнити пропуски(готовими варіантами)</option>
@@ -87,8 +87,8 @@
 
                 <h1 class="py-3">${task_name.value}</h1>
 
-                <div class="overview w-100" style="padding-bottom: 100px; border:1px solid black; border-radius:20px;">
-                    <div class="my-3" id="add_answers" style="cursor: pointer; border: 1px solid black;">
+                <div class="overview w-100 border rounded-5" style="padding-bottom: 100px;">
+                    <div role="button" class="my-3 bg-success bg-gradient border" id="add_answers" >
                         <h2 class="mt-2">Добавити переклади слів</h2>
                     </div>
                     <div class="next_section"></div>
@@ -132,11 +132,11 @@
         {
             container.innerHTML = `
             <a href="{{ route('lesson.show', [$course, $lesson]) }}">Назад</a>
-    
+
             <h1 class="py-3">${task_name.value}</h1>
 
             <div class="overview w-100" style="padding-bottom: 100px; border:1px solid black; border-radius:20px;">
-            
+
                 <div class="add_text my-3 mx-auto" style="overflow: hidden; user-select: none; background-color: rgb(13, 175, 250); border: 1px solid black; border-radius: 15px; width: 80%;">
                     <h2 class="mt-1">Добавити текст?</h2>
                     <div class="d-flex w-50 mx-auto pb-2">
@@ -148,12 +148,12 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="bg-info mx-auto next mt-3" hidden style="width: 30%; border: 1px solid black; border-radius: 10px; cursor:pointer; user-select: none;">
                     <h5 class="py-2" >Перейти до наступного етапу</h5>
                 </div>
             </div>
-            
+
             <div hidden>
                 <input class="task_name" value="${task_name.value}" type="text" name="task_name">
                 <input class="task_body" type="text" name="task_body">
@@ -181,7 +181,7 @@
                 <div class="bg-info mx-auto next mt-3" hidden style="width: 30%; border: 1px solid black; border-radius: 10px; cursor:pointer; user-select: none;">
                     <h5 class="py-2" >Перейти до наступного етапу</h5>
                 </div>
-                
+
             </div>
             <input style="display: none;" class="task_image" type="file" name="task_image">
             <div hidden class="hidden">
@@ -204,7 +204,7 @@
             <h1 class="py-3">${task_name.value}</h1>
 
             <textarea name="task_body" style="height: 500px;">
-                
+
             </textarea>
 
             <div hidden>
@@ -258,27 +258,27 @@
 
     function shuffle(array) {
         let currentIndex = array.length, randomIndex;
-      
+
         // While there remain elements to shuffle.
         while (currentIndex > 0) {
-      
+
           // Pick a remaining element.
           randomIndex = Math.floor(Math.random() * currentIndex);
           currentIndex--;
-      
+
           // And swap it with the current element.
           [array[currentIndex], array[randomIndex]] = [
             array[randomIndex], array[currentIndex]];
         }
-      
+
         return array;
     }
 
     let scriptInputs = `{{ asset('storage/js/addInputs.js') }}`
     let scriptAnswers = `{{ asset('storage/js/addAnswer.js') }}`
-    
+
     let scriptfAnswers = `{{ asset('storage/js/fillGaps/addAnswers.js') }}`
-    
+
     let scriptABCImage = `{{ asset('storage/js/ABC/addImage.js') }}`
     let scriptABCAnswers = `{{ asset('storage/js/ABC/addAnswers.js') }}`
 
@@ -289,7 +289,7 @@
     let deny_icon = `{{ asset('storage/icons/deny.png') }}`
 
     let asset = `{{ asset('storage/') }}`
-    
+
 </script>
 
 {{-- <div class="d-flex">
@@ -357,12 +357,12 @@
     //         textarea.style.border = '1px solid red';
     //     }
     // }
-    
-    
+
+
     // task_name.addEventListener('keyup', function () {
         //     task_name.style.border = ''
         // })
-        
+
         // helper1.addEventListener('keyup', function ()
         // {
 //     let array1 = helper1.value.split(' ')
@@ -488,7 +488,7 @@
         //                                     <input type="text" class="form-control" solution="blue" style="font-size: 17px;width: 200px; border: 1px solid black; text-align: center;">
         //                                 </label>
         //                             </i>
-        
+
 //                             <i style="font-size: 20px; text-align:left;">you dumb moth.. </i>
 //                              <br>
 //                             <i style="font-size: 20px; text-align:left;">Okey... then what is your favourite color?
@@ -521,9 +521,9 @@
     //                                     <input type="text" class="form-control" solution="black" style="font-size: 17px;width: 200px; border: 1px solid black; text-align: center;">
     //                                 </label>
     //                             </i>
-    
+
     //                             <i style="font-size: 20px; text-align:left;">of course </i>
-    
+
     //                             <i style="font-size: 20px; text-align:left;"> maybe becourse I am a
         //                                 <label for="">
             //                                     <input type="text" class="form-control" solution="businessman" style="font-size: 17px;width: 200px; border: 1px solid black; text-align: center;">
@@ -551,7 +551,7 @@
 
     //         left.innerHTML = '<textarea name="body"></textare>'
 
-        
+
 //         tinymce.init({
     //         selector: 'textarea',
 //         plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
@@ -576,7 +576,7 @@
     //             words[i] = '<table>'
 //             if(needed.includes(','))
 //             {
-    
+
     //             }
 //             else
 //             {
@@ -817,7 +817,7 @@
 //             {
     //                 words[i] = `<i class="text">${needed}</i>`
     //             }
-    
+
     //         }
     //         if(words[i].includes('--check'))
     //         {
@@ -874,7 +874,7 @@
 //         {
     //             inputs[i].style.backgroundColor = 'green'
     //             rightCount++
-    
+
     //         }
 //         else
 //         {
