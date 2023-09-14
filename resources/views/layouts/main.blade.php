@@ -12,6 +12,11 @@
             transition: 1s;
         }
 
+        .dark_mode_label
+        {
+            border: 1px solid white;
+        }
+
         .dark_mode
         {
             height: 25px;
@@ -42,8 +47,8 @@
             position: absolute;
             top: 1px;
             left: 1px;
-            width: 23px;
-            height: 23px;
+            width: 21px;
+            height: 21px;
             background: #fff;
             border-radius: 23px;
             transition: 0.5s;
