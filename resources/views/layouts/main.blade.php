@@ -179,16 +179,34 @@
     <script>
         let dark_mode_input = document.querySelector('#dark_mode_input')
         let dark_mode_label = document.querySelector('.dark_mode_label')
+        let dark_mode_submit = document.querySelector('.dark_mode_submit')
 
-        dark_mode_label.addEventListener('click', function () {
+        if(dark_mode_input.checked)
+        {
+            document.body.setAttribute('data-bs-theme', 'dark')
+        } else
+        {
+            document.body.removeAttribute('data-bs-theme')
+        }
+
+        dark_mode_label.addEventListener('click', dark_mode_check)
+
+        function dark_mode_check()
+        {
             if(!dark_mode_input.checked)
             {
                 document.body.setAttribute('data-bs-theme', 'dark')
+                setTimeout(() => {
+                    dark_mode_submit.click()
+                }, 1000);
             } else
             {
                 document.body.removeAttribute('data-bs-theme')
+                setTimeout(() => {
+                    dark_mode_submit.click()
+                }, 1000);
             }
-        })
+        }
 
     </script>
 </body>

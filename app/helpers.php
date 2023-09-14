@@ -3,6 +3,7 @@
 use App\Models\Access;
 use App\Models\CompletedTask;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Route;
 
 if(!function_exists('is_active'))
@@ -79,6 +80,22 @@ if (!function_exists('selected')) {
         if($name == $needed)
         {
             return 'selected';
+        }
+    }
+}
+
+// darkmode
+
+if(!function_exists('dark_mode'))
+{
+    function dark_mode()
+    {
+        if(Cookie::get('dark_mode') == 'dark')
+        {
+            return 'checked';
+        } else
+        {
+            return '';
         }
     }
 }
