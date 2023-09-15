@@ -9,9 +9,11 @@ let text = ''
 
 add_answer.addEventListener('click', function () {
     add_answer.setAttribute('hidden', '')
+    next.setAttribute('hidden', '')
     adding.removeAttribute('hidden')
 })
 answer_accept.addEventListener('click', function () {
+    next.removeAttribute('hidden')
     add_answer.removeAttribute('hidden')
     let value = answer_input.value.toLowerCase()
     answers.innerHTML += `<label value="${value}" class="answer" draggable="true">` + answer_input.value + `</label>`
@@ -23,6 +25,7 @@ answer_accept.addEventListener('click', function () {
     }
 })
 next.addEventListener('click', function () {
+    add_answer.setAttribute('hidden', '')
     next.setAttribute('hidden', '')
     let answerss = document.querySelectorAll('.answer')
     text += `<div class="answers my-3 border">
@@ -51,6 +54,7 @@ next.addEventListener('click', function () {
 
     manual_input.addEventListener('click', function () {
         add_inputs.innerHTML = addInputs_text
+        document.querySelector('.input_add').setAttribute('hidden', '')
         let scriptInput = document.createElement("script");
         scriptInput.setAttribute("src", scriptInputs);
         document.body.appendChild(scriptInput);

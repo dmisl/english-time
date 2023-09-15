@@ -8,7 +8,7 @@ function inputs_check()
     let words = document.querySelectorAll('.word')
     let count = 0
     for (let i = 0; i < words.length; i++) {
-        if (words[i].innerText == `Впишіть слово для перекладу`)
+        if (words[i].innerText == `Впишіть слово для перекладу` || words[i].innerText == ``)
         {
             words[i].style.color = 'red'
         } else
@@ -16,8 +16,9 @@ function inputs_check()
             count++
         }
     }
-    if(count == words.length)
+    if(count == document.querySelectorAll('.answer').length)
     {
+        input_add.setAttribute('hidden', '')
         let finish = document.querySelector('.finish')
         finish.removeAttribute('hidden')
         finish.addEventListener('click', function () {
@@ -98,6 +99,7 @@ function inputs_check()
 
 for (let i = 0; i < input_edit.length; i++) {
     input_edit[i].addEventListener('click', function () {
+        input_add.setAttribute('hidden', '')
         input_editing(this, i)
         for (let a = 0; a < input_edit.length; a++) {
             if(a == i)
@@ -132,6 +134,7 @@ function input_editing(input_edit, i)
     `
     let accept = document.querySelector('#input_accept_changes')
     accept.addEventListener('click', function () {
+        input_add.removeAttribute('hidden')
         input_edit_accept(accept, i)
     })
 
@@ -183,6 +186,10 @@ let input_accept = document.querySelector('.input_accept')
 let input_adding = document.querySelector('.input_adding')
 
 input_accept.addEventListener('click', function () {
+    input_add.removeAttribute('hidden')
+    document.querySelectorAll('.input_edit').forEach(e => {
+        e.removeAttribute('hidden')
+    })
     let needed = input_translation.value.toLowerCase()
     inputss.innerHTML += `
         <tr>
@@ -211,6 +218,10 @@ input_accept.addEventListener('click', function () {
 })
 
 input_add.addEventListener('click', function () {
+    document.querySelectorAll('.input_edit').forEach(e => {
+        e.setAttribute('hidden', '')
+    })
+    input_add.setAttribute('hidden', '')
     input_adding.removeAttribute('hidden')
 })
 

@@ -139,6 +139,7 @@ if(task_type.value == 4)
         })
     }
     check.addEventListener('click', function () {
+        check.setAttribute('disabled', '')
         if(selected.classList.contains('right'))
         {
             let percentage = 100
@@ -191,6 +192,7 @@ if(task_type.value == 1 || task_type.value == 2)
     
     check.addEventListener('click', function (element) {
     
+        check.setAttribute('disabled', '')
         if(solutions.length >= 1)
         {
             let answer
