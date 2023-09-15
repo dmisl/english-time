@@ -133,6 +133,7 @@ function input_editing(input_edit, i)
     input_edit.outerHTML = `
         <img id="input_accept_changes" style="height: 38px; cursor:pointer;" src="${accept_icon}" alt="">
     `
+    // asd
     let accept = document.querySelector('#input_accept_changes')
     // NIE PRACUJE
     words[i].addEventListener('keyup', function () {
