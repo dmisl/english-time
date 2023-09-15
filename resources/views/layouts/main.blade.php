@@ -131,6 +131,16 @@
             margin-top: 6px;
         }
 
+        td h5
+        {
+            margin-top: 15px;
+        }
+
+        td h3
+        {
+            margin-top: 10px;
+        }
+
         .input_label
         {
             position:relative;
@@ -139,7 +149,7 @@
         .answer, .answer_input, .answer_add, .answer_accept
         {
             position: relative;
-            top: 5px;
+            top: 6px;
             background-color: rgb(7, 92, 219);
             color: white;
             border-radius: 10px;

@@ -79,7 +79,7 @@ next.addEventListener('click', function () {
             addInputs_text += `
                 <tr>
                     <td style="width: 47%">
-                        <h5 class="mt-2 word text-danger">Впишіть слово для перекладу</h5>
+                        <h5 class="word text-danger">Впишіть слово для перекладу</h5>
                     </td>
                     <td style="width: 47%">
                         <label class="input" answer="${answerss_value}"><h3>${answerss_text}</h3></label>
@@ -115,7 +115,7 @@ next.addEventListener('click', function () {
                     </tr>
             </table>
             <div class="d-flex mx-auto" style="width: 70%">
-                <div hidden class="bg-success mx-auto finish" style="width: 30%; border: 1px solid black; border-radius: 10px; cursor:pointer; user-select: none;">
+                <div hidden class="bg-success bg-gradient text-light mx-auto finish" style="width: 30%; border: 1px solid black; border-radius: 10px; cursor:pointer; user-select: none;">
                     <h5 class="py-2" >Завершити редактування завдання</h5>
                 </div>
             </div>

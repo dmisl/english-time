@@ -27,10 +27,10 @@ function inputs_check()
             finish.setAttribute('hidden', '')
             finish.outerHTML += `
                 <div class="d-flex mx-auto" style="width: 70%">
-                    <div class="bg-info mx-auto show" style="width: 30%; border: 1px solid black; border-radius: 10px; cursor:pointer; user-select: none;" data-bs-toggle="modal" data-bs-target="#showModal">
+                    <div class="bg-primary bg-gradient text-light mx-auto show" style="width: 30%; border: 1px solid black; border-radius: 10px; cursor:pointer; user-select: none;" data-bs-toggle="modal" data-bs-target="#showModal">
                         <h5 class="py-2" >Переглянути результат</h5>
                     </div>
-                    <div class="bg-success mx-auto create" style="width: 30%; border: 1px solid black; border-radius: 10px; cursor:pointer; user-select: none;">
+                    <div class="bg-success bg-gradient text-light mx-auto create" style="width: 30%; border: 1px solid black; border-radius: 10px; cursor:pointer; user-select: none;">
                         <h5 class="py-2" >Створити завдання</h5>
                     </div>
                 </div>
@@ -66,7 +66,7 @@ function inputs_check()
                 text += `
                     <tr>
                         <td style="width: 50%">
-                            <h5 class="mt-2 word">${wordss[index].innerText}</h5>
+                            <h5 class="word">${wordss[index].innerText}</h5>
                         </td>
                         <td style="width: 50%">
                             <label class="input" answer="${answerss[index].attributes.value.value}"></label>
@@ -75,7 +75,7 @@ function inputs_check()
                 `
             }
             text += `</table>
-            <button type="button" class="btn btn-primary" id="check">Перевірити</button>`
+            <button type="button" disabled class="btn btn-primary" id="check">Перевірити</button>`
 
             task_body.setAttribute('value', text)
 
@@ -152,7 +152,7 @@ function input_edit_accept(input_edit, i) {
     let word_edit_value = word_edit.value
     let translation_edit_value = translation_edit.value
     word_edit.outerHTML = `
-        <h3 class="mt-2 word">${word_edit_value}</h3>
+        <h5 class="word">${word_edit_value}</h5>
     `
     translation_edit.outerHTML = `
         <label class="input" answer="${translation_edit_value}"><h3>${translation_edit_value}</h3></label>
@@ -186,10 +186,10 @@ input_accept.addEventListener('click', function () {
     let needed = input_translation.value.toLowerCase()
     inputss.innerHTML += `
         <tr>
-            <td class="w-50">
-                <h3 class="mt-2 word">${input_word.value}</h3>
+            <td style="width: 47%;">
+                <h3 class="word">${input_word.value}</h3>
             </td>
-            <td class="w-50">
+            <td style="width: 47%;">
                 <label class="input" answer="${needed}"><h3>${input_translation.value}</h3></label>
             </td>
             <td style="width: 6%">
