@@ -2,6 +2,7 @@
 
 let input_edit = document.querySelectorAll('.input_edit')
 let tasks = document.querySelectorAll('.task')
+let finish = document.querySelector('.finish')
 
 function inputs_check()
 {
@@ -19,7 +20,6 @@ function inputs_check()
     if(count == document.querySelectorAll('.answer').length)
     {
         input_add.setAttribute('hidden', '')
-        let finish = document.querySelector('.finish')
         finish.removeAttribute('hidden')
         finish.addEventListener('click', function () {
             document.querySelectorAll('.input_edit').forEach(e => {
@@ -115,15 +115,16 @@ for (let i = 0; i < input_edit.length; i++) {
 
 function input_editing(input_edit, i)
 {
+    input_add.setAttribute('hidden', '')
     let words = document.querySelectorAll('.word')
     let inputss = document.querySelectorAll('.input')
     let word_text = words[i].innerText
+    let input_answer = inputss[i].innerText
     words[i].outerHTML = `
         <td style="width: 47%">
             <input id="word_edit" value="${word_text}" type="text" placeholder="Слово" class="form-control text-center">
         </td>
     `
-    let input_answer = inputss[i].innerText
     inputss[i].outerHTML = `
         <td style="width: 47%">
             <input id="translation_edit" value="${input_answer}" type="text" placeholder="Переклад" class="form-control text-center">
@@ -133,14 +134,46 @@ function input_editing(input_edit, i)
         <img id="input_accept_changes" style="height: 38px; cursor:pointer;" src="${accept_icon}" alt="">
     `
     let accept = document.querySelector('#input_accept_changes')
+    // NIE PRACUJE
+    words[i].addEventListener('keyup', function () {
+        if(inputss[i].value.length >= 1 && words[i].value.length >= 1)
+        {
+            accept.removeAttribute('hidden')
+        } else
+        {
+            accept.setAttribute('hidden', '')
+        }
+    })
+    inputss[i].addEventListener('keyup', function () {
+        if(inputss[i].value.length >= 1 && words[i].value.length >= 1)
+        {
+            accept.removeAttribute('hidden')
+        } else
+        {
+            accept.setAttribute('hidden', '')
+        }
+    })
     accept.addEventListener('click', function () {
-        input_add.removeAttribute('hidden')
         input_edit_accept(accept, i)
+        if(document.querySelectorAll('.input').length == document.querySelectorAll('.answer').length)
+        {
+            input_add.setAttribute('hidden', '')
+        } else
+        {
+            input_add.removeAttribute('hidden')
+        }
     })
 
 }
 
 function input_edit_accept(input_edit, i) {
+    if(document.querySelectorAll('.input').length == document.querySelectorAll('.answer').length)
+    {
+        input_add.setAttribute('hidden', '')
+    } else
+    {
+        input_add.removeAttribute('hidden')
+    }
     for (let a = 0; a < input_edit.length; a++) {
         if(a == i)
 
