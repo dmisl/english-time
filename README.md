@@ -17,6 +17,7 @@ composer install
 After which we create an .env file in the project folder, copying the prepared text from .env.example. Customize if necessary and move on.
 
 Enter the following commands into the console
+
 ```
 php artisan key:generate
 php artisan migrate
@@ -59,6 +60,11 @@ Available types of tasks at the moment:
 - ABC, choose the correct answer
 
 You can also create an information page where your student can repeat or learn new rules of the language he`s learning.
+
+## Available languages
+- English
+- Poland
+- Ukrainian
 
 ## Outro
 This is not the final version of this site, over time it will be improved with new interface languages and new functionality.

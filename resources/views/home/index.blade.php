@@ -1,9 +1,15 @@
 @extends('layouts.main')
 
-@section('main.title', env('APP_NAME').' | Головна сторінка')
+@section('main.title', )
+
+{{ env('APP_NAME') }}
+ |
+{{ __('main.home_page')}}
+
+@endsection
 
 @section('main.content')
 
-<h1>Головна сторінка</h1>
+<h1>{{ __('main.home_page') }}</h1>
 
 @endsection

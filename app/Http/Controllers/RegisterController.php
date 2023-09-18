@@ -35,7 +35,7 @@ class RegisterController extends Controller
                     'admin' => 1,
                 ]);
             }
-            session(['alert' => 'Ви успішно зареєструвались']);
+            session(['alert' => __('main.you_have_successfully_registered')]);
             Auth::login($user, true);
 
             if(is_admin())

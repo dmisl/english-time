@@ -4,9 +4,9 @@
 @section('main.content')
 
 <div class="container">
-    <a href="{{ route('user.lesson.show', [$course, $lesson]) }}">Назад</a>
+    <a href="{{ route('user.lesson.show', [$course, $lesson]) }}">{{ __('main.back') }}</a>
     <h1>{{ $task->name }}</h1>
-    <h2>Made by: {{ $user->name }}</h2>
+    <h2>{{ __('main.made_by') }}: {{ $user->name }}</h2>
     {!! $completed->text !!}
 <script>
     let button = document.querySelectorAll('#check')
@@ -16,7 +16,7 @@
 
     } else
     {
-        
+
     }
 
     button.forEach(button => {

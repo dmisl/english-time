@@ -64,7 +64,7 @@ class TaskController extends Controller
 
 
         if ($task) {
-            session(['alert' => "Ви успішно створити завдання {$validated['task_name']}"]);
+            session(['alert' => __('main.you_have_successfully_created_a_task_named')." {$validated['task_name']}"]);
 
             return redirect()->route('task.show', [$course, $lesson, $task->id]);
         } else {
@@ -107,7 +107,7 @@ class TaskController extends Controller
 
         if($completed)
         {
-            session(['alert' => 'Ви вже виконували це завдання']);
+            session(['alert' => __('main.you_have_already_completed_this_task')]);
             return redirect()->back();
         } else
         {
@@ -164,7 +164,7 @@ class TaskController extends Controller
         foreach ($task->completedTasks as $completed) {
             $completed->delete();
         }
-        session(['alert' => "Ви успішно видалили завдання під назвою {$task->name}"]);
+        session(['alert' => __('main.you_have_successfully_deleted_the_task_called')." {$task->name}"]);
         $task->delete();
         return back();
     }

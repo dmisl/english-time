@@ -1,18 +1,24 @@
 @extends('layouts.main')
 
-@section('main.title', env('APP_NAME').' | Кабінет адміністратора')
+@section('main.title')
+
+{{ env('APP_NAME') }}
+ |
+{{ __('main.admin_profile') }}
+
+@endsection
 
 @section('main.content')
 
 <div class="container">
-    <h1>Мої курси</h1>
+    <h1>{{ __('main.my_courses') }}</h1>
     <div class="row py-5">
         <div class="col-6 col-md-4">
             <x-card>
                 <a class="text-decoration-none" href="{{ route('active.index') }}">
                     <x-card-body>
                         <h4>
-                            Заявки на реєстрацію
+                            {{ __('main.applications_for_registration') }}
                         </h4>
                     </x-card-body>
                 </a>
@@ -23,7 +29,7 @@
                 <a class="text-decoration-none" href="{{ route('access.index') }}">
                     <x-card-body>
                         <h4>
-                            Доступ до курсу
+                            {{ __('main.access_to_the_course') }}
                         </h4>
                     </x-card-body>
                 </a>
@@ -34,7 +40,7 @@
                 <a class="text-decoration-none" href="{{ route('task.homework') }}">
                     <x-card-body>
                         <h4>
-                            Перевірити завдання
+                            {{ __('main.check_tasks') }}
                         </h4>
                     </x-card-body>
                 </a>
@@ -54,8 +60,8 @@
     <div class="row pt-5">
         @if($courses->count() == 0)
 
-        <h3>На даний момент ви ще не створили жодного курсу</h3>
-        <h4>Для того аби створити курс, нажміть кнопку <span style="color: green;">+</span></h4>
+        <h3>{{ __('main.you_have_not_created_any_courses_yet') }}</h3>
+        <h4>{!! __('main.to_create_a_course_click_the_button') !!}</h4>
 
         @else
 
@@ -82,17 +88,17 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Зміна назви уроку</h1>
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">{{ __('main.change_the_name_of_the_lesson') }}</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <x-form action="{{ route('course.update', [$course->id]) }}" method="PUT">
                                 <div class="modal-body">
-                                    <x-label>Впишіть нову назву курсу</x-label>
+                                    <x-label>{{ __('main.enter_a_new_course_name') }}</x-label>
                                     <x-input type="text" name="name" value="{{ $course->name }}" />
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрити</button>
-                                    <button type="submit" class="btn btn-primary">Змінити</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('main.close') }}</button>
+                                    <button type="submit" class="btn btn-primary">{{ __('main.change') }}</button>
                                 </x-form>
                                 </div>
                             </div>
@@ -102,16 +108,16 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Видалення уроку</h1>
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">{{ __('main.deleting_a_course') }}</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <h4>Ви дійсно хочете видалити курс під назвою <span class="text-danger">"{{ $course->name }}"</span>, всі уроки і всі завдання, які в ньому знаходяться?</h4>
+                                    <h4>{{ __('main.do_you_really_want_to_delete_a_course_called') }} <span class="text-danger">"{{ $course->name }}"</span>, {{ __('main.all_the_lessons_and_all_the_tasks_that_are_in_it') }}</h4>
                                 </div>
                                 <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ні</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('main.no') }}</button>
                                 <x-form action="{{ route('course.destroy', [$course->id]) }}" method="DELETE">
-                                    <button type="submit" class="btn btn-primary">Видалити</button>
+                                    <button type="submit" class="btn btn-primary">{{ __('main.delete') }}</button>
                                 </x-form>
                                 </div>
                             </div>

@@ -1,11 +1,15 @@
 @extends('layouts.main')
 
-@section('main.title', env('APP_NAME').' | Кабінет')
+@section('main.title', )
+
+{{ env('APP_NAME') }} | {{ __('main.profile') }}
+
+@endsection
 
 @section('main.content')
 
 <div class="container">
-    <h1>Мої курси</h1>
+    <h1>{{ __('my_courses') }}</h1>
     <div class="row">
 
         @foreach ($courses as $course)

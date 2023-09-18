@@ -39,7 +39,7 @@ class LessonController extends Controller
 
         if($lesson)
         {
-            session(['alert' => "Ви успішно створити урок {$validated['name']}"]);
+            session(['alert' => __('main.you_have_successfully_created_a_lesson')." {$validated['name']}"]);
 
             return redirect()->route('course.show', [$request->course_id]);
         }
@@ -74,7 +74,7 @@ class LessonController extends Controller
             'name' => ['required'],
         ]);
         $lesson->update(['name' => $validated['name']]);
-        session(['alert' => "Ви успішно змінили назву уроку на {$validated['name']}"]);
+        session(['alert' => __('main.you_have_successfully_changed_the_name_of_the_lesson_to')." {$validated['name']}"]);
         return back();
     }
 
@@ -88,7 +88,7 @@ class LessonController extends Controller
             }
             $task->delete();
         }
-        session(['alert' => "Ви успішно видалили урок під назвою {$lesson->name} і всі завдання, які знаходились в ньому"]);
+        session(['alert' => __('main.you_have_successfully_deleted_a_lesson_called')." {$lesson->name} ".__('main.and_all_the_tasks_that_were_in_it')]);
         $lesson->delete();
         return back();
     }

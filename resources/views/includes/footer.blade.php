@@ -1,3 +1,3 @@
 <footer class="border-top py-2">
-    Дмитро Слутий {{ date('Y') }}
+    {{ __('main.creator') }} {{ date('Y') }}
 </footer>

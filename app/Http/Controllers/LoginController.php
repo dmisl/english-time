@@ -23,11 +23,11 @@ class LoginController extends Controller
 
         if(Auth::attempt(['email' => $validated['email'], 'password' => $validated['password']], ($request->remember ? true : false)))
         {
-            session(['alert' => 'Ви успішно ввійшли в акаунт']);
+            session(['alert' => __('main.you_have_successfully_logged_in_to_your_account')]);
             return redirect()->route('home.index');
         } else
         {
-            session(['alert' => 'Дані не збігаються']);
+            session(['alert' => __('main.the_data_does_not_match')]);
             return redirect()->back()->withInput();
         }
 

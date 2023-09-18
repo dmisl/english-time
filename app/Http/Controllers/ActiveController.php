@@ -40,7 +40,7 @@ class ActiveController extends Controller
             ->where(['id' => $validated['user_id']])
             ->update(['active' => 1]);
 
-            session(['alert' => "Ви успішно активували користувача з ID {$validated['user_id']}"]);
+            session(['alert' => __('main.you_have_successfully_activated_a_user_with_ID')." {$validated['user_id']}"]);
             return back();
         } else if($validated['action'] == 'deny')
         {
@@ -48,7 +48,7 @@ class ActiveController extends Controller
             ->where(['id' => $validated['user_id']])
             ->update(['active' => 4]);
 
-            session(['alert' => "Ви успішно відмовили користувачу з ID {$validated['user_id']}"]);
+            session(['alert' => __('main.you_have_successfully_denied_a_user_with_ID')." {$validated['user_id']}"]);
             return back();
         }
 

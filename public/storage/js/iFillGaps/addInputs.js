@@ -113,7 +113,7 @@ function un_bold()
 // function to finish editing task
 
 finish.addEventListener('click', function () {
-    let outerHTML = '<p><i class="fi_text">'
+    let outerHTML = '<div class="mx-auto" style="width: 80%;"><p><i class="fi_text">'
     outerHTML += editor.innerHTML
     let needed = ''
     inputs.forEach(e => {
@@ -133,10 +133,10 @@ finish.addEventListener('click', function () {
         outerHTML = outerHTML.replace(e, needed)
         needed = ''
     });
-    outerHTML += `</i></p>`
+    outerHTML += `</i></p></div>`
 
     result += outerHTML
-    result += `<button disabled type="button" class="btn btn-primary mt-3" id="check">Перевірити</button>`
+    result += `<button disabled type="button" class="btn btn-primary mt-3 text-light" id="check">${tr_check}</button>`
     document.querySelector('.task_body').setAttribute('value', result)
 
     add_inputs.outerHTML = `
@@ -149,24 +149,24 @@ finish.addEventListener('click', function () {
     `
     finish.outerHTML = `
         <div class="d-flex mx-auto mt-3" style="width: 70%">
-            <div class="bg-info mx-auto show" style="width: 30%; border: 1px solid black; border-radius: 10px; cursor:pointer; user-select: none;" data-bs-toggle="modal" data-bs-target="#showModal">
-                <h5 class="py-2">Переглянути результат</h5>
+            <div class="bg-info bg-gradient text-light mx-auto show" style="width: 30%; border: 1px solid black; border-radius: 10px; cursor:pointer; user-select: none;" data-bs-toggle="modal" data-bs-target="#showModal">
+                <h5 class="py-2">${tr_view_the_result}</h5>
             </div>
-            <div class="bg-success mx-auto create" style="width: 30%; border: 1px solid black; border-radius: 10px; cursor:pointer; user-select: none;">
-                <h5 class="py-2">Створити завдання</h5>
+            <div class="bg-success bg-gradient text-light mx-auto create" style="width: 30%; border: 1px solid black; border-radius: 10px; cursor:pointer; user-select: none;">
+                <h5 class="py-2">${tr_create_a_task}</h5>
             </div>
             <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Перегляд фінального результату</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">${tr_view_the_final_result}</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             ${result}
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрити перегляд фінального результата</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">${tr_close_view}</button>
                         </div>
                     </div>
                 </div>

@@ -6,37 +6,37 @@
 <x-form action="{{ route('task.store', [$course, $lesson]) }}" enctype="multipart/form-data">
     <div class="container" id="container">
 
-        <a href="{{ route('lesson.show', [$course, $lesson]) }}">Назад</a>
+        <a href="{{ route('lesson.show', [$course, $lesson]) }}">{{ __('main.back') }}</a>
 
         <div class="row mt-5">
             <div class="col-12 col-md-6 offset-md-3">
                 <x-card>
                     <x-card-body class="border-bottom">
-                        <h3>Створення завдання</h3>
+                        <h3>{{ __('main.create_a_task') }}</h3>
                     </x-card-body>
                     <x-card-body>
                         <x-form-item>
                             <x-label class="text-start">
-                                Назва завдання
+                                {{ __('main.task_name') }}
                             </x-label>
-                            <input type="text" class="form-control task_name border">
+                            <input type="text" class="form-control task_name border text-center">
                         </x-form-item>
                         <x-form-item>
                             <div class="my-3 form-floating m-0" style="width: 100%;"">
                                 <select name="task_type" class="form-select task_type border" id="floatingSelect" aria-label="Floating label select example">
                                     <option></option>
-                                    <option {{ selected('1', old('task_type')) }} value="1">Перекласти</option>
-                                    <option {{ selected('2', old('task_type')) }} value="2">Заповнити пропуски(готовими варіантами)</option>
-                                    <option {{ selected('3', old('task_type')) }} value="3">Заповнити пропуски(написати вручну)</option>
+                                    <option {{ selected('1', old('task_type')) }} value="1">{{ __('main.translate') }}</option>
+                                    <option {{ selected('2', old('task_type')) }} value="2">{{ __('main.fill_in_the_gaps_with_ready_made_options') }}</option>
+                                    <option {{ selected('3', old('task_type')) }} value="3">{{ __('main.fill_in_the_blanks_write_manually') }}</option>
                                     <option {{ selected('4', old('task_type')) }} value="4">ABC</option>
-                                    <option {{ selected('5', old('task_type')) }} value="5">Інформація</option>
+                                    <option {{ selected('5', old('task_type')) }} value="5">{{ __('main.info') }}</option>
                                 </select>
-                                <label for="floatingSelect">Виберіть тип завдання</label>
+                                <label for="floatingSelect">{{ __('main.select_a_task_type') }}</label>
                             </div>
                         </x-form-item>
                         <x-form-item>
                             <button class="btn btn-primary go" hidden>
-                                Перейти до редактування
+                                {{ __('main.go_to_edit') }}
                             </button>
                         </x-form-item>
                     </x-card-body>
@@ -47,6 +47,44 @@
     </div>
 </x-form>
 <script>
+
+    let tr_i_advise_you_to_paste_the_answers_after_filling_in_the_text_completely_to_avoid_problems = `{!! __('main.i_advise_you_to_paste_the_answers_after_filling_in_the_text_completely_to_avoid_problems') !!}`
+    let tr_make_the_highlighted_answer = `{{ __('main.make_the_highlighted_answer') }}`
+    let tr_in_this_task_you_need_to_write_the_text_and_highlight_the_word_that_you_will_need_to_insert_the_answer_in_its_place = `{{ __('main.in_this_task_you_need_to_write_the_text_and_highlight_the_word_that_you_will_need_to_insert_the_answer_in_its_place') }}`
+    let tr_we_advise_you_to_paste_the_answers_after_filling_in_the_text_to_avoid_problems = `{{ __('main.we_advise_you_to_paste_the_answers_after_filling_in_the_text_to_avoid_problems') }}`
+    let tr_some_text = `{{ __('main.some_text') }}`
+    let tr_delete_answer_highlighted = `{{ __('main.delete_answer_highlighted') }}`
+    let tr_in_this_task_you_need_to_write_the_text_and_highlight_the_word_that_the_student_will_need_to_write_the_answer_in_its_place = `{!! __('main.in_this_task_you_need_to_write_the_text_and_highlight_the_word_that_the_student_will_need_to_write_the_answer_in_its_place') !!}`
+    let tr_add_a_picture = `{{ __('main.add_a_picture') }}`
+    let tr_add_a_picture_q = `{{ __('main.add_a_picture_q') }}`
+    let tr_insert_a_picture_through_a_link = `{{ __('main.insert_a_picture_through_a_link') }}`
+    let tr_paste_a_URL_link_to_the_image = `{{ __('main.paste_a_URL_link_to_the_image') }}`
+    let tr_to_change_the_text_of_an_answer_option_click_on_the_option_you_want = `{{ __('main.to_change_the_text_of_an_answer_option_click_on_the_option_you_want') }}`
+    let tr_i_recommend_changing_all_options_before_moving_on_to_the_next_stage = `{{ __('main.i_recommend_changing_all_options_before_moving_on_to_the_next_stage') }}`
+    let tr_yes = `{{ __('main.yes') }}`
+    let tr_no = `{{ __('main.no') }}`
+    let tr_close = `{{ __('main.close') }}`
+    let tr_tap_to_edit_the_text = `{{ __('main.tap_to_edit_the_text') }}`
+    let tr_confirm_the_correct_option = `{{ __('main.confirm_the_correct_option') }}`
+    let tr_choose_the_correct_answer = `{{ __('main.choose_the_correct_answer') }}`
+    let tr_choose_a_way_to_insert_a_picture = `{{ __('main.choose_a_way_to_insert_a_picture') }}`
+    let tr_upload = `{{ __('main.upload') }}`
+    let tr_insert_link = `{{ __('main.insert_link') }}`
+    let tr_uploading_a_picture = `{{ __('main.uploading_a_picture') }}`
+    let tr_upload_a_picture = `{{ __('main.upload_a_picture') }}`
+    let tr_view_the_result = `{{ __('main.view_the_result') }}`
+    let tr_create_a_task = `{{ __('main.create_a_task') }}`
+    let tr_view_the_final_result = `{{ __('main.view_the_final_result') }}`
+    let tr_close_view = `{{ __('main.close_view') }}`
+    let tr_check = `{{ __('main.check') }}`
+    let tr_go_to_the_next_step = `{{ __('main.go_to_the_next_step') }}`
+    let tr_enter_the_answer = `{{ __('main.enter_the_answer') }}`
+    let tr_finish_editing_the_task = `{{ __('main.finish_editing_the_task') }}`
+    let tr_enter_the_word_for_translation = `{{ __('main.enter_the_word_for_translation') }}`
+    let tr_answers = `{{ __('main.answers') }}`
+    let tr_add_translation_fields_automatically = `{{ __('main.add_translation_fields_automatically') }}`
+    let tr_translation = `{{ __('main.translation') }}`
+    let tr_word = `{{ __('main.word') }}`
 
     function shuffle(array) {
     let currentIndex = array.length,  randomIndex;
@@ -83,13 +121,13 @@
         if(task_type.value == 1)
         {
             container.innerHTML = `
-                <a href="{{ route('lesson.show', [$course, $lesson]) }}">Назад</a>
+                <a href="{{ route('lesson.show', [$course, $lesson]) }}">{{ __('main.back') }}</a>
 
                 <h1 class="py-3">${task_name.value}</h1>
 
                 <div class="overview w-100 border rounded-5" style="padding-bottom: 100px;">
                     <div role="button" class="my-3 bg-success bg-gradient border" id="add_answers" >
-                        <h2 class="mt-2">Добавити переклади слів</h2>
+                        <h2 class="mt-2">{{ __('main.add_word_translations') }}</h2>
                     </div>
                     <div class="next_section"></div>
                     </div>
@@ -106,15 +144,19 @@
         } else if(task_type.value == 2)
         {
             container.innerHTML = `
-                <a href="{{ route('lesson.show', [$course, $lesson]) }}">Назад</a>
+                <a href="{{ route('lesson.show', [$course, $lesson]) }}">{{ __('main.back') }}</a>
 
                 <h1 class="py-3">${task_name.value}</h1>
 
                 <div class="overview w-100" style="padding-bottom: 100px; border:1px solid black; border-radius:20px;">
-                    <div class="my-3" id="add_answers" style="cursor: pointer; border: 1px solid black;">
-                        <h2 class="mt-2">Добавити відповіді для вставлення</h2>
+                    <div class="my-3 border bg-success bg-gradient" id="add_answers" role="button">
+                        <h2 class="mt-2">{{ __('main.add_answers_to_insert') }}</h2>
                     </div>
-                    <div class="next_section"></div>
+                    <div class="next_section">
+                        <div hidden class="bg-primary bg-gradient text-light mx-auto next border" role="button" style="width: 30%; border-radius: 10px; user-select: none;">
+                            <h5 class="py-2" >{{ __('main.go_to_the_next_step') }}</h5>
+                        </div>
+                    </div>
                 </div>
 
                 <div hidden>
@@ -131,26 +173,26 @@
         } else if(task_type.value == 3)
         {
             container.innerHTML = `
-            <a href="{{ route('lesson.show', [$course, $lesson]) }}">Назад</a>
+            <a href="{{ route('lesson.show', [$course, $lesson]) }}">{{ __('main.back') }}</a>
 
             <h1 class="py-3">${task_name.value}</h1>
 
             <div class="overview w-100" style="padding-bottom: 100px; border:1px solid black; border-radius:20px;">
 
-                <div class="add_text my-3 mx-auto" style="overflow: hidden; user-select: none; background-color: rgb(13, 175, 250); border: 1px solid black; border-radius: 15px; width: 80%;">
-                    <h2 class="mt-1">Добавити текст?</h2>
+                <div class="add_text my-3 mx-auto bg-primary bg-gradient border text-light" style="overflow: hidden; user-select: none; border-radius: 15px; width: 80%;">
+                    <h2 class="mt-1">{{ __('main.add_text_q') }}</h2>
                     <div class="d-flex w-50 mx-auto pb-2">
-                        <div class="yes" style="width: 45%; cursor: pointer; background-color: rgb(42, 241, 248); border: 1px solid black; border-radius: 15px; margin-right: 10%;">
-                            <h4 class="mt-1">Так</h4>
+                        <div class="yes bg-info bg-gradient border text-light" role="button" style="width: 45%; border-radius: 15px; margin-right: 10%;">
+                            <h4 class="mt-1">{{ __('main.yes') }}</h4>
                         </div>
-                        <div class="no" style="width: 45%; cursor: pointer; background-color: rgb(42, 241, 248); border: 1px solid black; border-radius: 15px;">
-                            <h4 class="mt-1">Ні</h4>
+                        <div class="no bg-info bg-gradient border text-light" role="button" style="width: 45%; border-radius: 15px;">
+                            <h4 class="mt-1">{{ __('main.no') }}</h4>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-info mx-auto next mt-3" hidden style="width: 30%; border: 1px solid black; border-radius: 10px; cursor:pointer; user-select: none;">
-                    <h5 class="py-2" >Перейти до наступного етапу</h5>
+                <div class="bg-success bg-gradient mx-auto next mt-3 border text-light" role="button" hidden style="width: 30%; border-radius: 10px; user-select: none;">
+                    <h5 class="py-2" >{{ __('main.go_to_the_next_step') }}</h5>
                 </div>
             </div>
 
@@ -168,18 +210,18 @@
         } else if(task_type.value == 4)
         {
             container.innerHTML = `
-            <a href="{{ route('lesson.show', [$course, $lesson]) }}">Назад</a>
+            <a href="{{ route('lesson.show', [$course, $lesson]) }}">{{ __('main.back') }}</a>
 
             <h1 class="py-3">${task_name.value}</h1>
 
             <div class="overview w-100" style="padding-bottom: 100px; border:1px solid black; border-radius:20px;">
-                <div id="text_edit" style="width: 80%; padding: 10px 0; background-color: aqua; border: 1px solid black; border-radius: 15px; margin: 0 auto; margin-top: 20px; cursor: pointer;">
+                <div id="text_edit" class="bg-primary bg-gradient text-light border mx-auto mt-3" role="button" style="width: 80%; padding: 10px 0; border-radius: 15px;">
                     <h3>
-                        Добавити запитання
+                        {{ __('main.add_a_question') }}
                     </h3>
                 </div>
-                <div class="bg-info mx-auto next mt-3" hidden style="width: 30%; border: 1px solid black; border-radius: 10px; cursor:pointer; user-select: none;">
-                    <h5 class="py-2" >Перейти до наступного етапу</h5>
+                <div class="bg-success bg-gradient border text-light mx-auto next mt-3" role="button" hidden style="width: 30%; border-radius: 10px; user-select: none;">
+                    <h5 class="py-2" >{{ __('main.go_to_the_next_step') }}</h5>
                 </div>
 
             </div>
@@ -199,7 +241,7 @@
         } else if(task_type.value == 5)
         {
             container.innerHTML = `
-            <a href="{{ route('lesson.show', [$course, $lesson]) }}">Назад</a>
+            <a href="{{ route('lesson.show', [$course, $lesson]) }}">{{ __('main.back') }}</a>
 
             <h1 class="py-3">${task_name.value}</h1>
 
@@ -213,14 +255,26 @@
                 <input class="task_type" value="${task_type.value}" type="text" name="task_type">
             </div>
 
-            <button class="btn btn-primary mt-2">Створити завдання</button>
+            <button class="btn btn-primary mt-2">{{ __('main.create_a_task') }}</button>
             `
 
-            tinymce.init({
-            selector: 'textarea',
-            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-            });
+            if(dark_mode_input.checked)
+            {
+                tinymce.init({
+                    selector: 'textarea',
+                    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+                    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+                    skin: 'oxide-dark',
+                    content_css: 'dark'
+                });
+            } else
+            {
+                tinymce.init({
+                    selector: 'textarea',
+                    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+                    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+                });
+            }
         }
     })
 
@@ -273,7 +327,6 @@
 
         return array;
     }
-
     let scriptInputs = `{{ asset('storage/js/addInputs.js') }}`
     let scriptAnswers = `{{ asset('storage/js/addAnswer.js') }}`
 

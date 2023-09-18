@@ -1,13 +1,17 @@
 @extends('layouts.main')
-@section('main.title', env('APP_NAME').' | Доступ до курсів')
+@section('main.title')
+
+{{ env('APP_NAME') }} | {{ __('main.access_to_the_course') }}
+
+@endsection
 
 @section('main.content')
 
 <div class="container">
     <a href="{{ route('admin.index') }}">
-        Назад
+        {{ __('main.back') }}
     </a>
-    <h1>Доступ до курсів</h1>
+    <h1>{{ __('main.access_to_the_course') }}</h1>
 
         <table class="table table-primary">
             <thead>
@@ -55,21 +59,21 @@
                         <div class="modal fade" id="accessModal{{ $user->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Налаштування доступу до курсів користувача {{ $user->name }}</h1>
+                                    <div class="modal-header {{ dark_mode_text() }}">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">{{ __('main.setting_up_access_to_courses_for_a_user_named') }} {{ $user->name }}</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <x-form action="{{ route('access.store') }}">
-                                    <div class="modal-body">
+                                    <div class="modal-body {{ dark_mode_text() }}">
                                             <x-form-item>
 
                                                 <div class="form-floating">
                                                     <select name="select" class="form-select select{{ $user->id }}" id="floatingSelect" aria-label="Floating label select example">
                                                         <option selected></option>
-                                                        <option value="store">Надати доступ</option>
-                                                        <option value="delete">Забрати доступ</option>
+                                                        <option value="store">{{ __('main.grant_access') }}</option>
+                                                        <option value="delete">{{ __('main.remove_access') }}</option>
                                                     </select>
-                                                    <label for="floatingSelect">Виберіть дію</label>
+                                                    <label for="floatingSelect">{{ __('main.select_an_action') }}</label>
                                                 </div>
                                             </x-form-item>
 
@@ -85,7 +89,7 @@
                                                                 @endforeach
                                                                 <x-input type="hidden" name="user_id" value="{{ $user->id }}"></x-input>
                                                             </select>
-                                                            <label for="floatingSelect">Надати доступ до курсу</label>
+                                                            <label for="floatingSelect">{{ __('main.grant_access_to_the_course') }}</label>
                                                         </div>
                                                     </x-form-item>
                                                 </div>
@@ -101,7 +105,7 @@
                                                                 </option>
                                                             @endforeach
                                                         </select>
-                                                        <label for="floatingSelect">Забрати доступ від курсу</label>
+                                                        <label for="floatingSelect">{{ __('main.remove_access_from_the_course') }}</label>
                                                     </div>
 
                                                 </div>
@@ -132,8 +136,8 @@
                                                 </script>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрити</button>
-                                        <button type="submit" class="btn btn-primary">Зберегти зміни</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('main.close') }}</button>
+                                        <button type="submit" class="btn btn-primary">{{ __('main.save_changes') }}</button>
                                     </div>
                                     </x-form>
                                 </div>

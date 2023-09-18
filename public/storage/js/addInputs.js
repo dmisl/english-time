@@ -9,7 +9,7 @@ function inputs_check()
     let words = document.querySelectorAll('.word')
     let count = 0
     for (let i = 0; i < words.length; i++) {
-        if (words[i].innerText == `Впишіть слово для перекладу` || words[i].innerText == ``)
+        if (words[i].innerText == tr_enter_the_word_for_translation || words[i].innerText == ``)
         {
             words[i].style.color = 'red'
         } else
@@ -29,24 +29,24 @@ function inputs_check()
             finish.outerHTML += `
                 <div class="d-flex mx-auto" style="width: 70%">
                     <div class="bg-primary bg-gradient text-light mx-auto show" style="width: 30%; border: 1px solid black; border-radius: 10px; cursor:pointer; user-select: none;" data-bs-toggle="modal" data-bs-target="#showModal">
-                        <h5 class="py-2" >Переглянути результат</h5>
+                        <h5 class="py-2" >${tr_view_the_result}</h5>
                     </div>
                     <div class="bg-success bg-gradient text-light mx-auto create" style="width: 30%; border: 1px solid black; border-radius: 10px; cursor:pointer; user-select: none;">
-                        <h5 class="py-2" >Створити завдання</h5>
+                        <h5 class="py-2" >${tr_create_a_task}</h5>
                     </div>
                 </div>
                 <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl">
                         <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Перегляд кінцевого результату</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">${tr_view_the_final_result}</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
 
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрити перегляд</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">${tr_close_view}</button>
                         </div>
                         </div>
                     </div>
@@ -55,8 +55,8 @@ function inputs_check()
             text += `
             <table class="table table-dark table-bordered mx-auto" style="width: 80%;">
                     <tr>
-                        <td style="width: 50%">Слово</td>
-                        <td style="width: 50%">Переклад</td>
+                        <td style="width: 50%">${tr_word}</td>
+                        <td style="width: 50%">${tr_translation}</td>
                     </tr>
                 </table>
                 <table class="table table-primary table-bordered mt-2 mb-3 mx-auto" style="width: 80%;">
@@ -76,7 +76,7 @@ function inputs_check()
                 `
             }
             text += `</table>
-            <button type="button" disabled class="btn btn-primary" id="check">Перевірити</button>`
+            <button type="button" disabled class="btn btn-primary" id="check">${tr_check}</button>`
 
             task_body.setAttribute('value', text)
 
@@ -122,12 +122,12 @@ function input_editing(input_edit, i)
     let input_answer = inputss[i].innerText
     words[i].outerHTML = `
         <td style="width: 47%">
-            <input id="word_edit" value="${word_text}" type="text" placeholder="Слово" class="form-control text-center">
+            <input id="word_edit" value="${word_text}" type="text" placeholder="${tr_word}" class="form-control text-center">
         </td>
     `
     inputss[i].outerHTML = `
         <td style="width: 47%">
-            <input id="translation_edit" value="${input_answer}" type="text" placeholder="Переклад" class="form-control text-center">
+            <input id="translation_edit" value="${input_answer}" type="text" placeholder="${tr_translation}" class="form-control text-center">
         </td>
     `
     input_edit.outerHTML = `

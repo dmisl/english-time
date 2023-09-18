@@ -28,8 +28,8 @@ next.addEventListener('click', function () {
     add_answer.setAttribute('hidden', '')
     next.setAttribute('hidden', '')
     let answerss = document.querySelectorAll('.answer')
-    text += `<div class="answers my-3 border">
-    <h2>Відповіді:</h2>`
+    text += `<div class="answers my-3 border bg-success bg-gradient text-light">
+    <h2>${tr_answers}</h2>`
     let arr = []
     for (let i = 0; i < answerss.length; i++) {
         arr.push(answerss[i].outerHTML)
@@ -41,7 +41,7 @@ next.addEventListener('click', function () {
     text += '</div>'
     add_answers.outerHTML += `
         <div id="add_inputs" class="mt-3 mx-auto" style="width: 80%; border-radius: 15px;">
-            <h4 class="mt-5">Добавити поля для перекладу автоматично?</h4>
+            <h4 class="mt-5">${tr_add_translation_fields_automatically}</h4>
             <div class="d-flex mx-auto mt-3" style="width: 120px;">
                 <img id="auto_input" class="me-2" style="width: 50px; cursor: pointer;" src="${accept_icon}" alt="">
                 <img id="manual_input" style="width: 50px; cursor: pointer;" src="${deny_icon}" alt="">
@@ -65,8 +65,8 @@ next.addEventListener('click', function () {
             <div>
                 <table class="table table-dark table-bordered">
                     <tr>
-                        <td style="width: 50%">Слово</td>
-                        <td style="width: 50%">Переклад</td>
+                        <td style="width: 50%">${tr_word}</td>
+                        <td style="width: 50%">${tr_translation}</td>
                     </tr>
                 </table>
             </div>
@@ -83,7 +83,7 @@ next.addEventListener('click', function () {
             addInputs_text += `
                 <tr>
                     <td style="width: 47%">
-                        <h5 class="word text-danger">Впишіть слово для перекладу</h5>
+                        <h5 class="word text-danger">${tr_enter_the_word_for_translation}</h5>
                     </td>
                     <td style="width: 47%">
                         <label class="input" answer="${answerss_value}"><h3>${answerss_text}</h3></label>
@@ -102,10 +102,10 @@ next.addEventListener('click', function () {
                 <table class="table table-primary table-bordered input_adding" hidden>
                     <tr>
                         <td style="width: 47%">
-                            <input type="text" placeholder="Слово" class="form-control text-center input_word">
+                            <input type="text" placeholder="${tr_word}" class="form-control text-center input_word">
                         </td>
                         <td style="width: 47%">
-                            <input type="text" placeholder="Переклад" class="form-control text-center input_translation">
+                            <input type="text" placeholder="${tr_translation}" class="form-control text-center input_translation">
                         </td>
                         <td style="width: 6%;">
                             <img class="input_accept" style="height: 38px; cursor:pointer;" src="${accept_icon}" alt="">
@@ -120,7 +120,7 @@ next.addEventListener('click', function () {
             </table>
             <div class="d-flex mx-auto" style="width: 70%">
                 <div hidden class="bg-success bg-gradient text-light mx-auto finish" style="width: 30%; border: 1px solid black; border-radius: 10px; cursor:pointer; user-select: none;">
-                    <h5 class="py-2" >Завершити редактування завдання</h5>
+                    <h5 class="py-2" >${tr_finish_editing_the_task}</h5>
                 </div>
             </div>
         `

@@ -51,18 +51,18 @@ class AccessController extends Controller
                 'course_id' => $request->course_store,
             ]);
 
-            session(['alert' => "Ви успішно надали користувачу з ID {$validated['user_id']} доступ до курсу з ID {$request->course_store}"]);
+            session(['alert' => __('main.you_have_successfully_granted_the_user_with_ID')." {$validated['user_id']} ".__('main.access_to_the_course_with_ID')." {$request->course_store}"]);
         } else if($validated['select'] == 'delete')
         {
             $access = Access::query()
                 ->where('user_id', '=', $validated['user_id'])
                 ->where('course_id', '=', $request->course_delete)
                 ->delete();
-            session(['alert' => "Ви успішно забрали у користувача з ID {$validated['user_id']} доступ до курсу з ID {$request->course_delete}"]);
+            session(['alert' => __('main.you_have_successfully_removed_access_to_the_course_with_ID')." {$validated['user_id']} ".__('main.from_the_user_with_ID')." {$request->course_delete}"]);
 
         } else
         {
-            session(['alert' => 'Ви не вибрали курсу']);
+            session(['alert' => __('main.you_have_not_chosen_a_course')]);
         }
 
         return back();

@@ -3,6 +3,7 @@
 use App\Models\Access;
 use App\Models\CompletedTask;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Route;
 
@@ -97,6 +98,30 @@ if(!function_exists('dark_mode'))
         {
             return '';
         }
+    }
+}
+
+// dark mode text
+
+if(!function_exists('dark_mode_text'))
+{
+    function dark_mode_text()
+    {
+        if (Cookie::get('dark_mode') == 'dark') {
+            return 'text-light';
+        } else {
+            return 'text-dark';
+        }
+    }
+}
+
+// locale
+
+if(!function_exists('locale'))
+{
+    function locale()
+    {
+        return Config::get('app.locale');
     }
 }
 

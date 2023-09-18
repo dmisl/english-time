@@ -7,10 +7,6 @@
         @yield('main.title', 'English')
     </title>
     <style>
-        body
-        {
-            transition: 1s;
-        }
 
         .dark_mode_label
         {
@@ -21,7 +17,6 @@
         {
             height: 25px;
             width: 50px;
-            margin-left: 15px;
             display: flex;
         }
 
@@ -75,7 +70,7 @@
             border-radius: 10px;
             transition: 1s;
             border: 1px solid black;
-            margin: 0 3px;
+            margin: 3px 3px;
             width: 150px;
         }
         .fi_input:focus
@@ -85,6 +80,7 @@
             outline: 3px solid rgba(20, 172, 218, 0.795);
             transition: 1s;
             height: 36px;
+            color: black;
         }
         .fi_input:disabled
         {
@@ -200,6 +196,23 @@
     </div>
 
     <script>
+
+        let locale = document.querySelector('.locale')
+        let locale_current = document.querySelector('.current_locale')
+        let locale_submit = document.querySelector('.locale_submit')
+        let locale_options = locale.children
+
+        for (let i = 0; i < locale_options.length; i++) {
+            if(locale_options[i].value == locale_current.value)
+            {
+                locale_options[i].setAttribute('selected', '')
+            }
+        }
+
+        locale.addEventListener('change', function() {
+            locale_submit.click()
+        })
+
         let dark_mode_input = document.querySelector('#dark_mode_input')
         let dark_mode_label = document.querySelector('.dark_mode_label')
         let dark_mode_submit = document.querySelector('.dark_mode_submit')
@@ -218,12 +231,14 @@
         {
             if(!dark_mode_input.checked)
             {
+                document.body.style.transition = "1s"
                 document.body.setAttribute('data-bs-theme', 'dark')
                 setTimeout(() => {
                     dark_mode_submit.click()
                 }, 1000);
             } else
             {
+                document.body.style.transition = "1s"
                 document.body.removeAttribute('data-bs-theme')
                 setTimeout(() => {
                     dark_mode_submit.click()

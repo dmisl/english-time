@@ -9,7 +9,7 @@
     <div class="row">
 
         @if(is_admin())
-        <a href="{{ route('course.show', [$course]) }}">Назад</a>
+        <a href="{{ route('course.show', [$course]) }}">{{ __('main.back') }}</a>
         <x-card>
             <a class='text-decoration-none text-success' href="{{ route('task.create', [$course->id, $lesson->id]) }}">
             <x-card-body>
@@ -21,7 +21,7 @@
     </x-card>
     @if($tasks->count() == 0)
 
-    <h3>Ви ще не створити завдань в цьому уроці</h3>
+    <h3>{{ __('main.you_have_not_yet_created_an_task_in_this_lesson') }}</h3>
 
     @else
 
@@ -47,16 +47,16 @@
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="exampleModalLabel">Видалення завдання</h1>
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">{{ __('main.delete_a_task') }}</h1>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <h4>Ви дійсно хочете видалити завдання з назвою <span class="text-danger">"{{ $task->name }}"</span></h4>
+                        <h4>{{ __('main.you_really_want_to_delete_a_task_named') }} <span class="text-danger">"{{ $task->name }}"</span></h4>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ні</button>
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('main.no') }}</button>
                       <x-form action="{{ route('task.destroy', [$course->id, $lesson->id, $task->id]) }}" method="DELETE">
-                          <button type="submit" class="btn btn-primary">Видалити</button>
+                          <button type="submit" class="btn btn-primary">{{ __('main.no') }}</button>
                       </x-form>
                     </div>
                   </div>
@@ -82,16 +82,16 @@
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="exampleModalLabel">Видалення завдання</h1>
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">{{ __('main.delete_a_task') }}</h1>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <h4>Ви дійсно хочете видалити завдання з назвою <span class="text-danger">"{{ $task->name }}"</span></h4>
+                        <h4>{{ __('main.you_really_want_to_delete_a_task_named') }} <span class="text-danger">"{{ $task->name }}"</span></h4>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ні</button>
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('main.no') }}</button>
                       <x-form action="{{ route('task.destroy', [$course->id, $lesson->id, $task->id]) }}" method="DELETE">
-                          <button type="submit" class="btn btn-primary">Видалити</button>
+                          <button type="submit" class="btn btn-primary">{{ __('main.delete') }}</button>
                       </x-form>
                     </div>
                   </div>
@@ -106,7 +106,7 @@
 
     @else
 
-    <a href="{{ route('user.course.show', [$course]) }}">Назад</a>
+    <a href="{{ route('user.course.show', [$course]) }}">{{ __('main.back') }}</a>
     @if(has_access($course))
     @foreach ($tasks as $task)
 
@@ -124,7 +124,7 @@
                     <p class="small text-muted m-0 p-0">{{ $task->created_at }}</p>
                 </x-card-body>
                 <x-card-body>
-                    <p class="p-1 text-success">Completed</p>
+                    <p class="p-1 text-success">{{ __('main.completed') }}</p>
                 </x-card-body>
             </a>
         </x-card>
@@ -155,7 +155,7 @@
 </div>
 
 <script>
-    
+
 </script>
 
 @endsection

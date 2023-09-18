@@ -4,8 +4,8 @@
 @section('main.content')
 
 <div class="container">
-    <a class="text-decoration-none" href="{{ route('admin.index') }}">Назад</a>
-    <h1 class="py-3">Заявки на реєстрацію</h1>
+    <a class="text-decoration-none" href="{{ route('admin.index') }}">{{ __('main.back') }}</a>
+    <h1 class="py-3">{{ __('main.check_tasks') }}</h1>
 
     <table class="table table-primary">
         <thead>
@@ -22,7 +22,7 @@
                     <th scope="row">{{ $task->user->name }}</th>
                     <td>{{ $task->task->name }}</td>
                     <td>{{ $task->percentage }}%</td>
-                    <td><a href="{{ route('task.completed', [$task->user->id, $task->task->lesson->course->id, $task->task->lesson->id, $task->task->id]) }}">check</a></td>
+                    <td><a href="{{ route('task.completed', [$task->user->id, $task->task->lesson->course->id, $task->task->lesson->id, $task->task->id]) }}">{{ __('main.check') }}</a></td>
                 </tr>
             @endforeach
         </tbody>

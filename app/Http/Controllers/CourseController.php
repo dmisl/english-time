@@ -44,7 +44,7 @@ class CourseController extends Controller
 
         if($course)
         {
-            session(['alert' => "Ви успішно створити курс {$request->input('name')}"]);
+            session(['alert' => __('main.you_have_successfully_created_a_course_called')." {$request->input('name')}"]);
 
             return redirect()->route('admin.index');
         }
@@ -67,7 +67,7 @@ class CourseController extends Controller
             'name' => ['required'],
         ]);
         $course->update(['name' => $validated['name']]);
-        session(['alert' => "Ви успішно змінили назву курсу на {$validated['name']}"]);
+        session(['alert' => __('main.you_have_successfully_changed_the_course_name_to')." {$validated['name']}"]);
         return back();
     }
 
@@ -83,7 +83,7 @@ class CourseController extends Controller
             }
             $lesson->delete();
         }
-        session(['alert' => "Ви успішно видалили курс під назвою {$course->name}, всі уроки і всі завдання, які в ньому знаходились"]);
+        session(['alert' => __('main.you_have_successfully_deleted_the_course_called')." {$course->name}, ".__('main.all_lessons_and_all_assignments_that_were_in_it')]);
         $course->delete();
         return back();
     }

@@ -33,7 +33,7 @@ class UserController extends Controller
     public function logout()
     {
         Auth::logout();
-        session(['alert' => 'Ви вийшли з профілю']);
+        session(['alert' => __('main.you_are_logged_out_of_your_account')]);
         return redirect()->route('home.index');
     }
 }

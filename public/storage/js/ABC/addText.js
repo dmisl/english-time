@@ -11,10 +11,10 @@ add_text.addEventListener('click', text_add)
 function text_add() {
     let text = document.querySelector('#text_edit')
     text.outerHTML = `
-        <div class="text-adding" style="width: 80%; background-color: aqua; margin: 0 auto; margin-top: 20px;">
-            <input type="text" class="form-control text-value" style="border: 1px solid black; font-size: 25px; text-align: center;">
+        <div class="text-adding bg-primary bg-gradient mx-auto" style="width: 80%; margin-top: 20px;">
+            <input type="text" class="form-control text-value border text-center" style="font-size: 25px;">
         </div>
-        <div class="text-accept" hidden style="width: 50px; margin: 0 auto; background-color: aqua; border-radius: 100%; margin-top: 15px; cursor: pointer;">
+        <div class="text-accept mx-auto bg-primary bg-gradient" role="button" hidden style="width: 50px; border-radius: 100%; margin-top: 15px;">
             <img style="width: 100%;" src="${accept_icon}" alt="">
         </div>
     `
@@ -39,30 +39,30 @@ function text_add() {
         text_adding.outerHTML = `
             <div id="text_edit" style="user-select: none; cursor: pointer;">
                 <p class="mt-3 mb-0 text-text" style="font-size: 30px;">${value}</p>
-                <p class="my-0 small text-muted">Нажміть щоб відредактувати текст</p>
+                <p class="my-0 small text-muted">${tr_tap_to_edit_the_text}</p>
             </div>
         `
         text_accept.setAttribute('hidden', '')
         let text = document.querySelector('#text_edit')
-        text.addEventListener('click', function () {
-            text_edit()
-        })
+        text.addEventListener('click', text_edit)
         next.removeAttribute('hidden')
         next.addEventListener('click', function () {
+            text.children[1].setAttribute('hidden', '');
+            text.removeEventListener('click', text_edit)
             let v = document.querySelector('.text-text').innerText
             textt[0] = `<p class="mt-3 mb-0 text-text" style="font-size: 30px;">${v}</p>`
 
             next.outerHTML = `
-                <div id="image_add" style="width: 80%; padding: 10px 0; background-color: aqua; border: 1px solid black; border-radius: 15px; margin: 0 auto; margin-top: 20px;">
+                <div id="image_add" class="bg-primary bg-gradient text-light mx-auto border" style="width: 80%; padding: 10px 0; border-radius: 15px; margin-top: 20px;">
                     <h3 style="user-select: none;">
-                        Добавити картинку?
+                        ${tr_add_a_picture_q}
                     </h3>
                     <div class="d-flex mx-auto" style="width: 35%;">
-                        <div class="image_yes" style="cursor: pointer; width: 47%; margin-right: 6%; border: 1px solid black; border-radius: 5px; background-color: #2aa1e6; padding: 3px 10px; user-select: none;">
-                            Так
+                        <div class="image_yes border bg-success bg-gradient border" style="cursor: pointer; width: 47%; margin-right: 6%; border-radius: 5px; padding: 3px 10px; user-select: none;">
+                            ${tr_yes}
                         </div>
-                        <div class="image_no" style="cursor: pointer; width: 47%; border: 1px solid black; border-radius: 5px; background-color: #2aa1e6; padding: 3px 10px; user-select: none;">
-                            Ні
+                        <div class="image_no border bg-success bg-gradient border" style="cursor: pointer; width: 47%; border-radius: 5px; padding: 3px 10px; user-select: none;">
+                            ${tr_no}
                         </div>
                     </div>
                 </div>
@@ -83,7 +83,7 @@ function text_edit()
         <div class="text-adding" style="width: 80%; background-color: aqua; margin: 0 auto; margin-top: 20px;">
             <input type="text" value="${text_text.innerText}" class="form-control text-value" style="border: 1px solid black; font-size: 25px; text-align: center;">
         </div>
-        <div class="text-accept" hidden style="width: 50px; margin: 0 auto; background-color: aqua; border-radius: 100%; margin-top: 15px; cursor: pointer;">
+        <div class="text-accept bg-primary bg-gradient mx-auto" role="button" hidden style="width: 50px; border-radius: 100%; margin-top: 15px; cursor: pointer;">
             <img style="width: 100%;" src="${accept_icon}" alt="">
         </div>
     `
@@ -104,7 +104,7 @@ function text_edit()
         text_adding.outerHTML = `
             <div id="text_edit" style="user-select: none; cursor: pointer;">
                 <p class="mt-3 mb-0 text-text" style="font-size: 30px;">${value}</p>
-                <p class="my-0 small text-muted">Нажміть щоб відредактувати текст</p>
+                <p class="my-0 small text-muted">${tr_tap_to_edit_the_text}</p>
             </div>
         `
         text_accept.setAttribute('hidden', '')
@@ -114,19 +114,20 @@ function text_edit()
         })
         next.removeAttribute('hidden')
         next.addEventListener('click', function () {
+            document.querySelector('#text_edit').children[1].setAttribute('hidden', '')
             let v = document.querySelector('.text-text').innerText
             textt[0] = `<p class="mt-3 mb-0 text-text" style="font-size: 30px;">${v}</p>`
             next.outerHTML = `
-                <div id="image_add" style="width: 80%; padding: 10px 0; background-color: aqua; border: 1px solid black; border-radius: 15px; margin: 0 auto; margin-top: 20px;">
+                <div role="button" class="image_add bg-primary bg-gradient text-light border mx-auto" style="width: 80%; padding: 10px 0; border-radius: 15px; margin-top: 20px;">
                     <h3 style="user-select: none;">
-                        Добавити картинку?
+                        ${tr_add_a_picture_q}
                     </h3>
                     <div class="d-flex mx-auto" style="width: 35%;">
-                        <div class="image_yes" style="cursor: pointer; width: 47%; margin-right: 6%; border: 1px solid black; border-radius: 5px; background-color: #2aa1e6; padding: 3px 10px; user-select: none;">
-                            Так
+                        <div class="image_yes border bg-success bg-gradient" role="button" style=" width: 47%; margin-right: 6%; border-radius: 5px; padding: 3px 10px; user-select: none;">
+                            ${tr_yes}
                         </div>
-                        <div class="image_no" style="cursor: pointer; width: 47%; border: 1px solid black; border-radius: 5px; background-color: #2aa1e6; padding: 3px 10px; user-select: none;">
-                            Ні
+                        <div class="image_no border bg-success bg-gradient" role="button" style="width: 47%; border-radius: 5px; padding: 3px 10px; user-select: none;">
+                            ${tr_no}
                         </div>
                     </div>
                 </div>
