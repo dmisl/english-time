@@ -20,6 +20,8 @@ Enter the following commands into the console
 
 ```
 php artisan key:generate
+```
+```
 php artisan migrate
 ```
 
