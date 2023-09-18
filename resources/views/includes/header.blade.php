@@ -67,7 +67,7 @@
                             {{ __('main.login') }}
                         </a>
                     </li>
-                    <li style="margin-top: 3px;">
+                    <li class="me-3" style="margin-top: 3px;">
                         <a class="text-decoration-none {{ active_link('register.index') }}" href="{{ route('register.index') }}">
                             {{ __('main.register') }}
                         </a>
