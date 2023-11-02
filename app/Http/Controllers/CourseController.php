@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Access;
 use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -82,6 +83,10 @@ class CourseController extends Controller
                 $task->delete();
             }
             $lesson->delete();
+        }
+        $acceses = Access::query()->where(['course_id' => $course->id])->get();
+        foreach ($acceses as $access) {
+            $access->delete();
         }
         session(['alert' => __('main.you_have_successfully_deleted_the_course_called')." {$course->name}, ".__('main.all_lessons_and_all_assignments_that_were_in_it')]);
         $course->delete();

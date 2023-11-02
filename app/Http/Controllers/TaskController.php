@@ -42,24 +42,15 @@ class TaskController extends Controller
             'task_name' => ['required', 'string'],
             'task_body' => ['required'],
             'task_type' => ['required'],
-            'task_image' => ['nullable', 'image'],
+            'task_image' => ['nullable'],
         ]);
-
-        if($request->task_image)
-        {
-            $path = $request->file('task_image')->store('task_images', 'public');
-            $validated['task_body'] = str_replace($request->replace_from, $request->replace_to.'/'.$path, $validated['task_body']);
-        } else
-        {
-
-        }
 
         $task = Task::query()->create([
             'lesson_id' => $request->input('lesson_id'),
             'name' => $validated['task_name'],
             'body' => $validated['task_body'],
             'task_type' => $validated['task_type'],
-            'task_image' => $request->task_image ? $path : '',
+            'task_image' => '',
         ]);
 
 
@@ -142,9 +133,13 @@ class TaskController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($course, $lesson, $task)
     {
-        //
+
+        $task = Task::find($task);
+
+        return view('task.edit', compact('task', 'course', 'lesson'));
+
     }
 
     /**
@@ -152,7 +147,18 @@ class TaskController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $task = Task::find($request->id);
+
+        $task->update([
+
+            'name' => $request->name,
+            'body' => $request->body
+
+        ]);
+
+        return redirect()->route('task.show', [$task->lesson->course->id, $task->lesson->id, $task->id]);
+
     }
 
     /**

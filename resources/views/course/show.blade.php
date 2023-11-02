@@ -97,7 +97,7 @@
     @if(has_access($course->id))
 
     @foreach ($lessons as $lesson)
-    <a class="my-2" href="{{ route('user.index') }}">{{ __('main.close') }}</a>
+    <a class="my-2" href="{{ route('user.index') }}">{{ __('main.back') }}</a>
     <div class="col-12 col-md-6 py-3">
 
     <x-card>

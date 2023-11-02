@@ -6,7 +6,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-12 col-md-6 offset-3">
+        <div class="col-12 col-md-6 mx-auto mt-3">
             <x-card>
                 <x-card-body class="d-flex justify-content-between">
                     <h2>Реєстрація</h2>

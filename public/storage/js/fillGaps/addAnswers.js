@@ -10,6 +10,7 @@ let body = ''
 add_answer.addEventListener('click', function () {
     adding.removeAttribute('hidden')
     add_answer.setAttribute('hidden', '')
+    next.setAttribute('hidden', '')
 })
 answer_accept.addEventListener('click', function () {
     add_answer.removeAttribute('hidden')
@@ -51,12 +52,12 @@ answer_accept.addEventListener('click', function () {
                 editor.style.userSelect = "none"
                 document.removeEventListener("selectionchange", select_to_bold);
                 let inputas = document.querySelectorAll('.inputas')
-                body += '<div class="mx-auto" style="width: 80%;"><p><i class="text">'
+                body += '<div class="mx-auto" style="width: 80%;"><div><i class="text">'
                 body += editor.innerHTML
                 inputas.forEach(e => {
                     body = body.replace(e.outerHTML, `</i><label class="input" answer="${e.innerText.toLowerCase()}"></label><i class="text">`)
                 });
-                body += `</i></p></div>
+                body += `</i></div></div>
                             <button type="button" disabled class="btn btn-primary" id="check">${tr_check}</button>
                         `
                 finish.outerHTML = `
@@ -97,9 +98,14 @@ answer_accept.addEventListener('click', function () {
             body += `<div class="my-3 bg-success bg-gradient border" id="add_answers" style="cursor: pointer;">
                         <h3>${tr_answers}</h3>
                     `
+            let shuffled = []
             for (let i = 0; i < answerss.length; i++) {
-                body += answerss[i].outerHTML
+                shuffled.push(answerss[i].outerHTML)
             }
+            shuffled = shuffle(shuffled)
+            shuffled.forEach(element => {
+                body += element
+            });
             body += `</div>`
 
             next.setAttribute('hidden', '')
@@ -165,6 +171,9 @@ answer_accept.addEventListener('click', function () {
                     } else {
                         finish.setAttribute('hidden', '')
                     }
+                } else
+                {
+                    finish.setAttribute('hidden', '')
                 }
             }
         })

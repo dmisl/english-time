@@ -13,7 +13,7 @@
 <div class="container">
     <h1>{{ __('main.my_courses') }}</h1>
     <div class="row py-5">
-        <div class="col-6 col-md-4">
+        <div class="col-12 col-md-4 mb-2">
             <x-card>
                 <a class="text-decoration-none" href="{{ route('active.index') }}">
                     <x-card-body>
@@ -24,7 +24,7 @@
                 </a>
             </x-card>
         </div>
-        <div class="col-6 col-md-4">
+        <div class="col-12 col-md-4 mb-2">
             <x-card>
                 <a class="text-decoration-none" href="{{ route('access.index') }}">
                     <x-card-body>
@@ -35,7 +35,7 @@
                 </a>
             </x-card>
         </div>
-        <div class="col-6 col-md-4">
+        <div class="col-12 col-md-4 mb-2">
             <x-card>
                 <a class="text-decoration-none" href="{{ route('task.homework') }}">
                     <x-card-body>

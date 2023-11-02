@@ -16,14 +16,15 @@ class AccessController extends Controller
     public function index()
     {
         $users = User::query()->where(['active' => true])->paginate(20);
-        $courses = Course::query()->get();
+        $courses = Course::query()->where('user_id', '=', Auth::id())->get();
         $courses_id = [];
+        $course_model = Course::query();
         foreach($courses as $course)
         {
             $courses_id[] = $course->id;
         }
 
-        return view('access.index', compact('users', 'courses', 'courses_id'));
+        return view('access.index', compact('users', 'courses', 'courses_id', 'course_model'));
     }
 
     /**

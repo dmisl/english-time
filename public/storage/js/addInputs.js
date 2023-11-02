@@ -101,15 +101,10 @@ for (let i = 0; i < input_edit.length; i++) {
     input_edit[i].addEventListener('click', function () {
         input_add.setAttribute('hidden', '')
         input_editing(this, i)
-        for (let a = 0; a < input_edit.length; a++) {
-            if(a == i)
-            {
-
-            } else
-            {
-                input_edit[a].setAttribute('hidden', '')
-            }
-        }
+        let tinputs = document.querySelectorAll('.input_edit')
+        tinputs.forEach(tinput => {
+            tinput.setAttribute('hidden', '')
+        });
     })
 }
 
