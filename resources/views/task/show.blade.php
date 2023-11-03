@@ -9,8 +9,8 @@
     <h1>{{ $task->name }}</h1>
     <input class="task_type" type="hidden" value="{{ $task->task_type }}">
 
+    <h2 id="right_answers" class="text-success"></h2>
     <div id="completed_task">
-        <h2 id="right_answers" class="text-success"></h2>
         {!! $task->body !!}
     </div>
     <x-form action="{{ route('task.check') }}">
@@ -34,14 +34,22 @@
         <h2 id="right_answers" class="text-success"></h2>
         {!! $task->body !!}
     </div>
-    <x-form action="{{ route('task.check') }}">
-        <div hidden id="hidden"></div>
-        <input hidden type="text" name="course_id" value="{{ $course }}">
-        <input hidden type="text" name="lesson_id" value="{{ $lesson }}">
-        <input hidden type="text" name="task_id" value="{{ $task->id }}">
-        <input hidden id="task_text" type="text" name="completed_task" value="">
-        <x-button id="hidden_button" type="submit" hidden></x-button>
-    </x-form>
+
+    <form action="{{ route('task.check') }}" method="POST">
+        
+        <div id="hidden" hidden>
+
+            <input hidden type="text" name="course_id" value="{{ $course }}">
+            <input hidden type="text" name="lesson_id" value="{{ $lesson }}">
+            <input hidden type="text" name="task_id" value="{{ $task->id }}">
+            <input hidden type="text" name="percentage" class="task_percentage">
+            <input hidden id="task_text" type="text" name="completed_task" value="">
+    
+            <button type="submit" id="hidden_button"></button>
+
+        </div>
+
+    </form>
 
     @else
 
@@ -333,19 +341,129 @@
             let asd = (100 * count) / inputs.length
             let percentage = Math.round(asd)
             rightAnswers.innerHTML = `{{ __('main.correct_answers') }}: ${percentage}%`
-            hidden.innerHTML += `<input name="percentage" value="${percentage}">`
             task_text.value = completedTask.innerHTML
 
             check.setAttribute('disabled', '')
 
-            setTimeout(function() {
-                hiddenButton.click()
-            }, 3000);
+            document.querySelector('.task_percentage').value = percentage
+
+            
+
+            // setTimeout(function() {
+            //     hiddenButton.click()
+            // }, 3000);
         })
     }
 
     if (task_type.value == 4) {
-        console.log('its abc')
+        
+        let check_button = document.createElement('button')
+        check_button.classList.add('btn')
+        check_button.classList.add('btn-primary')
+        check_button.classList.add('check')
+        check_button.innerText = `Перевірити`
+        check_button.setAttribute('disabled', '')
+
+        completedTask.appendChild(check_button)
+
+        check_button.addEventListener('click', function () {
+
+            let rightCount = 0
+
+            let picked = document.querySelectorAll('.picked')
+
+            picked.forEach(element => {
+                
+                if(element.classList.contains('right'))
+                {
+
+                    rightCount = rightCount + 1
+
+                }
+
+            });
+
+            let asd = (100 * rightCount) / tasks.length
+            let percentage = Math.round(asd)
+            
+            rightAnswers.innerHTML = `{{ __('main.correct_answers') }}: ${percentage}%`
+
+            task_text.value = completedTask.innerHTML
+            console.log(completedTask.innerHTML)
+
+            window.setTimeout(() => {
+
+                hiddenButton.click()
+
+            }, 3000);
+
+        })
+
+        let tasks = document.querySelectorAll('.abc_task')
+
+        function check_if_chosen()
+        {
+
+            let count = 0
+
+            tasks.forEach(task => {
+                
+                let ans = task.querySelectorAll('.abc_ans')
+                answers.forEach(answer => {
+                   
+                    if(answer.style.backgroundColor !== '')
+                    {
+
+                        count = count + 1
+
+                    }
+
+                });
+
+            });
+
+            if(count == tasks.length)
+            {
+
+                check_button.removeAttribute('disabled')
+
+            } else
+            {
+
+                check_button.setAttribute('disabled', '')
+
+            }
+
+        }
+
+        function choose_answer()
+        {
+
+            let children = this.parentElement.children
+
+            for (let i = 0; i < children.length; i++) {
+                
+                children[i].style.backgroundColor = ``
+                children[i].classList.remove('picked')
+                
+            }
+
+            this.classList.add('picked')
+            this.style.backgroundColor = `#88b5fc`
+
+            check_if_chosen()
+
+        }
+
+        let answers = document.querySelectorAll('.abc_ans')
+
+        answers.forEach(answer => {
+            
+            answer.addEventListener('click', choose_answer)
+            answer.setAttribute('role', 'button')
+
+        });
+
     }
 
     if (task_type.value == 5) {

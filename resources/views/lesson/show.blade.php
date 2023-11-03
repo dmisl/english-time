@@ -10,24 +10,35 @@
 
         @if(is_admin())
             <a href="{{ route('course.show', [$course]) }}">{{ __('main.back') }}</a>
-            <x-card>
-                <a class='text-decoration-none text-success' href="{{ route('task.create', [$course->id, $lesson->id]) }}">
-                    <x-card-body>
-                        <h1>
-                            +
-                        </h1>
-                    </x-card-body>
-                </a>
-            </x-card>
+            <div class="col-md-12 col-12">
+
+                <x-card>
+                    <a class='text-decoration-none text-success' href="{{ route('task.create', [$course->id, $lesson->id]) }}">
+                        <x-card-body>
+                            <h1>
+                                +
+                            </h1>
+                        </x-card-body>
+                    </a>
+                </x-card>
+
+            </div>
             @if($tasks->count() == 0)
 
                 <h3>{{ __('main.you_have_not_yet_created_an_task_in_this_lesson') }}</h3>
 
             @else
 
+                <div>
+                    <div class="input-group mb-3" style="width: 50%;">
+                        <input type="text" class="form-control" placeholder="Знайти завдання" aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <img class="border" id="button-addon2" style="width: 38px; height: 38px;" src="{{ asset('storage/icons/replace.png') }}" alt="">
+                    </div>
+                </div>
+
                 @foreach ($tasks as $task)
                     @if(completed($task->id))
-                        <div class="col-12 col-md-6 py-3">
+                        <div class="col-12 col-md-4 py-3">
                             <x-card style="user-select: none;">
                                 @php
 
@@ -40,8 +51,15 @@
                                         <p class="small text-muted m-0 p-0">{{ $task->created_at }}</p>
                                     </x-card-body>
                                 </a>
-                                <x-card-body class="py-1">
-                                    <img class="my-0" style="width: 30px; cursor: pointer" data-bs-toggle="modal" data-bs-target="#deleteTaskModal{{ $task->id }}" src="{{ asset('storage/icons/delete_red.png') }}" alt="delete">
+                                <x-card-body class="py-1 d-flex">
+                                    <div class="w-50">
+                                        <a href="{{ route('task.edit', [$course->id, $lesson->id, $task->id]) }}">
+                                            <img class="my-0" style="width: 30px; cursor: pointer" src="{{ asset('storage/icons/edit.png') }}" alt="delete">
+                                        </a>
+                                    </div>
+                                    <div class="w-50">
+                                        <img class="my-0" style="width: 30px; cursor: pointer" data-bs-toggle="modal" data-bs-target="#deleteTaskModal{{ $task->id }}" src="{{ asset('storage/icons/delete_red.png') }}" alt="delete">
+                                    </div>
                                 </x-card-body>
                                 <div class="modal fade" id="deleteTaskModal{{ $task->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
@@ -66,7 +84,7 @@
                         </div>
                     @else
 
-                        <div class="col-12 col-md-6 py-3">
+                        <div class="col-12 col-md-4 py-3">
 
                             <x-card>
                                 <a class="text-decoration-none" href="{{ route('task.show', [$course->id, $lesson->id, $task->id]) }}">
@@ -78,7 +96,7 @@
                                 <x-card-body class="py-1 d-flex">
                                     <div class="w-50">
                                         <a href="{{ route('task.edit', [$course->id, $lesson->id, $task->id]) }}">
-                                            <img class="my-0" style="width: 30px; cursor: pointer" data-bs-toggle="modal" data-bs-target="#editLessonModal{{ $lesson->id }}" src="{{ asset('storage/icons/edit.png') }}" alt="delete">
+                                            <img class="my-0" style="width: 30px; cursor: pointer" src="{{ asset('storage/icons/edit.png') }}" alt="delete">
                                         </a>
                                     </div>
                                     <div class="w-50">
@@ -111,6 +129,7 @@
 
             @endif
 
+
         @else
 
             <a href="{{ route('user.course.show', [$course]) }}">{{ __('main.back') }}</a>
@@ -118,7 +137,7 @@
                 @foreach ($tasks as $task)
 
                     @if(completed($task->id))
-                        <div class="col-12 col-md-6 py-3">
+                        <div class="col-12 col-md-4 py-3">
                             <x-card style="user-select: none;">
                                 @php
 
@@ -137,7 +156,7 @@
                             </x-card>
                         </div>
                     @else
-                        <div class="col-12 col-md-6 py-3">
+                        <div class="col-12 col-md-4 py-3">
 
                             <x-card>
                                 <a class="text-decoration-none" href="{{ route('user.task.show', [$course->id, $lesson->id, $task->id]) }}">

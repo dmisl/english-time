@@ -58,7 +58,9 @@
 if(document.querySelector('.task_type').value == 4)
 {
 
-    
+    let scriptABC = document.createElement('script')
+    scriptABC.src = `{{ asset('storage/js/edit/abc.js') }}`
+    document.body.appendChild(scriptABC)
 
 }
 

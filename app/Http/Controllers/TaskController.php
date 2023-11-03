@@ -94,6 +94,7 @@ class TaskController extends Controller
 
     public function check(Request $request)
     {
+        dd($request->all());
         $completed = CompletedTask::query()->where(['user_id' => Auth::id(), 'task_id' => $request->task_id])->first();
 
         if($completed)
