@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         if (is_admin()) {
@@ -25,9 +23,6 @@ class TaskController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create($course, $lesson)
     {
         $task_types = TaskType::query()->get();
@@ -45,12 +40,15 @@ class TaskController extends Controller
             'task_image' => ['nullable'],
         ]);
 
+        $tasks_count = Lesson::find($lesson)->tasks->count();
+
         $task = Task::query()->create([
             'lesson_id' => $request->input('lesson_id'),
             'name' => $validated['task_name'],
             'body' => $validated['task_body'],
             'task_type' => $validated['task_type'],
             'task_image' => '',
+            'position' => $tasks_count+1,
         ]);
 
 
@@ -65,9 +63,6 @@ class TaskController extends Controller
         return redirect()->back()->withInput();
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show($course, $lesson, $task)
     {
         $task = Task::find($task);
@@ -94,7 +89,7 @@ class TaskController extends Controller
 
     public function check(Request $request)
     {
-        dd($request->all());
+
         $completed = CompletedTask::query()->where(['user_id' => Auth::id(), 'task_id' => $request->task_id])->first();
 
         if($completed)
@@ -131,9 +126,6 @@ class TaskController extends Controller
         return view('task.homework', compact('completedTasks'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit($course, $lesson, $task)
     {
 
@@ -143,9 +135,6 @@ class TaskController extends Controller
 
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
 
@@ -162,12 +151,20 @@ class TaskController extends Controller
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy($course, $lesson, $task)
     {
         $task = Task::find($task);
+
+        // CHANGING POSITION OF EXISTING ELEMENTS
+        $tasks = Task::query()->where('position', '>', $task->position)->get();
+        foreach ($tasks as $t) {
+
+            $t->update([
+                'position' => $t->position-1,
+            ]);
+
+        }
+        // DELETING COMPLETED TASKS OF THIS
         foreach ($task->completedTasks as $completed) {
             $completed->delete();
         }
@@ -175,4 +172,20 @@ class TaskController extends Controller
         $task->delete();
         return back();
     }
+
+    public function position(Request $request)
+    {
+
+        foreach ($request->position as $id => $position) {
+
+            Task::find($id)->update([
+                'position' => $position
+            ]);
+
+        }
+
+        return back();
+
+    }
+
 }

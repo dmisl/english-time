@@ -11,6 +11,7 @@ class UserController extends Controller
 {
     public function index()
     {
+        
         if(is_admin())
         {
             $courses = User::find(Auth::id())->courses;
@@ -35,5 +36,10 @@ class UserController extends Controller
         Auth::logout();
         session(['alert' => __('main.you_are_logged_out_of_your_account')]);
         return redirect()->route('home.index');
+    }
+
+    public function file(Request $request)
+    {
+        dd($request->all());
     }
 }

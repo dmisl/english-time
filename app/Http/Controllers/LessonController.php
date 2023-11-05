@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\Lesson;
+use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -55,7 +56,7 @@ class LessonController extends Controller
     {
         $lesson = Lesson::find($lesson);
         $course = $lesson->course;
-        $tasks = $lesson->tasks;
+        $tasks = Task::query()->where('lesson_id', '=', $lesson->id)->orderBy('position', 'asc')->get();
         if($course->id == $lesson->course_id)
         {
             return view('lesson.show', compact('tasks', 'course', 'lesson'));

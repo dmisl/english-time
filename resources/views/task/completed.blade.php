@@ -10,6 +10,7 @@
     {!! $completed->text !!}
 <script>
     let button = document.querySelectorAll('#check')
+    document.querySelector('.check').setAttribute('hidden', '')
     let answers = document.querySelector('.answers')
     if(answers === null)
     {
@@ -20,7 +21,7 @@
     }
 
     button.forEach(button => {
-        button.setAttribute('disabled', '')
+        button.setAttribute('hidden', '')
     });
 </script>
 @endsection

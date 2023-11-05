@@ -29,102 +29,139 @@
 
             @else
 
-                <div>
-                    <div class="input-group mb-3" style="width: 50%;">
-                        <input type="text" class="form-control" placeholder="Знайти завдання" aria-label="Recipient's username" aria-describedby="button-addon2">
-                        <img class="border" id="button-addon2" style="width: 38px; height: 38px;" src="{{ asset('storage/icons/replace.png') }}" alt="">
+                <div class="col-md-12 col-12 d-flex pt-3 justify-content-center" style="column-gap: 20px;">
+
+                    <div class="border find" style="width: 30%; display: table; border-radius: 10px;">
+                        <p style="display: table-cell; vertical-align: middle; padding: 5px;">
+                            Знайти завдання
+                        </p>
                     </div>
+
+                    <div class="border position" data-bs-toggle="modal" data-bs-target="#positionModal" style="width: 30%; display: table; border-radius: 10px; user-select: none;" role="button">
+                        <p style="display: table-cell; vertical-align: middle; padding: 5px;">
+                            Розташування завдань
+                        </p>
+                    </div>
+
+                    <div class="modal fade" id="positionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Розміщення елементів</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <h2>Виберіть положення завдань</h2>
+                                    <p class="position_hint"></p>
+                                    <div class="positions">
+
+                                        @foreach ($tasks as $task)
+
+                                            <div class="pos border mx-auto d-flex" task_name="{{ $task->name }}" task_id="{{ $task->id }}" task_position="{{ $task->position }}" style="margin-bottom: 15px; width: 70%; height: 50px;">
+
+                                                <div class="down border-end" style="width: 50px; height: 50px;">
+
+                                                    <div style="padding: 5px;" role="button">
+
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 16 20" fill="none">
+                                                            <path d="M7.29289 19.7071C7.68342 20.0976 8.31658 20.0976 8.70711 19.7071L15.0711 13.3431C15.4616 12.9526 15.4616 12.3195 15.0711 11.9289C14.6805 11.5384 14.0474 11.5384 13.6569 11.9289L8 17.5858L2.34315 11.9289C1.95262 11.5384 1.31946 11.5384 0.928932 11.9289C0.538407 12.3195 0.538407 12.9526 0.928932 13.3431L7.29289 19.7071ZM7 -4.37114e-08L7 19L9 19L9 4.37114e-08L7 -4.37114e-08Z" fill="black"/>
+                                                        </svg>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div style="flex: 1; display: table;">
+
+                                                    <p style="display: table-cell; vertical-align: middle;">
+                                                        {{ $task->name }}
+                                                    </p>
+
+                                                </div>
+
+                                                <div class="up border-start" style="width: 50px; height: 50px;">
+
+                                                    <div style="padding: 5px;" role="button">
+
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 16 20" fill="none">
+                                                            <path d="M8.70711 0.292892C8.31658 -0.0976315 7.68342 -0.0976314 7.29289 0.292892L0.928932 6.65685C0.538407 7.04738 0.538407 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292892ZM9 20L9 1L7 1L7 20L9 20Z" fill="black"/>
+                                                        </svg>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        @endforeach
+
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Закрити</button>
+                                    <form action="{{ route('task.position') }}" method="POST">
+
+                                        <div class="position_change">
+
+                                            @csrf
+
+
+
+                                        </div>
+
+                                        <button type="submit" class="btn btn-success">Зберегти зміни</button>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
                 @foreach ($tasks as $task)
-                    @if(completed($task->id))
-                        <div class="col-12 col-md-4 py-3">
-                            <x-card style="user-select: none;">
-                                @php
 
-                                    $user_id = completed_id($task->id, Auth::id())->user_id;
+                    <div class="col-12 col-md-4 py-3">
 
-                                @endphp
-                                <a class="text-decoration-none" href="{{ route('task.completed', [$user_id, $course->id, $lesson->id, $task->id]) }}">
-                                    <x-card-body class="border-bottom">
-                                        <p class="p-0 m-0" style="font-size: 19px;">{{ $task->name }}</p>
-                                        <p class="small text-muted m-0 p-0">{{ $task->created_at }}</p>
-                                    </x-card-body>
-                                </a>
-                                <x-card-body class="py-1 d-flex">
-                                    <div class="w-50">
-                                        <a href="{{ route('task.edit', [$course->id, $lesson->id, $task->id]) }}">
-                                            <img class="my-0" style="width: 30px; cursor: pointer" src="{{ asset('storage/icons/edit.png') }}" alt="delete">
-                                        </a>
-                                    </div>
-                                    <div class="w-50">
-                                        <img class="my-0" style="width: 30px; cursor: pointer" data-bs-toggle="modal" data-bs-target="#deleteTaskModal{{ $task->id }}" src="{{ asset('storage/icons/delete_red.png') }}" alt="delete">
-                                    </div>
+                        <div class="card task" style="user-select: none;">
+                            <a class="text-decoration-none" href="{{ route('task.show', [$course->id, $lesson->id, $task->id]) }}">
+                                <x-card-body class="border-bottom">
+                                    <p class="p-0 m-0" style="font-size: 19px;">{{ $task->name }}</p>
+                                    <p class="small text-muted m-0 p-0">{{ $task->created_at }}</p>
                                 </x-card-body>
-                                <div class="modal fade" id="deleteTaskModal{{ $task->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel">{{ __('main.delete_a_task') }}</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <h4>{{ __('main.you_really_want_to_delete_a_task_named') }} <span class="text-danger">"{{ $task->name }}"</span></h4>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('main.no') }}</button>
-                                                <x-form action="{{ route('task.destroy', [$course->id, $lesson->id, $task->id]) }}" method="DELETE">
-                                                    <button type="submit" class="btn btn-primary">{{ __('main.delete') }}</button>
-                                                </x-form>
-                                            </div>
+                            </a>
+                            <x-card-body class="py-1 d-flex">
+                                <div class="w-50">
+                                    <a href="{{ route('task.edit', [$course->id, $lesson->id, $task->id]) }}">
+                                        <img class="my-0" style="width: 30px; cursor: pointer" src="{{ asset('storage/icons/edit.png') }}" alt="delete">
+                                    </a>
+                                </div>
+                                <div class="w-50">
+                                    <img class="my-0" style="width: 30px; cursor: pointer" data-bs-toggle="modal" data-bs-target="#deleteTaskModal{{ $task->id }}" src="{{ asset('storage/icons/delete_red.png') }}" alt="delete">
+                                </div>
+                            </x-card-body>
+                            <div class="modal fade" id="deleteTaskModal{{ $task->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">{{ __('main.delete_a_task') }}</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h4>{{ __('main.you_really_want_to_delete_a_task_named') }} <span class="text-danger">"{{ $task->name }}"</span></h4>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('main.no') }}</button>
+                                            <x-form action="{{ route('task.destroy', [$course->id, $lesson->id, $task->id]) }}" method="DELETE">
+                                                <button type="submit" class="btn btn-primary">{{ __('main.delete') }}</button>
+                                            </x-form>
                                         </div>
                                     </div>
                                 </div>
-                            </x-card>
+                            </div>
                         </div>
-                    @else
+                    </div>
 
-                        <div class="col-12 col-md-4 py-3">
-
-                            <x-card>
-                                <a class="text-decoration-none" href="{{ route('task.show', [$course->id, $lesson->id, $task->id]) }}">
-                                    <x-card-body class="border-bottom">
-                                        <p class="p-0 m-0" style="font-size: 19px;">{{ $task->name }}</p>
-                                        <p class="small text-muted m-0 p-0">{{ $task->created_at }}</p>
-                                    </x-card-body>
-                                </a>
-                                <x-card-body class="py-1 d-flex">
-                                    <div class="w-50">
-                                        <a href="{{ route('task.edit', [$course->id, $lesson->id, $task->id]) }}">
-                                            <img class="my-0" style="width: 30px; cursor: pointer" src="{{ asset('storage/icons/edit.png') }}" alt="delete">
-                                        </a>
-                                    </div>
-                                    <div class="w-50">
-                                        <img class="my-0" style="width: 30px; cursor: pointer" data-bs-toggle="modal" data-bs-target="#deleteTaskModal{{ $task->id }}" src="{{ asset('storage/icons/delete_red.png') }}" alt="delete">
-                                    </div>
-                                </x-card-body>
-                                <div class="modal fade" id="deleteTaskModal{{ $task->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel">{{ __('main.delete_a_task') }}</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <h4>{{ __('main.you_really_want_to_delete_a_task_named') }} <span class="text-danger">"{{ $task->name }}"</span></h4>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('main.no') }}</button>
-                                                <x-form action="{{ route('task.destroy', [$course->id, $lesson->id, $task->id]) }}" method="DELETE">
-                                                    <button type="submit" class="btn btn-primary">{{ __('main.delete') }}</button>
-                                                </x-form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </x-card>
-                        </div>
-                    @endif
                 @endforeach
 
             @endif
@@ -178,5 +215,208 @@
     </div>
 
 </div>
+
+<script>
+
+    let previousElement
+
+    function replace() {
+
+        previousElement = this.parentElement
+
+        document.querySelectorAll('.up').forEach(el => {
+
+            el.removeEventListener('click', replace)
+
+        });
+
+        document.querySelectorAll('.down').forEach(el => {
+
+            el.removeEventListener('click', replace)
+
+        });
+
+        document.querySelectorAll('.pos').forEach(el => {
+
+            if(el.attributes.task_id.value !== previousElement.attributes.task_id.value)
+            {
+
+                el.classList.remove('border')
+                el.style.border = '1px solid blue'
+                el.setAttribute('role', 'button')
+                el.addEventListener('click', replaceTo)
+
+            }
+
+        })
+
+    }
+
+    function replaceTo()
+    {
+
+        let position_change = document.querySelector('.position_change')
+
+        currentElement = this
+
+        let previousText = previousElement.attributes.task_name.value
+        let previousId = previousElement.attributes.task_id.value
+
+        let currentText = currentElement.attributes.task_name.value
+        let currentId = currentElement.attributes.task_id.value
+
+
+        previousElement.children[1].children[0].innerText = currentText
+        previousElement.attributes.task_name.value = currentText
+        previousElement.attributes.task_id.value = currentId
+
+        currentElement.children[1].children[0].innerText = previousText
+        currentElement.attributes.task_name.value = previousText
+        currentElement.attributes.task_id.value = previousId
+
+        let previousPosition = previousElement.attributes.task_position.value
+        let currentPosition = currentElement.attributes.task_position.value
+
+        console.log('previous')
+        document.querySelector(`input[name="position[${previousElement.attributes.task_id.value}]"]`).setAttribute('value', previousPosition)
+        console.log(document.querySelector(`input[name="position[${previousElement.attributes.task_id.value}]"]`))
+
+        console.log('current')
+        document.querySelector(`input[name="position[${currentElement.attributes.task_id.value}]"]`).setAttribute('value', currentPosition)
+        console.log(document.querySelector(`input[name="position[${currentElement.attributes.task_id.value}]"]`))
+
+        document.querySelectorAll('.pos').forEach(el => {
+
+            el.classList.add('border')
+            el.style.border = ''
+            el.removeAttribute('role')
+            el.removeEventListener('click', replaceTo)
+
+        })
+
+        document.querySelectorAll('.up').forEach(up => {
+
+            up.addEventListener('click', replace)
+
+        });
+
+        document.querySelectorAll('.down').forEach(down => {
+
+            down.addEventListener('click', replace)
+
+        });
+
+    }
+
+    let positionModal = document.querySelector('#positionModal')
+    positionModal.addEventListener('shown.bs.modal', function () {
+
+        let position_change = document.querySelector('.position_change')
+        let position_hint = document.querySelector('.position_hint')
+
+        let positions = document.querySelectorAll('.pos')
+
+        positions.forEach(e => {
+
+            if(position_change.querySelector(`input[name="position[${e.attributes.task_id.value}]"]`))
+            {
+
+
+
+            } else
+            {
+
+                let new_input = document.createElement('input')
+                new_input.setAttribute('type', 'hidden')
+                new_input.setAttribute('name', `position[${e.attributes.task_id.value}]`)
+                new_input.setAttribute('value', `${e.attributes.task_position.value}`)
+
+                console.log(new_input)
+
+                position_change.appendChild(new_input)
+
+            }
+
+        });
+
+        let ups = document.querySelectorAll('.up')
+        let downs = document.querySelectorAll('.down')
+
+        ups.forEach(up => {
+
+            up.addEventListener('click', replace)
+
+        });
+
+        downs.forEach(down => {
+
+            down.addEventListener('click', replace)
+
+        });
+
+    })
+
+    // FINDING
+    let find = document.querySelector('.find')
+    find.setAttribute('contenteditable', 'true')
+
+    find.addEventListener('click', change)
+
+    function change() {
+
+        this.children[0].innerText = ``
+        this.removeEventListener('click', change)
+        this.addEventListener('keyup', function () {
+
+            let tasks = document.querySelectorAll('.task')
+
+            if(this.innerText.length > 1)
+            {
+
+                tasks.forEach(task => {
+
+                    if(task.querySelector('p').innerText.includes(this.innerText))
+                    {
+
+                        task.parentElement.removeAttribute('hidden')
+
+                    } else
+                    {
+
+                        task.parentElement.setAttribute('hidden', '')
+
+                    }
+
+                });
+
+            } else
+            {
+
+                tasks.forEach(task => {
+
+                    task.parentElement.removeAttribute('hidden')
+
+                })
+
+            }
+
+        })
+
+        this.addEventListener('keydown', function (e) {
+
+            if (e.keyCode == 8 || e.keyCode == 46)
+            {
+                if (this.children.length === 1) { // last inner element
+                    if (this.children[0].innerText < 1) { // last element is empty
+                        e.preventDefault()
+                    }
+                }
+            }
+
+        })
+
+    }
+
+</script>
 
 @endsection

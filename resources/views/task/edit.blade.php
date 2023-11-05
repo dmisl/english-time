@@ -31,7 +31,7 @@
 
     <div class="ov"></div>
 
-    <div hidden>
+    <div>
         {!! $task->body !!}
     </div>
 
@@ -55,6 +55,12 @@
 
 <script>
 
+// TRANSLATION TASK
+// let editing = document.querySelector('.editing')
+
+// let given_answers = document.querySelectorAll('.answer')
+
+// ABC TASK
 if(document.querySelector('.task_type').value == 4)
 {
 
