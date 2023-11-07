@@ -4,8 +4,8 @@ let finish = document.querySelector('.finish')
 
 finish.addEventListener('click', function () {
 
-    let trs = document.querySelectorAll(".tr") 
-    let translations = document.querySelectorAll(".translation") 
+    let trs = document.querySelectorAll(".tr")
+    let translations = document.querySelectorAll(".translation")
     let body = ''
 
     // PARENT DIV
@@ -17,15 +17,25 @@ finish.addEventListener('click', function () {
     // ANSWERS HEADER + HINT
     body += `<h2 class="m-0 p-0">Переклади</h2>`
     body += `<p class="answers_hint small text-muted m-0 p-0">Перетягніть переклади у відповідні комірки</p>`
-    
+
     // ANSWERS
     body += `<div class="mt-3">`
-    
+
     body += `<div class="answers">`
 
+    let to_shuffle = []
+
     translations.forEach(translation => {
-        
-        body += `<p class="answer">${translation.innerText}</p>`
+
+        to_shuffle.push(translation.innerText)
+
+    })
+
+    shuffled_translations = shuffle(to_shuffle)
+
+    shuffled_translations.forEach(shuffled_translation => {
+
+        body += `<p class="answer">${shuffled_translation}</p>`
 
     });
 
@@ -48,14 +58,14 @@ finish.addEventListener('click', function () {
     body += `</tr>`
 
     trs.forEach(tr => {
-        
+
         let word = tr.querySelector('.word')
         let input = tr.querySelector('.translation')
 
         body += `<tr>`
         body += `<td class="word">${word.innerText}</td>`
         body += `<td>`
-        body += `<label class="input"></label>`
+        body += `<label class="input" answer="${input.innerText}"></label>`
         body += `</td>`
         body += `</tr>`
 

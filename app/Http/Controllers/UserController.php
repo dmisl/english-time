@@ -6,6 +6,7 @@ use App\Models\Course;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -36,6 +37,13 @@ class UserController extends Controller
         Auth::logout();
         session(['alert' => __('main.you_are_logged_out_of_your_account')]);
         return redirect()->route('home.index');
+    }
+
+    public function file(Request $request)
+    {
+
+        dd(Storage::put("task_images", $request->file));
+
     }
 
 }

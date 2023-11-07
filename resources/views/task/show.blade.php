@@ -78,14 +78,190 @@
 
     let task_text = document.querySelector('#task_text')
     let task_type = document.querySelector('.task_type')
+    let task_percentage = document.querySelector('.task_percentage')
+
     let selected
 
     let cldn
 
     let width = 0
 
-    if (task_type.value == 1 || task_type.value == 2) {
+    if (task_type.value == 1) {
 
+
+        let answers = document.querySelectorAll('.answer')
+        let inputs = document.querySelectorAll('.input')
+
+        let answers_hint = document.querySelector('.answers_hint')
+
+        // CREATING CHECK BUTTON
+        let check_button = document.createElement('button')
+        check_button.classList.add('btn')
+        check_button.classList.add('btn-primary')
+        check_button.setAttribute('disabled', '')
+        check_button.innerText = `Перевірити`
+
+        completedTask.appendChild(check_button)
+
+        // ADDING EVENTLISTENER TO CHECK BUTTON
+        check_button.addEventListener('click', function () {
+
+            let right_count = 0
+
+            inputs.forEach(input => {
+
+                if(input.attributes.answer.value == input.children[0].innerText)
+                {
+
+                    right_count = right_count + 1
+
+                } else
+                {
+
+                    input.style.backgroundColor = ''
+                    input.classList.add('bg-danger')
+
+                }
+
+            });
+
+            // HIDING ANSWERS DIV
+            document.querySelector('.answers_div').setAttribute('hidden', '')
+
+            // COUNTING RIGHT ANSWERS PERCENTAGE
+            let asd = (100 * right_count) / inputs.length
+            let percentage = Math.round(asd)
+            rightAnswers.innerHTML = `{{ __('main.correct_answers') }}: ${percentage}%`
+            hidden.innerHTML += `<input name="percentage" value="${percentage}">`
+            task_text.value = completedTask.innerHTML
+            
+            setTimeout(function() {
+
+                hiddenButton.click()
+
+            }, 3000);
+
+        })
+
+        function check_inputs()
+        {
+
+            let count = 0
+
+            inputs.forEach(input => {
+
+                // CHECKING INPUT`S WIDTH
+                if(input.children.length == 0)
+                {
+
+                    input.style.width = '200px'
+                    input.style.top = '4px'
+
+                } else
+                {
+
+                    input.style.width = ''
+                    input.style.top = ''
+
+                    count = count + 1
+
+                }
+
+            });
+
+            if(count == inputs.length)
+            {
+
+                check_button.removeAttribute('disabled')
+
+            }
+
+        }
+
+        check_inputs()
+
+        answers.forEach(answer => {
+            answer.addEventListener('dragstart', dragStart)
+            answer.addEventListener('dragend', dragEnd)
+            answer.setAttribute('draggable', 'true')
+        });
+
+        let dragItem = null;
+
+        function dragStart() {
+            dragItem = this;
+            setTimeout(() => this.className = 'invisible', 0)
+        }
+
+        function dragEnd() {
+            this.className = 'answer'
+            dragItem = null;
+        }
+
+        function dragOver(e) {
+            e.preventDefault()
+        }
+
+        function dragEnter() {}
+
+        function dragLeave() {
+
+        }
+
+        function dragDrop() {
+
+            // IF INPUT IS EMPTY JUST ADD NEW ANSWER
+            if(this.children.length == 0)
+            {
+
+                this.append(dragItem);
+
+                answers_hint.classList.add('text-muted')
+                answers_hint.classList.remove('text-danger')
+                answers_hint.innerText = `Перетягніть переклади у відповідні комірки`
+
+            } else
+            {
+                // IF INPUT IS FULL AND ELEMENT COME FROM ANOTHER IMPUT SWITCH THEM
+                if(dragItem.parentElement.classList.contains('input'))
+                {
+
+                    let this_value = this.innerText
+                    let parentElement_value = dragItem.innerText
+
+                    this.children[0].innerText = parentElement_value
+                    dragItem.innerText = this_value
+
+                    answers_hint.classList.add('text-muted')
+                    answers_hint.classList.remove('text-danger')
+                    answers_hint.innerText = `Перетягніть переклади у відповідні комірки`
+
+                } else
+                {
+
+                    answers_hint.classList.remove('text-muted')
+                    answers_hint.classList.add('text-danger')
+                    answers_hint.innerText = `В одній комірці може бути лише одна відповідь`
+
+                }
+
+            }
+
+            check_inputs()
+
+        }
+
+        inputs.forEach(input => {
+            input.addEventListener('dragover', dragOver);
+            input.addEventListener('dragenter', dragEnter);
+            input.addEventListener('dragleave', dragLeave);
+            input.addEventListener('drop', dragDrop);
+        });
+
+    }
+
+    if (task_type.value == 2)
+    {
         let divs = document.querySelectorAll('div')
 
         divs.forEach(div => {
@@ -313,7 +489,6 @@
             input.addEventListener('drop', dragDrop);
         });
         @endif
-
     }
 
     if (task_type.value == 3) {
@@ -381,7 +556,7 @@
 
         check_button.addEventListener('click', function () {
 
-            let rightCount = 0
+            let right_count = 0
 
             let picked = document.querySelectorAll('.picked')
 
@@ -390,13 +565,13 @@
                 if(element.classList.contains('right'))
                 {
 
-                    rightCount = rightCount + 1
+                    right_count = right_count + 1
 
                 }
 
             });
 
-            let asd = (100 * rightCount) / tasks.length
+            let asd = (100 * right_count) / tasks.length
             let percentage = Math.round(asd)
 
             rightAnswers.innerHTML = `{{ __('main.correct_answers') }}: ${percentage}%`

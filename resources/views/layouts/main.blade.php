@@ -144,9 +144,9 @@
         .answers_div
         {
             border-radius: 20px;
-            width: 80%; 
-            padding: 20px; 
-            background-color: rgb(163, 253, 186); 
+            width: 80%;
+            padding: 20px;
+            background-color: rgb(163, 253, 186);
             margin: 0 auto;
             margin-top: 25px;
         }
@@ -154,28 +154,29 @@
         .answers
         {
             display: flex;
-            justify-content: center; 
-            gap: 10px 10px; 
+            justify-content: center;
+            gap: 10px 10px;
             flex-wrap: wrap;
         }
 
         .answer
         {
-            margin: 0; 
-            font-size: 20px; 
-            user-select: none; 
-            border-radius: 10px; 
-            padding: 5px 20px; 
-            display: inline; 
-            color: white; 
+            margin: 0;
+            font-size: 20px;
+            user-select: none;
+            border-radius: 10px;
+            padding: 5px 20px;
+            display: inline;
+            color: white;
             background-color: rgb(0, 162, 255);
         }
 
         .inputs_div
         {
-            width: 70%; 
+            width: 70%;
             margin: 0 auto;
             margin-top: 25px;
+            padding-bottom: 100px;
         }
 
         .inputs_div table
@@ -205,10 +206,11 @@
 
         .input
         {
-            background-color: #d4ffd8; 
-            height: 40px; 
-            padding: 5px 20px; 
+            background-color: #d4ffd8;
+            height: 40px;
+            padding: 5px 20px;
             border-radius: 10px;
+            position: relative;
         }
 
         .invisible {
