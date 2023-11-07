@@ -111,18 +111,6 @@
             width: 100%;
         }
 
-        .input {
-            width: 200px;
-            height: 42px;
-            background-color: rgb(98, 153, 235);
-            border-radius: 10px;
-            margin: 5px;
-        }
-
-        .input h3 {
-            margin-top: 6px;
-        }
-
         td h5 {
             margin-top: 15px;
         }
@@ -136,7 +124,7 @@
             font-size: 20px;
         }
 
-        .answer,
+        /* .answer,
         .answer_input,
         .answer_add,
         .answer_accept {
@@ -149,15 +137,78 @@
             margin: 0 auto;
             padding: 3px 10px;
             text-align: center
+        } */
+
+        /* TRANSLATE */
+
+        .answers_div
+        {
+            border-radius: 20px;
+            width: 80%; 
+            padding: 20px; 
+            background-color: rgb(163, 253, 186); 
+            margin: 0 auto;
+            margin-top: 25px;
         }
 
-        .answers,
-        #add_answers {
-            color: white;
-            width: 80%;
+        .answers
+        {
+            display: flex;
+            justify-content: center; 
+            gap: 10px 10px; 
+            flex-wrap: wrap;
+        }
+
+        .answer
+        {
+            margin: 0; 
+            font-size: 20px; 
+            user-select: none; 
+            border-radius: 10px; 
+            padding: 5px 20px; 
+            display: inline; 
+            color: white; 
+            background-color: rgb(0, 162, 255);
+        }
+
+        .inputs_div
+        {
+            width: 70%; 
             margin: 0 auto;
+            margin-top: 25px;
+        }
+
+        .inputs_div table
+        {
+
+            border: 1px solid black;
+            border-collapse: collapse;
+            width: 100%;
+
+        }
+
+        .inputs_div table, .inputs_div tr, .inputs_div td
+        {
+
+            border: 1px solid black;
+
+        }
+
+        .inputs_div td
+        {
+
+            width: 50%;
+            font-size: 20px;
+            padding: 10px;
+
+        }
+
+        .input
+        {
+            background-color: #d4ffd8; 
+            height: 40px; 
+            padding: 5px 20px; 
             border-radius: 10px;
-            padding: 10px 0 15px 0;
         }
 
         .invisible {
