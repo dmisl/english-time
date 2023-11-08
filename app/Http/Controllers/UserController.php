@@ -42,7 +42,10 @@ class UserController extends Controller
     public function file(Request $request)
     {
 
-        dd(Storage::put("task_images", $request->file));
+        dd($request->all());
+
+        // IMPORTANT!!!!!
+        // dd(Storage::put("task_images", $request->file));
 
     }
 
