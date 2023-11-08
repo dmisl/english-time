@@ -13,7 +13,7 @@
 <div class="container">
     <h1>{{ __('main.my_courses') }}</h1>
 
-    <form action="{{ route('admin.file') }}" method="POST" enctype="multipart/form-data">
+    <!-- <form action="{{ route('admin.file') }}" method="POST" enctype="multipart/form-data">
 
         @csrf
 
@@ -21,7 +21,7 @@
 
         <button type="submit">asd</button>
 
-    </form>
+    </form> -->
 
     <div class="row py-5">
         <div class="col-12 col-md-4 mb-2">

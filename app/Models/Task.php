@@ -10,9 +10,12 @@ class Task extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'body', 'lesson_id', 'task_type', 'task_image', 'position',
+        'name', 'body', 'lesson_id', 'task_type', 'task_images', 'position',
     ];
 
+    protected $casts = [
+        'task_images' => 'array'
+    ];
 
     public function completedTasks()
     {

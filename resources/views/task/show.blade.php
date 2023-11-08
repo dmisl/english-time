@@ -58,10 +58,11 @@
             <input hidden type="text" name="percentage" class="task_percentage">
             <input hidden id="task_text" type="text" name="completed_task" value="">
 
-            <button type="submit" id="hidden_button"></button>
-
+            
         </div>
 
+        <button type="submit" id="hidden_button"></button>
+        
     </form>
 
     @else
@@ -132,7 +133,7 @@
             let asd = (100 * right_count) / inputs.length
             let percentage = Math.round(asd)
             rightAnswers.innerHTML = `{{ __('main.correct_answers') }}: ${percentage}%`
-            hidden.innerHTML += `<input name="percentage" value="${percentage}">`
+            task_percentage.value = percentage
             task_text.value = completedTask.innerHTML
             
             setTimeout(function() {

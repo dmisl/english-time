@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Task;
 use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -13,8 +14,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $response = new Response(view('home.index'));
-        return $response;
+        return view('home.index');
     }
 
     public function locale(Request $request)

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name');
             $table->text('body');
-            $table->text('task_image')->nullable();
+            $table->json('task_images')->nullable();
             $table->foreignId('lesson_id')->constrained();
             $table->foreignId('task_type')->contrained();
         });

@@ -139,6 +139,9 @@ class TaskController extends Controller
     {
 
         $task = Task::find($request->id);
+        foreach ($task->completedTasks as $completed) {
+            $completed->delete();
+        }
 
         $task->update([
 
