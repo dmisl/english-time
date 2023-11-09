@@ -10,6 +10,7 @@ use App\Models\TaskType;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class TaskController extends Controller
 {
@@ -37,8 +38,21 @@ class TaskController extends Controller
             'task_name' => ['required', 'string'],
             'task_body' => ['required'],
             'task_type' => ['required'],
-            'task_image' => ['nullable'],
+            'upload' => ['nullable'],
         ]);
+
+        if($request->upload)
+        {
+
+            foreach ($request->upload as $id => $file) {
+                
+                $path = asset('storage/'.Storage::put("task_images", $file));
+
+                $validated['task_body'] = str_replace("change{$id}", $path, $validated['task_body']);
+
+            }
+
+        }
 
         $tasks_count = Lesson::find($lesson)->tasks->count();
 
@@ -48,7 +62,7 @@ class TaskController extends Controller
             'body' => $validated['task_body'],
             'task_type' => $validated['task_type'],
             'task_image' => '',
-            'position' => $tasks_count+1,
+            'position' => $tasks_count + 1,
         ]);
 
 

@@ -15,6 +15,8 @@
         {!! $task->body !!}
     </div>
 
+    <img src="{{ asset('storage/task_images/qCV5ufiE1tWo6fKXXLyHNszAnnhJnXQRhOfDuN4B.png') }}" alt="">
+
     <form action="{{ route('task.check') }}" method="POST">
 
         <div id="hidden" hidden>

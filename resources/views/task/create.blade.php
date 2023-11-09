@@ -224,6 +224,7 @@
 </script>
 
 <script>
+
     container.style.cssText = 'padding-bottom: 200px;'
     // ABC TEXT
 
@@ -308,6 +309,22 @@
 
     }
 
+    function upload_image_edit_f()
+    {
+
+        const [file] = this.files
+        if (file) {
+            
+            let url = URL.createObjectURL(file)
+
+            this.parentElement.children[2].style.backgroundImage = `url('${url}')`
+
+        }
+
+        check_task()
+
+    }
+
     function add_image_f()
     {
 
@@ -362,8 +379,12 @@
         parent.classList.remove('justify-content-center')
         parent.style.cssText = `display: table; margin: 30px auto 20px; border-radius: 10px; color: black;`
 
+        let number_of_abcs = document.querySelectorAll('.abc').length
+
         let image_input = document.createElement('input')
         image_input.classList.add('form-control')
+        image_input.setAttribute('name', `upload[${number_of_abcs}]`)
+        image_input.setAttribute('accept', 'image/*')
         image_input.setAttribute('type', 'file')
 
         parent.appendChild(image_input)
@@ -381,6 +402,10 @@
         image_preview.style.cssText = `background-image: url('${empty_jpg}'); background-position: center; background-size: cover; background-repeat: no-repeat; width: 450px; height: 250px;`
 
         parent.appendChild(image_preview)
+
+        image_input.addEventListener('change', upload_image_edit_f)
+
+        check_task()
 
     }
 
@@ -780,7 +805,6 @@
             let answers = parent.querySelector('.abc_div')
             let choose = parent.querySelector('.abc_choose')
             let image = parent.querySelector('.abc_image')
-            // https://clubrunner.blob.core.windows.net/00000008038/Images/Action-required.png
 
             // HINTS
             let text_hint = text.parentElement.children[1]
@@ -845,16 +869,29 @@
                             choose_hint.classList.add('text-muted')
                             choose_hint.innerHTML = ''
 
-                            if(image.children.length !== 1)
+                            // CHECK IF IMAGE ISSET AND FILLED
+                            if(image.children.length !== 1 && image.children.length !== 2)
                             {
 
                                 if(image.children[2].style.backgroundImage == 'url("https://english/storage/icons/empty.jpg")')
                                 {
 
-                                    image_hint.innerText = 'Ви повинні вписати працюючий URL-адрес картинки'
+                                    if(image.children[1].classList.contains('text-center'))
+                                    {
+
+                                        image_hint.innerText = 'Ви повинні вписати працюючий URL-адрес картинки'
+
+                                    } else
+                                    {
+
+                                        image_hint.innerText = 'Ви повинні вибрати картинку з свого комп\'ютера'
+
+                                    }
 
                                 } else
                                 {
+
+                                    image_hint.innerText = ''
 
                                     count = count + 1
 
@@ -1140,8 +1177,32 @@
             if(adiv.querySelector('.abc_image').children.length !== 1)
             {
 
-                let immg = adiv.querySelector('.abc_image').querySelector('input').value
-                body += `<div style="width: 550px; height: 320px; margin: 15px auto; background-image: url('${immg}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>`
+                if(adiv.querySelector('.abc_image').children[0].classList.contains('text-center'))
+                {
+
+                    let immg = adiv.querySelector('.abc_image').querySelector('input').value
+                    body += `<div style="width: 550px; height: 320px; margin: 15px auto; background-image: url('${immg}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>`
+
+                } else
+                {
+
+                    let name_value = adiv.querySelector('.abc_image').querySelector('input').attributes.name.value
+                    let name_length = name_value.length
+                    if(name_length == 9)
+                    {
+
+                        let num = name_value.slice(name_length-2, name_length-1)
+                        body += `<div style="width: 550px; height: 320px; margin: 15px auto; background-image: url('change${num}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>`
+
+                    } else
+                    {
+
+                        let num = name_value.slice(name_length-3, name_length-1)
+                        body += `<div style="width: 550px; height: 320px; margin: 15px auto; background-image: url('change${num}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>`
+
+                    }
+
+                }
 
             }
 
