@@ -10,12 +10,17 @@
     <h1>{{ $task->name }}</h1>
     <input class="task_type" type="hidden" value="{{ $task->task_type }}">
 
-    <div id="completed_task" style="padding-bottom: 50px;">
+
+    <div id="completed_task" style="padding-bottom: 50px; font-family: 'Inter', sans-serif;">
+        <h4>Перегляньте перед виконанням завдання</h4>
+        <div style="width: 700px; height: 350px; margin: 0 auto;">
+
+            <iframe style="width: inherit; height: inherit;" src="https://www.youtube.com/embed/FkcpmDv_SVY?si=hs6PhyVAY4oUZPEq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+        </div>
         <h2 id="right_answers" class="text-success"></h2>
         {!! $task->body !!}
     </div>
-
-    <img src="{{ asset('storage/task_images/qCV5ufiE1tWo6fKXXLyHNszAnnhJnXQRhOfDuN4B.png') }}" alt="">
 
     <form action="{{ route('task.check') }}" method="POST">
 
@@ -39,33 +44,33 @@
 
     @if(has_access($course))
 
-    <a href="{{ route('user.lesson.show', [$course, $lesson]) }}">{{ __('main.back') }}</a>
-    <h1>{{ $task->name }}</h1>
-    <input class="task_type" type="hidden" value="{{ $task->task_type }}">
+        <a href="{{ route('user.lesson.show', [$course, $lesson]) }}">{{ __('main.back') }}</a>
+        <h1>{{ $task->name }}</h1>
+        <input class="task_type" type="hidden" value="{{ $task->task_type }}">
 
-    <div id="completed_task" style="padding-bottom: 100px;">
-        <h2 id="right_answers" class="text-success"></h2>
-        {!! $task->body !!}
-    </div>
-
-    <form action="{{ route('task.check') }}" method="POST">
-
-        <div id="hidden" hidden>
-
-            @csrf
-
-            <input hidden type="text" name="course_id" value="{{ $course }}">
-            <input hidden type="text" name="lesson_id" value="{{ $lesson }}">
-            <input hidden type="text" name="task_id" value="{{ $task->id }}">
-            <input hidden type="text" name="percentage" class="task_percentage">
-            <input hidden id="task_text" type="text" name="completed_task" value="">
-
-            
+        <div id="completed_task" style="padding-bottom: 100px;">
+            <h2 id="right_answers" class="text-success"></h2>
+            {!! $task->body !!}
         </div>
 
-        <button type="submit" id="hidden_button"></button>
-        
-    </form>
+        <form action="{{ route('task.check') }}" method="POST">
+
+            <div id="hidden" hidden>
+
+                @csrf
+
+                <input hidden type="text" name="course_id" value="{{ $course }}">
+                <input hidden type="text" name="lesson_id" value="{{ $lesson }}">
+                <input hidden type="text" name="task_id" value="{{ $task->id }}">
+                <input hidden type="text" name="percentage" class="task_percentage">
+                <input hidden id="task_text" type="text" name="completed_task" value="">
+
+
+            </div>
+
+            <button type="submit" id="hidden_button"></button>
+
+        </form>
 
     @else
 
@@ -137,7 +142,7 @@
             rightAnswers.innerHTML = `{{ __('main.correct_answers') }}: ${percentage}%`
             task_percentage.value = percentage
             task_text.value = completedTask.innerHTML
-            
+
             setTimeout(function() {
 
                 hiddenButton.click()
@@ -272,26 +277,6 @@
                 div.classList.add('d-flex')
                 div.style.flexWrap = 'wrap'
                 div.style.justifyContent = 'center'
-                // cldn = div.children
-                // for (let i = 0; i < cldn.length; i++) {
-                //     cldn[i].style.width =  + 'px'
-                //     console.log(cldn[i].style.width)
-                // }
-                // width = 0
-                // div.classList.add('mx-auto')
-                // for (let i = 0; i < cldn.length; i++) {
-                //     width = width + cldn[i].offsetWidth
-                //     console.log(cldn[i].offsetWidth)
-                //     if (cldn[i].tagName == 'LABEL') {
-                //         width = width + 25
-                //     }
-                //     if (cldn[i].tagName == 'I') {
-                //         width = width + 25
-                //     }
-                // }
-                // div.style.width = width + 'px'
-                // width = 0
-                // div.classList.add('mx-auto')
             }
         });
 
@@ -569,6 +554,13 @@
                 {
 
                     right_count = right_count + 1
+
+                    element.style.backgroundColor = `rgb(137, 255, 101)`
+
+                } else
+                {
+
+                    element.style.backgroundColor = `rgb(255, 101, 101)`
 
                 }
 

@@ -45,10 +45,18 @@ class TaskController extends Controller
         {
 
             foreach ($request->upload as $id => $file) {
-                
+
                 $path = asset('storage/'.Storage::put("task_images", $file));
 
                 $validated['task_body'] = str_replace("change{$id}", $path, $validated['task_body']);
+
+                $str = $_SERVER['DOCUMENT_ROOT'];
+                $strlen = strlen($str);
+
+                $str = substr($str, 0, $strlen-7);
+
+                $path = Storage::put("task_images", $file, 'public');
+                copy("{$str}/storage/app/public/{$path}", "{$str}/public/storage/{$path}");
 
             }
 
@@ -60,7 +68,7 @@ class TaskController extends Controller
             'lesson_id' => $request->input('lesson_id'),
             'name' => $validated['task_name'],
             'body' => $validated['task_body'],
-            'task_type' => $validated['task_type'],
+            'task_type' => 4,
             'task_image' => '',
             'position' => $tasks_count + 1,
         ]);
@@ -129,8 +137,18 @@ class TaskController extends Controller
         $task = Task::find($task);
         $user = User::find($user_id);
         $completed = CompletedTask::query()->where(['task_id' => $task->id])->where(['user_id' => $user_id])->first();
+        if($completed)
+        {
 
-        return view('task.completed', compact('task', 'completed', 'user', 'lesson', 'course'));
+            return view('task.completed', compact('task', 'completed', 'user', 'lesson', 'course'));
+
+        } else if($task)
+        {
+
+            return redirect()->route('task.show', [$task->lesson->course->id, $task->lesson->id, $task->id]);
+
+        }
+
     }
 
     public function completed()

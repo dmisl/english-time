@@ -42,10 +42,13 @@ class UserController extends Controller
     public function file(Request $request)
     {
 
-        dd($request->all());
+        $str = $_SERVER['DOCUMENT_ROOT'];
+        $strlen = strlen($str);
 
-        // IMPORTANT!!!!!
-        // dd(Storage::put("task_images", $request->file));
+        $str = substr($str, 0, $strlen-7);
+
+        $path = Storage::put("task_images", $request->zxc, 'public');
+        dd(copy("{$str}/storage/app/public/{$path}", "{$str}/public/storage/{$path}"), $path);
 
     }
 

@@ -44,9 +44,23 @@
             </div>
         </div> --}}
 
-        <a href="{{ route('lesson.show', [$course, $lesson]) }}">${tr_back}</a>
+        <a href="{{ route('lesson.show', [$course, $lesson]) }}">Назад</a>
 
-        <h1 class="py-3">${task_name.value}</h1>
+        <h1 class="py-3">Назва завдання</h1>
+
+        <div class="youtube">
+
+            <div class="youtube_add" role="button" style="display: table; margin: 0px auto; background: rgb(255, 15, 55); border: 1px solid rgb(0, 0, 0); border-radius: 10px; color: white;">
+
+                <p style="padding: 10px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;">
+
+                    Додати відео з YouTube
+
+                </p>
+
+            </div>
+
+        </div>
 
         <div class="options" hidden style="padding-bottom: 200px;">
 
@@ -86,26 +100,6 @@
         </div>
 
 </x-form>
-
-<script>
-
-    // let imgInp = document.querySelector('.input')
-    // let blah = document.querySelector('.img')
-
-    // imgInp.addEventListener('change', function () {
-
-    //     console.log(1)
-    //     let [file] = imgInp.files
-    //     if(file)
-    //     {
-    //         let url = URL.createObjectURL(file)
-    //         console.log(url)
-    //         blah.style.backgroundImage = `url('${url}')`
-    //     }
-
-    // })
-
-</script>
 
 {{-- VARIABLES + NEEDED FUNCTIONS --}}
 <script>
@@ -226,6 +220,111 @@
 <script>
 
     container.style.cssText = 'padding-bottom: 200px;'
+
+    // YOUTUBE VIDEO
+
+    let youtube = document.querySelector('.youtube')
+    let youtube_add = document.querySelector('.youtube_add')
+
+    function youtube_edit()
+    {
+
+        let youtube_hint = youtube.children[1]
+        let youtube_ov = youtube.children[2]
+        let value = this.value
+
+        if(value.includes('youtu.be') || value.includes('youtube.com'))
+        {
+
+            youtube_hint.innerText = ``
+
+            if(value.includes('embed'))
+            {
+
+                youtube_ov.setAttribute('src', this.value)
+
+            } else
+            {
+
+                if(value.includes('youtube.com'))
+                {
+
+                    let str = value
+                    if(str.includes('watch?v='))
+                    {
+
+                        str = str.replace('watch?v=', 'embed/')
+
+                    }
+
+                    if(str.includes('?si='))
+                    {
+
+                        str = str.slice(0, str.indexOf('?'))
+
+                    }
+
+                    youtube_ov.setAttribute('src', str)
+
+                }
+
+            }
+
+        } else
+        {
+
+            youtube_hint.innerText = `Вставте посилання з YouTube`
+            youtube_ov.setAttribute('src', 'https://youtube.com/dfghdrthxc')
+
+        }
+
+        check_task()
+
+
+    }
+
+    youtube_add.addEventListener('click', function () {
+
+        youtube.children[0].remove()
+
+        youtube.style.cssText = `display: table; margin: 30px auto 20px; border-radius: 10px; color: black;`
+
+        let youtube_input = document.createElement('input')
+        youtube_input.classList.add('form-control')
+        youtube_input.classList.add('text-center')
+        youtube_input.style.cssText = 'font-size: 20px; padding: 10px 20px;'
+        youtube_input.setAttribute('placeholder', 'Вставте ссилку з YouTube')
+
+        youtube_input.focus()
+
+        youtube.appendChild(youtube_input)
+
+        let youtube_hint = document.createElement('p')
+        youtube_hint.classList.add('small')
+        youtube_hint.classList.add('text-danger')
+        youtube_hint.classList.add('p-0')
+        youtube_hint.classList.add('m-0')
+
+        youtube.appendChild(youtube_hint)
+
+        let youtube_ov = document.createElement('iframe')
+        youtube_ov.setAttribute('width', '450')
+        youtube_ov.setAttribute('height', '250')
+        youtube_ov.setAttribute('src', 'https://www.youtube.com/embed/Ib1W1nZbzKc?si=9zg2ACet01abtLaK')
+        youtube_ov.setAttribute('title', 'YouTube video player')
+        youtube_ov.setAttribute('frameborder', '0')
+        youtube_ov.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share')
+        youtube_ov.setAttribute('allowfullscreen', '')
+
+        youtube.appendChild(youtube_ov)
+
+        youtube_input.addEventListener('keyup', youtube_edit)
+
+        check_task()
+
+    })
+
+
     // ABC TEXT
 
     // CHANGING DIV TO EDITABLE INPUT
@@ -314,7 +413,7 @@
 
         const [file] = this.files
         if (file) {
-            
+
             let url = URL.createObjectURL(file)
 
             this.parentElement.children[2].style.backgroundImage = `url('${url}')`
@@ -425,6 +524,8 @@
         add_image_input.style.cssText = 'font-size: 20px; padding: 10px 20px;'
         add_image_input.setAttribute('placeholder', 'Вставте URL-адрес картинки')
 
+        add_image_input.focus()
+
         parent.appendChild(add_image_input)
 
         let add_image_hint = document.createElement('p')
@@ -435,8 +536,6 @@
         add_image_hint.setAttribute('hidden', '')
 
         parent.appendChild(add_image_hint)
-
-        add_image_input.focus()
 
         let add_image_image = document.createElement('div')
         add_image_image.classList.add('img')
@@ -873,6 +972,8 @@
                             if(image.children.length !== 1 && image.children.length !== 2)
                             {
 
+                                console.log('image added')
+
                                 if(image.children[2].style.backgroundImage == 'url("https://english/storage/icons/empty.jpg")')
                                 {
 
@@ -891,16 +992,60 @@
                                 } else
                                 {
 
+                                    console.log('image filled')
+
                                     image_hint.innerText = ''
 
-                                    count = count + 1
+                                    // CHECK IF VIDEO ISSET AND FILLED
+
+                                    console.log(youtube.children.length)
+
+                                    if(youtube.children.length !== 1)
+                                    {
+
+                                        console.log('youtube added')
+
+                                        console.log('hint length'+youtube.children[1].length)
+                                        if(youtube.children[1].innerText.length < 3)
+                                        {
+
+                                            console.log('youtube filled')
+
+                                            count = count + 1
+
+                                        }
+
+                                    } else
+                                    {
+
+                                        count = count + 1
+
+                                    }
+
 
                                 }
 
                             } else
                             {
 
-                                count = count + 1
+                                // CHECK IF VIDEO ISSET AND FILLED
+
+                                if(youtube.children.length !== 1)
+                                {
+
+                                    if(youtube.children[1].innerText.length < 3)
+                                    {
+
+                                        count = count + 1
+
+                                    }
+
+                                } else
+                                {
+
+                                    count = count + 1
+
+                                }
 
                             }
 
@@ -918,6 +1063,7 @@
         if(count == document.querySelectorAll('.abc').length)
         {
 
+            console.log('git')
             options.removeAttribute('hidden')
 
         } else
@@ -928,6 +1074,8 @@
         }
 
     }
+
+    check_task()
 
     function create_task()
     {
@@ -1399,47 +1547,46 @@
         } else if(task_type.value == 4)
         {
             container.innerHTML = `
-                <a href="{{ route('lesson.show', [$course, $lesson]) }}">${tr_back}</a>
+            <a href="{{ route('lesson.show', [$course, $lesson]) }}">${tr_back}</a>
 
-                <h1 class="py-3">${task_name.value}</h1>
+            <h1 class="py-3">${task_name.value}</h1>
 
-                <div class="options" hidden style="padding-bottom: 200px;">
+            <div class="options" hidden style="padding-bottom: 200px;">
 
-                    <div class="task_add mt-5" style="background-color: white; width: 80%; margin: 0 auto; user-select: none; color: green;" role="button">
+                <div class="task_add mt-5" style="background-color: white; width: 80%; margin: 0 auto; user-select: none; color: green;" role="button">
 
-                        <h1 style="padding: 20px; padding-bottom: 25px;">
-                            +
-                        </h1>
-
-                    </div>
-
-                    <p style="padding-top: 5px;">АБО</p>
-
-                    <div class="task_finish" style="color: white; display: table; margin: 0 auto; position: relative; background: #FF3232; border: 1px solid #000; border-radius: 10px;" role="button">
-
-                        <p style="padding: 10px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;">
-                            Завершити редактування
-                        </p>
-
-                    </div>
+                    <h1 style="padding: 20px; padding-bottom: 25px;">
+                        +
+                    </h1>
 
                 </div>
 
-                <div class="task_create mt-5" hidden style="color: black; display: table; margin: 0 auto; position: relative; background: #0aca03; border: 1px solid #000; border-radius: 10px;" role="button">
+                <p style="padding-top: 5px;">АБО</p>
+
+                <div class="task_finish" style="color: white; display: table; margin: 0 auto; position: relative; background: #FF3232; border: 1px solid #000; border-radius: 10px;" role="button">
 
                     <p style="padding: 10px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;">
-                        Створити завдання
+                        Завершити редактування
                     </p>
 
                 </div>
 
+            </div>
 
-                <div hidden class="hidden">
-                    <input class="task_name" value="${task_name.value}" type="text" name="task_name">
-                    <input class="task_body" type="text" name="task_body">
-                    <input class="lesson_id" value="{{ $lesson }}" type="text" name="lesson_id">
-                    <input class="task_type" value="${task_type.value}" type="text" name="task_type">
-                </div>
+            <div class="task_create mt-5" hidden style="color: black; display: table; margin: 0 auto; position: relative; background: #0aca03; border: 1px solid #000; border-radius: 10px;" role="button">
+
+                <p style="padding: 10px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;">
+                    Створити завдання
+                </p>
+
+            </div>
+
+            <div hidden class="hidden">
+                <input class="task_name" value="${task_name.value}" type="text" name="task_name">
+                <input class="task_body" type="text" name="task_body">
+                <input class="lesson_id" value="{{ $lesson }}" type="text" name="lesson_id">
+                <input class="task_type" value="${task_type.value}" type="text" name="task_type">
+            </div>
             `
             let scriptABC = document.createElement("script")
             scriptABC.setAttribute("src", "{{ asset('storage/js/ABC/main.js') }}")
