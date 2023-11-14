@@ -39,17 +39,4 @@ class UserController extends Controller
         return redirect()->route('home.index');
     }
 
-    public function file(Request $request)
-    {
-
-        $str = $_SERVER['DOCUMENT_ROOT'];
-        $strlen = strlen($str);
-
-        $str = substr($str, 0, $strlen-7);
-
-        $path = Storage::put("task_images", $request->zxc, 'public');
-        dd(copy("{$str}/storage/app/public/{$path}", "{$str}/public/storage/{$path}"), $path);
-
-    }
-
 }

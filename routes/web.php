@@ -38,7 +38,6 @@ Route::middleware(['locale'])
     ->group(function () {
         Route::get('/', [UserController::class, 'index'])->name('admin.index');
         Route::get('logout', [UserController::class, 'logout'])->name('admin.logout');
-        Route::post('file', [UserController::class, 'file'])->name('admin.file');
         Route::resource('course', CourseController::class);
         Route::resource('active', ActiveController::class);
         Route::resource('access', AccessController::class);
