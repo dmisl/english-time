@@ -12,12 +12,6 @@
 
 
     <div id="completed_task" style="padding-bottom: 50px; font-family: 'Inter', sans-serif;">
-        <h4>Перегляньте перед виконанням завдання</h4>
-        <div style="width: 700px; height: 350px; margin: 0 auto;">
-
-            <iframe style="width: inherit; height: inherit;" src="https://www.youtube.com/embed/FkcpmDv_SVY?si=hs6PhyVAY4oUZPEq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-        </div>
         <h2 id="right_answers" class="text-success"></h2>
         {!! $task->body !!}
     </div>

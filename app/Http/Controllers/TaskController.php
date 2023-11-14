@@ -46,7 +46,9 @@ class TaskController extends Controller
 
             foreach ($request->upload as $id => $file) {
 
-                $path = asset('storage/'.Storage::put("task_images", $file));
+                $storaged = Storage::put("task_images", $file);
+
+                $path = asset('storage/'.$storaged);
 
                 $validated['task_body'] = str_replace("change{$id}", $path, $validated['task_body']);
 
@@ -55,8 +57,7 @@ class TaskController extends Controller
 
                 $str = substr($str, 0, $strlen-7);
 
-                $path = Storage::put("task_images", $file, 'public');
-                copy("{$str}/storage/app/public/{$path}", "{$str}/public/storage/{$path}");
+                copy("{$str}/storage/app/public/{$storaged}", "{$str}/public/storage/{$storaged}");
 
             }
 
@@ -68,7 +69,7 @@ class TaskController extends Controller
             'lesson_id' => $request->input('lesson_id'),
             'name' => $validated['task_name'],
             'body' => $validated['task_body'],
-            'task_type' => 4,
+            'task_type' => $validated['task_type'],
             'task_image' => '',
             'position' => $tasks_count + 1,
         ]);
