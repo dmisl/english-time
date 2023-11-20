@@ -44,6 +44,8 @@
             </div>
         </div>
 
+    </div>
+
 </x-form>
 
 {{-- VARIABLES + NEEDED FUNCTIONS --}}
@@ -187,6 +189,16 @@
 
                 <div class="translate">
 
+                    <div style="padding-top: 30px;">
+
+                        <div class="add_image" role="button" style="display: table; margin: 0 auto; background-image: url('{{ asset('storage/icons/bg.jpg') }}'); background-position: center; background-size: cover; background-repeat: no-repeat; border: 1px solid black; border-radius: 10px; color: black;">
+
+                            <p style="padding: 10px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;">Додати картинку</p>
+
+                        </div>
+
+                    </div>
+
                     <p style="font-size: 25px; padding-top: 20px; padding-bottom: 0; margin-bottom: 0;">Додайте слова до перекладу</p>
                     <p class="deleting_hint small text-muted p-0 m-0">Для видалення одного з перекладів зажміть його</p>
 
@@ -224,32 +236,67 @@
         } else if(task_type.value == 2)
         {
             container.innerHTML = `
-                <a href="{{ route('lesson.show', [$course, $lesson]) }}">${tr_back}</a>
+            <a href="{{ route('lesson.show', [$course, $lesson]) }}">${tr_back}</a>
 
-                <h1 class="py-3">${task_name.value}</h1>
+            <h1 class="py-3">${task_name.value}</h1>
 
-                <div class="overview w-100" style="padding-bottom: 100px; border:1px solid black; border-radius:20px;">
-                    <div class="my-3 border bg-success bg-gradient" id="add_answers" role="button">
-                        <h2 class="mt-2">${tr_add_answers_to_insert}</h2>
+            <div class="fill_gaps">
+
+                <div style="padding-top: 30px;">
+
+                    <div class="add_image" role="button" style="display: table; margin: 0 auto; background-image: url('{{ asset('storage/icons/bg.jpg') }}'); background-position: center; background-size: cover; background-repeat: no-repeat; border: 1px solid black; border-radius: 10px; color: black;">
+
+                        <p style="padding: 7px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;">Додати картинку</p>
+
                     </div>
-                    <div class="next_section">
-                        <div hidden class="bg-primary bg-gradient text-light mx-auto next border" role="button" style="width: 30%; border-radius: 10px; user-select: none;">
-                            <h5 class="py-2" >${tr_go_to_the_next_step}</h5>
-                        </div>
-                    </div>
+
                 </div>
 
-                <div hidden>
-                        <input class="task_name" value="${task_name.value}" type="text" name="task_name">
-                        <input class="task_body" type="text" name="task_body">
-                        <input class="lesson_id" value="{{ $lesson }}" type="text" name="lesson_id">
-                        <input class="task_type" value="${task_type.value}" type="text" name="task_type">
-                        <button class="task_submit" type="submit">asd</button>
+                <div style="padding-top: 30px; height: 76px;">
+
+                    <div class="make_bold" hidden role="button" style="background-color: #98CCFC; display: table; margin: 0 auto; border: 1px solid black; border-radius: 10px; color: black;">
+
+                        <p style="padding: 7px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;">Зробити виділене відповіддю</p>
+
+                    </div>
+
+                    <div class="remove_bold" hidden role="button" style="background-color: #FF8D8D; display: table; margin: 0 auto; border: 1px solid black; border-radius: 10px; color: black;">
+
+                        <p style="padding: 7px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;">Видалити відповідь</p>
+
+                    </div>
+
                 </div>
+
+                <div class="fill_gaps_add" contenteditable="true" style="padding: 10px; width: 90%; margin: 0 auto; border: 1px solid black; border-radius: 15px; margin-top: 20px; height: 350px;">------>Сюди вписувати текст<-------</div>
+
+                <p class="fill_gaps_hint small text-muted p-0 m-0">У цьому завданні потрібно вписати текст і виділити слова, на місця яких потрібно буде перетянути відповіді. <br> Радимо вставляти відповіді після заповнення тексту, щоб уникнути проблем. <span class="text-primary" style="text-decoration: underline; cursor: pointer;" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="В цьому завданні потрібно написати текст, і в ньому виділити принаймі 3 місця, які потрібно буде заповнити відповіддю. Щоб створити таке місце - виділіть вираз мишкою і нажміть на кнопку, щоб видалити - виділіть, або нажміть на слово.">Детальніше тут</span></p>
+
+            </div>
+
+            <div class="finish mt-5" role="button" hidden>
+                <p style="background-color: rgb(158, 255, 103); user-select: none; font-family: 'Inter', sans-serif; display: inline; padding: 10px 20px; border: 1px solid black; border-radius: 10px;">
+                    Створити завдання
+                </p>
+            </div>
+
+            <div class="hidden" hidden>
+                <input class="task_name" value="${task_name.value}" type="text" name="task_name">
+                <input class="task_body" type="text" name="task_body">
+                <input class="lesson_id" value="{{ $lesson }}" type="text" name="lesson_id">
+                <input class="task_type" value="${task_type.value}" type="text" name="task_type">
+
+            </div>
+
+            <div class="ov" hidden></div>
             `
             let scriptFillGaps = document.createElement("script")
-            scriptFillGaps.setAttribute("src", scriptFillGapss)
+            scriptFillGaps.setAttribute("src", `{{ asset('storage/js/fillGaps/main.js') }}`)
             document.body.appendChild(scriptFillGaps)
+
+            const popoverTriggerListt = document.querySelectorAll('[data-bs-toggle="popover"]')
+            const popoverListt = [...popoverTriggerListt].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+
         } else if(task_type.value == 3)
         {
             container.innerHTML = `

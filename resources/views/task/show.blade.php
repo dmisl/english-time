@@ -88,8 +88,8 @@
 
     let width = 0
 
-    if (task_type.value == 1) {
-
+    if (task_type.value == 1)
+    {
 
         let answers = document.querySelectorAll('.answer')
         let inputs = document.querySelectorAll('.input')
@@ -264,159 +264,100 @@
 
     if (task_type.value == 2)
     {
-        let divs = document.querySelectorAll('div')
-
-        divs.forEach(div => {
-            if (div.classList.length == 0 && div.id.length == 0) {
-                div.classList.add('d-flex')
-                div.style.flexWrap = 'wrap'
-                div.style.justifyContent = 'center'
-            }
-        });
-
-        const items = document.querySelectorAll('.answer')
-        const inputs = document.querySelectorAll('.input')
-        let check = document.querySelector('#check')
-        let count = 0
-        let rightCount = 0;
-        let texts = document.querySelectorAll('.text')
-        let solutions = document.querySelectorAll('.solution')
-        solutions.forEach(element => {
-            element.addEventListener('keyup', function() {
-                count = 0
-                solutions.forEach(element => {
-                    if (element.value.length >= 1) {
-                        count++
-                    } else {
-                        count--
-                    }
-                })
-                if (count == solutions.length) {
-                    check.removeAttribute('disabled')
-                } else {
-                    check.setAttribute('disabled', '')
-                }
-            })
-        });
-
-        check.addEventListener('click', function(element) {
-
-            check.setAttribute('disabled', '')
-            if (solutions.length >= 1) {
-                let answer
-                let question
-                for (let i = 0; i < solutions.length; i++) {
-                    if (solutions[i].value.toLowerCase() == solutions[i].attributes.solution.value) {
-                        solutions[i].style.backgroundColor = 'green'
-                        rightCount++
-                    } else {
-                        solutions[i].style.backgroundColor = 'red'
-                    }
-                    answer = solutions[i].value.toLowerCase()
-                    question = solutions[i].attributes.solution.value
-                    hidden.innerHTML += `
-                    <input name="answers[]" value="${answer}">
-                    <input name="questions[]" value="${question}">`
-                }
-                let asd = (100 * rightCount) / solutions.length
-                let percentage = Math.round(asd)
-                rightAnswers.innerHTML = `{{ __('main.correct_answers') }}: ${percentage}%`
-                hidden.innerHTML += `<input name="percentage" value="${percentage}">`
-                task_text.value = completedTask.innerHTML
-                setTimeout(function() {
-                    hiddenButton.click()
-                }, 3000);
-            }
-            if (solutions.length == 0) {
-                for (let i = 0; i < inputs.length; i++) {
-                    let childValue = inputs[i].children[0].attributes.value.value
-                    let answer = inputs[i].attributes.answer.value
-                    if (childValue == answer) {
-                        inputs[i].style.backgroundColor = 'green'
-                        rightCount++
-                    } else {
-                        inputs[i].style.backgroundColor = 'red'
-                    }
-                    hidden.innerHTML += `<input name="answers[]" value="${childValue}"> <input name="questions[]" value="${answer}">`
-                }
-
-                let asd = (100 * rightCount) / inputs.length
-                let percentage = Math.round(asd)
-                rightAnswers.innerHTML = `{{ __('main.correct_answers') }}: ${percentage}%`
-                hidden.innerHTML += `<input name="percentage" value="${percentage}">`
-                let text = ''
-                for (let i = 0; i < texts.length; i++) {
-                    text = texts[i].innerText
-                    hidden.innerHTML += `<input name="texts[]" value="${text}">`
-                }
-                task_text.value = completedTask.innerHTML
-                setTimeout(function() {
-                    hiddenButton.click()
-                }, 3000);
-            }
-        })
-
-        function clickSubmit() {
-            hiddenButton.click()
-        }
-
-        @if(str_contains(strtolower($_SERVER['HTTP_USER_AGENT']), 'mobile'))
 
         let answers = document.querySelectorAll('.answer')
-        let inputas = document.querySelectorAll('.input')
+        let inputs = document.querySelectorAll('.input')
 
-        let s = false
+        let answers_hint = document.querySelector('.answers_hint')
 
-        let a
+        // CREATING CHECK BUTTON
+        let check_button = document.createElement('button')
+        check_button.classList.add('btn')
+        check_button.classList.add('btn-primary')
+        check_button.setAttribute('disabled', '')
+        check_button.innerText = `Перевірити`
 
-        for (let i = 0; i < answers.length; i++) {
-            answers[i].addEventListener('click', function() {
-                answers.forEach(el => {
-                    el.classList.remove('bg-warning')
-                    el.classList.add('bg-primary')
-                });
-                answers[i].classList.remove('bg-primary')
-                answers[i].classList.add('bg-warning')
+        completedTask.appendChild(check_button)
 
-                a = i
+        // ADDING EVENTLISTENER TO CHECK BUTTON
+        check_button.addEventListener('click', function () {
 
-                s = true
+            let right_count = 0
 
-                inputas.forEach(input => {
-                    if (input.children.length == 0) {
-                        input.style.border = '2px solid yellow'
-                        input.addEventListener('click', function() {
-                            if (s && input.children.length == 0) {
-                                input.append(answers[a])
-                                s = false
-                                answers[a].classList.remove('bg-warning')
-                                answers[a].classList.add('bg-primary')
-                                inputas.forEach(e => {
-                                    e.style.border = ''
-                                    if (e.children.length !== 0) {
-                                        count++
-                                    }
-                                });
-                                if (count == inputas.length) {
-                                    check.removeAttribute('disabled')
-                                } else {
-                                    check.setAttribute('disabled', '')
-                                }
-                                count = 0
-                            }
-                        })
-                    }
-                });
-            })
+            inputs.forEach(input => {
+
+                if(input.attributes.answer.value == input.children[0].innerText)
+                {
+
+                    right_count = right_count + 1
+
+                } else
+                {
+
+                    input.style.backgroundColor = ''
+                    input.classList.add('bg-danger')
+
+                }
+
+            });
+
+            // HIDING ANSWERS DIV
+            document.querySelector('.answers_div').setAttribute('hidden', '')
+
+            // COUNTING RIGHT ANSWERS PERCENTAGE
+            let asd = (100 * right_count) / inputs.length
+            let percentage = Math.round(asd)
+            rightAnswers.innerHTML = `{{ __('main.correct_answers') }}: ${percentage}%`
+            task_percentage.value = percentage
+            task_text.value = completedTask.innerHTML
+
+            setTimeout(function() {
+
+                hiddenButton.click()
+
+            }, 3000);
+
+        })
+
+        function check_inputs()
+        {
+
+            let count = 0
+
+            inputs.forEach(input => {
+
+                // CHECKING INPUT`S WIDTH
+                if(input.children.length == 0)
+                {
+
+                    input.style.width = '200px'
+
+                } else
+                {
+
+                    input.style.width = ''
+
+                    count = count + 1
+
+                }
+
+            });
+
+            if(count == inputs.length)
+            {
+
+                check_button.removeAttribute('disabled')
+
+            }
 
         }
 
-        @else
+        check_inputs()
 
-
-        items.forEach(item => {
-            item.addEventListener('dragstart', dragStart)
-            item.addEventListener('dragend', dragEnd)
+        answers.forEach(answer => {
+            answer.addEventListener('dragstart', dragStart)
+            answer.addEventListener('dragend', dragEnd)
+            answer.setAttribute('draggable', 'true')
         });
 
         let dragItem = null;
@@ -438,30 +379,50 @@
         function dragEnter() {}
 
         function dragLeave() {
-            count = 0
+
         }
 
         function dragDrop() {
-            this.append(dragItem);
-            count = 0
-            inputs.forEach(e => {
-                if (e.children.length == 1) {
-                    count++
-                } else {
-                    count--
+
+            // IF INPUT IS EMPTY JUST ADD NEW ANSWER
+            if(this.children.length == 0)
+            {
+
+                this.append(dragItem);
+
+                answers_hint.classList.add('text-muted')
+                answers_hint.classList.remove('text-danger')
+                answers_hint.innerText = `Перетягніть відповіді у відповідні комірки`
+
+            } else
+            {
+                // IF INPUT IS FULL AND ELEMENT COME FROM ANOTHER IMPUT SWITCH THEM
+                if(dragItem.parentElement.classList.contains('input'))
+                {
+
+                    let this_value = this.innerText
+                    let parentElement_value = dragItem.innerText
+
+                    this.children[0].innerText = parentElement_value
+                    dragItem.innerText = this_value
+
+                    answers_hint.classList.add('text-muted')
+                    answers_hint.classList.remove('text-danger')
+                    answers_hint.innerText = `Перетягніть відповіді у відповідні комірки`
+
+                } else
+                {
+
+                    answers_hint.classList.remove('text-muted')
+                    answers_hint.classList.add('text-danger')
+                    answers_hint.innerText = `В одній комірці може бути лише одна відповідь`
+
                 }
-            })
-            if (count == items.length) {
-                check.removeAttribute('disabled')
+
             }
-            if (count !== items.length) {
-                check.setAttribute('disabled', '')
-            }
-            inputs.forEach(e => {
-                if (e.children.length == 1) {} else {
-                    count--
-                }
-            })
+
+            check_inputs()
+
         }
 
         inputs.forEach(input => {
@@ -470,7 +431,7 @@
             input.addEventListener('dragleave', dragLeave);
             input.addEventListener('drop', dragDrop);
         });
-        @endif
+
     }
 
     if (task_type.value == 3) {

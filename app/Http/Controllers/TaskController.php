@@ -74,7 +74,6 @@ class TaskController extends Controller
             'position' => $tasks_count + 1,
         ]);
 
-
         if ($task) {
             session(['alert' => __('main.you_have_successfully_created_a_task_named')." {$validated['task_name']}"]);
 
@@ -176,10 +175,42 @@ class TaskController extends Controller
             $completed->delete();
         }
 
+        $validated = $request->validate([
+
+            'name' => ['string', 'required'],
+            'body' => ['required'],
+            'task_type' => ['required'],
+            'upload' => ['nullable'],
+
+        ]);
+
+        if($request->upload)
+        {
+
+            foreach ($request->upload as $id => $file) {
+
+                $storaged = Storage::put("task_images", $file);
+
+
+                $path = asset('storage/'.$storaged);
+
+                $validated['body'] = str_replace("change{$id}", $path, $validated['body']);
+
+                $str = $_SERVER['DOCUMENT_ROOT'];
+                $strlen = strlen($str);
+
+                $str = substr($str, 0, $strlen-7);
+
+                copy("{$str}/storage/app/public/{$storaged}", "{$str}/public/storage/{$storaged}");
+
+            }
+
+        }
+
         $task->update([
 
-            'name' => $request->name,
-            'body' => $request->body
+            'name' => $validated['name'],
+            'body' => $validated['body']
 
         ]);
 

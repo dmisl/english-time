@@ -4,6 +4,7 @@
 
     let youtube = document.querySelector('.youtube')
     let youtube_add = document.querySelector('.youtube_add')
+    let deletes
 
     // DELETING VIDEO
     function youtube_delete()
@@ -45,7 +46,13 @@
             youtube_hint.classList.remove('text-danger')
             youtube_hint.classList.add('text-muted')
             youtube_hint.innerHTML = `Для того аби видалити відео - нажміть цю <b class="text-danger delete_video user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
-            document.querySelector('.delete_video').addEventListener('click', youtube_delete)
+            deletes = document.querySelectorAll('.delete_video')
+
+            deletes.forEach(deletee => {
+
+                deletee.addEventListener('click', youtube_delete)
+
+            });
 
             if(value.includes('embed'))
             {
@@ -100,7 +107,13 @@
             youtube_hint.classList.remove('text-muted')
             youtube_hint.classList.add('text-danger')
             youtube_hint.innerHTML = `Вставте посилання з YouTube або <b class="text-danger delete_video user-select-none" style="text-decoration: underline;" role="button">ВИДАЛІТЬ</b>`
-            document.querySelector('.delete_video').addEventListener('click', youtube_delete)
+            deletes = document.querySelectorAll('.delete_video')
+
+            deletes.forEach(deletee => {
+
+                deletee.addEventListener('click', youtube_delete)
+
+            });
             youtube_ov.setAttribute('src', 'https://youtube.com/dfghdrthxc')
 
         }
@@ -153,7 +166,13 @@
 
         check_task()
 
-        document.querySelector('.delete_video').addEventListener('click', youtube_delete)
+        deletes = document.querySelectorAll('.delete_video')
+
+        deletes.forEach(deletee => {
+
+            deletee.addEventListener('click', youtube_delete)
+
+        });
 
     }
 
@@ -211,24 +230,35 @@
                 test_img.onload = function () {
 
                     dis.setAttribute('status', 1)
-                    img.style.cssText = `width: 450px; height: 250px; background-image: url('${dis.value}'); background-position: center center; background-size: cover; background-repeat: no-repeat;`
+                    img.style.cssText = `width: 450px; height: 250px; margin: 0 auto; background-image: url('${dis.value}'); background-position: center center; background-size: cover; background-repeat: no-repeat;`
                     hint.innerHTML = `Щоб видалити картинку нажміть цю <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
-                    document.querySelector('.image_delete').addEventListener('click', image_delete_f)
+
+                    deletes = document.querySelectorAll('.image_delete')
+
+                    deletes.forEach(deletee => {
+
+                        deletee.addEventListener('click', image_delete_f)
+
+                    });
+
+                    check_task()
 
                 }
                 test_img.onerror = function () {
 
-                    img.style.cssText = `width: 450px; height: 250px; background-image: url('${empty_jpg}'); background-position: center center; background-size: cover; background-repeat: no-repeat;`
+                    img.style.cssText = `width: 450px; height: 250px; margin: 0 auto; background-image: url('${empty_jpg}'); background-position: center center; background-size: cover; background-repeat: no-repeat;`
                     dis.value = ''
                     dis.setAttribute('placeholder', 'Вставте поправний URL-адрес')
                     dis.setAttribute('status', 2)
+
+                    check_task()
 
                 }
 
             } else
             {
 
-                img.style.cssText = `width: 450px; height: 250px; background-image: url('${empty_jpg}'); background-position: center center; background-size: cover; background-repeat: no-repeat;`
+                img.style.cssText = `width: 450px; height: 250px; margin: 0 auto; background-image: url('${empty_jpg}'); background-position: center center; background-size: cover; background-repeat: no-repeat;`
                 dis.value = ''
                 dis.setAttribute('placeholder', 'Вставте поправний URL-адрес')
                 dis.setAttribute('status', 2)
@@ -237,8 +267,6 @@
 
 
         }
-
-        check_task()
 
     }
 
@@ -374,7 +402,7 @@
 
         let image_preview = document.createElement('div')
         image_preview.classList.add('img')
-        image_preview.style.cssText = `background-image: url('${empty_jpg}'); background-position: center; background-size: cover; background-repeat: no-repeat; width: 450px; height: 250px;`
+        image_preview.style.cssText = `margin: 0 auto; background-image: url('${empty_jpg}'); background-position: center; background-size: cover; background-repeat: no-repeat; width: 450px; height: 250px;`
 
         parent.appendChild(image_preview)
 
@@ -382,7 +410,13 @@
 
         check_task()
 
-        document.querySelector('.image_delete').addEventListener('click', image_delete_f)
+        deletes = document.querySelectorAll('.image_delete')
+
+        deletes.forEach(deletee => {
+
+            deletee.addEventListener('click', image_delete_f)
+
+        });
 
     }
 
@@ -430,7 +464,13 @@
 
         check_task()
 
-        document.querySelector('.image_delete').addEventListener('click', image_delete_f)
+        deletes = document.querySelectorAll('.image_delete')
+
+        deletes.forEach(deletee => {
+
+            deletee.addEventListener('click', image_delete_f)
+
+        });
 
     }
 
@@ -859,13 +899,21 @@
                                     {
 
                                         image_hint.innerHTML = `Впишіть URL-адрес картинки, або видаліть картинку нажавши цю <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
-                                        document.querySelector('.image_delete').addEventListener('click', image_delete_f)
+                                        deletes = document.querySelectorAll('.image_delete')
+
+                                        deletes.forEach(deletee => {
+                                            deletee.addEventListener('click', image_delete_f)
+                                        });
 
                                     } else
                                     {
 
                                         image_hint.innerHTML = `Виберіть картинку з комп'ютера, або видаліть картинку нажавши цю <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
-                                        document.querySelector('.image_delete').addEventListener('click', image_delete_f)
+                                        deletes = document.querySelectorAll('.image_delete')
+
+                                        deletes.forEach(deletee => {
+                                            deletee.addEventListener('click', image_delete_f)
+                                        });
 
                                     }
 
@@ -873,7 +921,11 @@
                                 {
 
                                     image_hint.innerHTML = `Щоб видалити картинку нажміть цю <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
-                                    document.querySelector('.image_delete').addEventListener('click', image_delete_f)
+                                    deletes = document.querySelectorAll('.image_delete')
+
+                                    deletes.forEach(deletee => {
+                                        deletee.addEventListener('click', image_delete_f)
+                                    });
 
                                     // CHECK IF VIDEO ISSET AND FILLED
 
@@ -889,7 +941,13 @@
                                         {
 
                                             youtube.children[1].innerHTML = `Для того аби видалити відео - нажміть цю <b class="text-danger delete_video user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
-                                            document.querySelector('.delete_video').addEventListener('click', youtube_delete)
+                                            deletes = document.querySelectorAll('.delete_video')
+
+                                            deletes.forEach(deletee => {
+
+                                                deletee.addEventListener('click', youtube_delete)
+
+                                            });
 
                                         }
 
@@ -899,7 +957,6 @@
                                         count = count + 1
 
                                     }
-
 
                                 }
 
@@ -913,14 +970,20 @@
 
                                     if(youtube.children[1].innerText.length == 49 && youtube.children[2].attributes.src.value !== `https://www.youtube.com/embed/Ib1W1nZbzKc?si=9zg2ACet01abtLaK`)
                                     {
-                                        
+
                                         count = count + 1
 
                                     } else
                                     {
 
                                         youtube.children[1].innerHTML = `Для того аби видалити відео - нажміть цю <b class="text-danger delete_video user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
-                                        document.querySelector('.delete_video').addEventListener('click', youtube_delete)
+                                        deletes = document.querySelectorAll('.delete_video')
+
+                                        deletes.forEach(deletee => {
+
+                                            deletee.addEventListener('click', youtube_delete)
+
+                                        });
 
                                     }
 
@@ -932,7 +995,6 @@
                                 }
 
                             }
-
 
                         }
 

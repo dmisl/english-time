@@ -139,6 +139,23 @@
             text-align: center
         } */
 
+        #container
+        {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .fill_gaps
+        {
+
+            background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='30' ry='30' stroke='%23333' stroke-width='3' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+            border-radius: 30px;
+            font-family: 'Inter', sans-serif;
+            margin: 0 auto;
+            width: 80%;
+            padding-bottom: 30px;
+
+        }
+
         /* TRANSLATE */
 
         .answers_div
@@ -321,7 +338,6 @@
     {{-- BOOTSTRAP --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.bundle.min.js" integrity="sha512-ToL6UYWePxjhDQKNioSi4AyJ5KkRxY+F1+Fi7Jgh0Hp5Kk2/s8FD7zusJDdonfe5B00Qw+B8taXxF6CFLnqNCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" integrity="sha512-t4GWSVZO1eC8BM339Xd7Uphw5s17a86tIZIj8qRxhnKub6WoyhnrxeCIMeAqBPgdZGlCcG2PrZjMc+Wr78+5Xg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js" integrity="sha512-3dZ9wIrMMij8rOH7X3kLfXAzwtcHpuYpEgQg1OA4QAob1e81H8ntUQmQm3pBudqIoySO5j0tHN4ENzA6+n2r4w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     {{-- TINYMCE --}}
     <script src="https://cdn.tiny.cloud/1/tf00vuqa2n38x4aqny9piahlbvyngwss47cp0wqq0hfbyvij/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     {{-- JQUERY --}}
@@ -348,6 +364,10 @@
     </div>
 
     <script>
+
+        const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+        const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+
         let locale = document.querySelector('.locale')
         let locale_current = document.querySelector('.current_locale')
         let locale_submit = document.querySelector('.locale_submit')
