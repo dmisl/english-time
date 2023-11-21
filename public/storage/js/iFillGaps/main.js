@@ -1,9 +1,11 @@
-let declared = document.querySelector('.declared')
-let editing = document.querySelector('.editing')
+let string = ``
 
-let task_update = document.querySelector('.task_update')
+document.querySelector('#container').style.paddingBottom = '200px'
 
-task_update.addEventListener('click', function () {
+let finish = document.querySelector('.finish')
+
+finish.addEventListener('click', function ()
+{
 
     let task_body = document.querySelector('.task_body')
 
@@ -43,38 +45,6 @@ task_update.addEventListener('click', function () {
 
     let answers = document.querySelectorAll('.bold')
 
-    let to_shuffle = []
-
-    answers.forEach(answer => {
-
-        to_shuffle.push(answer.innerHTML)
-
-    });
-
-    to_shuffle = shuffle(to_shuffle)
-    to_shuffle = shuffle(to_shuffle)
-
-    body += `<div class="answers_div border">`
-
-    body += `
-        <h2 class="m-0 p-0">Відповіді</h2>
-        <p class="answers_hint small text-muted m-0 p-0">Перетягніть відповіді у відповідні комірки</p>
-        <div class="mt-3">
-            <div class="answers">
-    `
-
-    to_shuffle.forEach(answer => {
-
-        body += `<p class="answer" draggable="true">${answer}</p>`
-
-    });
-
-    body += `
-            </div>
-        </div>
-    </div>
-    `
-
     body += `<div class="text_div mt-3" style="display: flex; flex-wrap: wrap; justify-content: center; column-gap: 10px; row-gap: 5px; width: 80%; margin: 0 auto; margin-bottom: 50px;">`
 
     let written_text = document.querySelector('.fill_gaps_add').innerHTML
@@ -88,10 +58,9 @@ task_update.addEventListener('click', function () {
 
     answers.forEach(answer => {
 
-        body = body.replace(answer.outerHTML, `</p><label class="input" answer="${answer.innerText}"></label><p class="m-0" style="height: 30px; font-size: 20px; padding-top: 5px;">`)
+        body = body.replace(answer.outerHTML, `</p><input class="fi_input" answer="${answer.innerText}"><p class="m-0" style="height: 30px; font-size: 20px; padding-top: 5px;">`)
 
     });
-
 
     body += `</p>`
 
@@ -165,7 +134,7 @@ function check_task()
 
                 }
 
-                task_update.setAttribute('hidden', '')
+                finish.setAttribute('hidden', '')
 
             } else
             {
@@ -177,21 +146,189 @@ function check_task()
                     deletee.addEventListener('click', image_delete_f)
                 });
 
-                task_update.removeAttribute('hidden')
+                finish.removeAttribute('hidden')
 
             }
 
         } else
         {
 
-            task_update.removeAttribute('hidden')
+            finish.removeAttribute('hidden')
 
         }
 
     } else
     {
 
-        task_update.setAttribute('hidden', '')
+        finish.setAttribute('hidden', '')
+
+    }
+
+}
+
+function first_click()
+{
+
+    fill_gaps_add.innerHTML = ''
+    fill_gaps_add.removeEventListener('click', first_click)
+    fill_gaps_add.addEventListener('keyup', check_task)
+
+}
+
+let fill_gaps_add = document.querySelector('.fill_gaps_add')
+
+// ADDING INPUTS AND ANSWERS
+
+fill_gaps_add.addEventListener('click', first_click)
+
+let selected
+let sel
+let type
+
+let make_bold = document.querySelector('.make_bold')
+let remove_bold = document.querySelector('.remove_bold')
+
+make_bold.addEventListener('click', make_bold_f)
+remove_bold.addEventListener('click', remove_bold_f)
+
+function make_bold_f()
+{
+
+    fill_gaps_add.innerHTML = fill_gaps_add.innerHTML.replace(sel, `<b class="bold">${sel}</b>`)
+
+    make_bold.setAttribute('hidden', '')
+
+    check_task()
+
+}
+
+function remove_bold_f()
+{
+
+    if(selected.type == 'Caret')
+    {
+
+        selected = selected.baseNode.parentElement
+        let parent = selected.parentElement
+
+        parent.innerHTML = parent.innerHTML.replace(selected.outerHTML, selected.innerText)
+
+    } else
+    {
+
+        fill_gaps_add.innerHTML = fill_gaps_add.innerHTML.replace(sel.outerHTML, sel.innerText)
+
+    }
+
+    remove_bold.setAttribute('hidden', '')
+
+    check_task()
+
+}
+
+document.addEventListener("selectionchange", get_selected);
+
+function get_selected() {
+
+    if (window.getSelection) {
+        selected = window.getSelection();
+    } else if (window.document.getSelection) {
+        selected = window.document.getSelection();
+    } else if (window.document.selection) {
+        selected = window.document.selection.createRange().text;
+    }
+
+    // ADDING AND DELETING
+    if(selected.anchorNode.parentElement.classList.contains('bold') || selected.anchorNode.parentElement.classList.contains('fill_gaps_add') || selected.anchorNode.parentElement.parentElement.classList.contains('fill_gaps_add'))
+    {
+
+        if(selected.type == 'Range')
+        {
+
+            let txt = ''
+            txt += selected
+
+            if(selected.anchorNode.parentElement.tagName == 'DIV' && selected.focusNode.parentElement.tagName == 'DIV' && selected.focusNode.nextSibling == selected.anchorNode.nextSibling)
+            {
+
+                sel = selected
+                make_bold.removeAttribute('hidden')
+                remove_bold.setAttribute('hidden', '')
+
+            } else
+            {
+
+                if(selected.anchorNode.parentElement.tagName == 'B')
+                {
+
+                    sel = selected.anchorNode.parentElement
+
+                } else if(selected.focusNode.parentElement.tagName == 'B')
+                {
+
+                    sel = selected.focusNode.parentElement
+
+                } else if(selected.focusNode.nextSibling !== selected.anchorNode.nextSibling)
+                {
+
+                    if(txt.includes(selected.anchorNode.nextElementSibling.innerText))
+                    {
+
+                        sel = selected.anchorNode.nextElementSibling
+
+                    }
+                    if(txt.includes(selected.focusNode.nextElementSibling.innerText))
+                    {
+
+                        sel = selected.focusNode.nextElementSibling
+
+                    }
+
+                }
+                remove_bold.removeAttribute('hidden')
+                make_bold.setAttribute('hidden', '')
+
+            }
+
+        }
+
+
+        // DELETING
+        if(selected.type == 'Caret')
+        {
+
+            if(selected.baseNode.parentElement.tagName == 'B' || selected.baseNode.parentElement.classList.contains('fill_gaps_add'))
+            {
+
+                if(selected.baseNode.parentElement.tagName == 'B')
+                {
+
+                    remove_bold.removeAttribute('hidden')
+                    make_bold.setAttribute('hidden', '')
+
+                } else
+                {
+
+                    make_bold.setAttribute('hidden', '')
+                    remove_bold.setAttribute('hidden', '')
+
+                }
+
+            } else
+            {
+
+                make_bold.setAttribute('hidden', '')
+                remove_bold.setAttribute('hidden', '')
+
+            }
+
+        }
+
+    } else
+    {
+
+        make_bold.setAttribute('hidden', '')
+        remove_bold.setAttribute('hidden', '')
 
     }
 
@@ -460,330 +597,5 @@ function add_url_image_f()
 
 }
 
-// CREATING FROM DECLARED
-
-function create()
-{
-
-    let fill_gaps = document.createElement('div')
-    fill_gaps.classList.add('fill_gaps')
-
-    editing.appendChild(fill_gaps)
-
-    if(declared.children.length == 3)
-    {
-
-        let declared_image = declared.children[0].style.backgroundImage
-
-        let add_image_parent = document.createElement('div')
-        add_image_parent.style.cssText = `padding-top: 30px;`
-
-        fill_gaps.appendChild(add_image_parent)
-
-        let add_image_div = document.createElement('div')
-        add_image_div.classList.add('add_image')
-        add_image_div.setAttribute('role', 'button')
-        add_image_div.style.cssText = `display: table; margin: 0px auto; border-radius: 10px; color: black;`
-
-        add_image_parent.appendChild(add_image_div)
-
-        let add_image_input = document.createElement('input')
-        add_image_input.classList.add('form-control')
-        add_image_input.classList.add('text-center')
-        add_image_input.setAttribute('placeholder', 'Вставте URL-адрес картинки')
-        add_image_input.style.cssText = `font-size: 20px; padding: 10px 20px;`
-        add_image_input.value = declared_image.slice(5, declared_image.length-2)
-
-        add_image_div.appendChild(add_image_input)
-
-        let add_image_hint = document.createElement('p')
-        add_image_hint.classList.add('small')
-        add_image_hint.classList.add('text-muted')
-        add_image_hint.classList.add('p-0')
-        add_image_hint.classList.add('m-0')
-        add_image_hint.innerHTML = `Щоб видалити картинку нажміть цю <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
-
-        add_image_div.appendChild(add_image_hint)
-
-        let add_image_preview = document.createElement('div')
-        add_image_preview.classList.add('img')
-        add_image_preview.style.cssText = `margin: 0px auto; width: 450px; height: 250px; background-image: ${declared_image}; background-position: center center; background-size: cover; background-repeat: no-repeat;`
-
-        add_image_div.appendChild(add_image_preview)
-
-        let add_image_test = document.createElement('img')
-        add_image_test.style.cssText = `display: none;`
-
-        add_image_div.appendChild(add_image_test)
-
-        add_image_input.addEventListener('keyup', url_image_edit_f)
-
-        deletes = document.querySelectorAll('.image_delete')
-
-        deletes.forEach(deletee => {
-            deletee.addEventListener('click', image_delete_f)
-        });
-
-    } else
-    {
-
-        let add_image_div = document.createElement('div')
-        add_image_div.style.cssText = `padding-top: 30px;`
-
-        fill_gaps.appendChild(add_image_div)
-
-        let add_image = document.createElement('div')
-        add_image.classList.add('add_image')
-        add_image.setAttribute('role', 'button')
-        add_image.style.cssText = `display: table; margin: 0 auto; background-image: url('{{ asset('storage/icons/bg.jpg') }}'); background-position: center; background-size: cover; background-repeat: no-repeat; border: 1px solid black; border-radius: 10px; color: black;`
-
-        add_image_div.appendChild(add_image)
-
-        add_image_p = document.createElement('p')
-        add_image_p.style.cssText = `padding: 7px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;`
-        add_image_p.innerText = `Додати картинку`
-
-        add_image.appendChild(add_image_p)
-
-        add_image.addEventListener('click', add_image_f)
-
-    }
-
-    let declared_text = ''
-    declared_text += declared.querySelector('.text_div').innerHTML
-
-    declared.remove()
-
-    // MAKING AND REMOVING BOLD TEXT
-    let buttons_div = document.createElement('div')
-    buttons_div.style.cssText = `padding-top: 30px; height: 76px;`
-
-    fill_gaps.appendChild(buttons_div)
-
-    let make_bold = document.createElement('div')
-    make_bold.classList.add('make_bold')
-    make_bold.setAttribute('hidden', '')
-    make_bold.setAttribute('role', 'button')
-    make_bold.style.cssText = `background-color: #98CCFC; display: table; margin: 0 auto; border: 1px solid black; border-radius: 10px; color: black;`
-
-    buttons_div.appendChild(make_bold)
-
-    let make_bold_p = document.createElement('p')
-    make_bold_p.style.cssText = `padding: 7px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;`
-    make_bold_p.innerText = `Зробити виділене відповіддю`
-
-    make_bold.appendChild(make_bold_p)
-
-    let remove_bold = document.createElement('div')
-    remove_bold.classList.add('remove_bold')
-    remove_bold.setAttribute('hidden', '')
-    remove_bold.setAttribute('role', 'button')
-    remove_bold.style.cssText = `background-color: #FF8D8D; display: table; margin: 0 auto; border: 1px solid black; border-radius: 10px; color: black;`
-
-    buttons_div.appendChild(remove_bold)
-
-    let remove_bold_p = document.createElement('p')
-    remove_bold_p.style = `padding: 7px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;`
-    remove_bold_p.innerText = `Видалити відповідь`
-
-    remove_bold.appendChild(remove_bold_p)
-
-    // TEXTAREA
-    let fill_gaps_add = document.createElement('div')
-    fill_gaps_add.classList.add('fill_gaps_add')
-    fill_gaps_add.setAttribute('contenteditable', 'true')
-    fill_gaps_add.style.cssText = `padding: 10px; width: 90%; margin: 0 auto; border: 1px solid black; border-radius: 15px; margin-top: 20px; height: 350px;`
-
-    fill_gaps.appendChild(fill_gaps_add)
-
-    // TEXTAREA HINT
-    let fill_gaps_hint = document.createElement('p')
-    fill_gaps_hint.classList.add('fill_gaps_hint')
-    fill_gaps_hint.classList.add('small')
-    fill_gaps_hint.classList.add('text-muted')
-    fill_gaps_hint.classList.add('p-0')
-    fill_gaps_hint.classList.add('m-0')
-    fill_gaps_hint.innerHTML = `У цьому завданні потрібно вписати текст і виділити слова, на місця яких потрібно буде перетянути відповіді. <br> Радимо вставляти відповіді після заповнення тексту, щоб уникнути проблем. <span class="text-primary" style="text-decoration: underline; cursor: pointer;" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="В цьому завданні потрібно написати текст, і в ньому виділити принаймі 3 місця, які потрібно буде заповнити відповіддю. Щоб створити таке місце - виділіть вираз мишкою і нажміть на кнопку, щоб видалити - виділіть, або нажміть на слово.">Детальніше тут</span>`
-
-    fill_gaps.appendChild(fill_gaps_hint)
-
-    // WORK WITH DECLARED TEXT
-
-    declared_text = declared_text.replaceAll('<p class="m-0" style="height: 30px; font-size: 20px; padding-top: 5px;">', '')
-    declared_text = declared_text.replaceAll('</p>', '')
-
-    fill_gaps_add.innerHTML = declared_text
-
-    let answers = document.querySelectorAll('.input')
-    let new_ans
-
-    for (let i = 0; i < answers.length; i++) {
-
-        new_ans = `<b class="bold">${answers[i].attributes.answer.value}</b>`
-        fill_gaps_add.innerHTML = fill_gaps_add.innerHTML.replace(answers[i].outerHTML, new_ans)
-
-    }
-
-    fill_gaps_add.addEventListener('keyup', check_task)
-
-    const popoverTriggerListt = document.querySelectorAll('[data-bs-toggle="popover"]')
-    const popoverListt = [...popoverTriggerListt].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
-
-}
-
-create()
-
-let fill_gaps_add = document.querySelector('.fill_gaps_add')
-
-let selected
-let sel
-let type
-
-let make_bold = document.querySelector('.make_bold')
-let remove_bold = document.querySelector('.remove_bold')
-
-make_bold.addEventListener('click', make_bold_f)
-remove_bold.addEventListener('click', remove_bold_f)
-
-function make_bold_f()
-{
-
-    fill_gaps_add.innerHTML = fill_gaps_add.innerHTML.replace(sel, `<b class="bold">${sel}</b>`)
-
-    make_bold.setAttribute('hidden', '')
-
-    check_task()
-
-}
-
-function remove_bold_f()
-{
-
-    if(selected.type == 'Caret')
-    {
-
-        selected = selected.baseNode.parentElement
-        let parent = selected.parentElement
-
-        parent.innerHTML = parent.innerHTML.replace(selected.outerHTML, selected.innerText)
-
-    } else
-    {
-
-        fill_gaps_add.innerHTML = fill_gaps_add.innerHTML.replace(sel.outerHTML, sel.innerText)
-
-    }
-
-    remove_bold.setAttribute('hidden', '')
-
-    check_task()
-
-}
-
-document.addEventListener("selectionchange", get_selected);
-
-function get_selected() {
-
-    if (window.getSelection) {
-        selected = window.getSelection();
-    } else if (window.document.getSelection) {
-        selected = window.document.getSelection();
-    } else if (window.document.selection) {
-        selected = window.document.selection.createRange().text;
-    }
-
-    // ADDING AND DELETING
-    if(selected.anchorNode.parentElement.classList.contains('bold') || selected.anchorNode.parentElement.classList.contains('fill_gaps_add') || selected.anchorNode.parentElement.parentElement.classList.contains('fill_gaps_add'))
-    {
-
-        if(selected.type == 'Range')
-        {
-
-            let txt = ''
-            txt += selected
-
-            if(selected.anchorNode.parentElement.tagName == 'DIV' && selected.focusNode.parentElement.tagName == 'DIV' && selected.focusNode.nextSibling == selected.anchorNode.nextSibling)
-            {
-
-                sel = selected
-                make_bold.removeAttribute('hidden')
-                remove_bold.setAttribute('hidden', '')
-
-            } else
-            {
-
-                if(selected.anchorNode.parentElement.tagName == 'B')
-                {
-
-                    sel = selected.anchorNode.parentElement
-
-                } else if(selected.focusNode.parentElement.tagName == 'B')
-                {
-
-                    sel = selected.focusNode.parentElement
-
-                } else if(selected.focusNode.nextSibling !== selected.anchorNode.nextSibling)
-                {
-
-                    if(txt.includes(selected.anchorNode.nextElementSibling.innerText))
-                    {
-
-                        sel = selected.anchorNode.nextElementSibling
-
-                    }
-                    if(txt.includes(selected.focusNode.nextElementSibling.innerText))
-                    {
-
-                        sel = selected.focusNode.nextElementSibling
-
-                    }
-
-                }
-                remove_bold.removeAttribute('hidden')
-                make_bold.setAttribute('hidden', '')
-
-            }
-
-        }
-
-
-        // DELETING
-        if(selected.type == 'Caret')
-        {
-
-            if(selected.baseNode.parentElement.tagName == 'B' || selected.baseNode.parentElement.classList.contains('fill_gaps_add'))
-            {
-
-                if(selected.baseNode.parentElement.tagName == 'B')
-                {
-
-                    remove_bold.removeAttribute('hidden')
-                    make_bold.setAttribute('hidden', '')
-
-                } else
-                {
-
-                    make_bold.setAttribute('hidden', '')
-                    remove_bold.setAttribute('hidden', '')
-
-                }
-
-            } else
-            {
-
-                make_bold.setAttribute('hidden', '')
-                remove_bold.setAttribute('hidden', '')
-
-            }
-
-        }
-
-    } else
-    {
-
-        make_bold.setAttribute('hidden', '')
-        remove_bold.setAttribute('hidden', '')
-
-    }
-
-}
+let add_image = document.querySelector('.add_image')
+add_image.addEventListener('click', add_image_f)

@@ -63,22 +63,19 @@
         }
 
         .fi_input {
-            height: 35px;
+            height: 40px;
             text-align: center;
-            font-style: italic;
             border-radius: 10px;
             transition: 1s;
             border: 1px solid black;
-            margin: 3px 3px;
-            width: 150px;
+            width: 170px;
         }
 
         .fi_input:focus {
             background-color: rgb(183, 220, 255);
             border: none;
-            outline: 3px solid rgba(20, 172, 218, 0.795);
+            outline: 1px solid rgba(20, 172, 218, 0.795);
             transition: 1s;
-            height: 36px;
             color: black;
         }
 

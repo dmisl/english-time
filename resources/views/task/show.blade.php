@@ -2,7 +2,7 @@
 @section('main.title', env('APP_NAME').' | '.$task->name)
 
 @section('main.content')
-<div class="container">
+<div class="container" style="font-family: Inter, sans-serif">
 
     @if(is_admin())
 
@@ -435,55 +435,100 @@
     }
 
     if (task_type.value == 3) {
-        let count = 0
-        let check = document.querySelector('#check')
-        check.setAttribute('disabled', '')
+
+        // CREATING CHECK BUTTON AND ADDING EVENTLISTENER
+        let check_button = document.createElement('button')
+        check_button.classList.add('btn')
+        check_button.classList.add('btn-primary')
+        check_button.setAttribute('disabled', '')
+        check_button.innerText = `Перевірити`
+
+        completedTask.appendChild(check_button)
+
+        // CHECKING INPUTS AND ADDING EVENTLISTENERS
+
         let inputs = document.querySelectorAll('.fi_input')
-        for (let i = 0; i < inputs.length; i++) {
-            inputs[i].addEventListener('keyup', function() {
-                for (let a = 0; a < inputs.length; a++) {
-                    if (inputs[a].value.length >= 1) {
-                        count++
-                    }
+
+        function finish_checking()
+        {
+
+            let right = 0
+
+            inputs.forEach(input => {
+
+                input.setAttribute('value', input.value)
+
+                if(input.value.toLowerCase() == input.attributes.answer.value.toLowerCase())
+                {
+
+                    right = right + 1
+                    input.style.backgroundColor = 'green'
+
+                } else
+                {
+
+                    input.style.backgroundColor = 'red'
+
                 }
 
-                if (inputs.length == count) {
-                    count = 0
-                    check.removeAttribute('disabled')
-                } else {
-                    count = 0
-                    check.setAttribute('disabled', '')
-                }
             })
-        }
 
-        check.addEventListener('click', function() {
-            for (let i = 0; i < inputs.length; i++) {
-                if (inputs[i].value.toLowerCase() == inputs[i].attributes.answer.value.toLowerCase()) {
-                    count++
-                    inputs[i].setAttribute('disabled', '')
-                    inputs[i].style.backgroundColor = 'green'
-                    inputs[i].setAttribute('value', inputs[i].value)
-                } else {
-                    inputs[i].setAttribute('disabled', '')
-                    inputs[i].style.backgroundColor = 'red'
-                }
-            }
-            let asd = (100 * count) / inputs.length
+            this.removeEventListener('click', finish_checking)
+            this.setAttribute('disabled', '')
+
+            // COUNTING RIGHT ANSWERS PERCENTAGE
+            let asd = (100 * right) / inputs.length
             let percentage = Math.round(asd)
             rightAnswers.innerHTML = `{{ __('main.correct_answers') }}: ${percentage}%`
+            task_percentage.value = percentage
             task_text.value = completedTask.innerHTML
 
-            check.setAttribute('disabled', '')
+            setTimeout(function() {
 
-            document.querySelector('.task_percentage').value = percentage
+                hiddenButton.click()
 
+            }, 3000);
 
+        }
 
-            // setTimeout(function() {
-            //     hiddenButton.click()
-            // }, 3000);
-        })
+        function check_task()
+        {
+
+            let count = 0
+
+            inputs.forEach(input => {
+
+                if(input.value.length >= 2)
+                {
+
+                    count = count + 1
+
+                }
+
+            });
+
+            if(count == inputs.length)
+            {
+
+                check_button.removeAttribute('disabled')
+                check_button.addEventListener('click', finish_checking)
+
+            } else
+            {
+
+                check_button.setAttribute('disabled', '')
+                check_button.removeEventListener('click', finish_checking)
+
+            }
+
+        }
+
+        inputs.forEach(input => {
+
+            input.addEventListener('keyup', check_task)
+
+        });
+
     }
 
     if (task_type.value == 4) {

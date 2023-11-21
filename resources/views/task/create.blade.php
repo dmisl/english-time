@@ -300,40 +300,67 @@
         } else if(task_type.value == 3)
         {
             container.innerHTML = `
-            <a href="{{ route('lesson.show', [$course, $lesson]) }}">${tr_back}</a>
+                <a href="{{ route('lesson.show', [$course, $lesson]) }}">${tr_back}</a>
 
-            <h1 class="py-3">${task_name.value}</h1>
+                <h1 class="py-3">${task_name.value}</h1>
 
-            <div class="overview w-100" style="padding-bottom: 100px; border:1px solid black; border-radius:20px;">
+                <div class="fill_gaps">
 
-                <div class="add_text my-3 mx-auto bg-primary bg-gradient border text-light" style="overflow: hidden; user-select: none; border-radius: 15px; width: 80%;">
-                    <h2 class="mt-1">{{ __('main.add_text_q') }}</h2>
-                    <div class="d-flex w-50 mx-auto pb-2">
-                        <div class="yes bg-priramy border text-light" role="button" style="width: 45%; border-radius: 15px; margin-right: 10%;">
-                            <h4 class="mt-1">{{ __('main.yes') }}</h4>
+                    <div style="padding-top: 30px;">
+
+                        <div class="add_image" role="button" style="display: table; margin: 0 auto; background-image: url('{{ asset('storage/icons/bg.jpg') }}'); background-position: center; background-size: cover; background-repeat: no-repeat; border: 1px solid black; border-radius: 10px; color: black;">
+
+                            <p style="padding: 7px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;">Додати картинку</p>
+
                         </div>
-                        <div class="no bg-priramy border text-light" role="button" style="width: 45%; border-radius: 15px;">
-                            <h4 class="mt-1">{{ __('main.no') }}</h4>
-                        </div>
+
                     </div>
+
+                    <div style="padding-top: 30px; height: 76px;">
+
+                        <div class="make_bold" hidden role="button" style="background-color: #98CCFC; display: table; margin: 0 auto; border: 1px solid black; border-radius: 10px; color: black;">
+
+                            <p style="padding: 7px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;">Зробити виділене відповіддю</p>
+
+                        </div>
+
+                        <div class="remove_bold" hidden role="button" style="background-color: #FF8D8D; display: table; margin: 0 auto; border: 1px solid black; border-radius: 10px; color: black;">
+
+                            <p style="padding: 7px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;">Видалити відповідь</p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="fill_gaps_add" contenteditable="true" style="padding: 10px; width: 90%; margin: 0 auto; border: 1px solid black; border-radius: 15px; margin-top: 20px; height: 350px;">------>Сюди вписувати текст<-------</div>
+
+                    <p class="fill_gaps_hint small text-muted p-0 m-0">У цьому завданні потрібно написати текст і виділити слово, на місці якого учневі потрібно буде написати відповідь. <br> Радимо вставляти відповіді після заповнення тексту, щоб уникнути проблем. <span class="text-primary" style="text-decoration: underline; cursor: pointer;" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="В цьому завданні потрібно написати текст, і в ньому виділити принаймі 3 місця, які потрібно буде заповнити відповіддю. Щоб створити таке місце - виділіть вираз мишкою і нажміть на кнопку, щоб видалити - виділіть, або нажміть на слово.">Детальніше тут</span7></p>
+
                 </div>
 
-                <div class="bg-success bg-gradient mx-auto next mt-3 border text-light" role="button" hidden style="width: 30%; border-radius: 10px; user-select: none;">
-                    <h5 class="py-2" >${tr_go_to_the_next_step}</h5>
+                <div class="finish mt-5" role="button" hidden>
+                    <p style="background-color: rgb(158, 255, 103); user-select: none; font-family: 'Inter', sans-serif; display: inline; padding: 10px 20px; border: 1px solid black; border-radius: 10px;">
+                        Створити завдання
+                    </p>
                 </div>
-            </div>
 
-            <div hidden>
-                <input class="task_name" value="${task_name.value}" type="text" name="task_name">
-                <input class="task_body" type="text" name="task_body">
-                <input class="lesson_id" value="{{ $lesson }}" type="text" name="lesson_id">
-                <input class="task_type" value="${task_type.value}" type="text" name="task_type">
-                <button class="task_submit" type="submit">asd</button>
-            </div>
+                <div class="hidden" hidden>
+                    <input class="task_name" value="${task_name.value}" type="text" name="task_name">
+                    <input class="task_body" type="text" name="task_body">
+                    <input class="lesson_id" value="{{ $lesson }}" type="text" name="lesson_id">
+                    <input class="task_type" value="${task_type.value}" type="text" name="task_type">
+
+                </div>
+
+                <div class="ov" hidden></div>
             `
             let scriptIFillGaps = document.createElement("script")
-            scriptIFillGaps.setAttribute("src", "{{ asset('storage/js/iFillGaps/addText.js') }}")
+            scriptIFillGaps.setAttribute("src", "{{ asset('storage/js/iFillGaps/main.js') }}")
             document.body.appendChild(scriptIFillGaps)
+
+            const popoverTriggerListt = document.querySelectorAll('[data-bs-toggle="popover"]')
+            const popoverListt = [...popoverTriggerListt].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+
         } else if(task_type.value == 4)
         {
             container.innerHTML = `

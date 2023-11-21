@@ -43,38 +43,6 @@ task_update.addEventListener('click', function () {
 
     let answers = document.querySelectorAll('.bold')
 
-    let to_shuffle = []
-
-    answers.forEach(answer => {
-
-        to_shuffle.push(answer.innerHTML)
-
-    });
-
-    to_shuffle = shuffle(to_shuffle)
-    to_shuffle = shuffle(to_shuffle)
-
-    body += `<div class="answers_div border">`
-
-    body += `
-        <h2 class="m-0 p-0">Відповіді</h2>
-        <p class="answers_hint small text-muted m-0 p-0">Перетягніть відповіді у відповідні комірки</p>
-        <div class="mt-3">
-            <div class="answers">
-    `
-
-    to_shuffle.forEach(answer => {
-
-        body += `<p class="answer" draggable="true">${answer}</p>`
-
-    });
-
-    body += `
-            </div>
-        </div>
-    </div>
-    `
-
     body += `<div class="text_div mt-3" style="display: flex; flex-wrap: wrap; justify-content: center; column-gap: 10px; row-gap: 5px; width: 80%; margin: 0 auto; margin-bottom: 50px;">`
 
     let written_text = document.querySelector('.fill_gaps_add').innerHTML
@@ -88,7 +56,7 @@ task_update.addEventListener('click', function () {
 
     answers.forEach(answer => {
 
-        body = body.replace(answer.outerHTML, `</p><label class="input" answer="${answer.innerText}"></label><p class="m-0" style="height: 30px; font-size: 20px; padding-top: 5px;">`)
+        body = body.replace(answer.outerHTML, `</p><input class="fi_input" answer="${answer.innerText}"><p class="m-0" style="height: 30px; font-size: 20px; padding-top: 5px;">`)
 
     });
 
@@ -198,7 +166,6 @@ function check_task()
 }
 
 // IMAGE
-
 function url_image_edit_f()
 {
 
@@ -535,7 +502,7 @@ function create()
         let add_image = document.createElement('div')
         add_image.classList.add('add_image')
         add_image.setAttribute('role', 'button')
-        add_image.style.cssText = `display: table; margin: 0 auto; background-image: url('{{ asset('storage/icons/bg.jpg') }}'); background-position: center; background-size: cover; background-repeat: no-repeat; border: 1px solid black; border-radius: 10px; color: black;`
+        add_image.style.cssText = `display: table; margin: 0 auto; background-image: url('${bg_jpg}'); background-position: center; background-size: cover; background-repeat: no-repeat; border: 1px solid black; border-radius: 10px; color: black;`
 
         add_image_div.appendChild(add_image)
 
@@ -603,7 +570,7 @@ function create()
     fill_gaps_hint.classList.add('text-muted')
     fill_gaps_hint.classList.add('p-0')
     fill_gaps_hint.classList.add('m-0')
-    fill_gaps_hint.innerHTML = `У цьому завданні потрібно вписати текст і виділити слова, на місця яких потрібно буде перетянути відповіді. <br> Радимо вставляти відповіді після заповнення тексту, щоб уникнути проблем. <span class="text-primary" style="text-decoration: underline; cursor: pointer;" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="В цьому завданні потрібно написати текст, і в ньому виділити принаймі 3 місця, які потрібно буде заповнити відповіддю. Щоб створити таке місце - виділіть вираз мишкою і нажміть на кнопку, щоб видалити - виділіть, або нажміть на слово.">Детальніше тут</span>`
+    fill_gaps_hint.innerHTML = `У цьому завданні потрібно вписати текст і виділити слова, на місця яких потрібно буде вписати відповіді. <br> Радимо вставляти відповіді після заповнення тексту, щоб уникнути проблем. <span class="text-primary" style="text-decoration: underline; cursor: pointer;" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="В цьому завданні потрібно написати текст, і в ньому виділити принаймі 3 місця, які потрібно буде заповнити відповіддю. Щоб створити таке місце - виділіть вираз мишкою і нажміть на кнопку, щоб видалити - виділіть, або нажміть на слово.">Детальніше тут</span>`
 
     fill_gaps.appendChild(fill_gaps_hint)
 
@@ -614,7 +581,7 @@ function create()
 
     fill_gaps_add.innerHTML = declared_text
 
-    let answers = document.querySelectorAll('.input')
+    let answers = document.querySelectorAll('.fi_input')
     let new_ans
 
     for (let i = 0; i < answers.length; i++) {
