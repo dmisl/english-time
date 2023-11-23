@@ -445,7 +445,7 @@ function check_task()
 
     }
 
-    if(count == document.querySelectorAll('.abc').length)
+    if(count == document.querySelectorAll('.abc').length && document.querySelector('.name').innerText.length >= 3)
     {
 
         document.querySelector('.task_update').removeAttribute('hidden')
@@ -473,7 +473,7 @@ function add_answer_f()
 
     // ADDING OUR NEW DIV
     let new_div = document.createElement('div')
-    new_div.style.cssText = 'color: black; border: 1px solid black; border-radius: 5px; width: 32%; height: 50px; overflow: auto;'
+    new_div.style.cssText = 'border: 1px solid black; border-radius: 5px; width: 32%; height: 50px; overflow: auto;'
     new_div.setAttribute('contenteditable', 'true')
     new_div.classList.add('abc_answer')
     let p_inside_div = document.createElement('p')
@@ -584,6 +584,7 @@ function stop_deleting()
 {
 
     this.style.animation = ''
+    this.style.color = ''
 
     if(timer)
     {
@@ -600,7 +601,7 @@ function stop_deleting()
         window.clearTimeout(deleting4)
         window.clearTimeout(deleting5)
 
-        this.children[0].style.color = 'black'
+        this.children[0].style.color = ''
 
         if(this.children[0].innerHTML !== starting_value)
         {
@@ -1233,7 +1234,7 @@ tasks.forEach(parent => {
     task.classList.add('abc')
     task.classList.add('mt-5')
     task.classList.add('mx-auto')
-    task.style.cssText = `padding-bottom: 50px; width: 80%; background-color: white;`
+    task.style.cssText = `padding-bottom: 50px; width: 80%;`
 
     editing.appendChild(task)
 
@@ -1251,7 +1252,7 @@ tasks.forEach(parent => {
         task_question.classList.add('add_text')
         task_question.setAttribute('role', 'button')
         task_question.setAttribute('contenteditable', 'true')
-        task_question.style.cssText = `max-width: 80%; display: table; margin: 0 auto; background-color: white; border: 1px solid black; border-radius: 10px; color: black;`
+        task_question.style.cssText = `max-width: 80%; display: table; margin: 0 auto; border: 1px solid black; border-radius: 10px;`
 
         task_question_parent.appendChild(task_question)
 
@@ -1379,7 +1380,6 @@ tasks.forEach(parent => {
     window.setTimeout(() => {
 
         let task_h2 = document.createElement('h2')
-        task_h2.style.cssText = `color: black;`
         task_h2.innerText = `Додайте варіанти відповіді`
 
         task.appendChild(task_h2)
@@ -1413,7 +1413,7 @@ tasks.forEach(parent => {
                 new_answer.setAttribute('contenteditable', 'true')
                 new_answer.classList.add('abc_answer')
                 new_answer.classList.add('right_one')
-                new_answer.style.cssText = `color: black; border: 1px solid green; border-radius: 5px; width: 32%; height: 50px; overflow: auto;`
+                new_answer.style.cssText = `border: 1px solid green; border-radius: 5px; width: 32%; height: 50px; overflow: auto;`
 
                 task_answers_parent.appendChild(new_answer)
 
@@ -1431,7 +1431,7 @@ tasks.forEach(parent => {
                 let new_answer = document.createElement('div')
                 new_answer.setAttribute('contenteditable', 'true')
                 new_answer.classList.add('abc_answer')
-                new_answer.style.cssText = `color: black; border: 1px solid black; border-radius: 5px; width: 32%; height: 50px; overflow: auto;`
+                new_answer.style.cssText = `border: 1px solid black; border-radius: 5px; width: 32%; height: 50px; overflow: auto;`
 
                 task_answers_parent.appendChild(new_answer)
 
@@ -1451,7 +1451,7 @@ tasks.forEach(parent => {
         task_answers_add.classList.add('add_button')
         task_answers_add.classList.add('dashed')
         task_answers_add.setAttribute('role', 'button')
-        task_answers_add.style.cssText = `color: black; width: 32%; height: 50px; border-radius: 5px; user-select: none;`
+        task_answers_add.style.cssText = `width: 32%; height: 50px; border-radius: 5px; user-select: none;`
 
         task_answers_parent.appendChild(task_answers_add)
 

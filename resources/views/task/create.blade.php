@@ -339,7 +339,7 @@
                 </div>
 
                 <div class="finish mt-5" role="button" hidden>
-                    <p style="background-color: rgb(158, 255, 103); user-select: none; font-family: 'Inter', sans-serif; display: inline; padding: 10px 20px; border: 1px solid black; border-radius: 10px;">
+                    <p style="color: black; background-color: rgb(158, 255, 103); user-select: none; font-family: 'Inter', sans-serif; display: inline; padding: 10px 20px; border: 1px solid black; border-radius: 10px;">
                         Створити завдання
                     </p>
                 </div>
@@ -384,7 +384,7 @@
 
             <div class="options" hidden style="padding-bottom: 200px;">
 
-                <div class="task_add mt-5" style="background-color: white; width: 80%; margin: 0 auto; user-select: none; color: green;" role="button">
+                <div class="task_add mt-5" style="width: 80%; margin: 0 auto; user-select: none; color: green;" role="button">
 
                     <h1 style="padding: 20px; padding-bottom: 25px;">
                         +

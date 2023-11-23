@@ -42,6 +42,34 @@ declared.remove()
 
 let task_update = document.querySelector('.task_update')
 
+// EDITING TASK NAME
+let name = document.querySelector('.name')
+let name_hint = document.querySelector('.name_hint')
+let task_name = document.querySelector('.task_name')
+
+name.addEventListener('keyup', function () {
+
+    if(name.innerText.length > 2)
+    {
+
+        task_name.value = name.innerText
+        name_hint.classList.remove('text-danger')
+        name_hint.classList.add('text-muted')
+        name_hint.innerText = `Нажміть щоб змінити назву завдання`
+        task_update.removeAttribute('hidden', '')
+
+    } else
+    {
+
+        name_hint.classList.remove('text-muted')
+        name_hint.classList.add('text-danger')
+        name_hint.innerText = `Назва завдання не може бути такою короткою`
+        task_update.setAttribute('hidden', '')
+
+    }
+
+})
+
 task_update.removeAttribute('hidden')
 
 task_update.addEventListener('click', function () {

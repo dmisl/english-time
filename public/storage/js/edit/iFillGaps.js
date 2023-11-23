@@ -65,15 +65,13 @@ task_update.addEventListener('click', function () {
 
     body += `</div>`
 
-    console.log(body)
-
     let ov = document.querySelector('.ov')
     ov.innerHTML = body
 
     let ps = ov.querySelectorAll('p')
     ps.forEach(p => {
 
-        if(p.innerText.length <= 1)
+        if(p.innerText.length == 0)
         {
 
             p.remove()
@@ -89,6 +87,34 @@ task_update.addEventListener('click', function () {
     document.querySelector('.hidden').appendChild(submitik)
 
     submitik.click()
+
+})
+
+// EDITING TASK NAME
+let name = document.querySelector('.name')
+let name_hint = document.querySelector('.name_hint')
+let task_name = document.querySelector('.task_name')
+
+name.addEventListener('keyup', function () {
+
+    if(name.innerText.length > 2)
+    {
+
+        task_name.value = name.innerText
+        name_hint.classList.remove('text-danger')
+        name_hint.classList.add('text-muted')
+        name_hint.innerText = `Нажміть щоб змінити назву завдання`
+
+    } else
+    {
+
+        name_hint.classList.remove('text-muted')
+        name_hint.classList.add('text-danger')
+        name_hint.innerText = `Назва завдання не може бути такою короткою`
+
+    }
+
+    check_task()
 
 })
 
@@ -145,14 +171,35 @@ function check_task()
                     deletee.addEventListener('click', image_delete_f)
                 });
 
-                task_update.removeAttribute('hidden')
+                if(name.innerText.length > 2)
+                {
+
+                    task_update.removeAttribute('hidden')
+
+                } else
+                {
+
+                    task_update.setAttribute('hidden', '')
+
+                }
 
             }
 
         } else
         {
 
-            task_update.removeAttribute('hidden')
+            if(name.innerText.length > 2)
+            {
+
+                task_update.removeAttribute('hidden')
+
+            } else
+            {
+
+                task_update.setAttribute('hidden', '')
+
+            }
+            
 
         }
 
@@ -586,7 +633,16 @@ function create()
 
     for (let i = 0; i < answers.length; i++) {
 
-        new_ans = `<b class="bold">${answers[i].attributes.answer.value}</b>`
+        if(i == answers.length-1)
+        {
+            
+            new_ans = `<b class="bold">${answers[i].attributes.answer.value}</b>`
+        } else
+        {
+
+            new_ans = `<b class="bold">${answers[i].attributes.answer.value}</b> `
+
+        }
         fill_gaps_add.innerHTML = fill_gaps_add.innerHTML.replace(answers[i].outerHTML, new_ans)
 
     }

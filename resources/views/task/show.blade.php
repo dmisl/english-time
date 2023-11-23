@@ -613,12 +613,14 @@
             for (let i = 0; i < children.length; i++) {
 
                 children[i].style.backgroundColor = ``
+                children[i].style.color = ``
                 children[i].classList.remove('picked')
 
             }
 
             this.classList.add('picked')
             this.style.backgroundColor = `#88b5fc`
+            this.style.color = `black`
 
             check_if_chosen()
 

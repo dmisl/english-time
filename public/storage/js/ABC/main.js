@@ -184,7 +184,8 @@
     function change()
     {
 
-        this.style.backgroundColor = 'white'
+        this.style.backgroundColor = ''
+        this.style.color = ''
         this.setAttribute('contenteditable', 'true')
         this.removeEventListener('click', change)
         this.children[0].innerText = 'Нажміть щоб відредагувати'
@@ -490,7 +491,7 @@
 
         // ADDING OUR NEW DIV
         let new_div = document.createElement('div')
-        new_div.style.cssText = 'color: black; border: 1px solid black; border-radius: 5px; width: 32%; height: 50px; overflow: auto;'
+        new_div.style.cssText = 'border: 1px solid black; border-radius: 5px; width: 32%; height: 50px; overflow: auto;'
         new_div.setAttribute('contenteditable', 'true')
         new_div.classList.add('abc_answer')
         let p_inside_div = document.createElement('p')
@@ -602,6 +603,8 @@
 
         this.style.animation = ''
 
+        this.children[0].style.color = ''
+
         if(timer)
         {
 
@@ -617,7 +620,7 @@
             window.clearTimeout(deleting4)
             window.clearTimeout(deleting5)
 
-            this.children[0].style.color = 'black'
+            this.children[0].style.color = ''
 
             if(this.children[0].innerHTML !== starting_value)
             {
@@ -1035,7 +1038,7 @@
         parent.classList.add('abc')
         parent.classList.add('mt-5')
         parent.classList.add('mx-auto')
-        parent.style.cssText = 'padding-bottom: 50px; width: 80%; background-color: white;'
+        parent.style.cssText = 'padding-bottom: 50px; width: 80%;'
 
         // ABC TEXT
 
@@ -1089,7 +1092,6 @@
         // ADDING HEADING TO PARENT
         let h2 = document.createElement('h2')
         h2.innerText = 'Додайте варіанти відповіді'
-        h2.style.cssText = 'color: black;'
 
         parent.appendChild(h2)
 
@@ -1109,7 +1111,7 @@
         let add_button = document.createElement('div')
         add_button.classList.add('add_button')
         add_button.classList.add('dashed')
-        add_button.style.cssText = 'color: black; width: 32%; height: 50px; border-radius: 5px; user-select: none;'
+        add_button.style.cssText = 'width: 32%; height: 50px; border-radius: 5px; user-select: none;'
         add_button.setAttribute('role', 'button')
 
         abc_div.appendChild(add_button)
@@ -1146,7 +1148,7 @@
 
         // ADDING ABC CHOOSE DIV CHILD
         let abc_choose_child = document.createElement('p')
-        abc_choose_child.style.cssText = 'color: black; padding: 8px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 17px;'
+        abc_choose_child.style.cssText = 'padding: 8px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 17px;'
         abc_choose_child.innerText = 'Вибрати правильну відповідь'
 
         abc_choose.appendChild(abc_choose_child)

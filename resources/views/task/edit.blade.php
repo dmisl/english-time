@@ -33,7 +33,7 @@
 
         <div class="ov"></div>
 
-        <div class="declared">
+        <div class="declared" hidden>
             {!! $task->body !!}
         </div>
 
