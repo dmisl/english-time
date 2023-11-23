@@ -57,7 +57,7 @@ task_update.addEventListener('click', function () {
     body += `<div class="answers_div border">`
 
     body += `
-        <h2 class="m-0 p-0">Відповіді</h2>
+        <h2 class="m-0 p-0" style="color: black;">Відповіді</h2>
         <p class="answers_hint small text-muted m-0 p-0">Перетягніть відповіді у відповідні комірки</p>
         <div class="mt-3">
             <div class="answers">
@@ -97,8 +97,6 @@ task_update.addEventListener('click', function () {
 
     body += `</div>`
 
-    console.log(body)
-
     let ov = document.querySelector('.ov')
     ov.innerHTML = body
 
@@ -124,9 +122,36 @@ task_update.addEventListener('click', function () {
 
 })
 
+// EDITING TASK NAME
+let name = document.querySelector('.name')
+let name_hint = document.querySelector('.name_hint')
+let task_name = document.querySelector('.task_name')
+
+name.addEventListener('keyup', function () {
+
+    if(name.innerText.length > 2)
+    {
+
+        task_name.value = name.innerText
+        name_hint.classList.remove('text-danger')
+        name_hint.classList.add('text-muted')
+        name_hint.innerText = `Нажміть щоб змінити назву завдання`
+
+    } else
+    {
+
+        name_hint.classList.remove('text-muted')
+        name_hint.classList.add('text-danger')
+        name_hint.innerText = `Назва завдання не може бути такою короткою`
+
+    }
+
+    check_task()
+
+})
+
 function check_task()
 {
-
     let bolds = document.querySelectorAll('.bold')
     let fill_gaps_hint = document.querySelector('.fill_gaps_hint')
 
@@ -177,14 +202,34 @@ function check_task()
                     deletee.addEventListener('click', image_delete_f)
                 });
 
-                task_update.removeAttribute('hidden')
+                if(name.innerText.length > 2)
+                {
+
+                    task_update.removeAttribute('hidden')
+
+                } else
+                {
+
+                    task_update.setAttribute('hidden', '')
+
+                }
 
             }
 
         } else
         {
 
-            task_update.removeAttribute('hidden')
+            if(name.innerText.length > 2)
+            {
+
+                task_update.removeAttribute('hidden')
+
+            } else
+            {
+
+                task_update.setAttribute('hidden', '')
+
+            }
 
         }
 

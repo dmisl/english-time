@@ -376,7 +376,7 @@ for (let i = 0; i < declared_words.length; i++) {
     let new_word = document.createElement('div')
     new_word.setAttribute('contenteditable', 'true')
     new_word.classList.add('word')
-    new_word.style.cssText = `color: black; text-align: center; border: 1px solid black; border-radius: 10px; width: 49%; height: 40px; overflow: auto;`
+    new_word.style.cssText = `text-align: center; border: 1px solid black; border-radius: 10px; width: 49%; height: 40px; overflow: auto;`
 
     let new_word_p = document.createElement('p')
     new_word_p.style.cssText = `padding-top: 7px; height: 20px;`
@@ -388,7 +388,7 @@ for (let i = 0; i < declared_words.length; i++) {
     let new_translation = document.createElement('div')
     new_translation.setAttribute('contenteditable', 'true')
     new_translation.classList.add('translation')
-    new_translation.style.cssText = `color: black; text-align: center; border: 1px solid black; border-radius: 10px; width: 49%; height: 40px; overflow: auto;`
+    new_translation.style.cssText = `text-align: center; border: 1px solid black; border-radius: 10px; width: 49%; height: 40px; overflow: auto;`
 
     let new_translation_p = document.createElement('p')
     new_translation_p.style.cssText = `padding-top: 7px; height: 20px;`
@@ -462,7 +462,7 @@ task_update.addEventListener('click', function () {
     body += `<div class="answers_div border">`
 
     // ANSWERS HEADER + HINT
-    body += `<h2 class="m-0 p-0">Переклади</h2>`
+    body += `<h2 class="m-0 p-0" style="color: black;">Переклади</h2>`
     body += `<p class="answers_hint small text-muted m-0 p-0">Перетягніть переклади у відповідні комірки</p>`
 
     // ANSWERS
@@ -735,7 +735,7 @@ function check_task()
 
     }
 
-    if(count == translations.length)
+    if(count == translations.length && name.innerText.length > 2)
     {
 
         hint.classList.add('text-muted')
@@ -802,7 +802,7 @@ function add_translation_f()
     let word = document.createElement('div')
     word.setAttribute('contenteditable', 'true')
     word.classList.add('word')
-    word.style.cssText = `color: black; text-align: center; border: 1px solid black; border-radius: 10px; width: 49%; height: 40px; overflow: auto;`
+    word.style.cssText = `text-align: center; border: 1px solid black; border-radius: 10px; width: 49%; height: 40px; overflow: auto;`
 
     parent_div.appendChild(word)
 
@@ -817,7 +817,7 @@ function add_translation_f()
     let translate = document.createElement('div')
     translate.setAttribute('contenteditable', 'true')
     translate.classList.add('translation')
-    translate.style.cssText = `color: black; text-align: center; border: 1px solid black; border-radius: 10px; width: 49%; height: 40px; overflow: auto;`
+    translate.style.cssText = `text-align: center; border: 1px solid black; border-radius: 10px; width: 49%; height: 40px; overflow: auto;`
 
     parent_div.appendChild(translate)
 

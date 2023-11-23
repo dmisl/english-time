@@ -1,6 +1,3 @@
-// VARIABLES AND FUNCTIONS
-let empty_jpg = `{{ asset('storage/icons/empty.jpg') }}`
-
 // ABC IMAGE
 
 function url_image_edit_f()

@@ -59,7 +59,7 @@ finish.addEventListener('click', function ()
     body += `<div class="answers_div border">`
 
     body += `
-        <h2 class="m-0 p-0">Відповіді</h2>
+        <h2 class="m-0 p-0" style="color: black;">Відповіді</h2>
         <p class="answers_hint small text-muted m-0 p-0">Перетягніть відповіді у відповідні комірки</p>
         <div class="mt-3">
             <div class="answers">

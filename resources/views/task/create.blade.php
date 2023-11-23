@@ -217,7 +217,7 @@
                 </div>
 
                 <div class="finish mt-5" role="button" hidden>
-                    <p style="background-color: rgb(158, 255, 103); user-select: none; font-family: 'Inter', sans-serif; display: inline; padding: 10px 20px; border: 1px solid black; border-radius: 10px;">
+                    <p style="color: black; background-color: rgb(158, 255, 103); user-select: none; font-family: 'Inter', sans-serif; display: inline; padding: 10px 20px; border: 1px solid black; border-radius: 10px;">
                         Створити завдання
                     </p>
                 </div>
@@ -275,7 +275,7 @@
             </div>
 
             <div class="finish mt-5" role="button" hidden>
-                <p style="background-color: rgb(158, 255, 103); user-select: none; font-family: 'Inter', sans-serif; display: inline; padding: 10px 20px; border: 1px solid black; border-radius: 10px;">
+                <p style="color: black; background-color: rgb(158, 255, 103); user-select: none; font-family: 'Inter', sans-serif; display: inline; padding: 10px 20px; border: 1px solid black; border-radius: 10px;">
                     Створити завдання
                 </p>
             </div>

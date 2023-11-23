@@ -286,6 +286,7 @@
 
             inputs.forEach(input => {
 
+                if(input.attributes.answer.value.charAt(input.attributes.answer.value.length-1))
                 if(input.attributes.answer.value == input.children[0].innerText)
                 {
 

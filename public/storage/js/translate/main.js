@@ -49,7 +49,7 @@ finish.addEventListener('click', function () {
     body += `<div class="answers_div border">`
 
     // ANSWERS HEADER + HINT
-    body += `<h2 class="m-0 p-0">Переклади</h2>`
+    body += `<h2 class="m-0 p-0" style="color: black;">Переклади</h2>`
     body += `<p class="answers_hint small text-muted m-0 p-0">Перетягніть переклади у відповідні комірки</p>`
 
     // ANSWERS
@@ -738,7 +738,7 @@ function add_translation_f()
     let word = document.createElement('div')
     word.setAttribute('contenteditable', 'true')
     word.classList.add('word')
-    word.style.cssText = `color: black; text-align: center; border: 1px solid black; border-radius: 10px; width: 49%; height: 40px; overflow: auto;`
+    word.style.cssText = `text-align: center; border: 1px solid black; border-radius: 10px; width: 49%; height: 40px; overflow: auto;`
 
     parent_div.appendChild(word)
 
@@ -753,7 +753,7 @@ function add_translation_f()
     let translate = document.createElement('div')
     translate.setAttribute('contenteditable', 'true')
     translate.classList.add('translation')
-    translate.style.cssText = `color: black; text-align: center; border: 1px solid black; border-radius: 10px; width: 49%; height: 40px; overflow: auto;`
+    translate.style.cssText = `text-align: center; border: 1px solid black; border-radius: 10px; width: 49%; height: 40px; overflow: auto;`
 
     parent_div.appendChild(translate)
 
