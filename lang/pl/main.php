@@ -124,6 +124,20 @@ return [
     'correct_answers' => 'Prawidłowe odpowiedzi',
     'made_by' => 'Made by',
 
+    'email' => 'Email',
+    'password' => 'Hasło',
+    'password_confirmation' => 'Potwierdzenie hasła',
+    'remember_me' => 'Zapamiętaj mnie',
+    'authorization' => 'Autoryzacja',
+    'registration' => 'Rejestracja',
+    'login' => 'Login',
+    'user_name' => 'Nazwa użytkownika',
+
+    'find_task' => 'Znajdź zadanie',
+    'change_location_of_tasks' => 'Zmień lokalizację zadań',
+    'placement_of_elements' => 'Rozmieszczenie elementów',
+    'change_location_of_tasks_you' => 'Przenieś zadania',
+
 ]
 
 ?>

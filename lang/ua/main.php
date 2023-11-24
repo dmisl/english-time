@@ -124,6 +124,20 @@ return [
     'correct_answers' => 'Правильні відповіді',
     'made_by' => 'Зроблено',
 
+    'email' => 'Пошта',
+    'password' => 'Пароль',
+    'password_confirmation' => 'Підтвердження пароля',
+    'remember_me' => "Запам'ятати мене",
+    'authorization' => 'Авторизація',
+    'registration' => 'Реєстрація',
+    'login' => 'Логін',
+    'user_name' => "Ім'я користувача",
+
+    'find_task' => 'Знайти завдання',
+    'change_location_of_tasks' => 'Змінити розташування завдань',
+    'placement_of_elements' => 'Розміщення елементів',
+    'change_location_of_tasks_you' => 'Перемістіть завдання',
+
 ]
 
 ?>

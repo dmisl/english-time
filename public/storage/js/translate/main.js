@@ -49,8 +49,8 @@ finish.addEventListener('click', function () {
     body += `<div class="answers_div border">`
 
     // ANSWERS HEADER + HINT
-    body += `<h2 class="m-0 p-0" style="color: black;">Переклади</h2>`
-    body += `<p class="answers_hint small text-muted m-0 p-0">Перетягніть переклади у відповідні комірки</p>`
+    body += `<h2 class="m-0 p-0" style="color: black;">${tr_translate_you}</h2>`
+    body += `<p class="answers_hint small text-muted m-0 p-0">${tr_drag_and_drop_translations_into_the_relevant_cells}</p>`
 
     // ANSWERS
     body += `<div class="mt-3">`
@@ -83,12 +83,12 @@ finish.addEventListener('click', function () {
     // INPUTS DIV
     body += `<div class="inputs_div">`
 
+
     // TABLE WITH WORDS AND INPUTS
     body += `<table>`
-
     body += `<tr>`
-    body += `<td style="font-size: 25px;">Слово</td>`
-    body += `<td style="font-size: 25px;">Переклад</td>`
+    body += `<td style="font-size: 25px;">${tr_word}</td>`
+    body += `<td style="font-size: 25px;">${tr_translation}</td>`
     body += `</tr>`
 
     trs.forEach(tr => {
@@ -131,13 +131,13 @@ function check_task()
         let translation = parent.querySelector('.translation').children[0]
         let add_translation = document.querySelector('.add_translation')
 
-        if(word.innerText == 'Слово' || translation.innerText == `Translation` || word.innerText.length <= 1 || translation.innerText.length <= 1)
+        if(word.innerText == tr_word || translation.innerText == tr_translation || word.innerText.length <= 1 || translation.innerText.length <= 1)
         {
 
-            if(word.innerText == 'Слово' || translation.innerText == `Translation`)
+            if(word.innerText == tr_word || translation.innerText == tr_translation)
             {
 
-                if(word.innerText == 'Слово')
+                if(word.innerText == tr_word)
                 {
 
                     word.parentElement.style.border = `1px solid red`
@@ -149,7 +149,7 @@ function check_task()
 
                 }
 
-                if(translation.innerText == 'Translation')
+                if(translation.innerText == tr_translation)
                 {
 
                     translation.parentElement.style.border = `1px solid red`
@@ -163,7 +163,7 @@ function check_task()
 
                 hint.classList.remove('text-muted')
                 hint.classList.add('text-danger')
-                hint.innerText = `Щоб добавити ще один переклад ви повинні змінити текст слова або перекладу`
+                hint.innerText = tr_to_add_another_translation_you_must_change_the_text_of_the_word_or_translation
 
                 add_translation.removeEventListener('click', add_translation_f)
                 add_translation.removeAttribute('role')
@@ -197,7 +197,7 @@ function check_task()
 
                 hint.classList.remove('text-muted')
                 hint.classList.add('text-danger')
-                hint.innerText = `І слово і переклад повинні бути заповнені`
+                hint.innerText = tr_both_word_and_translation_must_be_filled_in
 
                 add_translation.removeEventListener('click', add_translation_f)
                 add_translation.removeAttribute('role')
@@ -223,7 +223,7 @@ function check_task()
         add_translation.addEventListener('click', add_translation_f)
         add_translation.setAttribute('role', 'button')
 
-        hint.innerText = `Клацніть на цю кнопочку щоб добавити ще один переклад`
+        hint.innerText = tr_click_this_button_to_add_another_translation
         hint.classList.remove('text-danger')
         hint.classList.add('text-muted')
 
@@ -248,7 +248,7 @@ function check_task()
             if(image.children.length == 4)
             {
 
-                image_hint.innerHTML = `Впишіть URL-адрес картинки, або видаліть картинку нажавши цю <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
+                image_hint.innerHTML = `${tr_enter_url_of_the_picture_or_delete_the_picture_by_clicking_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
                 deletes = document.querySelectorAll('.image_delete')
 
                 deletes.forEach(deletee => {
@@ -258,7 +258,7 @@ function check_task()
             } else
             {
 
-                image_hint.innerHTML = `Виберіть картинку з комп'ютера, або видаліть картинку нажавши цю <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
+                image_hint.innerHTML = `${tr_select_picture_from_your_computer_or_delete_picture_clicking_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
                 deletes = document.querySelectorAll('.image_delete')
 
                 deletes.forEach(deletee => {
@@ -270,7 +270,7 @@ function check_task()
         } else
         {
 
-            image_hint.innerHTML = `Щоб видалити картинку нажміть цю <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
+            image_hint.innerHTML = `${tr_to_delete_picture_click_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
             deletes = document.querySelectorAll('.image_delete')
 
             deletes.forEach(deletee => {
@@ -293,7 +293,7 @@ function check_task()
 
         hint.classList.add('text-muted')
         hint.classList.remove('text-danger')
-        hint.innerText = `Клацніть на цю кнопочку щоб добавити ще один переклад`
+        hint.innerText = `${tr_click_this_button_to_add_another_translation}`
 
         add_translation.addEventListener('click', add_translation_f)
         add_translation.setAttribute('role', 'button')
@@ -359,7 +359,7 @@ function url_image_edit_f()
 
                 dis.setAttribute('status', 1)
                 img.style.cssText = `margin: 0 auto; width: 450px; height: 250px; background-image: url('${dis.value}'); background-position: center center; background-size: cover; background-repeat: no-repeat;`
-                hint.innerHTML = `Щоб видалити картинку нажміть цю <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
+                hint.innerHTML = `${tr_to_delete_picture_click_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
 
                 deletes = document.querySelectorAll('.image_delete')
 
@@ -376,7 +376,7 @@ function url_image_edit_f()
 
                 img.style.cssText = `margin: 0 auto; width: 450px; height: 250px; background-image: url('${empty_jpg}'); background-position: center center; background-size: cover; background-repeat: no-repeat;`
                 dis.value = ''
-                dis.setAttribute('placeholder', 'Вставте поправний URL-адрес')
+                dis.setAttribute('placeholder', tr_paste_the_correct_url)
                 dis.setAttribute('status', 2)
 
                 check_task()
@@ -388,7 +388,7 @@ function url_image_edit_f()
 
             img.style.cssText = `margin: 0 auto; width: 450px; height: 250px; background-image: url('${empty_jpg}'); background-position: center center; background-size: cover; background-repeat: no-repeat;`
             dis.value = ''
-            dis.setAttribute('placeholder', 'Вставте поправний URL-адрес')
+            dis.setAttribute('placeholder', tr_paste_the_correct_url)
             dis.setAttribute('status', 2)
 
         }
@@ -432,7 +432,7 @@ function add_image_f()
 
     let image_upload_p = document.createElement('p')
     image_upload_p.style.cssText = `padding: 10px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;`
-    image_upload_p.innerText = `Загрузити з комп'ютера`
+    image_upload_p.innerText = tr_upload_from_computer
 
     image_upload.appendChild(image_upload_p)
 
@@ -445,7 +445,7 @@ function add_image_f()
 
     let image_url_p = document.createElement('p')
     image_url_p.style.cssText = `padding: 10px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;`
-    image_url_p.innerText = `Загрузити з інтернета`
+    image_url_p.innerText = tr_upload_from_internet
 
     image_url.appendChild(image_url_p)
 
@@ -486,7 +486,7 @@ function image_delete_f()
     // ABC IMAGE PARAGRAPH
     let abc_image_p = document.createElement('p')
     abc_image_p.style.cssText = 'padding: 10px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;'
-    abc_image_p.innerText = 'Додати картинку'
+    abc_image_p.innerText = tr_add_image
 
     parent.appendChild(abc_image_p)
 
@@ -524,7 +524,7 @@ function add_upload_image_f()
     image_hint.classList.add('text-muted')
     image_hint.classList.add('p-0')
     image_hint.classList.add('m-0')
-    image_hint.innerHTML = `Щоб видалити картинку нажміть цю <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
+    image_hint.innerHTML = `${tr_to_delete_picture_click_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
 
     parent.appendChild(image_hint)
 
@@ -562,7 +562,7 @@ function add_url_image_f()
     add_image_input.classList.add('form-control')
     add_image_input.classList.add('text-center')
     add_image_input.style.cssText = 'font-size: 20px; padding: 10px 20px;'
-    add_image_input.setAttribute('placeholder', 'Вставте URL-адрес картинки')
+    add_image_input.setAttribute('placeholder', tr_paste_image_url)
 
     add_image_input.focus()
 
@@ -573,7 +573,7 @@ function add_url_image_f()
     add_image_hint.classList.add('text-muted')
     add_image_hint.classList.add('p-0')
     add_image_hint.classList.add('m-0')
-    add_image_hint.innerHTML = `Щоб видалити картинку нажміть цю <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
+    add_image_hint.innerHTML = `${tr_to_delete_picture_click_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
 
     parent.appendChild(add_image_hint)
 
@@ -745,7 +745,7 @@ function add_translation_f()
     // WORD P
     let word_p = document.createElement('p')
     word_p.style.cssText = `padding-top: 7px; height: 20px;`
-    word_p.innerText = `Слово`
+    word_p.innerText = tr_word
 
     word.appendChild(word_p)
 
@@ -760,7 +760,7 @@ function add_translation_f()
     // TRANSLATE P
     let translate_p = document.createElement('p')
     translate_p.style.cssText = `padding-top: 7px; height: 20px;`
-    translate_p.innerText = `Translation`
+    translate_p.innerText = tr_translation
 
     translate.appendChild(translate_p)
 

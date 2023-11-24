@@ -33,13 +33,13 @@
 
                     <div class="border find" style="width: 30%; display: table; border-radius: 10px;">
                         <p style="display: table-cell; vertical-align: middle; padding: 5px;">
-                            Знайти завдання
+                            {{ __('main.find_task') }}
                         </p>
                     </div>
 
                     <div class="border position" data-bs-toggle="modal" data-bs-target="#positionModal" style="width: 30%; display: table; border-radius: 10px; user-select: none;" role="button">
                         <p style="display: table-cell; vertical-align: middle; padding: 5px;">
-                            Розташування завдань
+                            {{ __('main.change_location_of_tasks') }}
                         </p>
                     </div>
 
@@ -47,11 +47,11 @@
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Розміщення елементів</h1>
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">{{ __('main.placement_of_elements') }}</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <h2>Виберіть положення завдань</h2>
+                                    <h2>{{ __('main.change_location_of_tasks_you') }}</h2>
                                     <p class="position_hint"></p>
                                     <div class="positions">
 
@@ -98,18 +98,16 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Закрити</button>
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">{{ __('main.close') }}</button>
                                     <form action="{{ route('task.position') }}" method="POST">
 
                                         <div class="position_change">
 
                                             @csrf
 
-
-
                                         </div>
 
-                                        <button type="submit" class="btn btn-success">Зберегти зміни</button>
+                                        <button type="submit" class="btn btn-success">{{ __('main.save_changes') }}</button>
 
                                     </form>
                                 </div>

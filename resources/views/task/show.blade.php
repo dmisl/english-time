@@ -72,6 +72,7 @@
 
     @endif
 </div>
+<!-- TRANSLATIONS -->
 <script defer>
     let hiddenButton = document.querySelector('#hidden_button')
     let rightAnswers = document.querySelector('#right_answers')
@@ -148,7 +149,7 @@
             check_button.classList.add('btn-primary')
             check_button.classList.add('check')
             check_button.setAttribute('disabled', '')
-            check_button.innerText = `Перевірити`
+            check_button.innerText = `{{ __('main.check') }}`
 
             completedTask.appendChild(check_button)
 
@@ -249,7 +250,7 @@
                         this.appendChild(selected_answer)
                         selected_answer_from.appendChild(this_element)
 
-                        answers_hint.innerText = `Перетягніть переклади у відповідні комірки`
+                        answers_hint.innerText = `{{ __('main.drag_and_drop_translations_into_the_relevant_cells') }}`
                         answers_hint.classList.add('text-muted')
                         answers_hint.classList.remove('text-primary')
                         inputs.forEach(input => {
@@ -269,7 +270,7 @@
                         answers_hint.classList.remove('text-muted')
                         answers_hint.classList.remove('text-primary')
                         answers_hint.classList.add('text-danger')
-                        answers_hint.innerText = `В одній комірці не може бути дві відповіді`
+                        answers_hint.innerText = `{{ __('main.one_cell_cannot_contain_two_answers') }}`
 
                     }
 
@@ -278,7 +279,7 @@
 
                     this.appendChild(selected_answer)
 
-                    answers_hint.innerText = `Перетягніть переклади у відповідні комірки`
+                    answers_hint.innerText = `{{ __('main.drag_and_drop_translations_into_the_relevant_cells') }}`
                     answers_hint.classList.add('text-muted')
                     answers_hint.classList.remove('text-primary')
                     inputs.forEach(input => {
@@ -307,7 +308,7 @@
             function answer_move()
             {
 
-                answers_hint.innerText = `Нажміть на комірку в яку ви хочете перенести відповідь`
+                answers_hint.innerText = `{{ __('main.click_on_the_cell_you_want_to_move_answer_to') }}`
                 answers_hint.classList.add('text-primary')
                 answers_hint.classList.remove('text-muted')
                 selected_answer = this
@@ -372,7 +373,7 @@
             check_button.classList.add('btn-primary')
             check_button.classList.add('check')
             check_button.setAttribute('disabled', '')
-            check_button.innerText = `Перевірити`
+            check_button.innerText = `{{ __('main.check') }}`
 
             completedTask.appendChild(check_button)
 
@@ -491,7 +492,7 @@
 
                     answers_hint.classList.add('text-muted')
                     answers_hint.classList.remove('text-danger')
-                    answers_hint.innerText = `Перетягніть переклади у відповідні комірки`
+                    answers_hint.innerText = `{{ __('main.drag_and_drop_translations_into_the_relevant_cells') }}`
 
                 } else
                 {
@@ -507,14 +508,14 @@
 
                         answers_hint.classList.add('text-muted')
                         answers_hint.classList.remove('text-danger')
-                        answers_hint.innerText = `Перетягніть переклади у відповідні комірки`
+                        answers_hint.innerText = `{{ __('main.drag_and_drop_translations_into_the_relevant_cells') }}`
 
                     } else
                     {
 
                         answers_hint.classList.remove('text-muted')
                         answers_hint.classList.add('text-danger')
-                        answers_hint.innerText = `В одній комірці може бути лише одна відповідь`
+                        answers_hint.innerText = `{{ __('main.one_cell_cannot_contain_two_answers') }}`
 
                     }
 
@@ -574,7 +575,7 @@
             check_button.classList.add('btn-primary')
             check_button.classList.add('check')
             check_button.setAttribute('disabled', '')
-            check_button.innerText = `Перевірити`
+            check_button.innerText = `{{ __('main.check') }}`
 
             completedTask.appendChild(check_button)
 
@@ -675,7 +676,7 @@
                         this.appendChild(selected_answer)
                         selected_answer_from.appendChild(this_element)
 
-                        answers_hint.innerText = `Перетягніть переклади у відповідні комірки`
+                        answers_hint.innerText = `{{ __('main.drag_and_drop_translations_into_the_relevant_cells') }}`
                         answers_hint.classList.add('text-muted')
                         answers_hint.classList.remove('text-primary')
                         inputs.forEach(input => {
@@ -695,7 +696,7 @@
                         answers_hint.classList.remove('text-muted')
                         answers_hint.classList.remove('text-primary')
                         answers_hint.classList.add('text-danger')
-                        answers_hint.innerText = `В одній комірці не може бути дві відповіді`
+                        answers_hint.innerText = `{{ __('main.one_cell_cannot_contain_two_answers') }}`
 
                     }
 
@@ -704,7 +705,7 @@
 
                     this.appendChild(selected_answer)
 
-                    answers_hint.innerText = `Перетягніть переклади у відповідні комірки`
+                    answers_hint.innerText = `{{ __('main.drag_and_drop_translations_into_the_relevant_cells') }}`
                     answers_hint.classList.add('text-muted')
                     answers_hint.classList.remove('text-primary')
                     inputs.forEach(input => {
@@ -733,7 +734,7 @@
             function answer_move()
             {
 
-                answers_hint.innerText = `Нажміть на комірку в яку ви хочете перенести відповідь`
+                answers_hint.innerText = `{{ __('main.click_on_the_cell_you_want_to_move_answer_to') }}`
                 answers_hint.classList.add('text-primary')
                 answers_hint.classList.remove('text-muted')
                 selected_answer = this
@@ -798,7 +799,7 @@
             check_button.classList.add('btn-primary')
             check_button.classList.add('check')
             check_button.setAttribute('disabled', '')
-            check_button.innerText = `Перевірити`
+            check_button.innerText = `{{ __('main.check') }}`
 
             completedTask.appendChild(check_button)
 
@@ -924,7 +925,7 @@
 
                     answers_hint.classList.add('text-muted')
                     answers_hint.classList.remove('text-danger')
-                    answers_hint.innerText = `Перетягніть відповіді у відповідні комірки`
+                    answers_hint.innerText = `{{ __('main.drag_and_drop_translations_into_the_relevant_cells') }}`
 
                 } else
                 {
@@ -940,14 +941,14 @@
 
                         answers_hint.classList.add('text-muted')
                         answers_hint.classList.remove('text-danger')
-                        answers_hint.innerText = `Перетягніть відповіді у відповідні комірки`
+                        answers_hint.innerText = `{{ __('main.drag_and_drop_translations_into_the_relevant_cells') }}`
 
                     } else
                     {
 
                         answers_hint.classList.remove('text-muted')
                         answers_hint.classList.add('text-danger')
-                        answers_hint.innerText = `В одній комірці може бути лише одна відповідь`
+                        answers_hint.innerText = `{{ __('main.one_cell_cannot_contain_two_answers') }}`
 
                     }
 
@@ -991,7 +992,7 @@
             check_button.classList.add('btn-primary')
             check_button.classList.add('check')
             check_button.setAttribute('disabled', '')
-            check_button.innerText = `Перевірити`
+            check_button.innerText = `{{ __('main.check') }}`
 
             completedTask.appendChild(check_button)
 
@@ -1091,7 +1092,7 @@
             check_button.classList.add('btn-primary')
             check_button.classList.add('check')
             check_button.setAttribute('disabled', '')
-            check_button.innerText = `Перевірити`
+            check_button.innerText = `{{ __('main.check') }}`
 
             completedTask.appendChild(check_button)
 
@@ -1189,125 +1190,292 @@
 
     if (task_type.value == 4) {
 
-        let check_button = document.createElement('button')
-        check_button.classList.add('btn')
-        check_button.classList.add('btn-primary')
-        check_button.classList.add('check')
-        check_button.innerText = `Перевірити`
-        check_button.setAttribute('disabled', '')
+        if(mobile)
+        {
 
-        completedTask.appendChild(check_button)
+            if(document.querySelector('.youtube'))
+            {
 
-        check_button.addEventListener('click', function () {
+                document.querySelector('.youtube').style.width = '100%'
+                document.querySelector('.youtube').style.height = '250px'
 
-            let right_count = 0
+            }
 
-            let picked = document.querySelectorAll('.picked')
+            // CREATING CHECK BUTTON + EVENTLISTENER
+            check_button = document.createElement('button')
+            check_button.classList.add('btn')
+            check_button.classList.add('btn-primary')
+            check_button.classList.add('check')
+            check_button.innerText = `{{ __('tr_check') }}`
+            check_button.setAttribute('disabled', '')
+    
+            completedTask.appendChild(check_button)
+    
+            check_button.addEventListener('click', function () {
+    
+                let right_count = 0
+    
+                let picked = document.querySelectorAll('.picked')
+    
+                picked.forEach(element => {
+    
+                    if(element.classList.contains('right'))
+                    {
+    
+                        right_count = right_count + 1
+    
+                        element.style.backgroundColor = `rgb(137, 255, 101)`
+    
+                    } else
+                    {
+    
+                        element.style.backgroundColor = `rgb(255, 101, 101)`
+    
+                    }
+    
+                });
+    
+                let asd = (100 * right_count) / tasks.length
+                let percentage = Math.round(asd)
+    
+                rightAnswers.innerHTML = `{{ __('main.correct_answers') }}: ${percentage}%`
+                document.querySelector('.task_percentage').value = percentage
+    
+                task_text.value = completedTask.innerHTML
+    
+    
+                window.setTimeout(() => {
+    
+                    hiddenButton.click()
+    
+                }, 3000);
+    
+            })
+    
+            let tasks = document.querySelectorAll('.abc_task')
 
-            picked.forEach(element => {
-
-                if(element.classList.contains('right'))
+            tasks.forEach(task => {
+                
+                if(task.children.length == 3)
                 {
 
-                    right_count = right_count + 1
-
-                    element.style.backgroundColor = `rgb(137, 255, 101)`
-
-                } else
-                {
-
-                    element.style.backgroundColor = `rgb(255, 101, 101)`
+                    task.children[1].style.width = '100%'
+                    task.children[1].style.height = '250px'
 
                 }
 
             });
+    
+            function check_if_chosen()
+            {
+    
+                let picked = document.querySelectorAll('.picked')
+    
+                if(picked.length == tasks.length)
+                {
+    
+                    check_button.removeAttribute('disabled')
+    
+                } else
+                {
+    
+                    check_button.setAttribute('disabled', '')
+    
+                }
+    
+            }
+    
+            function choose_answer()
+            {
+    
+                let children = this.parentElement.children
+    
+                for (let i = 0; i < children.length; i++) {
+    
+                    children[i].style.backgroundColor = ``
+                    children[i].style.color = ``
+                    children[i].classList.remove('picked')
+    
+                }
+    
+                this.classList.add('picked')
+                this.style.backgroundColor = `#88b5fc`
+                this.style.color = `black`
+    
+                check_if_chosen()
+    
+            }
+    
+            let answers = document.querySelectorAll('.abc_ans')
+    
+            answers.forEach(answer => {
+    
+                answer.addEventListener('click', choose_answer)
+                answer.setAttribute('role', 'button')
 
-            let asd = (100 * right_count) / tasks.length
-            let percentage = Math.round(asd)
+                answer.style.width = "100%"
+                answer.style.height = '50px'
 
-            rightAnswers.innerHTML = `{{ __('main.correct_answers') }}: ${percentage}%`
-            document.querySelector('.task_percentage').value = percentage
+                answer.children[0].style.width = '50px'
+                answer.children[0].children[0].style.fontSize = '20px'
 
-            task_text.value = completedTask.innerHTML
+                answer.children[1].children[0].style.fontSize = '18px'
+    
+            });
 
-
-            window.setTimeout(() => {
-
-                hiddenButton.click()
-
-            }, 3000);
-
-        })
-
-        let tasks = document.querySelectorAll('.abc_task')
-
-        function check_if_chosen()
+        } else
         {
 
-            let picked = document.querySelectorAll('.picked')
-
-            if(picked.length == tasks.length)
+            let check_button = document.createElement('button')
+            check_button.classList.add('btn')
+            check_button.classList.add('btn-primary')
+            check_button.classList.add('check')
+            check_button.innerText = `{{ __('main.check') }}`
+            check_button.setAttribute('disabled', '')
+    
+            completedTask.appendChild(check_button)
+    
+            check_button.addEventListener('click', function () {
+    
+                let right_count = 0
+    
+                let picked = document.querySelectorAll('.picked')
+    
+                picked.forEach(element => {
+    
+                    if(element.classList.contains('right'))
+                    {
+    
+                        right_count = right_count + 1
+    
+                        element.style.backgroundColor = `rgb(137, 255, 101)`
+    
+                    } else
+                    {
+    
+                        element.style.backgroundColor = `rgb(255, 101, 101)`
+    
+                    }
+    
+                });
+    
+                let asd = (100 * right_count) / tasks.length
+                let percentage = Math.round(asd)
+    
+                rightAnswers.innerHTML = `{{ __('main.correct_answers') }}: ${percentage}%`
+                document.querySelector('.task_percentage').value = percentage
+    
+                task_text.value = completedTask.innerHTML
+    
+    
+                window.setTimeout(() => {
+    
+                    hiddenButton.click()
+    
+                }, 3000);
+    
+            })
+    
+            let tasks = document.querySelectorAll('.abc_task')
+    
+            function check_if_chosen()
             {
-
-                check_button.removeAttribute('disabled')
-
-            } else
-            {
-
-                check_button.setAttribute('disabled', '')
-
+    
+                let picked = document.querySelectorAll('.picked')
+    
+                if(picked.length == tasks.length)
+                {
+    
+                    check_button.removeAttribute('disabled')
+    
+                } else
+                {
+    
+                    check_button.setAttribute('disabled', '')
+    
+                }
+    
             }
+    
+            function choose_answer()
+            {
+    
+                let children = this.parentElement.children
+    
+                for (let i = 0; i < children.length; i++) {
+    
+                    children[i].style.backgroundColor = ``
+                    children[i].style.color = ``
+                    children[i].classList.remove('picked')
+    
+                }
+    
+                this.classList.add('picked')
+                this.style.backgroundColor = `#88b5fc`
+                this.style.color = `black`
+    
+                check_if_chosen()
+    
+            }
+    
+            let answers = document.querySelectorAll('.abc_ans')
+    
+            answers.forEach(answer => {
+    
+                answer.addEventListener('click', choose_answer)
+                answer.setAttribute('role', 'button')
+    
+            });
 
         }
 
-        function choose_answer()
-        {
-
-            let children = this.parentElement.children
-
-            for (let i = 0; i < children.length; i++) {
-
-                children[i].style.backgroundColor = ``
-                children[i].style.color = ``
-                children[i].classList.remove('picked')
-
-            }
-
-            this.classList.add('picked')
-            this.style.backgroundColor = `#88b5fc`
-            this.style.color = `black`
-
-            check_if_chosen()
-
-        }
-
-        let answers = document.querySelectorAll('.abc_ans')
-
-        answers.forEach(answer => {
-
-            answer.addEventListener('click', choose_answer)
-            answer.setAttribute('role', 'button')
-
-        });
 
     }
 
     if (task_type.value == 5) {
 
-        document.querySelectorAll('tr').forEach(e => {
-            e.classList.add('border')
-        })
-        document.querySelectorAll('td').forEach(e => {
-            e.classList.add('border')
-        })
-        document.querySelectorAll('th').forEach(e => {
-            e.classList.add('border')
-        })
-        let table = document.querySelector('table')
-        document.querySelector('table').style.width = "100%"
-        let completed_task = document.querySelector('#completed_task')
-        completed_task.classList.add('text-start')
-        completed_task.classList.add('w-100')
+        if(mobile)
+        {
+
+            document.querySelectorAll('iframe').forEach(e => {
+                e.classList.add('w-100')
+            })
+
+            document.querySelectorAll('tr').forEach(e => {
+                e.classList.add('border')
+            })
+            document.querySelectorAll('td').forEach(e => {
+                e.classList.add('border')
+            })
+            document.querySelectorAll('th').forEach(e => {
+                e.classList.add('border')
+            })
+            let table = document.querySelector('table')
+            document.querySelector('table').style.width = "100%"
+            let completed_task = document.querySelector('#completed_task')
+            completed_task.classList.add('text-start')
+            comple
+
+        } else
+        {
+
+            document.querySelectorAll('tr').forEach(e => {
+                e.classList.add('border')
+            })
+            document.querySelectorAll('td').forEach(e => {
+                e.classList.add('border')
+            })
+            document.querySelectorAll('th').forEach(e => {
+                e.classList.add('border')
+            })
+            let table = document.querySelector('table')
+            document.querySelector('table').style.width = "100%"
+            let completed_task = document.querySelector('#completed_task')
+            completed_task.classList.add('text-start')
+            completed_task.classList.add('w-100')
+
+        }
+
 
     }
 </script>

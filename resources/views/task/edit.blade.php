@@ -53,6 +53,31 @@
 
 </x-form>
 
+{{-- TRANSLATIONS --}}
+<script>
+
+    let tr_to_delete_picture_click_this = `{{ __('main.to_delete_picture_click_this') }}`
+    let tr_buttonchik = `{{ __('main.buttonchik') }}`
+    let tr_paste_the_correct_url = `{{ __('main.paste_the_correct_url') }}`
+    let tr_upload_from_computer = `{{ __('main.upload_from_computer') }}`
+    let tr_upload_from_internet = `{{ __('main.upload_from_internet') }}`
+    let tr_add_image = `{{ __('main.add_image') }}`
+    let tr_paste_image_url = `{{ __('main.paste_image_url') }}`
+    let tr_to_delete_one_of_the_translations_press_it = `{{ __('main.to_delete_one_of_the_translations_press_it') }}`
+    let tr_add_words_for_translation = `{{ __('main.add_words_for_translation') }}`
+    let tr_click_this_button_to_add_another_translation = `{{ __('main.click_this_button_to_add_another_translation') }}`
+    let tr_translate_you = `{{ __('main.translate_you') }}`
+    let tr_drag_and_drop_translations_into_the_relevant_cells = `{{ __('main.drag_and_drop_translations_into_the_relevant_cells') }}`
+    let tr_word = `{{ __('main.word') }}`
+    let tr_translation = `{{ __('main.translation') }}`
+    let tr_click_to_change_task_name = `{{ __('main.click_to_change_task_name') }}`
+    let tr_task_name_cannot_be_so_short = `{{ __('main.task_name_cannot_be_so_short') }}`
+    let tr_to_add_another_translation_you_must_change_the_text_of_the_word_or_translation = `{{ __('main.to_add_another_translation_you_must_change_the_text_of_the_word_or_translation') }}`
+    let tr_both_word_and_translation_must_be_filled_in = `{{ __('main.both_word_and_translation_must_be_filled_in') }}`
+    let tr_enter_url_of_the_picture_or_delete_the_picture_by_clicking_this = `{{ __('main.enter_url_of_the_picture_or_delete_the_picture_by_clicking_this') }}`
+    let tr_select_picture_from_your_computer_or_delete_picture_clicking_this = `{{ __('main.select_picture_from_your_computer_or_delete_picture_clicking_this') }}`
+
+</script>
 {{-- SOME USEFUL FUNCTIONS --}}
 <script>
 

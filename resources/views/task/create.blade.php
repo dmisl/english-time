@@ -12,7 +12,7 @@
             <div class="col-12 col-md-6 offset-md-3">
                 <x-card>
                     <x-card-body class="border-bottom">
-                        <h3>{{ __('main.create_a_task') }}</h3>
+                        <h3>{{ __('main.create_task') }}</h3>
                     </x-card-body>
                     <x-card-body>
                         <x-form-item>
@@ -90,6 +90,22 @@
     let tr_word = `{{ __('main.word') }}`
     let tr_back = `{{ __('main.back') }}`
     let tr_add_answers_to_insert = `{{ __('main.add_answers_to_insert') }}`
+    let tr_add_image = `{{ __('main.add_image') }}`
+    let tr_add_words_for_translation = `{{ __('main.add_words_for_translation') }}`
+    let tr_to_delete_one_of_the_translations_press_it = `{{ __('main.to_delete_one_of_the_translations_press_it') }}`
+    let tr_click_this_button_to_add_another_translation = `{{ __('main.click_this_button_to_add_another_translation') }}`
+    let tr_create_task = `{{ __('main.create_task') }}`
+    let tr_translate_you = `{{ __('main.translate_you') }}`
+    let tr_drag_and_drop_translations_into_the_relevant_cells = `{{ __('main.drag_and_drop_translations_into_the_relevant_cells') }}`
+    let tr_to_add_another_translation_you_must_change_the_text_of_the_word_or_translation = `{{ __('main.to_add_another_translation_you_must_change_the_text_of_the_word_or_translation') }}`
+    let tr_both_word_and_translation_must_be_filled_in = `{{ __('main.both_word_and_translation_must_be_filled_in') }}`
+    let tr_enter_url_of_the_picture_or_delete_the_picture_by_clicking_this = `{{ __('main.enter_url_of_the_picture_or_delete_the_picture_by_clicking_this') }}`
+    let tr_buttonchik = `{{ __('main.buttonchik') }}`
+    let tr_to_delete_picture_click_this = `{{ __('main.to_delete_picture_click_this') }}`
+    let tr_paste_the_correct_url = `{{ __('main.paste_the_correct_url') }}`
+    let tr_upload_from_computer = `{{ __('main.upload_from_computer') }}`
+    let tr_upload_from_internet = `{{ __('main.upload_from_internet') }}`
+    let tr_paste_image_url = `{{ __('main.paste_image_url') }}`
 
     let scriptTranslationss = "{{ asset('storage/js/translation.js') }}"
     let scriptFillGapss = "{{ asset('storage/js/fillGaps/fillGaps.js') }}"
@@ -193,14 +209,14 @@
 
                         <div class="add_image" role="button" style="display: table; margin: 0 auto; background-image: url('{{ asset('storage/icons/bg.jpg') }}'); background-position: center; background-size: cover; background-repeat: no-repeat; border: 1px solid black; border-radius: 10px; color: black;">
 
-                            <p style="padding: 10px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;">Додати картинку</p>
+                            <p style="padding: 10px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;">${tr_add_image}</p>
 
                         </div>
 
                     </div>
 
-                    <p style="font-size: 25px; padding-top: 20px; padding-bottom: 0; margin-bottom: 0;">Додайте слова до перекладу</p>
-                    <p class="deleting_hint small text-muted p-0 m-0">Для видалення одного з перекладів зажміть його</p>
+                    <p style="font-size: 25px; padding-top: 20px; padding-bottom: 0; margin-bottom: 0;">${tr_add_words_for_translation}</p>
+                    <p class="deleting_hint small text-muted p-0 m-0">${tr_to_delete_one_of_the_translations_press_it}</p>
 
                     <div class="add_translation" role="button" style="user-select: none; display: table; width: 250px; margin: 0 auto; overflow: hidden; margin-top: 20px; height: 40px; border: 1px solid black; border-radius: 10px;">
 
@@ -210,7 +226,7 @@
 
                     <p class="adding_hint small text-muted p-0 m-0">
 
-                        Клацніть на цю кнопочку щоб добавити ще один переклад
+                        ${tr_click_this_button_to_add_another_translation}
 
                     </p>
 
@@ -218,7 +234,7 @@
 
                 <div class="finish mt-5" role="button" hidden>
                     <p style="color: black; background-color: rgb(158, 255, 103); user-select: none; font-family: 'Inter', sans-serif; display: inline; padding: 10px 20px; border: 1px solid black; border-radius: 10px;">
-                        Створити завдання
+                        ${tr_create_task}
                     </p>
                 </div>
 

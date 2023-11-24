@@ -54,7 +54,7 @@ return [
     'you_have_not_yet_created_an_task_in_this_lesson' => 'You have not yet created an task in this lesson',
     'delete_a_task' => 'Delete a task',
     'you_really_want_to_delete_a_task_named' => 'You really want to delete a task named',
-    'create_a_task' => 'Create a task',
+    'create_task' => 'Create task',
     'task_name' => 'Task name',
     'select_a_task_type' => 'Select a task type',
     'translate' => 'Translate',
@@ -67,7 +67,6 @@ return [
     'go_to_the_next_step' => 'Go to the next step',
     'add_answers_to_insert' => 'Add answers to insert',
     'add_a_question' => 'Add a question',
-    'create_a_task' => 'Create a task',
     'answers' => 'Answers',
     'add_translation_fields_automatically' => 'Add translation fields automatically?',
     'translation' => 'Translation',
@@ -124,6 +123,46 @@ return [
     'correct_answers' => 'Correct answers',
     'made_by' => 'Made by',
     
+    'email' => 'Email',
+    'password' => 'Password',
+    'password_confirmation' => 'Password confirmation',
+    'remember_me' => 'Remember me',
+    'authorization' => 'Authorization',
+    'registration' => 'Registration',
+    'login' => 'Login',
+    'user_name' => 'User name',
+    
+    'find_task' => 'Find task',
+    'change_location_of_tasks' => 'Change location of tasks',
+    'placement_of_elements' => 'Placement of elements',
+    'change_location_of_tasks_you' => 'Change location of tasks',
+
+    'add_image' => 'Add image',
+    'add_words_for_translation' => 'Add words for translation',
+    'to_delete_one_of_the_translations_press_it' => 'To delete one of the translations, press it',
+    'click_this_button_to_add_another_translation' => 'Click this button to add another translation',
+
+    'translate_you' => 'Translate',
+    'drag_and_drop_translations_into_the_relevant_cells' => 'Drag and drop translations into the relevant cells',
+    'to_add_another_translation_you_must_change_the_text_of_the_word_or_translation' => 'To add another translation, you must change the text of the word or translation',
+    'both_word_and_translation_must_be_filled_in' => 'Both word and translation must be filled in',
+
+    'enter_url_of_the_picture_or_delete_the_picture_by_clicking_this' => 'Enter the URL of the picture, or delete the picture by clicking this',
+    'select_picture_from_your_computer_or_delete_picture_clicking_this' => 'Select a picture from your computer, or delete a picture by clicking this',
+    'to_delete_picture_click_this' => 'To delete a picture, click this',
+    'paste_the_correct_url' => 'Paste the correct URL',
+    'upload_from_computer' => 'Upload from a computer',
+    'upload_from_internet' => 'Upload from internet',
+    'paste_image_url' => 'Paste image URL',
+
+    'one_cell_cannot_contain_two_answers' => 'One cell cannot contain two answers',
+    'click_on_the_cell_you_want_to_move_answer_to' => 'Click on the cell you want to move the answer to',
+
+    'click_to_change_task_name' => 'Click to change task name',
+    'task_name_cannot_be_so_short' => 'Task name cannot be so short',
+
+    'buttonchik' => 'BUTTON',
+
 ]
 
 ?>
