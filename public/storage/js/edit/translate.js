@@ -116,6 +116,7 @@ function add_image_f()
 
 }
 
+
 function image_delete_f()
 {
 
@@ -137,7 +138,6 @@ function image_delete_f()
         parent.children[0].remove()
 
     }
-
     parent.setAttribute('role', 'button')
     parent.style.cssText = `display: table; margin: 0 auto; background-image: url("${bg_jpg}"); background-position: center; background-size: cover; background-repeat: no-repeat; border: 1px solid black; border-radius: 10px; color: black;`
 
@@ -353,7 +353,7 @@ if(declared.children[0].children.length == 3)
     let add_image = document.createElement('div')
     add_image.classList.add('add_image')
     add_image.setAttribute('role', 'button')
-    add_image.style.cssText = `display: table; margin: 0 auto; background-image: url('{{ asset('storage/icons/bg.jpg') }}'); background-position: center; background-size: cover; background-repeat: no-repeat; border: 1px solid black; border-radius: 10px; color: black;`
+    add_image.style.cssText = `display: table; margin: 0 auto; background-image: url('${bg_jpg}'); background-position: center; background-size: cover; background-repeat: no-repeat; border: 1px solid black; border-radius: 10px; color: black;`
 
     add_image_div.appendChild(add_image)
 

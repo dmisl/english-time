@@ -88,151 +88,406 @@
 
     let width = 0
 
+    let mobile = false
+
+    @if(str_contains(strtolower($_SERVER["HTTP_USER_AGENT"]), 'mobile'))
+        mobile = true
+    @endif
+
     if (task_type.value == 1)
     {
 
-        let answers = document.querySelectorAll('.answer')
-        let inputs = document.querySelectorAll('.input')
-
-        let answers_hint = document.querySelector('.answers_hint')
-
-        // CREATING CHECK BUTTON
-        let check_button = document.createElement('button')
-        check_button.classList.add('btn')
-        check_button.classList.add('btn-primary')
-        check_button.setAttribute('disabled', '')
-        check_button.innerText = `Перевірити`
-
-        completedTask.appendChild(check_button)
-
-        // ADDING EVENTLISTENER TO CHECK BUTTON
-        check_button.addEventListener('click', function () {
-
-            let right_count = 0
-
-            inputs.forEach(input => {
-
-                if(input.attributes.answer.value == input.children[0].innerText)
-                {
-
-                    right_count = right_count + 1
-
-                } else
-                {
-
-                    input.style.backgroundColor = ''
-                    input.classList.add('bg-danger')
-
-                }
-
-            });
-
-            // HIDING ANSWERS DIV
-            document.querySelector('.answers_div').setAttribute('hidden', '')
-
-            // COUNTING RIGHT ANSWERS PERCENTAGE
-            let asd = (100 * right_count) / inputs.length
-            let percentage = Math.round(asd)
-            rightAnswers.innerHTML = `{{ __('main.correct_answers') }}: ${percentage}%`
-            task_percentage.value = percentage
-            task_text.value = completedTask.innerHTML
-
-            setTimeout(function() {
-
-                hiddenButton.click()
-
-            }, 3000);
-
-        })
-
-        function check_inputs()
+        if(mobile)
         {
 
-            let count = 0
+            let image = completedTask.children[1].children[0]
 
-            inputs.forEach(input => {
-
-                // CHECKING INPUT`S WIDTH
-                if(input.children.length == 0)
-                {
-
-                    input.style.width = '200px'
-                    input.style.top = '4px'
-
-                } else
-                {
-
-                    input.style.width = ''
-                    input.style.top = ''
-
-                    count = count + 1
-
-                }
-
-            });
-
-            if(count == inputs.length)
+            if(image.style.backgroundImage.length > 1)
             {
 
-                check_button.removeAttribute('disabled')
+                image.style.width = '90%'
+                image.style.height = '200px'
 
             }
 
-        }
+            document.querySelector('.answers_div').style.width = '90%'
 
-        check_inputs()
+            let answers = document.querySelectorAll('.answer')
 
-        answers.forEach(answer => {
-            answer.addEventListener('dragstart', dragStart)
-            answer.addEventListener('dragend', dragEnd)
-            answer.setAttribute('draggable', 'true')
-        });
+            answers.forEach(answer => {
 
-        let dragItem = null;
+                answer.style.fontSize = '17px'
 
-        function dragStart() {
-            dragItem = this;
-            setTimeout(() => this.className = 'invisible', 0)
-        }
+            });
 
-        function dragEnd() {
-            this.className = 'answer'
-            dragItem = null;
-        }
+            let inputs = document.querySelectorAll('.input')
 
-        function dragOver(e) {
-            e.preventDefault()
-        }
+            inputs.forEach(input => {
 
-        function dragEnter() {}
+                input.style.height = '37.5px'
+                input.style.padding = '3px 10px'
 
-        function dragLeave() {
+            });
 
-        }
+            let words = document.querySelectorAll('.word')
 
-        function dragDrop() {
+            words.forEach(word => {
 
-            // IF INPUT IS EMPTY JUST ADD NEW ANSWER
-            if(this.children.length == 0)
+                word.style.fontSize = '17px'
+
+            });
+
+            document.querySelector('tr').children[0].style.fontSize = '20px'
+            document.querySelector('tr').children[1].style.fontSize = '20px'
+
+            document.querySelector('.inputs_div').style.width = '90%'
+
+            // CREATING CHECK BUTTON
+            let check_button = document.createElement('button')
+            check_button.classList.add('btn')
+            check_button.classList.add('btn-primary')
+            check_button.classList.add('check')
+            check_button.setAttribute('disabled', '')
+            check_button.innerText = `Перевірити`
+
+            completedTask.appendChild(check_button)
+
+            // ADDING EVENTLISTENER TO CHECK BUTTON
+            check_button.addEventListener('click', function () {
+
+                let right_count = 0
+
+                inputs.forEach(input => {
+
+                    if(input.attributes.answer.value == input.children[0].innerText)
+                    {
+
+                        right_count = right_count + 1
+
+                    } else
+                    {
+
+                        input.style.backgroundColor = ''
+                        input.classList.add('bg-danger')
+
+                    }
+
+                });
+
+                // HIDING ANSWERS DIV
+                document.querySelector('.answers_div').setAttribute('hidden', '')
+
+                // COUNTING RIGHT ANSWERS PERCENTAGE
+                let asd = (100 * right_count) / inputs.length
+                let percentage = Math.round(asd)
+                rightAnswers.innerHTML = `{{ __('main.correct_answers') }}: ${percentage}%`
+                task_percentage.value = percentage
+                task_text.value = completedTask.innerHTML
+
+                setTimeout(function() {
+
+                    hiddenButton.click()
+
+                }, 3000);
+
+            })
+
+            function check_inputs()
             {
 
-                this.append(dragItem);
+                let count = 0
 
-                answers_hint.classList.add('text-muted')
-                answers_hint.classList.remove('text-danger')
-                answers_hint.innerText = `Перетягніть переклади у відповідні комірки`
+                inputs.forEach(input => {
 
-            } else
-            {
-                // IF INPUT IS FULL AND ELEMENT COME FROM ANOTHER IMPUT SWITCH THEM
-                if(dragItem.parentElement.classList.contains('input'))
+                    // CHECKING INPUT`S WIDTH
+                    if(input.children.length == 0)
+                    {
+
+                        input.style.top = '4px'
+                        input.style.width = '60%'
+
+                    } else
+                    {
+
+                        input.style.width = ''
+                        input.style.top = ''
+
+                        count = count + 1
+
+                    }
+
+                });
+
+                if(count == inputs.length)
                 {
 
-                    let this_value = this.innerText
-                    let parentElement_value = dragItem.innerText
+                    check_button.removeAttribute('disabled')
 
-                    this.children[0].innerText = parentElement_value
-                    dragItem.innerText = this_value
+                }
+
+            }
+
+            check_inputs()
+
+            // ADDING EVENTLISTENER TO ANSWERS
+            let answers_hint = document.querySelector('.answers_hint')
+
+            let selected_answer
+            let selected_answer_from
+
+            function input_get_f()
+            {
+
+                if(this.children.length == 1)
+                {
+
+                    if(selected_answer_from.tagName == 'LABEL')
+                    {
+
+                        let this_element = this.children[0]
+
+                        this.appendChild(selected_answer)
+                        selected_answer_from.appendChild(this_element)
+
+                        answers_hint.innerText = `Перетягніть переклади у відповідні комірки`
+                        answers_hint.classList.add('text-muted')
+                        answers_hint.classList.remove('text-primary')
+                        inputs.forEach(input => {
+
+                            input.style.border = ''
+                            input.removeEventListener('click', input_get_f)
+
+                        });
+
+                        check_inputs()
+
+                        selected_answer = ''
+
+                    } else
+                    {
+
+                        answers_hint.classList.remove('text-muted')
+                        answers_hint.classList.remove('text-primary')
+                        answers_hint.classList.add('text-danger')
+                        answers_hint.innerText = `В одній комірці не може бути дві відповіді`
+
+                    }
+
+                } else
+                {
+
+                    this.appendChild(selected_answer)
+
+                    answers_hint.innerText = `Перетягніть переклади у відповідні комірки`
+                    answers_hint.classList.add('text-muted')
+                    answers_hint.classList.remove('text-primary')
+                    inputs.forEach(input => {
+
+                        input.style.border = ''
+                        input.removeEventListener('click', input_get_f)
+
+                    });
+
+                    check_inputs()
+
+                    selected_answer = ''
+
+                }
+
+                answers = document.querySelectorAll('.answer')
+
+                answers.forEach(answer => {
+
+                    answer.addEventListener('click', answer_move)
+
+                });
+
+            }
+
+            function answer_move()
+            {
+
+                answers_hint.innerText = `Нажміть на комірку в яку ви хочете перенести відповідь`
+                answers_hint.classList.add('text-primary')
+                answers_hint.classList.remove('text-muted')
+                selected_answer = this
+                selected_answer_from = this.parentElement
+
+                answers.forEach(answer => {
+
+                    if(answer.parentElement.tagName == 'LABEL')
+                    {
+
+                        answer.removeEventListener('click', answer_move)
+
+                    }
+
+                });
+
+                if(selected_answer.parentElement.tagName == 'LABEL')
+                {
+
+                    inputs.forEach(input => {
+
+                        input.style.border = '1px solid red'
+                        input.addEventListener('click', input_get_f)
+
+                    });
+
+                    selected_answer.parentElement.removeEventListener('click', input_get_f)
+                    selected_answer.parentElement.style.border = ''
+
+                } else
+                {
+
+                    inputs.forEach(input => {
+
+                        input.style.border = '1px solid red'
+                        input.addEventListener('click', input_get_f)
+
+                    });
+
+                }
+
+
+            }
+
+            answers.forEach(answer => {
+
+                answer.addEventListener('click', answer_move)
+
+            });
+
+        } else
+        {
+
+            let answers = document.querySelectorAll('.answer')
+            let inputs = document.querySelectorAll('.input')
+
+            let answers_hint = document.querySelector('.answers_hint')
+
+            // CREATING CHECK BUTTON
+            let check_button = document.createElement('button')
+            check_button.classList.add('btn')
+            check_button.classList.add('btn-primary')
+            check_button.classList.add('check')
+            check_button.setAttribute('disabled', '')
+            check_button.innerText = `Перевірити`
+
+            completedTask.appendChild(check_button)
+
+            // ADDING EVENTLISTENER TO CHECK BUTTON
+            check_button.addEventListener('click', function () {
+
+                let right_count = 0
+
+                inputs.forEach(input => {
+
+                    if(input.attributes.answer.value == input.children[0].innerText)
+                    {
+
+                        right_count = right_count + 1
+
+                    } else
+                    {
+
+                        input.style.backgroundColor = ''
+                        input.classList.add('bg-danger')
+
+                    }
+
+                });
+
+                // HIDING ANSWERS DIV
+                document.querySelector('.answers_div').setAttribute('hidden', '')
+
+                // COUNTING RIGHT ANSWERS PERCENTAGE
+                let asd = (100 * right_count) / inputs.length
+                let percentage = Math.round(asd)
+                rightAnswers.innerHTML = `{{ __('main.correct_answers') }}: ${percentage}%`
+                task_percentage.value = percentage
+                task_text.value = completedTask.innerHTML
+
+                setTimeout(function() {
+
+                    hiddenButton.click()
+
+                }, 3000);
+
+            })
+
+            function check_inputs()
+            {
+
+                let count = 0
+
+                inputs.forEach(input => {
+
+                    // CHECKING INPUT`S WIDTH
+                    if(input.children.length == 0)
+                    {
+
+                        input.style.width = '200px'
+                        input.style.top = '4px'
+
+                    } else
+                    {
+
+                        input.style.width = ''
+                        input.style.top = ''
+
+                        count = count + 1
+
+                    }
+
+                });
+
+                if(count == inputs.length)
+                {
+
+                    check_button.removeAttribute('disabled')
+
+                }
+
+            }
+
+            check_inputs()
+
+            answers.forEach(answer => {
+                answer.addEventListener('dragstart', dragStart)
+                answer.addEventListener('dragend', dragEnd)
+                answer.setAttribute('draggable', 'true')
+            });
+
+            let dragItem = null;
+
+            function dragStart() {
+                dragItem = this;
+                setTimeout(() => this.className = 'invisible', 0)
+            }
+
+            function dragEnd() {
+                this.className = 'answer'
+                dragItem = null;
+            }
+
+            function dragOver(e) {
+                e.preventDefault()
+            }
+
+            function dragEnter() {}
+
+            function dragLeave() {
+
+            }
+
+            function dragDrop() {
+
+                // IF INPUT IS EMPTY JUST ADD NEW ANSWER
+                if(this.children.length == 0)
+                {
+
+                    this.append(dragItem);
 
                     answers_hint.classList.add('text-muted')
                     answers_hint.classList.remove('text-danger')
@@ -240,10 +495,159 @@
 
                 } else
                 {
+                    // IF INPUT IS FULL AND ELEMENT COME FROM ANOTHER IMPUT SWITCH THEM
+                    if(dragItem.parentElement.classList.contains('input'))
+                    {
 
-                    answers_hint.classList.remove('text-muted')
-                    answers_hint.classList.add('text-danger')
-                    answers_hint.innerText = `В одній комірці може бути лише одна відповідь`
+                        let this_value = this.innerText
+                        let parentElement_value = dragItem.innerText
+
+                        this.children[0].innerText = parentElement_value
+                        dragItem.innerText = this_value
+
+                        answers_hint.classList.add('text-muted')
+                        answers_hint.classList.remove('text-danger')
+                        answers_hint.innerText = `Перетягніть переклади у відповідні комірки`
+
+                    } else
+                    {
+
+                        answers_hint.classList.remove('text-muted')
+                        answers_hint.classList.add('text-danger')
+                        answers_hint.innerText = `В одній комірці може бути лише одна відповідь`
+
+                    }
+
+                }
+
+                check_inputs()
+
+            }
+
+            inputs.forEach(input => {
+                input.addEventListener('dragover', dragOver);
+                input.addEventListener('dragenter', dragEnter);
+                input.addEventListener('dragleave', dragLeave);
+                input.addEventListener('drop', dragDrop);
+            });
+
+        }
+
+
+    }
+
+    if (task_type.value == 2)
+    {
+
+        if(mobile)
+        {
+
+            let image = completedTask.children[1]
+
+            if(image.style.backgroundImage.length > 1)
+            {
+
+                image.style.width = '90%'
+                image.style.height = '200px'
+
+            }
+
+            document.querySelector('.answers_div').style.width = '90%'
+
+            let answers = document.querySelectorAll('.answer')
+
+            let inputs = document.querySelectorAll('.input')
+
+            let words = document.querySelectorAll('.word')
+
+            words.forEach(word => {
+
+                word.style.fontSize = '17px'
+
+            });
+
+            document.querySelector('.text_div').style.width = '90%'
+
+            // CREATING CHECK BUTTON
+            let check_button = document.createElement('button')
+            check_button.classList.add('btn')
+            check_button.classList.add('btn-primary')
+            check_button.classList.add('check')
+            check_button.setAttribute('disabled', '')
+            check_button.innerText = `Перевірити`
+
+            completedTask.appendChild(check_button)
+
+            // ADDING EVENTLISTENER TO CHECK BUTTON
+            check_button.addEventListener('click', function () {
+
+                let right_count = 0
+
+                inputs.forEach(input => {
+
+                    if(input.attributes.answer.value.slice(-1) == ' ')
+                    {
+
+                        input.attributes.answer.value = input.attributes.answer.value.slice(0, input.attributes.answer.value.length-1)
+
+                    }
+
+                    if(input.attributes.answer.value == input.children[0].innerText)
+                    {
+
+                        right_count = right_count + 1
+                        input.style.backgroundColor = ''
+                        input.classList.add('bg-success')
+
+                    } else
+                    {
+
+                        input.style.backgroundColor = ''
+                        input.classList.add('bg-danger')
+
+                    }
+
+                });
+
+                // HIDING ANSWERS DIV
+                document.querySelector('.answers_div').setAttribute('hidden', '')
+
+                // COUNTING RIGHT ANSWERS PERCENTAGE
+                let asd = (100 * right_count) / inputs.length
+                let percentage = Math.round(asd)
+                rightAnswers.innerHTML = `{{ __('main.correct_answers') }}: ${percentage}%`
+                task_percentage.value = percentage
+                task_text.value = completedTask.innerHTML
+
+                setTimeout(function() {
+
+                    hiddenButton.click()
+
+                }, 3000);
+
+            })
+
+            function check_inputs()
+            {
+
+                let count = 0
+
+                inputs.forEach(input => {
+
+                    // CHECKING INPUT`S WIDTH
+                    if(input.children.length == 1)
+                    {
+
+                        count = count + 1
+
+                    }
+
+                });
+
+                if(count == inputs.length)
+                {
+
+                    check_button.removeAttribute('disabled')
 
                 }
 
@@ -251,161 +655,272 @@
 
             check_inputs()
 
-        }
+            // ADDING EVENTLISTENER TO ANSWERS
+            let answers_hint = document.querySelector('.answers_hint')
 
-        inputs.forEach(input => {
-            input.addEventListener('dragover', dragOver);
-            input.addEventListener('dragenter', dragEnter);
-            input.addEventListener('dragleave', dragLeave);
-            input.addEventListener('drop', dragDrop);
-        });
+            let selected_answer
+            let selected_answer_from
 
-    }
-
-    if (task_type.value == 2)
-    {
-
-        let answers = document.querySelectorAll('.answer')
-        let inputs = document.querySelectorAll('.input')
-
-        let answers_hint = document.querySelector('.answers_hint')
-
-        // CREATING CHECK BUTTON
-        let check_button = document.createElement('button')
-        check_button.classList.add('btn')
-        check_button.classList.add('btn-primary')
-        check_button.setAttribute('disabled', '')
-        check_button.innerText = `Перевірити`
-
-        completedTask.appendChild(check_button)
-
-        // ADDING EVENTLISTENER TO CHECK BUTTON
-        check_button.addEventListener('click', function () {
-
-            let right_count = 0
-
-            inputs.forEach(input => {
-
-                if(input.attributes.answer.value.charAt(input.attributes.answer.value.length-1))
-                if(input.attributes.answer.value == input.children[0].innerText)
-                {
-
-                    right_count = right_count + 1
-
-                } else
-                {
-
-                    input.style.backgroundColor = ''
-                    input.classList.add('bg-danger')
-
-                }
-
-            });
-
-            // HIDING ANSWERS DIV
-            document.querySelector('.answers_div').setAttribute('hidden', '')
-
-            // COUNTING RIGHT ANSWERS PERCENTAGE
-            let asd = (100 * right_count) / inputs.length
-            let percentage = Math.round(asd)
-            rightAnswers.innerHTML = `{{ __('main.correct_answers') }}: ${percentage}%`
-            task_percentage.value = percentage
-            task_text.value = completedTask.innerHTML
-
-            setTimeout(function() {
-
-                hiddenButton.click()
-
-            }, 3000);
-
-        })
-
-        function check_inputs()
-        {
-
-            let count = 0
-
-            inputs.forEach(input => {
-
-                // CHECKING INPUT`S WIDTH
-                if(input.children.length == 0)
-                {
-
-                    input.style.width = '200px'
-
-                } else
-                {
-
-                    input.style.width = ''
-
-                    count = count + 1
-
-                }
-
-            });
-
-            if(count == inputs.length)
+            function input_get_f()
             {
 
-                check_button.removeAttribute('disabled')
+                if(this.children.length == 1)
+                {
+
+                    if(selected_answer_from.tagName == 'LABEL')
+                    {
+
+                        let this_element = this.children[0]
+
+                        this.appendChild(selected_answer)
+                        selected_answer_from.appendChild(this_element)
+
+                        answers_hint.innerText = `Перетягніть переклади у відповідні комірки`
+                        answers_hint.classList.add('text-muted')
+                        answers_hint.classList.remove('text-primary')
+                        inputs.forEach(input => {
+
+                            input.style.border = ''
+                            input.removeEventListener('click', input_get_f)
+
+                        });
+
+                        check_inputs()
+
+                        selected_answer = ''
+
+                    } else
+                    {
+
+                        answers_hint.classList.remove('text-muted')
+                        answers_hint.classList.remove('text-primary')
+                        answers_hint.classList.add('text-danger')
+                        answers_hint.innerText = `В одній комірці не може бути дві відповіді`
+
+                    }
+
+                } else
+                {
+
+                    this.appendChild(selected_answer)
+
+                    answers_hint.innerText = `Перетягніть переклади у відповідні комірки`
+                    answers_hint.classList.add('text-muted')
+                    answers_hint.classList.remove('text-primary')
+                    inputs.forEach(input => {
+
+                        input.style.border = ''
+                        input.removeEventListener('click', input_get_f)
+
+                    });
+
+                    check_inputs()
+
+                    selected_answer = ''
+
+                }
+
+                answers = document.querySelectorAll('.answer')
+
+                answers.forEach(answer => {
+
+                    answer.addEventListener('click', answer_move)
+
+                });
 
             }
 
-        }
-
-        check_inputs()
-
-        answers.forEach(answer => {
-            answer.addEventListener('dragstart', dragStart)
-            answer.addEventListener('dragend', dragEnd)
-            answer.setAttribute('draggable', 'true')
-        });
-
-        let dragItem = null;
-
-        function dragStart() {
-            dragItem = this;
-            setTimeout(() => this.className = 'invisible', 0)
-        }
-
-        function dragEnd() {
-            this.className = 'answer'
-            dragItem = null;
-        }
-
-        function dragOver(e) {
-            e.preventDefault()
-        }
-
-        function dragEnter() {}
-
-        function dragLeave() {
-
-        }
-
-        function dragDrop() {
-
-            // IF INPUT IS EMPTY JUST ADD NEW ANSWER
-            if(this.children.length == 0)
+            function answer_move()
             {
 
-                this.append(dragItem);
+                answers_hint.innerText = `Нажміть на комірку в яку ви хочете перенести відповідь`
+                answers_hint.classList.add('text-primary')
+                answers_hint.classList.remove('text-muted')
+                selected_answer = this
+                selected_answer_from = this.parentElement
 
-                answers_hint.classList.add('text-muted')
-                answers_hint.classList.remove('text-danger')
-                answers_hint.innerText = `Перетягніть відповіді у відповідні комірки`
+                answers.forEach(answer => {
 
-            } else
-            {
-                // IF INPUT IS FULL AND ELEMENT COME FROM ANOTHER IMPUT SWITCH THEM
-                if(dragItem.parentElement.classList.contains('input'))
+                    if(answer.parentElement.tagName == 'LABEL')
+                    {
+
+                        answer.removeEventListener('click', answer_move)
+
+                    }
+
+                });
+
+                if(selected_answer.parentElement.tagName == 'LABEL')
                 {
 
-                    let this_value = this.innerText
-                    let parentElement_value = dragItem.innerText
+                    inputs.forEach(input => {
 
-                    this.children[0].innerText = parentElement_value
-                    dragItem.innerText = this_value
+                        input.style.border = '1px solid red'
+                        input.addEventListener('click', input_get_f)
+
+                    });
+
+                    selected_answer.parentElement.removeEventListener('click', input_get_f)
+                    selected_answer.parentElement.style.border = ''
+
+                } else
+                {
+
+                    inputs.forEach(input => {
+
+                        input.style.border = '1px solid red'
+                        input.addEventListener('click', input_get_f)
+
+                    });
+
+                }
+
+
+            }
+
+            answers.forEach(answer => {
+
+                answer.addEventListener('click', answer_move)
+
+            });
+
+        } else
+        {
+
+            let answers = document.querySelectorAll('.answer')
+            let inputs = document.querySelectorAll('.input')
+
+            let answers_hint = document.querySelector('.answers_hint')
+
+            // CREATING CHECK BUTTON
+            let check_button = document.createElement('button')
+            check_button.classList.add('btn')
+            check_button.classList.add('btn-primary')
+            check_button.classList.add('check')
+            check_button.setAttribute('disabled', '')
+            check_button.innerText = `Перевірити`
+
+            completedTask.appendChild(check_button)
+
+            // ADDING EVENTLISTENER TO CHECK BUTTON
+            check_button.addEventListener('click', function () {
+
+                let right_count = 0
+
+                inputs.forEach(input => {
+
+                    if(input.attributes.answer.value.slice(-1) == ' ')
+                    {
+
+                        input.attributes.answer.value = input.attributes.answer.value.slice(0, input.attributes.answer.value.length-1)
+
+                    }
+
+                    if(input.attributes.answer.value == input.children[0].innerText)
+                    {
+
+                        right_count = right_count + 1
+                        input.style.backgroundColor = ''
+                        input.classList.add('bg-success')
+
+                    } else
+                    {
+
+                        input.style.backgroundColor = ''
+                        input.classList.add('bg-danger')
+
+                    }
+
+                });
+
+                // HIDING ANSWERS DIV
+                document.querySelector('.answers_div').setAttribute('hidden', '')
+
+                // COUNTING RIGHT ANSWERS PERCENTAGE
+                let asd = (100 * right_count) / inputs.length
+                let percentage = Math.round(asd)
+                rightAnswers.innerHTML = `{{ __('main.correct_answers') }}: ${percentage}%`
+                task_percentage.value = percentage
+                task_text.value = completedTask.innerHTML
+
+                setTimeout(function() {
+
+                    hiddenButton.click()
+
+                }, 3000);
+
+            })
+
+            function check_inputs()
+            {
+
+                let count = 0
+
+                inputs.forEach(input => {
+
+                    // CHECKING INPUT`S WIDTH
+                    if(input.children.length == 0)
+                    {
+
+                        input.style.width = '200px'
+
+                    } else
+                    {
+
+                        input.style.width = ''
+
+                        count = count + 1
+
+                    }
+
+                });
+
+                if(count == inputs.length)
+                {
+
+                    check_button.removeAttribute('disabled')
+
+                }
+
+            }
+
+            check_inputs()
+
+            answers.forEach(answer => {
+                answer.addEventListener('dragstart', dragStart)
+                answer.addEventListener('dragend', dragEnd)
+                answer.setAttribute('draggable', 'true')
+            });
+
+            let dragItem = null;
+
+            function dragStart() {
+                dragItem = this;
+                setTimeout(() => this.className = 'invisible', 0)
+            }
+
+            function dragEnd() {
+                this.className = 'answer'
+                dragItem = null;
+            }
+
+            function dragOver(e) {
+                e.preventDefault()
+            }
+
+            function dragEnter() {}
+
+            function dragLeave() {
+
+            }
+
+            function dragDrop() {
+
+                // IF INPUT IS EMPTY JUST ADD NEW ANSWER
+                if(this.children.length == 0)
+                {
+
+                    this.append(dragItem);
 
                     answers_hint.classList.add('text-muted')
                     answers_hint.classList.remove('text-danger')
@@ -413,122 +928,262 @@
 
                 } else
                 {
+                    // IF INPUT IS FULL AND ELEMENT COME FROM ANOTHER IMPUT SWITCH THEM
+                    if(dragItem.parentElement.classList.contains('input'))
+                    {
 
-                    answers_hint.classList.remove('text-muted')
-                    answers_hint.classList.add('text-danger')
-                    answers_hint.innerText = `В одній комірці може бути лише одна відповідь`
+                        let this_value = this.innerText
+                        let parentElement_value = dragItem.innerText
+
+                        this.children[0].innerText = parentElement_value
+                        dragItem.innerText = this_value
+
+                        answers_hint.classList.add('text-muted')
+                        answers_hint.classList.remove('text-danger')
+                        answers_hint.innerText = `Перетягніть відповіді у відповідні комірки`
+
+                    } else
+                    {
+
+                        answers_hint.classList.remove('text-muted')
+                        answers_hint.classList.add('text-danger')
+                        answers_hint.innerText = `В одній комірці може бути лише одна відповідь`
+
+                    }
 
                 }
 
+                check_inputs()
+
             }
 
-            check_inputs()
+            inputs.forEach(input => {
+                input.addEventListener('dragover', dragOver);
+                input.addEventListener('dragenter', dragEnter);
+                input.addEventListener('dragleave', dragLeave);
+                input.addEventListener('drop', dragDrop);
+            });
 
         }
-
-        inputs.forEach(input => {
-            input.addEventListener('dragover', dragOver);
-            input.addEventListener('dragenter', dragEnter);
-            input.addEventListener('dragleave', dragLeave);
-            input.addEventListener('drop', dragDrop);
-        });
 
     }
 
     if (task_type.value == 3) {
 
-        // CREATING CHECK BUTTON AND ADDING EVENTLISTENER
-        let check_button = document.createElement('button')
-        check_button.classList.add('btn')
-        check_button.classList.add('btn-primary')
-        check_button.setAttribute('disabled', '')
-        check_button.innerText = `Перевірити`
-
-        completedTask.appendChild(check_button)
-
-        // CHECKING INPUTS AND ADDING EVENTLISTENERS
-
-        let inputs = document.querySelectorAll('.fi_input')
-
-        function finish_checking()
+        if(mobile)
         {
 
-            let right = 0
+            let image = completedTask.children[1]
 
-            inputs.forEach(input => {
+            if(image.style.backgroundImage.length > 1)
+            {
 
-                input.setAttribute('value', input.value)
+                image.style.width = '90%'
+                image.style.height = '200px'
 
-                if(input.value.toLowerCase() == input.attributes.answer.value.toLowerCase())
+            }
+
+            document.querySelector('.text_div').style.width = '90%'
+
+            // REATING CHECK BUTTON AND ADDING EVENTLISTENER
+            let check_button = document.createElement('button')
+            check_button.classList.add('btn')
+            check_button.classList.add('btn-primary')
+            check_button.classList.add('check')
+            check_button.setAttribute('disabled', '')
+            check_button.innerText = `Перевірити`
+
+            completedTask.appendChild(check_button)
+
+            // CHECKING INPUTS AND ADDING EVENTLISTENERS
+
+            let inputs = document.querySelectorAll('.fi_input')
+
+            function finish_checking()
+            {
+
+                let right = 0
+
+                inputs.forEach(input => {
+
+                    input.value = input.value.trim()
+                    input.attributes.answer.value = input.attributes.answer.value.trim()
+
+                    input.setAttribute('value', input.value)
+
+                    if(input.value.toLowerCase() == input.attributes.answer.value.toLowerCase())
+                    {
+
+                        right = right + 1
+                        input.style.backgroundColor = 'green'
+
+                    } else
+                    {
+
+                        input.style.backgroundColor = 'red'
+
+                    }
+
+                })
+
+                this.removeEventListener('click', finish_checking)
+                this.setAttribute('disabled', '')
+
+                // COUNTING RIGHT ANSWERS PERCENTAGE
+                let asd = (100 * right) / inputs.length
+                let percentage = Math.round(asd)
+                rightAnswers.innerHTML = `{{ __('main.correct_answers') }}: ${percentage}%`
+                task_percentage.value = percentage
+                task_text.value = completedTask.innerHTML
+
+                setTimeout(function() {
+
+                    hiddenButton.click()
+
+                }, 3000);
+
+            }
+
+            function check_task()
+            {
+
+                let count = 0
+
+                inputs.forEach(input => {
+
+                    if(input.value.length >= 2)
+                    {
+
+                        count = count + 1
+
+                    }
+
+                });
+
+                if(count == inputs.length)
                 {
 
-                    right = right + 1
-                    input.style.backgroundColor = 'green'
+                    check_button.removeAttribute('disabled')
+                    check_button.addEventListener('click', finish_checking)
 
                 } else
                 {
 
-                    input.style.backgroundColor = 'red'
+                    check_button.setAttribute('disabled', '')
+                    check_button.removeEventListener('click', finish_checking)
 
                 }
-
-            })
-
-            this.removeEventListener('click', finish_checking)
-            this.setAttribute('disabled', '')
-
-            // COUNTING RIGHT ANSWERS PERCENTAGE
-            let asd = (100 * right) / inputs.length
-            let percentage = Math.round(asd)
-            rightAnswers.innerHTML = `{{ __('main.correct_answers') }}: ${percentage}%`
-            task_percentage.value = percentage
-            task_text.value = completedTask.innerHTML
-
-            setTimeout(function() {
-
-                hiddenButton.click()
-
-            }, 3000);
-
-        }
-
-        function check_task()
-        {
-
-            let count = 0
-
-            inputs.forEach(input => {
-
-                if(input.value.length >= 2)
-                {
-
-                    count = count + 1
-
-                }
-
-            });
-
-            if(count == inputs.length)
-            {
-
-                check_button.removeAttribute('disabled')
-                check_button.addEventListener('click', finish_checking)
-
-            } else
-            {
-
-                check_button.setAttribute('disabled', '')
-                check_button.removeEventListener('click', finish_checking)
 
             }
 
+            inputs.forEach(input => {
+
+                input.addEventListener('keyup', check_task)
+
+            });
+
+        } else
+        {
+
+            // CREATING CHECK BUTTON AND ADDING EVENTLISTENER
+            let check_button = document.createElement('button')
+            check_button.classList.add('btn')
+            check_button.classList.add('btn-primary')
+            check_button.classList.add('check')
+            check_button.setAttribute('disabled', '')
+            check_button.innerText = `Перевірити`
+
+            completedTask.appendChild(check_button)
+
+            // CHECKING INPUTS AND ADDING EVENTLISTENERS
+
+            let inputs = document.querySelectorAll('.fi_input')
+
+            function finish_checking()
+            {
+
+                let right = 0
+
+                inputs.forEach(input => {
+
+                    input.value = input.value.trim()
+                    input.attributes.answer.value = input.attributes.answer.value.trim()
+
+                    input.setAttribute('value', input.value)
+
+                    if(input.value.toLowerCase() == input.attributes.answer.value.toLowerCase())
+                    {
+
+                        right = right + 1
+                        input.style.backgroundColor = 'green'
+
+                    } else
+                    {
+
+                        input.style.backgroundColor = 'red'
+
+                    }
+
+                })
+
+                this.removeEventListener('click', finish_checking)
+                this.setAttribute('disabled', '')
+
+                // COUNTING RIGHT ANSWERS PERCENTAGE
+                let asd = (100 * right) / inputs.length
+                let percentage = Math.round(asd)
+                rightAnswers.innerHTML = `{{ __('main.correct_answers') }}: ${percentage}%`
+                task_percentage.value = percentage
+                task_text.value = completedTask.innerHTML
+
+                setTimeout(function() {
+
+                    hiddenButton.click()
+
+                }, 3000);
+
+            }
+
+            function check_task()
+            {
+
+                let count = 0
+
+                inputs.forEach(input => {
+
+                    if(input.value.length >= 2)
+                    {
+
+                        count = count + 1
+
+                    }
+
+                });
+
+                if(count == inputs.length)
+                {
+
+                    check_button.removeAttribute('disabled')
+                    check_button.addEventListener('click', finish_checking)
+
+                } else
+                {
+
+                    check_button.setAttribute('disabled', '')
+                    check_button.removeEventListener('click', finish_checking)
+
+                }
+
+            }
+
+            inputs.forEach(input => {
+
+                input.addEventListener('keyup', check_task)
+
+            });
+
         }
 
-        inputs.forEach(input => {
-
-            input.addEventListener('keyup', check_task)
-
-        });
 
     }
 
@@ -638,6 +1293,7 @@
     }
 
     if (task_type.value == 5) {
+
         document.querySelectorAll('tr').forEach(e => {
             e.classList.add('border')
         })
@@ -652,6 +1308,7 @@
         let completed_task = document.querySelector('#completed_task')
         completed_task.classList.add('text-start')
         completed_task.classList.add('w-100')
+
     }
 </script>
 @endsection
