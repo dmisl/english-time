@@ -84,7 +84,7 @@ return [
     'you_have_successfully_created_a_course_called' => 'You have successfully created a course called',
     'you_have_successfully_changed_the_course_name_to' => 'You have successfully changed the course name to',
     'you_have_successfully_deleted_the_course_called' => 'You have successfully deleted the course called',
-    'all_lessons_and_all_assignments_that_were_in_it' => 'all lessons, and all assignments that were in it',
+    'all_lessons_and_all_assignments_that_were_in_it' => 'all lessons, and all tasks that were in it',
     'you_have_successfully_activated_a_user_with_ID' => 'You have successfully activated a user with ID',
     'you_have_successfully_denied_a_user_with_ID' => 'You have successfully denied a user with ID',
     'you_have_successfully_granted_the_user_with_ID' => 'You have successfully granted the user with ID',
@@ -139,7 +139,7 @@ return [
 
     'add_image' => 'Add image',
     'add_words_for_translation' => 'Add words for translation',
-    'to_delete_one_of_the_translations_press_it' => 'To delete one of the translations, press this',
+    'to_delete_one_of_the_translations_press_it' => 'To delete one of the translations, press it',
     'click_this_button_to_add_another_translation' => 'Click this button to add another translation',
 
     'translate_you' => 'Translate',
@@ -217,9 +217,9 @@ return [
     'course_includes' => 'Course includes',
     'course_includes_desc' => 'Perfectly tailored to you.',
 
-    'individual_lessons' => '<span style="font-size: 27px;">Individual lessons</span><br>with a teacher and lessons on a convenient learning platform',
-    'personalized_program' => '<span style="font-size: 27px;">Personalized Program</span><br>considers your interests, ensuring effective, tailored learning for you',
-    'interactive_learning' => '<span style="font-size: 27px;">Interactive Learning</span><br>ensures 100% class practice with communicative methods for<br><span style="background-color: white; color: #FF234B; padding: 0 3px; border-radius: 5px; user-select: none;" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="'.'Active speaking'.' in English language learning refers to the active participation of students in verbal communication. It involves using words, expressions, and grammatical structures actively to express thoughts and ideas. During active speaking exercises, students engage in dialogues, discuss topics, and participate in role-playing scenarios. This approach fosters the development of speaking skills, expands vocabulary, and improves pronunciation. Active speaking, whether in the classroom or during language learning activities, creates a dynamic and practical experience in using the English language, enhancing overall language proficiency."><b>active speaking</b></span>',
+    'individual_lessons' => '<span class="course_includes_header" style="font-size: 27px;">Individual lessons</span><br>with a teacher and lessons on a convenient learning platform',
+    'personalized_program' => '<span class="course_includes_header" style="font-size: 27px;">Personalized Program</span><br>considers your interests, ensuring effective, tailored learning for you',
+    'interactive_learning' => '<span class="course_includes_header" style="font-size: 27px;">Interactive Learning</span><br>ensures 100% class practice with communicative methods for<br><span style="background-color: white; color: #FF234B; padding: 0 3px; border-radius: 5px; user-select: none;" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="'.'Active speaking'.' in English language learning refers to the active participation of students in verbal communication. It involves using words, expressions, and grammatical structures actively to express thoughts and ideas. During active speaking exercises, students engage in dialogues, discuss topics, and participate in role-playing scenarios. This approach fosters the development of speaking skills, expands vocabulary, and improves pronunciation. Active speaking, whether in the classroom or during language learning activities, creates a dynamic and practical experience in using the English language, enhancing overall language proficiency."><b>active speaking</b></span>',
 
 ]
 

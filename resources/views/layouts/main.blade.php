@@ -366,6 +366,30 @@
             transition: 0.5s;
         }
 
+        @media only screen and (min-width: 576px)
+        {
+            .join_now
+            {
+                color: yellow;
+            }
+        }
+
+        @media only screen and (min-width: 768px)
+        {
+            .join_now
+            {
+                color: red;
+            }
+        }
+
+        @media only screen and (min-width: 992px)
+        {
+            .join_now
+            {
+                color: black;
+            }
+        }
+
     </style>
     {{-- BOOTSTRAP --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.bundle.min.js" integrity="sha512-ToL6UYWePxjhDQKNioSi4AyJ5KkRxY+F1+Fi7Jgh0Hp5Kk2/s8FD7zusJDdonfe5B00Qw+B8taXxF6CFLnqNCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
