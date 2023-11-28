@@ -19,7 +19,7 @@ function url_image_edit_f()
 
                 dis.setAttribute('status', 1)
                 img.style.cssText = `width: 450px; height: 250px; background-image: url('${dis.value}'); background-position: center center; background-size: cover; background-repeat: no-repeat;`
-                hint.innerHTML = `Щоб видалити картинку нажміть цю <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
+                hint.innerHTML = `${tr_to_delete_picture_click_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
                 deletes = document.querySelectorAll('.image_delete')
 
                 deletes.forEach(deletee => {
@@ -33,7 +33,7 @@ function url_image_edit_f()
 
                 img.style.cssText = `width: 450px; height: 250px; background-image: url('${empty_jpg}'); background-position: center center; background-size: cover; background-repeat: no-repeat;`
                 dis.value = ''
-                dis.setAttribute('placeholder', 'Вставте поправний URL-адрес')
+                dis.setAttribute('placeholder', tr_paste_the_correct_url)
                 dis.setAttribute('status', 2)
 
                 check_task()
@@ -45,7 +45,7 @@ function url_image_edit_f()
 
             img.style.cssText = `width: 450px; height: 250px; background-image: url('${empty_jpg}'); background-position: center center; background-size: cover; background-repeat: no-repeat;`
             dis.value = ''
-            dis.setAttribute('placeholder', 'Вставте поправний URL-адрес')
+            dis.setAttribute('placeholder', tr_paste_the_correct_url)
             dis.setAttribute('status', 2)
 
         }
@@ -89,7 +89,7 @@ function add_image_f()
 
     let image_upload_p = document.createElement('p')
     image_upload_p.style.cssText = `padding: 10px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;`
-    image_upload_p.innerText = `Загрузити з комп'ютера`
+    image_upload_p.innerText = tr_upload_from_computer
 
     image_upload.appendChild(image_upload_p)
 
@@ -102,7 +102,7 @@ function add_image_f()
 
     let image_url_p = document.createElement('p')
     image_url_p.style.cssText = `padding: 10px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;`
-    image_url_p.innerText = `Загрузити з інтернета`
+    image_url_p.innerText = tr_upload_from_internet
 
     image_url.appendChild(image_url_p)
 
@@ -143,7 +143,7 @@ function image_delete_f()
     // ABC IMAGE PARAGRAPH
     let abc_image_p = document.createElement('p')
     abc_image_p.style.cssText = 'padding: 10px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;'
-    abc_image_p.innerText = 'Додати картинку'
+    abc_image_p.innerText = tr_add_image
 
     parent.appendChild(abc_image_p)
 
@@ -181,7 +181,7 @@ function add_upload_image_f()
     image_hint.classList.add('text-muted')
     image_hint.classList.add('p-0')
     image_hint.classList.add('m-0')
-    image_hint.innerHTML = `Щоб видалити картинку нажміть цю <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
+    image_hint.innerHTML = `${tr_to_delete_picture_click_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
 
     parent.appendChild(image_hint)
 
@@ -217,7 +217,7 @@ function add_url_image_f()
     add_image_input.classList.add('form-control')
     add_image_input.classList.add('text-center')
     add_image_input.style.cssText = 'font-size: 20px; padding: 10px 20px;'
-    add_image_input.setAttribute('placeholder', 'Вставте URL-адрес картинки')
+    add_image_input.setAttribute('placeholder', tr_paste_image_url)
 
     add_image_input.focus()
 
@@ -228,7 +228,7 @@ function add_url_image_f()
     add_image_hint.classList.add('text-muted')
     add_image_hint.classList.add('p-0')
     add_image_hint.classList.add('m-0')
-    add_image_hint.innerHTML = `Щоб видалити картинку нажміть цю <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
+    add_image_hint.innerHTML = `${tr_to_delete_picture_click_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
 
     parent.appendChild(add_image_hint)
 
@@ -279,7 +279,7 @@ function check_task()
         let image_hint = image.querySelector('p')
 
         // START CHECKING IF THERE ISSET DEFAULT ELEMENTS
-        if(answers.children.length > 2 && text.children[0].innerText !== 'Додати запитання')
+        if(answers.children.length > 2 && text.children[0].innerText !== tr_add_question)
         {
 
             text_hint.classList.remove('text-muted')
@@ -287,10 +287,10 @@ function check_task()
             text_hint.classList.add('text-decoration-underline')
 
             // CHECK IF TEXT`S BEEN CHANGED
-            if(text.children[0].innerText == 'Нажміть щоб відредагувати')
+            if(text.children[0].innerText == tr_click_to_edit)
             {
 
-                text_hint.innerText = 'Змініть запитання'
+                text_hint.innerText = tr_change_question
 
             } else
             {
@@ -301,7 +301,7 @@ function check_task()
                 if(text.children[0].innerText.length < 6)
                 {
 
-                    text_hint.innerText = 'Запитання не може бути таким коротким'
+                    text_hint.innerText = tr_question_cannot_be_short
 
                 } else
                 {
@@ -325,7 +325,7 @@ function check_task()
                         choose_hint.classList.remove('text-muted')
                         choose_hint.classList.add('text-danger')
                         choose_hint.classList.add('text-decoration-underline')
-                        choose_hint.innerHTML = 'Ви повинні вибрати правильну відповідь'
+                        choose_hint.innerHTML = tr_you_must_choose_the_correct_answer
 
                     } else
                     {
@@ -345,7 +345,7 @@ function check_task()
                                 if(image.children.length == 4)
                                 {
 
-                                    image_hint.innerHTML = `Впишіть URL-адрес картинки, або видаліть картинку нажавши цю <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
+                                    image_hint.innerHTML = `${tr_enter_url_of_the_picture_or_delete_the_picture_by_clicking_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
                                     deletes = document.querySelectorAll('.image_delete')
 
                                     deletes.forEach(deletee => {
@@ -355,7 +355,7 @@ function check_task()
                                 } else
                                 {
 
-                                    image_hint.innerHTML = `Виберіть картинку з комп'ютера, або видаліть картинку нажавши цю <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
+                                    image_hint.innerHTML = `${tr_select_picture_from_your_computer_or_delete_picture_clicking_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
                                     deletes = document.querySelectorAll('.image_delete')
 
                                     deletes.forEach(deletee => {
@@ -367,7 +367,7 @@ function check_task()
                             } else
                             {
 
-                                image_hint.innerHTML = `Щоб видалити картинку нажміть цю <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
+                                image_hint.innerHTML = `${tr_to_delete_picture_click_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
 
                                 deletes = document.querySelectorAll('.image_delete')
 
@@ -382,7 +382,7 @@ function check_task()
                                 if(youtube.children.length !== 1)
                                 {
 
-                                    if(youtube.children[1].innerText.length == 49 && youtube.children[2].attributes.src.value !== `https://www.youtube.com/embed/Ib1W1nZbzKc?si=9zg2ACet01abtLaK`)
+                                    if(youtube.children[1].innerText.length == tr_to_delete_video_click_this.length+tr_buttonchik.length+1 && youtube.children[2].attributes.src.value !== `https://www.youtube.com/embed/Ib1W1nZbzKc?si=9zg2ACet01abtLaK`)
                                     {
 
                                         count = count + 1
@@ -390,7 +390,7 @@ function check_task()
                                     } else
                                     {
 
-                                        youtube.children[1].innerHTML = `Для того аби видалити відео - нажміть цю <b class="text-danger delete_video user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
+                                        youtube.children[1].innerHTML = `${tr_to_delete_video_click_this} <b class="text-danger delete_video user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
                                         document.querySelector('.delete_video').addEventListener('click', youtube_delete)
 
                                     }
@@ -412,7 +412,7 @@ function check_task()
                             if(youtube.children.length !== 1)
                             {
 
-                                if(youtube.children[1].innerText.length == 49 && youtube.children[2].attributes.src.value !== `https://www.youtube.com/embed/Ib1W1nZbzKc?si=9zg2ACet01abtLaK`)
+                                if(youtube.children[1].innerText.length == tr_to_delete_video_click_this.length+tr_buttonchik.length+1 && youtube.children[2].attributes.src.value !== `https://www.youtube.com/embed/Ib1W1nZbzKc?si=9zg2ACet01abtLaK`)
                                 {
 
                                     count = count + 1
@@ -420,7 +420,7 @@ function check_task()
                                 } else
                                 {
 
-                                    youtube.children[1].innerHTML = `Для того аби видалити відео - нажміть цю <b class="text-danger delete_video user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
+                                    youtube.children[1].innerHTML = `${tr_to_delete_video_click_this} <b class="text-danger delete_video user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
                                     document.querySelector('.delete_video').addEventListener('click', youtube_delete)
 
                                 }
@@ -489,7 +489,7 @@ function add_answer_f()
         this.parentElement.parentElement.children[1].classList.remove('text-muted')
         this.parentElement.parentElement.children[1].classList.add('text-danger')
         this.parentElement.parentElement.children[1].classList.add('text-decoration-underline')
-        this.parentElement.parentElement.children[1].innerHTML = 'В завданні повинно бути принаймі 2 відповіді'
+        this.parentElement.parentElement.children[1].innerHTML = tr_the_task_must_contain_2_answers
 
     }
 
@@ -568,7 +568,7 @@ function start_deleting()
             this.parentElement.parentElement.children[1].classList.remove('text-muted')
             this.parentElement.parentElement.children[1].classList.add('text-danger')
             this.parentElement.parentElement.children[1].classList.add('text-decoration-underline')
-            this.parentElement.parentElement.children[1].innerHTML = 'В завданні повинно бути принаймі 2 відповіді'
+            this.parentElement.parentElement.children[1].innerHTML = tr_the_task_must_contain_2_answers
 
         }
 
@@ -634,7 +634,7 @@ function abc_choose_f()
     // SHOWING HINT
     let abc_choose = this
     let abc_choose_hint = this.parentElement.children[1]
-    abc_choose_hint.innerHTML = 'нажміть на правильну відповідь'
+    abc_choose_hint.innerHTML = tr_click_on_the_correct_answer
 
     // CHECKING IF TEXT IS DANGER
     if(abc_choose_hint.classList.contains('text-danger'))
@@ -700,10 +700,10 @@ function make_right()
         // CHANGING CHOOSE BUTTON`S TEXT
         this.parentElement.parentElement.parentElement.querySelector('.abc_choose').parentElement.children[1].innerHTML = ''
 
-        if(this.parentElement.parentElement.parentElement.querySelector('.abc_choose').children[0].innerText !== 'Змінити правильну відподь')
+        if(this.parentElement.parentElement.parentElement.querySelector('.abc_choose').children[0].innerText !== tr_change_right_answer)
         {
 
-            this.parentElement.parentElement.parentElement.querySelector('.abc_choose').children[0].innerText = 'Змінити правильну відподь'
+            this.parentElement.parentElement.parentElement.querySelector('.abc_choose').children[0].innerText = tr_change_right_answer
 
         }
 
@@ -741,7 +741,7 @@ function check_existance(parent, type)
 
             }
 
-            parent.parentElement.children[1].innerHTML = 'Щоб видалити одну з відповідей - наведіться на неї і зажміть мишку'
+            parent.parentElement.children[1].innerHTML = tr_to_delete_one_of_answers_hover_and_click
 
         } else
         {
@@ -777,7 +777,7 @@ function check_existance(parent, type)
 
             }
 
-            parent.parentElement.children[1].innerHTML = 'Щоб видалити одну з відповідей - наведіться на неї і зажміть мишку'
+            parent.parentElement.children[1].innerHTML = tr_to_delete_one_of_answers_hover_and_click
 
         } else
         {
@@ -803,7 +803,7 @@ task_update.addEventListener('click', function () {
     if(youtube.children.length !== 1)
     {
 
-        body += `<h4>Перегляньте перед виконанням завдання</h4>`
+        body += `<h4>${tr_review_before_completing_the_task}</h4>`
         body += `
             <div class="youtube" style="width: 700px; height: 350px; margin: 0 auto; margin-bottom: 50px;">
                 <iframe style="width: inherit; height: inherit;" src="${youtube.children[2].attributes.src.value}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -931,7 +931,7 @@ function youtube_delete()
 
             <p style="padding: 10px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;">
 
-                Додати відео з YouTube
+                ${tr_add_video_from_youtube}
 
             </p>
 
@@ -959,7 +959,7 @@ function youtube_edit()
 
         youtube_hint.classList.remove('text-danger')
         youtube_hint.classList.add('text-muted')
-        youtube_hint.innerHTML = `Для того аби видалити відео - нажміть цю <b class="text-danger delete_video user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
+        youtube_hint.innerHTML = `${tr_to_delete_video_click_this} <b class="text-danger delete_video user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
 
         deletes = document.querySelectorAll('.delete_video')
 
@@ -1021,7 +1021,7 @@ function youtube_edit()
 
         youtube_hint.classList.remove('text-muted')
         youtube_hint.classList.add('text-danger')
-        youtube_hint.innerHTML = `Вставте посилання з YouTube або <b class="text-danger delete_video user-select-none" style="text-decoration: underline;" role="button">ВИДАЛІТЬ</b>`
+        youtube_hint.innerHTML = `${tr_paste_link_from_youtube_or} <b class="text-danger delete_video user-select-none" style="text-decoration: underline;" role="button">${tr_delete_b}</b>`
         document.querySelector('.delete_video').addEventListener('click', youtube_delete)
         youtube_ov.setAttribute('src', 'https://youtube.com/dfghdrthxc')
 
@@ -1047,7 +1047,7 @@ function youtube_add_f()
     youtube_input.classList.add('form-control')
     youtube_input.classList.add('text-center')
     youtube_input.style.cssText = 'font-size: 20px; padding: 10px 20px;'
-    youtube_input.setAttribute('placeholder', 'Вставте ссилку з YouTube')
+    youtube_input.setAttribute('placeholder', tr_paste_link_from_youtube)
 
     youtube_input.focus()
 
@@ -1056,7 +1056,7 @@ function youtube_add_f()
     let youtube_hint = document.createElement('p')
     youtube_hint.classList.add('small')
     youtube_hint.classList.add('text-muted')
-    youtube_hint.innerHTML = `Для того аби видалити відео - нажміть цю <b class="text-danger delete_video user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
+    youtube_hint.innerHTML = `${tr_to_delete_video_click_this} <b class="text-danger delete_video user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
     youtube_hint.classList.add('p-0')
     youtube_hint.classList.add('m-0')
 
@@ -1102,14 +1102,14 @@ name.addEventListener('keyup', function () {
         task_name.value = name.innerText
         name_hint.classList.remove('text-danger')
         name_hint.classList.add('text-muted')
-        name_hint.innerText = `Нажміть щоб змінити назву завдання`
+        name_hint.innerText = tr_click_to_change_task_name
 
     } else
     {
 
         name_hint.classList.remove('text-muted')
         name_hint.classList.add('text-danger')
-        name_hint.innerText = `Назва завдання не може бути такою короткою`
+        name_hint.innerText = tr_task_name_cannot_be_so_short
 
     }
 
@@ -1132,7 +1132,7 @@ if(declared.children.length >= 3)
         let youtube_input = document.createElement('input')
         youtube_input.classList.add('form-control')
         youtube_input.classList.add('text-center')
-        youtube_input.setAttribute('placeholder', 'Вставте ссилку з YouTube')
+        youtube_input.setAttribute('placeholder', tr_paste_link_from_youtube)
         youtube_input.style.cssText = `font-size: 20px; padding: 10px 20px;`
 
         youtube.appendChild(youtube_input)
@@ -1142,7 +1142,7 @@ if(declared.children.length >= 3)
         youtube_hint.classList.add('text-muted')
         youtube_hint.classList.add('p-0')
         youtube_hint.classList.add('m-0')
-        youtube_hint.innerHTML = `Для того аби видалити відео - нажміть цю <b class="text-danger delete_video user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
+        youtube_hint.innerHTML = `${tr_to_delete_video_click_this} <b class="text-danger delete_video user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
 
         youtube.appendChild(youtube_hint)
 
@@ -1186,7 +1186,7 @@ if(declared.children.length >= 3)
 
         let youtube_p = document.createElement('p')
         youtube_p.style.cssText = `padding: 10px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;`
-        youtube_p.innerText = `Додати відео з YouTube`
+        youtube_p.innerText = tr_add_video_from_youtube
 
         youtube_add.appendChild(youtube_p)
 
@@ -1211,7 +1211,7 @@ if(declared.children.length >= 3)
 
     let youtube_p = document.createElement('p')
     youtube_p.style.cssText = `padding: 10px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;`
-    youtube_p.innerText = `Додати відео з YouTube`
+    youtube_p.innerText = tr_add_video_from_youtube
 
     youtube_add.appendChild(youtube_p)
 
@@ -1267,7 +1267,7 @@ tasks.forEach(parent => {
         let task_question_hint = document.createElement('p')
         task_question_hint.classList.add('small')
         task_question_hint.classList.add('text-muted')
-        task_question_hint.innerText = `змініть запитання`
+        task_question_hint.innerText = tr_change_the_question
 
         task_question_parent.appendChild(task_question_hint)
 
@@ -1310,7 +1310,7 @@ tasks.forEach(parent => {
             task_image_input.classList.add('form-control')
             task_image_input.classList.add('text-center')
             task_image_input.style.cssText = `font-size: 20px; padding: 10px 20px;`
-            task_image_input.setAttribute('placeholder', 'Вставте URL-адрес картинки')
+            task_image_input.setAttribute('placeholder', tr_paste_image_url)
             task_image_input.value = declared_task_image.slice(5, declared_task_image.length-2)
 
             task_image_parent.appendChild(task_image_input)
@@ -1321,7 +1321,7 @@ tasks.forEach(parent => {
             task_image_hint.classList.add('text-muted')
             task_image_hint.classList.add('p-0')
             task_image_hint.classList.add('m-0')
-            task_image_hint.innerHTML = `Щоб видалити картинку нажміть цю <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
+            task_image_hint.innerHTML = `${tr_to_delete_picture_click_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
 
             task_image_parent.appendChild(task_image_hint)
 
@@ -1366,7 +1366,7 @@ tasks.forEach(parent => {
             // IMAGE P
             let task_image_p = document.createElement('p')
             task_image_p.style.cssText = `padding: 10px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;`
-            task_image_p.innerText = `Додати картинку`
+            task_image_p.innerText = tr_add_image
 
             task_image_parent.appendChild(task_image_p)
 
@@ -1380,7 +1380,7 @@ tasks.forEach(parent => {
     window.setTimeout(() => {
 
         let task_h2 = document.createElement('h2')
-        task_h2.innerText = `Додайте варіанти відповіді`
+        task_h2.innerText = tr_add_answer_options
 
         task.appendChild(task_h2)
 
@@ -1487,7 +1487,7 @@ tasks.forEach(parent => {
         let task_answers_hint = document.createElement('p')
         task_answers_hint.classList.add('small')
         task_answers_hint.classList.add('text-muted')
-        task_answers_hint.innerText = `Щоб видалити одну з відповідей - наведіться на неї і зажміть мишку`
+        task_answers_hint.innerText = tr_to_delete_one_of_answers_hover_and_click
 
         task_answers_parent_parent.appendChild(task_answers_hint)
 
@@ -1511,7 +1511,7 @@ tasks.forEach(parent => {
         // TASK CHOOSE BUTTON P
         let task_choose_p = document.createElement('p')
         task_choose_p.style.cssText = `color: black; padding: 8px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 17px;`
-        task_choose_p.innerText = `Змінити правильну відповідь`
+        task_choose_p.innerText = tr_change_right_answer
 
         task_choose.appendChild(task_choose_p)
 

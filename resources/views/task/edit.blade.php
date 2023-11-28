@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('main.title', env('APP_NAME').' | Редагування завдання')
+@section('main.title', env('APP_NAME').' | '.__('main.task_editing'))
 
 @section('main.content')
 
@@ -19,7 +19,7 @@
 
             </h3>
 
-            <p class="name_hint small text-muted">Нажміть щоб змінити назву завдання</p>
+            <p class="name_hint small text-muted">{{ __('main.click_to_change_task_name') }}</p>
 
         </div>
 
@@ -27,7 +27,7 @@
 
         <div class="task_update bg-success bg-gradient" hidden style="display: table; margin: 30px auto 20px; border: 1px solid black; border-radius: 10px; color: white;" role="button">
             <p style="padding: 10px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;">
-                ЗБЕРЕГТИ ЗМІНИ
+                {{ __('main.save_changes_b') }}
             </p>
         </div>
 
@@ -57,6 +57,7 @@
 <script>
 
     let tr_to_delete_picture_click_this = `{{ __('main.to_delete_picture_click_this') }}`
+    let tr_answers = `{{ __('main.answers') }}`
     let tr_buttonchik = `{{ __('main.buttonchik') }}`
     let tr_paste_the_correct_url = `{{ __('main.paste_the_correct_url') }}`
     let tr_upload_from_computer = `{{ __('main.upload_from_computer') }}`
@@ -76,6 +77,34 @@
     let tr_both_word_and_translation_must_be_filled_in = `{{ __('main.both_word_and_translation_must_be_filled_in') }}`
     let tr_enter_url_of_the_picture_or_delete_the_picture_by_clicking_this = `{{ __('main.enter_url_of_the_picture_or_delete_the_picture_by_clicking_this') }}`
     let tr_select_picture_from_your_computer_or_delete_picture_clicking_this = `{{ __('main.select_picture_from_your_computer_or_delete_picture_clicking_this') }}`
+    let tr_make_highlighted_answer = `{{ __('main.make_highlighted_answer') }}`
+    let tr_delete_answer = `{{ __('main.delete_answer') }}`
+    let tr_in_this_task_you_need_to_write = `{{ __('main.in_this_task_you_need_to_write') }}`
+    let tr_we_recommend_inserting_answers_after = `{{ __('main.we_recommend_inserting_answers_after') }}`
+    let tr_in_this_task_you_need_3_places = `{{ __('main.in_this_task_you_need_3_places') }}`
+    let tr_read_more_here = `{{ __('main.read_more_here') }}`
+    let tr_in_this_task_you_need_to_second = `{{ __('main.in_this_task_you_need_to_second') }}`
+    let tr_in_this_task_you_need_3_second = `{{ __('main.in_this_task_you_need_3_second') }}`
+
+    let tr_add_video_from_youtube = `{{ __('main.add_video_from_youtube') }}`
+    let tr_or = `{{ __('main.or') }}`
+    let tr_to_delete_video_click_this = `{{ __('main.to_delete_video_click_this') }}`
+    let tr_paste_link_from_youtube_or = `{{ __('main.paste_link_from_youtube_or') }}`
+    let tr_delete_b = `{{ __('main.delete_b') }}`
+    let tr_paste_link_from_youtube = `{{ __('main.paste_link_from_youtube') }}`
+    let tr_click_to_edit = `{{ __('main.click_to_edit') }}`
+    let tr_change_the_question = `{{ __('main.change_the_question') }}`
+    let tr_the_task_must_contain_2_answers = `{{ __('main.the_task_must_contain_2_answers') }}`
+    let tr_click_on_the_correct_answer = `{{ __('main.click_on_the_correct_answer') }}`
+    let tr_change_right_answer = `{{ __('main.change_right_answer') }}`
+    let tr_to_delete_one_of_answers_hover_and_click = `{{ __('main.to_delete_one_of_answers_hover_and_click') }}`
+    let tr_add_question = `{{ __('main.add_question') }}`
+    let tr_change_question = `{{ __('main.change_question') }}`
+    let tr_question_cannot_be_short = `{{ __('main.question_cannot_be_short') }}`
+    let tr_you_must_choose_the_correct_answer = `{{ __('main.you_must_choose_the_correct_answer') }}`
+    let tr_add_answer_options = `{{ __('main.add_answer_options') }}`
+    let tr_choose_correct_answer = `{{ __('main.choose_correct_answer') }}`
+    let tr_review_before_completing_the_task = `{{ __('main.review_before_completing_the_task') }}`
 
 </script>
 {{-- SOME USEFUL FUNCTIONS --}}

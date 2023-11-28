@@ -103,14 +103,14 @@ name.addEventListener('keyup', function () {
         task_name.value = name.innerText
         name_hint.classList.remove('text-danger')
         name_hint.classList.add('text-muted')
-        name_hint.innerText = `Нажміть щоб змінити назву завдання`
+        name_hint.innerText = tr_click_to_change_task_name
 
     } else
     {
 
         name_hint.classList.remove('text-muted')
         name_hint.classList.add('text-danger')
-        name_hint.innerText = `Назва завдання не може бути такою короткою`
+        name_hint.innerText = tr_task_name_cannot_be_so_short
 
     }
 
@@ -140,7 +140,7 @@ function check_task()
                 if(image.children.length == 4)
                 {
 
-                    image_hint.innerHTML = `Впишіть URL-адрес картинки, або видаліть картинку нажавши цю <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
+                    image_hint.innerHTML = `${tr_enter_url_of_the_picture_or_delete_the_picture_by_clicking_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
                     deletes = document.querySelectorAll('.image_delete')
 
                     deletes.forEach(deletee => {
@@ -150,7 +150,7 @@ function check_task()
                 } else
                 {
 
-                    image_hint.innerHTML = `Виберіть картинку з комп'ютера, або видаліть картинку нажавши цю <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
+                    image_hint.innerHTML = `${tr_select_picture_from_your_computer_or_delete_picture_clicking_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
                     deletes = document.querySelectorAll('.image_delete')
 
                     deletes.forEach(deletee => {
@@ -164,7 +164,7 @@ function check_task()
             } else
             {
 
-                image_hint.innerHTML = `Щоб видалити картинку нажміть цю <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
+                image_hint.innerHTML = `${tr_to_delete_picture_click_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
                 deletes = document.querySelectorAll('.image_delete')
 
                 deletes.forEach(deletee => {
@@ -199,7 +199,7 @@ function check_task()
                 task_update.setAttribute('hidden', '')
 
             }
-            
+
 
         }
 
@@ -232,7 +232,7 @@ function url_image_edit_f()
 
                 dis.setAttribute('status', 1)
                 img.style.cssText = `margin: 0 auto; width: 450px; height: 250px; background-image: url('${dis.value}'); background-position: center center; background-size: cover; background-repeat: no-repeat;`
-                hint.innerHTML = `Щоб видалити картинку нажміть цю <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
+                hint.innerHTML = `${tr_to_delete_picture_click_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
 
                 deletes = document.querySelectorAll('.image_delete')
 
@@ -249,7 +249,7 @@ function url_image_edit_f()
 
                 img.style.cssText = `margin: 0 auto; width: 450px; height: 250px; background-image: url('${empty_jpg}'); background-position: center center; background-size: cover; background-repeat: no-repeat;`
                 dis.value = ''
-                dis.setAttribute('placeholder', 'Вставте поправний URL-адрес')
+                dis.setAttribute('placeholder', tr_paste_the_correct_url)
                 dis.setAttribute('status', 2)
 
                 check_task()
@@ -261,7 +261,7 @@ function url_image_edit_f()
 
             img.style.cssText = `margin: 0 auto; width: 450px; height: 250px; background-image: url('${empty_jpg}'); background-position: center center; background-size: cover; background-repeat: no-repeat;`
             dis.value = ''
-            dis.setAttribute('placeholder', 'Вставте поправний URL-адрес')
+            dis.setAttribute('placeholder', tr_paste_the_correct_url)
             dis.setAttribute('status', 2)
 
         }
@@ -305,7 +305,7 @@ function add_image_f()
 
     let image_upload_p = document.createElement('p')
     image_upload_p.style.cssText = `padding: 7px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;`
-    image_upload_p.innerText = `Загрузити з комп'ютера`
+    image_upload_p.innerText = tr_upload_from_computer
 
     image_upload.appendChild(image_upload_p)
 
@@ -318,7 +318,7 @@ function add_image_f()
 
     let image_url_p = document.createElement('p')
     image_url_p.style.cssText = `padding: 7px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;`
-    image_url_p.innerText = `Загрузити з інтернета`
+    image_url_p.innerText = tr_upload_from_internet
 
     image_url.appendChild(image_url_p)
 
@@ -359,7 +359,7 @@ function image_delete_f()
     // ABC IMAGE PARAGRAPH
     let abc_image_p = document.createElement('p')
     abc_image_p.style.cssText = 'padding: 7px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;'
-    abc_image_p.innerText = 'Додати картинку'
+    abc_image_p.innerText = tr_add_image
 
     parent.appendChild(abc_image_p)
 
@@ -397,7 +397,7 @@ function add_upload_image_f()
     image_hint.classList.add('text-muted')
     image_hint.classList.add('p-0')
     image_hint.classList.add('m-0')
-    image_hint.innerHTML = `Щоб видалити картинку нажміть цю <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
+    image_hint.innerHTML = `${tr_to_delete_picture_click_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
 
     parent.appendChild(image_hint)
 
@@ -435,7 +435,7 @@ function add_url_image_f()
     add_image_input.classList.add('form-control')
     add_image_input.classList.add('text-center')
     add_image_input.style.cssText = 'font-size: 20px; padding: 10px 20px;'
-    add_image_input.setAttribute('placeholder', 'Вставте URL-адрес картинки')
+    add_image_input.setAttribute('placeholder', tr_paste_image_url)
     add_image_input.focus()
 
     parent.appendChild(add_image_input)
@@ -445,7 +445,7 @@ function add_url_image_f()
     add_image_hint.classList.add('text-muted')
     add_image_hint.classList.add('p-0')
     add_image_hint.classList.add('m-0')
-    add_image_hint.innerHTML = `Щоб видалити картинку нажміть цю <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
+    add_image_hint.innerHTML = `${tr_to_delete_picture_click_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
 
     parent.appendChild(add_image_hint)
 
@@ -504,7 +504,7 @@ function create()
         let add_image_input = document.createElement('input')
         add_image_input.classList.add('form-control')
         add_image_input.classList.add('text-center')
-        add_image_input.setAttribute('placeholder', 'Вставте URL-адрес картинки')
+        add_image_input.setAttribute('placeholder', tr_paste_image_url)
         add_image_input.style.cssText = `font-size: 20px; padding: 10px 20px;`
         add_image_input.value = declared_image.slice(5, declared_image.length-2)
 
@@ -515,7 +515,7 @@ function create()
         add_image_hint.classList.add('text-muted')
         add_image_hint.classList.add('p-0')
         add_image_hint.classList.add('m-0')
-        add_image_hint.innerHTML = `Щоб видалити картинку нажміть цю <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
+        add_image_hint.innerHTML = `${tr_to_delete_picture_click_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
 
         add_image_div.appendChild(add_image_hint)
 
@@ -555,7 +555,7 @@ function create()
 
         add_image_p = document.createElement('p')
         add_image_p.style.cssText = `padding: 7px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;`
-        add_image_p.innerText = `Додати картинку`
+        add_image_p.innerText = tr_add_image
 
         add_image.appendChild(add_image_p)
 
@@ -584,7 +584,7 @@ function create()
 
     let make_bold_p = document.createElement('p')
     make_bold_p.style.cssText = `padding: 7px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;`
-    make_bold_p.innerText = `Зробити виділене відповіддю`
+    make_bold_p.innerText = tr_make_highlighted_answer
 
     make_bold.appendChild(make_bold_p)
 
@@ -598,7 +598,7 @@ function create()
 
     let remove_bold_p = document.createElement('p')
     remove_bold_p.style = `padding: 7px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;`
-    remove_bold_p.innerText = `Видалити відповідь`
+    remove_bold_p.innerText = tr_delete_answer
 
     remove_bold.appendChild(remove_bold_p)
 
@@ -617,7 +617,7 @@ function create()
     fill_gaps_hint.classList.add('text-muted')
     fill_gaps_hint.classList.add('p-0')
     fill_gaps_hint.classList.add('m-0')
-    fill_gaps_hint.innerHTML = `У цьому завданні потрібно вписати текст і виділити слова, на місця яких потрібно буде вписати відповіді. <br> Радимо вставляти відповіді після заповнення тексту, щоб уникнути проблем. <span class="text-primary" style="text-decoration: underline; cursor: pointer;" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="В цьому завданні потрібно написати текст, і в ньому виділити принаймі 3 місця, які потрібно буде заповнити відповіддю. Щоб створити таке місце - виділіть вираз мишкою і нажміть на кнопку, щоб видалити - виділіть, або нажміть на слово.">Детальніше тут</span>`
+    fill_gaps_hint.innerHTML = `${tr_in_this_task_you_need_to_second} <br> ${tr_we_recommend_inserting_answers_after} <span class="text-primary" style="text-decoration: underline; cursor: pointer;" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="${tr_in_this_task_you_need_3_second}">${tr_read_more_here}</span>`
 
     fill_gaps.appendChild(fill_gaps_hint)
 
@@ -635,7 +635,7 @@ function create()
 
         if(i == answers.length-1)
         {
-            
+
             new_ans = `<b class="bold">${answers[i].attributes.answer.value}</b>`
         } else
         {

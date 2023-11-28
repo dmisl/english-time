@@ -331,6 +331,41 @@
             padding: 0 15px;
         }
 
+        .join_now
+        {
+
+            color: white;
+            display: flex;
+            column-gap: 15px;
+            background-color: #6385FF;
+            padding: 20px 40px;
+            border-radius: 20px;
+            transition: 0.5s;
+            border: 2px solid #6385FF;
+
+        }
+
+        .join_now svg
+        {
+            fill: white;
+            transition: 0.5s;
+        }
+
+        .join_now:hover
+        {
+
+            background-color: white;
+            color: #6385FF;
+            transition: 0.5s;
+
+        }
+
+        .join_now:hover svg
+        {
+            fill: #6385FF;
+            transition: 0.5s;
+        }
+
     </style>
     {{-- BOOTSTRAP --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.bundle.min.js" integrity="sha512-ToL6UYWePxjhDQKNioSi4AyJ5KkRxY+F1+Fi7Jgh0Hp5Kk2/s8FD7zusJDdonfe5B00Qw+B8taXxF6CFLnqNCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -343,6 +378,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    {{-- POPPINS --}}
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    {{-- ANYBODY --}}
+    <link href="https://fonts.googleapis.com/css2?family=Anybody:wght@200;300;400;500&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -354,7 +393,7 @@
             {{ session('alert') }}
         </x-alert>
         @endif
-        <main class='flex-grow-1'>
+        <main class='flex-grow-1' style="overflow: hidden;">
             @yield('main.content')
         </main>
 

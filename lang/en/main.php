@@ -113,16 +113,16 @@ return [
     'i_recommend_changing_all_options_before_moving_on_to_the_next_stage' => 'I recommend changing all options before moving on to the next stage',
     'tap_to_edit_the_text' => 'Tap to edit the text',
     'add_a_picture_q' => 'Add a picture?',
-    'make_the_highlighted_answer' => 'Make the highlighted answer',
+    'make_highlighted_answer' => 'Make highlighted answer',
     'in_this_task_you_need_to_write_the_text_and_highlight_the_word_that_you_will_need_to_insert_the_answer_in_its_place' => 'In this task, you need to write the text and highlight the word that you will need to insert the answer in its place',
     'we_advise_you_to_paste_the_answers_after_filling_in_the_text_to_avoid_problems' => 'We advise you to paste the answers after filling in the text to avoid problems',
     'some_text' => 'Some text',
-    'delete_answer_highlighted' => 'Delete answer (highlighted)',
+    'delete_answer' => 'Delete answer',
     'in_this_task_you_need_to_write_the_text_and_highlight_the_word_that_the_student_will_need_to_write_the_answer_in_its_place' => 'In this task, you need to <b>write the text and highlight the word that the student will need to write the answer in its place</b>',
     'i_advise_you_to_paste_the_answers_after_filling_in_the_text_completely_to_avoid_problems' => '<b>I advise you to paste the answers after filling in the text completely to avoid problems</b>',
     'correct_answers' => 'Correct answers',
     'made_by' => 'Made by',
-    
+
     'email' => 'Email',
     'password' => 'Password',
     'password_confirmation' => 'Password confirmation',
@@ -131,7 +131,7 @@ return [
     'registration' => 'Registration',
     'login' => 'Login',
     'user_name' => 'User name',
-    
+
     'find_task' => 'Find task',
     'change_location_of_tasks' => 'Change location of tasks',
     'placement_of_elements' => 'Placement of elements',
@@ -139,7 +139,7 @@ return [
 
     'add_image' => 'Add image',
     'add_words_for_translation' => 'Add words for translation',
-    'to_delete_one_of_the_translations_press_it' => 'To delete one of the translations, press it',
+    'to_delete_one_of_the_translations_press_it' => 'To delete one of the translations, press this',
     'click_this_button_to_add_another_translation' => 'Click this button to add another translation',
 
     'translate_you' => 'Translate',
@@ -162,6 +162,39 @@ return [
     'task_name_cannot_be_so_short' => 'Task name cannot be so short',
 
     'buttonchik' => 'BUTTON',
+
+    'in_this_task_you_need_to_write' => 'In this task, you need to write in the text and highlight the words where you will need to drag the answers.',
+    'we_recommend_inserting_answers_after' => 'We recommend inserting answers after filling in the text to avoid problems.',
+    'in_this_task_you_need_3_places' => 'In this task, you need to write a text, and in it you need to select at least 3 places to fill in the answer. To create such a place, select the expression with the mouse and click on the button; to delete it, select it or click on the word.',
+    'read_more_here' => 'Read more here',
+    'write_text_here' => '------>Write text here<-------',
+
+    'in_this_task_you_need_to_second' => 'In this task, you need to write a text and highlight the word that the student will need to write the answer in its place.',
+    'in_this_task_you_need_3_second' => 'In this task, you need to write a text, and in it you need to select at least 3 places to fill in the answer. To create such a place, select the expression with the mouse and click on the button; to delete it, select it or click on the word.',
+
+    'save_changes_b' => 'SAVE CHANGES',
+    'task_editing' => 'Task editing',
+
+    'add_video_from_youtube' => 'Add video from YouTube',
+    'to_delete_video_click_this' => 'To delete a video, click this',
+    'paste_link_from_youtube_or' => 'Paste a link from YouTube or',
+    'paste_link_from_youtube' => 'Paste a link from YouTube',
+    'click_to_edit' => 'Click to edit',
+    'change_the_question' => 'Change the question',
+    'the_task_must_contain_2_answers' => 'The task must contain at least 2 answers',
+    'click_on_the_correct_answer' => 'Click on the correct answer',
+    'change_right_answer' => 'Change right answer',
+    'to_delete_one_of_answers_hover_and_click' => 'To delete one of the answers, hover over it and click the mouse',
+    'add_question' => 'Add question',
+    'change_question' => 'Change question',
+    'question_cannot_be_short' => 'The question cannot be so short',
+    'you_must_choose_the_correct_answer' => 'You must choose the correct answer',
+    'add_answer_options' => 'Add answer options',
+    'choose_correct_answer' => 'Choose correct answer',
+    'review_before_completing_the_task' => 'Review before completing the task',
+
+    "or" => 'OR',
+    'delete_b' => 'DELETE',
 
 ]
 

@@ -60,7 +60,7 @@ finish.addEventListener('click', function ()
 
     body += `
         <h2 class="m-0 p-0" style="color: black;">Відповіді</h2>
-        <p class="answers_hint small text-muted m-0 p-0">Перетягніть відповіді у відповідні комірки</p>
+        <p class="answers_hint small text-muted m-0 p-0">${tr_drag_and_drop_translations_into_the_relevant_cells}</p>
         <div class="mt-3">
             <div class="answers">
     `
@@ -148,7 +148,7 @@ if(bolds.length >= 3)
             if(image.children.length == 4)
             {
 
-                image_hint.innerHTML = `Впишіть URL-адрес картинки, або видаліть картинку нажавши цю <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
+                image_hint.innerHTML = `${tr_enter_url_of_the_picture_or_delete_the_picture_by_clicking_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
                 deletes = document.querySelectorAll('.image_delete')
 
                 deletes.forEach(deletee => {
@@ -158,7 +158,7 @@ if(bolds.length >= 3)
             } else
             {
 
-                image_hint.innerHTML = `Виберіть картинку з комп'ютера, або видаліть картинку нажавши цю <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
+                image_hint.innerHTML = `${tr_select_picture_from_your_computer_or_delete_picture_clicking_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
                 deletes = document.querySelectorAll('.image_delete')
 
                 deletes.forEach(deletee => {
@@ -172,7 +172,7 @@ if(bolds.length >= 3)
         } else
         {
 
-            image_hint.innerHTML = `Щоб видалити картинку нажміть цю <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
+            image_hint.innerHTML = `${tr_to_delete_picture_click_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
             deletes = document.querySelectorAll('.image_delete')
 
             deletes.forEach(deletee => {
@@ -388,7 +388,7 @@ function url_image_edit_f()
 
                 dis.setAttribute('status', 1)
                 img.style.cssText = `margin: 0 auto; width: 450px; height: 250px; background-image: url('${dis.value}'); background-position: center center; background-size: cover; background-repeat: no-repeat;`
-                hint.innerHTML = `Щоб видалити картинку нажміть цю <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
+                hint.innerHTML = `${tr_to_delete_picture_click_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
 
                 deletes = document.querySelectorAll('.image_delete')
 
@@ -405,7 +405,7 @@ function url_image_edit_f()
 
                 img.style.cssText = `margin: 0 auto; width: 450px; height: 250px; background-image: url('${empty_jpg}'); background-position: center center; background-size: cover; background-repeat: no-repeat;`
                 dis.value = ''
-                dis.setAttribute('placeholder', 'Вставте поправний URL-адрес')
+                dis.setAttribute('placeholder', tr_paste_the_correct_url)
                 dis.setAttribute('status', 2)
 
                 check_task()
@@ -417,7 +417,7 @@ function url_image_edit_f()
 
             img.style.cssText = `margin: 0 auto; width: 450px; height: 250px; background-image: url('${empty_jpg}'); background-position: center center; background-size: cover; background-repeat: no-repeat;`
             dis.value = ''
-            dis.setAttribute('placeholder', 'Вставте поправний URL-адрес')
+            dis.setAttribute('placeholder', tr_paste_the_correct_url)
             dis.setAttribute('status', 2)
 
         }
@@ -461,7 +461,7 @@ function add_image_f()
 
     let image_upload_p = document.createElement('p')
     image_upload_p.style.cssText = `padding: 7px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;`
-    image_upload_p.innerText = `Загрузити з комп'ютера`
+    image_upload_p.innerText = tr_upload_from_computer
 
     image_upload.appendChild(image_upload_p)
 
@@ -474,7 +474,7 @@ function add_image_f()
 
     let image_url_p = document.createElement('p')
     image_url_p.style.cssText = `padding: 7px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;`
-    image_url_p.innerText = `Загрузити з інтернета`
+    image_url_p.innerText = tr_upload_from_internet
 
     image_url.appendChild(image_url_p)
 
@@ -515,7 +515,7 @@ function image_delete_f()
     // ABC IMAGE PARAGRAPH
     let abc_image_p = document.createElement('p')
     abc_image_p.style.cssText = 'padding: 7px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;'
-    abc_image_p.innerText = 'Додати картинку'
+    abc_image_p.innerText = tr_add_image
 
     parent.appendChild(abc_image_p)
 
@@ -553,7 +553,7 @@ function add_upload_image_f()
     image_hint.classList.add('text-muted')
     image_hint.classList.add('p-0')
     image_hint.classList.add('m-0')
-    image_hint.innerHTML = `Щоб видалити картинку нажміть цю <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
+    image_hint.innerHTML = `${tr_to_delete_picture_click_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
 
     parent.appendChild(image_hint)
 
@@ -591,7 +591,7 @@ function add_url_image_f()
     add_image_input.classList.add('form-control')
     add_image_input.classList.add('text-center')
     add_image_input.style.cssText = 'font-size: 20px; padding: 10px 20px;'
-    add_image_input.setAttribute('placeholder', 'Вставте URL-адрес картинки')
+    add_image_input.setAttribute('placeholder', tr_paste_image_url)
     add_image_input.focus()
 
     parent.appendChild(add_image_input)
@@ -601,7 +601,7 @@ function add_url_image_f()
     add_image_hint.classList.add('text-muted')
     add_image_hint.classList.add('p-0')
     add_image_hint.classList.add('m-0')
-    add_image_hint.innerHTML = `Щоб видалити картинку нажміть цю <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">КНОПОЧКУ</b>`
+    add_image_hint.innerHTML = `${tr_to_delete_picture_click_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
 
     parent.appendChild(add_image_hint)
 
