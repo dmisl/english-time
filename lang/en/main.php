@@ -196,6 +196,31 @@ return [
     "or" => 'OR',
     'delete_b' => 'DELETE',
 
+    'online_school' => 'Online English Learning School',
+    'online_school_desc' => 'This is an online spoken language school for those who care not only about the result but also about the pleasure of the process',
+    'join_now' => 'Join now!',
+
+    'why_us' => 'Why Us',
+    'real_media' => 'Real Media, Real English',
+    'real_media_desc' => 'The entire course is based on unadapted movies, podcasts, and TV shows so that you can immerse yourself in real English',
+    'speak_confidently' => 'Speak Confidently, Masterfully',
+    'speak_confidently_desc' => 'Master conversation skills from day one, overcome language barriers, and achieve fluent English communication',
+    'digital_learning' => 'Digital learning today',
+    'digital_learning_desc' => 'Explore the modern convenience of digital learning. Our course adapts to your schedule, providing flexibility for a seamless educational experience.',
+
+    'testimonial' => 'Testimonial',
+
+    'personalized_course' => 'Personalized individual learning course',
+    'personalized_course_cost' => '2400 UAH / 1 month (8 lessons)',
+    'personalized_course_desc' => "Tailored program ideal for those who've taken numerous courses without achieving English fluency. If grammar feels dizzying, if spoken English is challenging to comprehend, or if pronunciation needs refinement, this course is designed to captivate your interest and motivate progress. Break language barriers and finally achieve confident and effective English communication.",
+
+    'course_includes' => 'Course includes',
+    'course_includes_desc' => 'Perfectly tailored to you.',
+
+    'individual_lessons' => '<span style="font-size: 27px;">Individual lessons</span><br>with a teacher and lessons on a convenient learning platform',
+    'personalized_program' => '<span style="font-size: 27px;">Personalized Program</span><br>considers your interests, ensuring effective, tailored learning for you',
+    'interactive_learning' => '<span style="font-size: 27px;">Interactive Learning</span><br>ensures 100% class practice with communicative methods for<br><span style="background-color: white; color: #FF234B; padding: 0 3px; border-radius: 5px; user-select: none;" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="'.'Active speaking'.' in English language learning refers to the active participation of students in verbal communication. It involves using words, expressions, and grammatical structures actively to express thoughts and ideas. During active speaking exercises, students engage in dialogues, discuss topics, and participate in role-playing scenarios. This approach fosters the development of speaking skills, expands vocabulary, and improves pronunciation. Active speaking, whether in the classroom or during language learning activities, creates a dynamic and practical experience in using the English language, enhancing overall language proficiency."><b>active speaking</b></span>',
+
 ]
 
 ?>

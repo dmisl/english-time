@@ -21,15 +21,13 @@
 
                 <p style="color: #FF2424; font-size: 19px;">#englishtime</p>
 
-                <h1 style="font-weight: 400; font-size: 4vw; line-height: 1.35;">Online English<br>Learning School</h1>
+                <h1 class="online_school" style="font-weight: 400; font-size: 4vw; line-height: 1.35;">{{ __('main.online_school') }}</h1>
 
-                <p class="text-muted mt-4" style="font-size: 18px;">This is an online spoken language school for those who care not only about the result but also about the pleasure of the process</p>
+                <p class="online_school_desc text-muted mt-4" style="font-size: 18px;">{{ __('main.online_school_desc') }}</p>
 
-                <x-join-now class="mt-5"></x-join-now>
+                <x-join-now class="mt-5 online_school_join_now"></x-join-now>
 
             </div>
-
-
 
         </div>
 
@@ -37,7 +35,7 @@
 
             <div style="display: table-cell; vertical-align: middle;">
 
-                <img style="width: 150%;" src="{{ asset('storage/icons/gif.gif') }}" alt="">
+                <img class="gif" style="width: 150%;" src="{{ asset('storage/icons/gif.gif') }}" alt="">
 
             </div>
 
@@ -52,7 +50,7 @@
 
     <p style="color: #FF2424; margin-top: 4vh; font-size: 19px;">#englishtime</p>
 
-    <h1 style="font-weight: 400; font-size: 80px;">Why Us</h1>
+    <h1 style="font-weight: 400; font-size: 80px;">{{ __('main.why_us') }}</h1>
 
 </div>
 {{-- WHY US ANSWER --}}
@@ -60,23 +58,23 @@
 
     <div class="container d-flex" style="justify-content: space-between; padding-bottom: 50px;">
 
-        <div style="width: 28%;">
+        <div style="width: 28%;" class="real_media">
 
             <div style="width: 100%; height: 230px; border-radius: 20px; margin: 0 auto; background-image: url('{{ asset('storage/icons/whyus1.png') }}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
 
-            <p style="color: white; font-weight: 300; font-size: 23px; margin-top: 25px; margin-bottom: 0;">Real Media, Real English</p>
+            <p style="color: white; font-weight: 300; font-size: 23px; margin-top: 25px; margin-bottom: 0;">{{ __('main.real_media') }}</p>
 
-            <p style="color: white; font-weight: 300; font-size: 15.5px; margin-top: 10px; letter-spacing: 1px;">The entire course is based on unadapted movies, podcasts, and TV shows so that you can immerse yourself in real English</p>
+            <p style="color: white; font-weight: 300; font-size: 15.5px; margin-top: 10px; letter-spacing: 1px;">{{ __('main.real_media_desc') }}</p>
 
         </div>
 
-        <div style="width: 28%;">
+        <div style="width: 28%;" class="speak_confidently">
 
             <div style="width: 100%; height: 230px; border-radius: 20px; margin: 0 auto; background-image: url('{{ asset('storage/icons/whyus2.png') }}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
 
-            <p style="color: white; font-weight: 300; font-size: 23px; margin-top: 25px; margin-bottom: 0;">Speak Confidently, Masterfully</p>
+            <p style="color: white; font-weight: 300; font-size: 23px; margin-top: 25px; margin-bottom: 0;">{{ __('main.speak_confidently') }}</p>
 
-            <p style="color: white; font-weight: 300; font-size: 15.5px; margin-top: 10px; letter-spacing: 1px;">Master conversation skills from day one, overcome language barriers, and achieve fluent English communication</p>
+            <p style="color: white; font-weight: 300; font-size: 15.5px; margin-top: 10px; letter-spacing: 1px;">{{ __('main.speak_confidently_desc') }}</p>
 
         </div>
 
@@ -84,9 +82,9 @@
 
             <div style="width: 100%; height: 230px; border-radius: 20px; margin: 0 auto; background-image: url('{{ asset('storage/icons/whyus3.png') }}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
 
-            <p style="color: white; font-weight: 300; font-size: 23px; margin-top: 25px; margin-bottom: 0;">Digital learning today</p>
+            <p style="color: white; font-weight: 300; font-size: 23px; margin-top: 25px; margin-bottom: 0;">{{ __('main.digital_learning') }}</p>
 
-            <p style="color: white; font-weight: 300; font-size: 15.5px; margin-top: 10px; letter-spacing: 1px;">Explore the modern convenience of digital learning. Our course adapts to your schedule, providing flexibility for a seamless educational experience.</p>
+            <p style="color: white; font-weight: 300; font-size: 15.5px; margin-top: 10px; letter-spacing: 1px;">{{ __('main.digital_learning_desc') }}</p>
 
         </div>
 
@@ -103,7 +101,7 @@
 
             <p style="color: #FF2424; padding-top: 4vh; font-size: 19px;">#englishtime</p>
 
-            <h1 style="font-weight: 400; font-size: 80px;">Testimonial</h1>
+            <h1 style="font-weight: 400; font-size: 80px;">{{ __('main.testimonial') }}</h1>
 
         </div>
 
@@ -260,11 +258,11 @@
 
                 <p style="color: #FF2424; font-size: 19px; padding: 0; margin: 0;">#englishtime</p>
 
-                <h1 style="font-weight: 400; font-size: 50px; line-height: 1.4; margin-top: 10px;">Personalized individual learning course</h1>
+                <h1 style="font-weight: 400; font-size: 50px; line-height: 1.4; margin-top: 10px;">{{ __('main.personalized_course') }}</h1>
 
-                <p style="font-size: 25px;">2400 UAH / 1 month (8 lessons)</p>
+                <p style="font-size: 25px;">{{ __('main.personalized_course_cost') }}</p>
 
-                <p class="text-muted" style="font-size: 20px; padding-top: 5px;">Tailored program ideal for those who've taken numerous courses without achieving English fluency. If grammar feels dizzying, if spoken English is challenging to comprehend, or if pronunciation needs refinement, this course is designed to captivate your interest and motivate progress. Break language barriers and finally achieve confident and effective English communication.</p>
+                <p class="text-muted" style="font-size: 20px; padding-top: 5px;">{{ __('main.personalized_course_desc') }}</p>
 
             </div>
 
@@ -283,11 +281,11 @@
 
             <p style="color: #FF2424; font-size: 19px; padding: 0; margin: 0;">#englishtime</p>
 
-            <h1 style="font-weight: 400; font-size: 50px; line-height: 1.4; margin-top: 10px;">Course includes</h1>
+            <h1 style="font-weight: 400; font-size: 50px; line-height: 1.4; margin-top: 10px;">{{ __('main.course_includes') }}</h1>
 
-            <p class="text-muted" style="font-size: 20px;">Perfectly tailored to you.</p>
+            <p class="text-muted" style="font-size: 20px;">{{ __('main.course_includes_desc') }}</p>
 
-            <x-join-now class="mt-3"></x-join-now>
+            <x-join-now class="course_includes_join_now mt-3"></x-join-now>
 
         </div>
 
@@ -299,19 +297,19 @@
 
                 <div style="width: 30%; border-radius: 20px; background-color: #6385FF;">
 
-                    <p style="color: white; padding: 23px 35px; font-size: 18px; font-weight: 300;"><span style="font-size: 27px;">Individual lessons</span><br>with a teacher and lessons on a convenient learning platform</p>
+                    <p class="individual_lesson" style="color: white; padding: 23px 35px; font-size: 18px; font-weight: 300;">{!! __('main.individual_lessons') !!}</p>
 
                 </div>
 
                 <div style="width: 30%; border-radius: 20px; background-color: white;">
 
-                    <p style="color: black; padding: 23px 35px; font-size: 18px; font-weight: 300;"><span style="font-size: 27px;">Personalized Program</span><br>considers your interests, ensuring effective, tailored learning for you</p>
+                    <p class="personalized_program" style="color: black; padding: 23px 35px; font-size: 18px; font-weight: 300;">{!! __('main.personalized_program') !!}</p>
 
                 </div>
 
                 <div style="width: 30%; border-radius: 20px; background-color: #FF234B;">
 
-                    <p style="color: white; padding: 23px 30px; font-size: 18px; font-weight: 300;"><span style="font-size: 27px;">Interactive Learning</span><br>ensures 100% class practice with communicative methods for<br><span style="background-color: white; color: #FF234B; padding: 0 3px; border-radius: 5px; user-select: none;" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="'Active speaking' in English language learning refers to the active participation of students in verbal communication. It involves using words, expressions, and grammatical structures actively to express thoughts and ideas. During active speaking exercises, students engage in dialogues, discuss topics, and participate in role-playing scenarios. This approach fosters the development of speaking skills, expands vocabulary, and improves pronunciation. Active speaking, whether in the classroom or during language learning activities, creates a dynamic and practical experience in using the English language, enhancing overall language proficiency."><b>active speaking</b></span></p>
+                    <p class="interactive_learning" style="color: white; padding: 23px 30px; font-size: 18px; font-weight: 300;">{!! __('main.interactive_learning') !!}</p>
 
                 </div>
 
@@ -324,7 +322,7 @@
 
 </div>
 
-<script>
+<script defer>
 
     let avatars = document.querySelectorAll('.avatar')
 
