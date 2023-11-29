@@ -21,9 +21,9 @@
 
                 <p style="color: #FF2424; font-size: 19px;">#englishtime</p>
 
-                <h1 class="online_school" style="font-weight: 400; font-size: 80px; line-height: 1.35;">{{ __('main.online_school') }}</h1>
+                <h1 class="online_school">{{ __('main.online_school') }}</h1>
 
-                <p class="online_school_desc text-muted mt-4" style="font-size: 18px;">{{ __('main.online_school_desc') }}</p>
+                <p class="online_school_desc text-muted mt-4">{{ __('main.online_school_desc') }}</p>
 
                 <x-join-now class="mt-5 online_school_join_now"></x-join-now>
 
@@ -50,7 +50,7 @@
 
     <p style="color: #FF2424; margin-top: 4vh; font-size: 19px;">#englishtime</p>
 
-    <h1 class="why_us" style="font-weight: 400; font-size: 80px;">{{ __('main.why_us') }}</h1>
+    <h1 class="why_us">{{ __('main.why_us') }}</h1>
 
 </div>
 {{-- WHY US ANSWER --}}
@@ -58,21 +58,21 @@
 
     <div class="container d-flex" style="justify-content: space-between; padding-bottom: 50px;">
 
-        <div style="width: 28%;" class="real_media">
+        <div style="width: 28%;">
 
             <div style="width: 100%; height: 230px; border-radius: 20px; margin: 0 auto; background-image: url('{{ asset('storage/icons/whyus1.png') }}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
 
-            <p class="why_us_header" style="color: white; font-weight: 300; font-size: 23px; margin-top: 25px; margin-bottom: 0;">{{ __('main.real_media') }}</p>
+            <p class="why_us_header">{{ __('main.real_media') }}</p>
 
             <p style="color: white; font-weight: 300; font-size: 15.5px; margin-top: 10px; letter-spacing: 1px;">{{ __('main.real_media_desc') }}</p>
 
         </div>
 
-        <div style="width: 28%;" class="speak_confidently">
+        <div style="width: 28%;">
 
             <div style="width: 100%; height: 230px; border-radius: 20px; margin: 0 auto; background-image: url('{{ asset('storage/icons/whyus2.png') }}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
 
-            <p class="why_us_header" style="color: white; font-weight: 300; font-size: 23px; margin-top: 25px; margin-bottom: 0;">{{ __('main.speak_confidently') }}</p>
+            <p class="why_us_header">{{ __('main.speak_confidently') }}</p>
 
             <p style="color: white; font-weight: 300; font-size: 15.5px; margin-top: 10px; letter-spacing: 1px;">{{ __('main.speak_confidently_desc') }}</p>
 
@@ -82,7 +82,7 @@
 
             <div style="width: 100%; height: 230px; border-radius: 20px; margin: 0 auto; background-image: url('{{ asset('storage/icons/whyus3.png') }}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
 
-            <p class="why_us_header" style="color: white; font-weight: 300; font-size: 23px; margin-top: 25px; margin-bottom: 0;">{{ __('main.digital_learning') }}</p>
+            <p class="why_us_header">{{ __('main.digital_learning') }}</p>
 
             <p style="color: white; font-weight: 300; font-size: 15.5px; margin-top: 10px; letter-spacing: 1px;">{{ __('main.digital_learning_desc') }}</p>
 
@@ -101,7 +101,7 @@
 
             <p style="color: #FF2424; padding-top: 4vh; font-size: 19px;">#englishtime</p>
 
-            <h1 class="testimonial" style="font-weight: 400; font-size: 80px;">{{ __('main.testimonial') }}</h1>
+            <h1 class="testimonial">{{ __('main.testimonial') }}</h1>
 
         </div>
 
@@ -113,7 +113,7 @@
 
                     <div style="display: flex;">
 
-                        <div class="avatar" style="width: 70px; height: 70px; border-radius: 100%; background-image: url('{{ asset('storage/icons/avatar1.png') }}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                        <div class="avatar" style="background-image: url('{{ asset('storage/icons/avatar1.png') }}');"></div>
 
                         <div style="display: table; text-align: left;">
 
@@ -145,7 +145,7 @@
 
                     <div style="display: flex;">
 
-                        <div class="avatar" style="width: 70px; height: 70px; border-radius: 100%; background-image: url('{{ asset('storage/icons/avatar1.png') }}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                        <div class="avatar" style="background-image: url('{{ asset('storage/icons/avatar1.png') }}');"></div>
 
                         <div style="display: table; text-align: left;">
 
@@ -177,7 +177,7 @@
 
                     <div style="display: flex;">
 
-                        <div class="avatar" style="width: 70px; height: 70px; border-radius: 100%; background-image: url('{{ asset('storage/icons/avatar1.png') }}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                        <div class="avatar" style="background-image: url('{{ asset('storage/icons/avatar1.png') }}');"></div>
 
                         <div style="display: table; text-align: left;">
 
@@ -209,7 +209,7 @@
 
                     <div style="display: flex;">
 
-                        <div class="avatar" style="width: 70px; height: 70px; border-radius: 100%; background-image: url('{{ asset('storage/icons/avatar1.png') }}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                        <div class="avatar" style="background-image: url('{{ asset('storage/icons/avatar1.png') }}');"></div>
 
                         <div style="display: table; text-align: left;">
 
@@ -258,11 +258,11 @@
 
                 <p style="color: #FF2424; font-size: 19px; padding: 0; margin: 0;">#englishtime</p>
 
-                <h1 class="personalized_course" style="font-weight: 400; font-size: 50px; line-height: 1.4; margin-top: 10px;">{{ __('main.personalized_course') }}</h1>
+                <h1 class="personalized_course">{{ __('main.personalized_course') }}</h1>
 
-                <p class="personalized_course_cost" style="font-size: 25px;">{{ __('main.personalized_course_cost') }}</p>
+                <p class="personalized_course_cost">{{ __('main.personalized_course_cost') }}</p>
 
-                <p class="personalized_course_desc text-muted" style="font-size: 20px; padding-top: 5px;">{{ __('main.personalized_course_desc') }}</p>
+                <p class="personalized_course_desc text-muted">{{ __('main.personalized_course_desc') }}</p>
 
             </div>
 
@@ -277,19 +277,19 @@
 
     <div class="container d-flex">
 
-        <div style="text-align: left; padding-right: 50px;">
+        <div class="course_includes_first" style="text-align: left; padding-right: 50px;">
 
             <p style="color: #FF2424; font-size: 19px; padding: 0; margin: 0;">#englishtime</p>
 
-            <h1 class="course_includes" style="font-weight: 400; font-size: 50px; line-height: 1.4; margin-top: 10px;">{{ __('main.course_includes') }}</h1>
+            <h1 class="course_includes">{{ __('main.course_includes') }}</h1>
 
-            <p class="course_includes_desc text-muted" style="font-size: 20px;">{{ __('main.course_includes_desc') }}</p>
+            <p class="course_includes_desc text-muted">{{ __('main.course_includes_desc') }}</p>
 
             <x-join-now class="course_includes_join_now mt-3"></x-join-now>
 
         </div>
 
-        <div style="width: 60%;">
+        <div class="course_includes_second">
 
             <p style="color: #F6F6F6; font-size: 19px; padding: 0; margin: 0;">something</p>
 
@@ -297,19 +297,19 @@
 
                 <div style="width: 30%; border-radius: 20px; background-color: #6385FF;">
 
-                    <p class="individual_lesson" style="color: white; padding: 23px 35px; font-size: 18px; font-weight: 300;">{!! __('main.individual_lessons') !!}</p>
+                    <p class="course_includes_p">{!! __('main.individual_lessons') !!}</p>
 
                 </div>
 
-                <div style="width: 30%; border-radius: 20px; background-color: white;">
+                <div class="course_includes_declared" style="border-radius: 20px; background-color: white;">
 
-                    <p class="personalized_program" style="color: black; padding: 23px 35px; font-size: 18px; font-weight: 300;">{!! __('main.personalized_program') !!}</p>
+                    <p class="course_includes_p" style="color: black;">{!! __('main.personalized_program') !!}</p>
 
                 </div>
 
                 <div style="width: 30%; border-radius: 20px; background-color: #FF234B;">
 
-                    <p class="interactive_learning" style="color: white; padding: 23px 30px; font-size: 18px; font-weight: 300;">{!! __('main.interactive_learning') !!}</p>
+                    <p class="course_includes_p">{!! __('main.interactive_learning') !!}</p>
 
                 </div>
 
@@ -328,19 +328,19 @@
 
         <p style="color: #FF2424; font-size: 19px; padding-top: 4vh;">#englishtime</p>
 
-        <h1 class="faq" style="font-weight: 400; font-size: 80px; margin-bottom: 0; padding-bottom: 0;">FAQ</h1>
+        <h1 class="faq">FAQ</h1>
 
-        <p class="faq_header" style="font-size: 30px; font-weight: 300; margin: 0; padding: 0; margin-top: 20px;">Where classes are held</p>
-        <p class="faq_text" style="font-size: 18px; font-weight: 300; margin-top: 8px;">You study individually with a teacher in Zoom and complete assignments in your English Time account</p>
+        <p class="faq_header" style="margin-top: 20px;">{{ __('main.where_classes_are_held') }}</p>
+        <p class="faq_text">{{ __('main.you_study_individually_with_teacher') }}</p>
 
-        <p class="faq_header" style="font-size: 30px; font-weight: 300; margin: 0; padding: 0; margin-top: 30px;">What does this site provide for study?</p>
-        <p class="faq_text" style="font-size: 18px; font-weight: 300; margin-top: 8px;">This is a website with all the materials and tasks that you can work on from your computer or phone. It contains exercises, new vocabulary, explanations, video and audio tasks, which is very convenient because everything is in one place and always at hand</p>
+        <p class="faq_header">{{ __('main.what_does_this_site_provide') }}</p>
+        <p class="faq_text">{{ __('main.this_is_website_with_all_materials') }}</p>
 
-        <p class="faq_header" style="font-size: 30px; font-weight: 300; margin: 0; padding: 0; margin-top: 30px;">Duration and number of lessons in the course</p>
-        <p class="faq_text" style="font-size: 18px; font-weight: 300; margin-top: 8px;">The duration of one course is approximately 3.5 months (28 lessons / 2 times a week) at a time convenient for you</p>
+        <p class="faq_header">{{ __('main.duration_and_number_of_lessons') }}</p>
+        <p class="faq_text">{{ __('main.the_duration_of_one_course_is') }}</p>
 
-        <p class="faq_header" style="font-size: 30px; font-weight: 300; margin: 0; padding: 0; margin-top: 30px;">Payment options</p>
-        <p class="faq_text" style="font-size: 18px; font-weight: 300; margin-top: 8px;">You can pay for 1 month of training (8 lessons) or pay for the entire course at once. In this case, you will receive a 10% discount. Immediately after payment, our manager will contact you and provide access to your personal account.</p>
+        <p class="faq_header">{{ __('main.payment_options') }}</p>
+        <p class="faq_text">{{ __('main.you_can_pay_for_1_month') }}</p>
 
     </div>
 
@@ -410,122 +410,12 @@
 
 <script defer>
 
-    let online_school = document.querySelector('.online_school')
-
-    let why_us = document.querySelector('.why_us')
-    let why_us_headers = document.querySelectorAll('.why_us_header')
-
-    let testimonial = document.querySelector('.testimonial')
-    let avatars = document.querySelectorAll('.avatar')
-
     let personalized_course = document.querySelector('.personalized_course')
-    let personalized_course_cost = document.querySelector('.personalized_course_cost')
-    let personalized_course_desc = document.querySelector('.personalized_course_desc')
 
-    let course_includes = document.querySelector('.course_includes')
-    let course_includes_headers = document.querySelectorAll('.course_includes_header')
-
-    let faq = document.querySelector('.faq')
-    let faq_headers = document.querySelectorAll('.faq_header')
-    let faq_texts = document.querySelectorAll('.faq_text')
-
-    let join_nows = document.querySelectorAll(".join_now")
-
-    console.log(document.querySelector('.container').offsetWidth)
-
-    if(document.querySelector('.container').offsetWidth == 1140)
-    {
-
-        online_school.style.fontSize = '70px'
-        why_us.style.fontSize = '70px'
-        testimonial.style.fontSize = '70px'
-        faq.style.fontSize = '70px'
-
-        why_us_headers.forEach(header => {
-            header.style.fontSize = '21px'
-        });
-
-        personalized_course.style.fontSize = '42px'
-        personalized_course.style.marginBottom = '6px'
-        personalized_course.style.marginTop = '5px'
-
-        personalized_course_cost.style.fontSize = '23px'
-        personalized_course_cost.style.marginBottom = '5px'
-
-        personalized_course_desc.style.fontSize = '18px'
-
-        course_includes.style.fontSize = '49px'
-
-        course_includes_headers.forEach(header => {
-
-            header.style.fontSize = '22px'
-            header.parentElement.style.fontSize = ''
-
-        });
-
-        course_includes_headers[1].parentElement.parentElement.style.width = '31%'
-
-        why_us_headers.forEach(header => {
-
-            header.style.fontSize = `28px`
-
-        });
-
-    }
     if(document.querySelector('.container').offsetWidth == 960)
     {
 
-        online_school.style.fontSize = '59px'
-
-        join_nows.forEach(join_now => {
-
-            join_now.style.padding = '15px 30px'
-
-        });
-
-        avatars.forEach(avatar => {
-
-            avatar.style.borderRadius = '10px'
-            avatar.style.height = ''
-
-        });
-
-        personalized_course.style.fontSize = '36px'
-        personalized_course.style.marginBottom = '6px'
-        personalized_course.style.marginTop = '5px'
-
-        personalized_course_cost.style.fontSize = '20px'
-        personalized_course_cost.style.marginBottom = '5px'
-
-        personalized_course_desc.style.fontSize = '16px'
-        personalized_course_desc.style.paddingTop = '0'
-
         personalized_course.parentElement.children[0].style.fontSize = '16px'
-
-        course_includes.style.fontSize = '49px'
-
-        course_includes_headers.forEach(header => {
-
-            header.style.fontSize = '20px'
-            header.parentElement.style.fontSize = '17px'
-
-        });
-
-        course_includes.parentElement.parentElement.children[1].style.width = '65%'
-        course_includes.parentElement.style.width = '35%'
-        course_includes_headers[1].parentElement.parentElement.style.width = '31%'
-
-        faq_headers.forEach(header => {
-
-            header.style.fontSize = '28px'
-
-        });
-
-        faq_texts.forEach(text => {
-
-            text.style.fontSize = '17px'
-
-        });
 
     }
 
@@ -542,6 +432,14 @@
         </div>
 
     `
+
+    window.addEventListener('load', function () {
+
+        let llocale = document.querySelector('.locale').value
+
+        
+
+    })
 
 </script>
 

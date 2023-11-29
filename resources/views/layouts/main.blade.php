@@ -260,6 +260,13 @@
             font-family: 'Inter', sans-serif;
         }
 
+        .course_includes_second
+        {
+
+            width: 60%;
+
+        }
+
         .zxc
         {
             border: 1px solid black;
@@ -331,64 +338,470 @@
             padding: 0 15px;
         }
 
-        .join_now
+        .course_includes_declared
         {
 
-            color: white;
-            display: flex;
-            column-gap: 15px;
-            background-color: #6385FF;
-            padding: 20px 40px;
-            border-radius: 20px;
-            transition: 0.5s;
-            border: 2px solid #6385FF;
+            width: 30%;
 
         }
 
-        .join_now svg
-        {
-            fill: white;
-            transition: 0.5s;
-        }
-
-        .join_now:hover
+        @media only screen and (min-width: 602px)
         {
 
-            background-color: white;
-            color: #6385FF;
-            transition: 0.5s;
-
-        }
-
-        .join_now:hover svg
-        {
-            fill: #6385FF;
-            transition: 0.5s;
-        }
-
-        @media only screen and (min-width: 576px)
-        {
             .join_now
             {
-                color: yellow;
+
+                color: white; display: flex; column-gap: 15px; background-color: #6385FF; 
+                padding: 15px 30px; border-radius: 20px; transition: 0.5s; border: 2px solid #6385FF;
+    
             }
+    
+            .join_now svg
+            {
+                fill: white; transition: 0.5s;
+            }
+    
+            .join_now:hover
+            {
+    
+                background-color: white; color: #6385FF; transition: 0.5s;
+    
+            }
+    
+            .join_now:hover svg
+            {
+                fill: #6385FF; transition: 0.5s;
+            }
+    
+            .online_school
+            {
+    
+                font-weight: 400; font-size: 59px; line-height: 1.35;
+    
+            }
+    
+            .online_school_desc
+            {
+    
+                font-size: 18px;
+    
+            }
+    
+            .why_us, .testimonial
+            {
+    
+                font-weight: 400; font-size: 70px;
+    
+            }
+    
+            .why_us_header
+            {
+    
+                color: white; font-weight: 300; font-size: 21px; margin-top: 25px; margin-bottom: 0;
+    
+            }
+    
+            .avatar
+            {
+    
+                width: 70px; border-radius: 10px; 
+                background-position: center; background-size: cover; background-repeat: no-repeat;
+    
+            }
+    
+            .personalized_course
+            {
+    
+                font-weight: 400; font-size: 36px; line-height: 1.4; margin-top: 5px; margin-bottom: 6px;
+    
+            }
+    
+            .personalized_course_cost
+            {
+    
+                font-size: 20px;
+                margin-bottom: 5px;
+    
+            }
+    
+            .personalized_course_desc
+            {
+    
+                font-size: 16px; padding-top: 0;
+    
+            }
+    
+            .course_includes
+            {
+    
+                font-weight: 400; font-size: 49px; line-height: 1.4; margin-top: 10px;
+    
+            }
+    
+            .course_includes_desc
+            {
+    
+                font-size: 20px;
+    
+            }
+
+            .course_includes_header
+            {
+
+                font-size: 20px;
+
+            }
+    
+            .course_includes_p
+            {
+    
+                color: white; padding: 23px 30px; font-size: 17px; font-weight: 300;
+    
+            }
+
+            .course_includes_first
+            {
+
+                width: 35%;
+
+            }
+
+            .course_includes_second
+            {
+
+                width: 65%;
+
+            }
+
+            .course_includes_declared
+            {
+
+                width: 31%;
+
+            }
+    
+            .faq
+            {
+    
+                font-weight: 400; font-size: 70px; margin-bottom: 0; padding-bottom: 0;
+    
+            }
+    
+            .faq_header
+            {
+    
+                font-size: 28px; font-weight: 300; margin: 0; padding: 0; margin-top: 30px;
+    
+            }
+    
+            .faq_text
+            {
+    
+                font-size: 17px; font-weight: 300; margin-top: 8px;
+    
+            }
+
         }
 
-        @media only screen and (min-width: 768px)
+        @media only screen and (min-width: 1200px)
         {
+
             .join_now
             {
-                color: red;
+    
+                color: white;
+                display: flex;
+                column-gap: 15px;
+                background-color: #6385FF;
+                padding: 20px 40px;
+                border-radius: 20px;
+                transition: 0.5s;
+                border: 2px solid #6385FF;
+    
             }
+    
+            .join_now svg
+            {
+                fill: white;
+                transition: 0.5s;
+            }
+    
+            .join_now:hover
+            {
+    
+                background-color: white;
+                color: #6385FF;
+                transition: 0.5s;
+    
+            }
+    
+            .join_now:hover svg
+            {
+                fill: #6385FF;
+                transition: 0.5s;
+            }
+    
+            .online_school
+            {
+    
+                font-weight: 400; font-size: 70px; line-height: 1.35;
+    
+            }
+    
+            .online_school_desc
+            {
+    
+                font-size: 18px;
+    
+            }
+    
+            .why_us, .testimonial
+            {
+    
+                font-weight: 400; font-size: 70px;
+    
+            }
+    
+            .why_us_header
+            {
+    
+                color: white; font-weight: 300; font-size: 21px; margin-top: 25px; margin-bottom: 0;
+    
+            }
+    
+            .avatar
+            {
+    
+                width: 70px; height: 70px; border-radius: 100%; background-position: center; background-size: cover; background-repeat: no-repeat;
+    
+            }
+    
+            .personalized_course
+            {
+    
+                font-weight: 400; font-size: 42px; line-height: 1.4; margin-top: 5px; margin-bottom: 6px;
+    
+            }
+    
+            .personalized_course_cost
+            {
+    
+                font-size: 23px;
+                margin-bottom: 5px;
+    
+            }
+    
+            .personalized_course_desc
+            {
+    
+                font-size: 18px; padding-top: 5px;
+    
+            }
+    
+            .course_includes
+            {
+    
+                font-weight: 400; font-size: 49px; line-height: 1.4; margin-top: 10px;
+    
+            }
+    
+            .course_includes_desc
+            {
+    
+                font-size: 20px;
+    
+            }
+
+            .course_includes_header
+            {
+
+                font-size: 22px;
+
+            }
+    
+            .course_includes_p
+            {
+    
+                color: white; padding: 23px 30px; font-size: 18px; font-weight: 300;
+    
+            }
+
+            .course_includes_declared
+            {
+
+                width: 31%;
+
+            }
+    
+            .faq
+            {
+    
+                font-weight: 400; font-size: 70px; margin-bottom: 0; padding-bottom: 0;
+    
+            }
+    
+            .faq_header
+            {
+    
+                font-size: 30px; font-weight: 300; margin: 0; padding: 0; margin-top: 30px;
+    
+            }
+    
+            .faq_text
+            {
+    
+                font-size: 18px; font-weight: 300; margin-top: 8px;
+    
+            }
+
         }
 
-        @media only screen and (min-width: 992px)
+        @media only screen and (min-width: 1400px)
         {
+
             .join_now
             {
-                color: black;
+    
+                color: white;
+                display: flex;
+                column-gap: 15px;
+                background-color: #6385FF;
+                padding: 20px 40px;
+                border-radius: 20px;
+                transition: 0.5s;
+                border: 2px solid #6385FF;
+    
             }
+    
+            .join_now svg
+            {
+                fill: white;
+                transition: 0.5s;
+            }
+    
+            .join_now:hover
+            {
+    
+                background-color: white;
+                color: #6385FF;
+                transition: 0.5s;
+    
+            }
+    
+            .join_now:hover svg
+            {
+                fill: #6385FF;
+                transition: 0.5s;
+            }
+    
+            .online_school
+            {
+    
+                font-weight: 400; font-size: 80px; line-height: 1.35;
+    
+            }
+    
+            .online_school_desc
+            {
+    
+                font-size: 18px;
+    
+            }
+    
+            .why_us, .testimonial
+            {
+    
+                font-weight: 400; font-size: 80px;
+    
+            }
+    
+            .why_us_header
+            {
+    
+                color: white; font-weight: 300; font-size: 23px; margin-top: 25px; margin-bottom: 0;
+    
+            }
+    
+            .avatar
+            {
+    
+                width: 70px; height: 70px; border-radius: 100%; background-position: center; background-size: cover; background-repeat: no-repeat;
+    
+            }
+    
+            .personalized_course
+            {
+    
+                font-weight: 400; font-size: 50px; line-height: 1.4; margin-top: 10px;
+    
+            }
+    
+            .personalized_course_cost
+            {
+    
+                font-size: 25px;
+    
+            }
+    
+            .personalized_course_desc
+            {
+    
+                font-size: 20px; padding-top: 5px;
+    
+            }
+    
+            .course_includes
+            {
+    
+                font-weight: 400; font-size: 50px; line-height: 1.4; margin-top: 10px;
+    
+            }
+
+            .course_includes_header
+            {
+
+                font-size: 27px;
+
+            }
+    
+            .course_includes_desc
+            {
+    
+                font-size: 20px;
+    
+            }
+    
+            .course_includes_p
+            {
+    
+                color: white; padding: 23px 30px; font-size: 18px; font-weight: 300;
+    
+            }
+    
+            .faq
+            {
+    
+                font-weight: 400; font-size: 80px; margin-bottom: 0; padding-bottom: 0;
+    
+            }
+    
+            .faq_header
+            {
+    
+                font-size: 30px; font-weight: 300; margin: 0; padding: 0; margin-top: 30px;
+    
+            }
+    
+            .faq_text
+            {
+    
+                font-size: 18px; font-weight: 300; margin-top: 8px;
+    
+            }
+
         }
+
+        
 
     </style>
     {{-- BOOTSTRAP --}}

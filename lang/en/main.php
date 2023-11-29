@@ -217,9 +217,18 @@ return [
     'course_includes' => 'Course includes',
     'course_includes_desc' => 'Perfectly tailored to you.',
 
-    'individual_lessons' => '<span class="course_includes_header" style="font-size: 27px;">Individual lessons</span><br>with a teacher and lessons on a convenient learning platform',
-    'personalized_program' => '<span class="course_includes_header" style="font-size: 27px;">Personalized Program</span><br>considers your interests, ensuring effective, tailored learning for you',
-    'interactive_learning' => '<span class="course_includes_header" style="font-size: 27px;">Interactive Learning</span><br>ensures 100% class practice with communicative methods for<br><span style="background-color: white; color: #FF234B; padding: 0 3px; border-radius: 5px; user-select: none;" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="'.'Active speaking'.' in English language learning refers to the active participation of students in verbal communication. It involves using words, expressions, and grammatical structures actively to express thoughts and ideas. During active speaking exercises, students engage in dialogues, discuss topics, and participate in role-playing scenarios. This approach fosters the development of speaking skills, expands vocabulary, and improves pronunciation. Active speaking, whether in the classroom or during language learning activities, creates a dynamic and practical experience in using the English language, enhancing overall language proficiency."><b>active speaking</b></span>',
+    'individual_lessons' => '<span class="course_includes_header">Individual lessons</span><br>with a teacher and lessons on a convenient learning platform',
+    'personalized_program' => '<span class="course_includes_header">Personalized Program</span><br>considers your interests, ensuring effective, tailored learning for you',
+    'interactive_learning' => '<span class="course_includes_header">Interactive Learning</span><br>ensures 100% class practice with communicative methods for<br><span style="background-color: white; color: #FF234B; padding: 0 3px; border-radius: 5px; user-select: none;" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="'.'Active speaking'.' in English language learning refers to the active participation of students in verbal communication. It involves using words, expressions, and grammatical structures actively to express thoughts and ideas. During active speaking exercises, students engage in dialogues, discuss topics, and participate in role-playing scenarios. This approach fosters the development of speaking skills, expands vocabulary, and improves pronunciation. Active speaking, whether in the classroom or during language learning activities, creates a dynamic and practical experience in using the English language, enhancing overall language proficiency."><b>active speaking</b></span>',
+
+    'where_classes_are_held' => 'Where classes are held',
+    'you_study_individually_with_teacher' => 'You study individually with a teacher in Zoom and complete assignments in your English Time account',
+    'what_does_this_site_provide' => 'What does this site provide for study?',
+    'this_is_website_with_all_materials' => 'This is a website with all the materials and tasks that you can work on from your computer or phone. It contains exercises, new vocabulary, explanations, video and audio tasks, which is very convenient because everything is in one place and always at hand',
+    'duration_and_number_of_lessons' => 'Duration and number of lessons in the course',
+    'the_duration_of_one_course_is' => 'The duration of one course is approximately 3.5 months (28 lessons / 2 times a week) at a time convenient for you',
+    'payment_options' => 'Payment options',
+    'you_can_pay_for_1_month' => 'You can pay for 1 month of training (8 lessons) or pay for the entire course at once. In this case, you will receive a 10% discount. Immediately after payment, our manager will contact you and provide access to your personal account.',
 
 ]
 
