@@ -107,21 +107,21 @@
 
         <div style="display: flex; justify-content: space-between;">
 
-            <div style="width: 23%; border-radius: 25px; background-color: white; box-shadow: rgba(0, 0, 0, 0.13) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;">
+            <div style="width: 23%;">
 
-                <div style="padding: 20px; padding-bottom: 25px;">
+                <div style="background-color: white; border-radius: 25px; box-shadow: rgba(0, 0, 0, 0.13) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; padding: 20px; padding-bottom: 25px;">
 
                     <div style="display: flex;">
 
-                        <div class="avatar" style="background-image: url('{{ asset('storage/icons/avatar1.png') }}');"></div>
+                        <div class="avatar" style="background-image: url('{{ asset('storage/icons/maria.png') }}');"></div>
 
                         <div style="display: table; text-align: left;">
 
                             <div style="display: table-cell; vertical-align: middle; padding-left: 10px;">
 
-                                <p style="font-family: Anybody; font-size: 16px; font-weight: 500; margin-bottom: 0;">Alexandro Pilov</p>
+                                <p style="font-family: Anybody; font-size: 16px; font-weight: 500; margin-bottom: 0;">Maria Sheremeta</p>
 
-                                <p style="color: #5F6FFD; font-size: 13px; margin-top: 0; margin-bottom: 0;">@10godturmi</p>
+                                <p style="color: #5F6FFD; font-size: 13px; margin-top: 0; margin-bottom: 0;">@SherMari3</p>
 
                             </div>
 
@@ -131,7 +131,19 @@
 
                     <div style="padding: 10px; padding-top: 20px; text-align: left;">
 
-                        <p style="color: #6e6e6e; font-weight: 400; font-size: 17.5px;"><i>“Тут буде написаний якийсь відгук від учня який абсолютно добровільно його напише :) І він може навіть ще щось добавити”</i></p>
+                        <p class="p" style="color: #6e6e6e; font-weight: 400; font-size: 17px; overflow: hidden;">
+                            <i>
+                                “Ірина - одна з найкращих викладачів, яких я зустрічала. Вона не тільки професіонал своєї справи, а і чудова людина, яка любить свою роботу. Її уроки завжди цікаві та насичені, вона створює дружню атмосферу, враховує всі потреби своїх учнів. Також Ірина вміло поєднує традиційні методи викладання із інтерактивними, додаючи до уроків цікаві та сучасні відео / аудіо завдання. Щиро і впевнено можу рекомендувати Ірину як викладача англійської як для тих хто хоче покращити свій рівень так і для тих хто лише розпочинає вивчення”
+                            </i>
+                        </p>
+
+                        <div class="w-100 border expand" role="button" style="display: flex; justify-content: center; border-radius: 5px; padding: 5px;">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="50" viewBox="0 0 148 34" fill="none">
+                                <path d="M2.5 2.5L73.5884 31.0884L144.68 2.5" stroke="#6e6e6e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+
+                        </div>
 
                     </div>
 
@@ -139,21 +151,21 @@
 
             </div>
 
-            <div style="width: 23%; border-radius: 25px; background-color: white; box-shadow: rgba(0, 0, 0, 0.13) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;">
+            <div style="width: 23%;">
 
-                <div style="padding: 20px; padding-bottom: 25px;">
+                <div style="background-color: white; border-radius: 25px; box-shadow: rgba(0, 0, 0, 0.13) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; padding: 20px; padding-bottom: 25px;">
 
                     <div style="display: flex;">
 
-                        <div class="avatar" style="background-image: url('{{ asset('storage/icons/avatar1.png') }}');"></div>
+                        <div class="avatar" style="background-image: url('{{ asset('storage/icons/olesya.jpg') }}');"></div>
 
                         <div style="display: table; text-align: left;">
 
                             <div style="display: table-cell; vertical-align: middle; padding-left: 10px;">
 
-                                <p style="font-family: Anybody; font-size: 16px; font-weight: 500; margin-bottom: 0;">Alexandro Pilov</p>
+                                <p style="font-family: Anybody; font-size: 16px; font-weight: 500; margin-bottom: 0;">Olesya Shkapko</p>
 
-                                <p style="color: #5F6FFD; font-size: 13px; margin-top: 0; margin-bottom: 0;">@10godturmi</p>
+                                <p style="color: #5F6FFD; font-size: 13px; margin-top: 0; margin-bottom: 0;">@olesya_shkapko</p>
 
                             </div>
 
@@ -163,7 +175,19 @@
 
                     <div style="padding: 10px; padding-top: 20px; text-align: left;">
 
-                        <p style="color: #6e6e6e; font-weight: 400; font-size: 17.5px;"><i>“Тут буде написаний якийсь відгук від учня який абсолютно добровільно його напише :) І він може навіть ще щось добавити”</i></p>
+                        <p class="p" style="color: #6e6e6e; font-weight: 400; font-size: 17px; overflow: hidden;">
+                            <i>
+                                “Вітання Всім, мене звати Олеся Шкапко і тут я хочу поділитись моїм досвідом співпраці з Іриною, власне співпраці, бо Ірина - викладач який спонукає працювати, працювати плідно і результативно. Іра має чітке розуміння того, як сприяти засвоєнню мови, вона розробила дуже цікаву а основне результативну систему за допомогою якої легко вивчаються нові слова та засвоюється граматика. Особлива увага на уроках приділяється також і розвитку мовлення, Іра завжди будує запитання з врахуванням вивчених тем і граматики. Кожну секунду заняття Іра є супер включеною у процес: відслідковує вами сказане, відловлює помилки і виправляє їх, і що не менш важливо - відбувається це все в легкості і з гумором &#128522;. Для мене Іра найкращий репетитор, з яким я коли небудь працювала, вона цілеспрямована і відкрита особливість, високоерудована у своїй спеціальності”
+                            </i>
+                        </p>
+
+                        <div class="w-100 border expand" role="button" style="display: flex; justify-content: center; border-radius: 5px; padding: 5px;">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="50" viewBox="0 0 148 34" fill="none">
+                                <path d="M2.5 2.5L73.5884 31.0884L144.68 2.5" stroke="#6e6e6e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+
+                        </div>
 
                     </div>
 
@@ -171,19 +195,19 @@
 
             </div>
 
-            <div style="width: 23%; border-radius: 25px; background-color: white; box-shadow: rgba(0, 0, 0, 0.13) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;">
+            <div style="width: 23%;">
 
-                <div style="padding: 20px; padding-bottom: 25px;">
+                <div style="background-color: white; border-radius: 25px; box-shadow: rgba(0, 0, 0, 0.13) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; padding: 20px; padding-bottom: 25px;">
 
                     <div style="display: flex;">
 
-                        <div class="avatar" style="background-image: url('{{ asset('storage/icons/avatar1.png') }}');"></div>
+                        <div class="avatar" style="background-image: url('{{ asset('storage/icons/lidia.jpg') }}');"></div>
 
                         <div style="display: table; text-align: left;">
 
                             <div style="display: table-cell; vertical-align: middle; padding-left: 10px;">
 
-                                <p style="font-family: Anybody; font-size: 16px; font-weight: 500; margin-bottom: 0;">Alexandro Pilov</p>
+                                <p style="font-family: Anybody; font-size: 16px; font-weight: 500; margin-bottom: 0;">Lidia DONT KNOW</p>
 
                                 <p style="color: #5F6FFD; font-size: 13px; margin-top: 0; margin-bottom: 0;">@10godturmi</p>
 
@@ -195,7 +219,19 @@
 
                     <div style="padding: 10px; padding-top: 20px; text-align: left;">
 
-                        <p style="color: #6e6e6e; font-weight: 400; font-size: 17.5px;"><i>“Тут буде написаний якийсь відгук від учня який абсолютно добровільно його напише :) І він може навіть ще щось добавити”</i></p>
+                        <p class="p" style="color: #6e6e6e; font-weight: 400; font-size: 17px; overflow: hidden;">
+                            <i>
+                                “Іра, цей курс просто ВАУ! Теми підібрані дуже влучно, а лексика це окремий кайф, всі ці завдання, після яких, я якимсь чудом вивчала практично всі слова без зубріння і почала використовувати! Я реально пам'ятаю і використовую слова починаючи з першого нашого заняття. А відео до кожного уроку, Іра, я не знаю де ви їх знаходили, але вони супер-круті, вони завжди були ніби логічне завершення до теми! І коли я переглядала, виконувала завдання і просто чекала наступного уроку, щоб ми обговорили і я кайфувала! Більше того, я нарешті розібралася з Conditionals &#128517; бо то завше було з області фантастика) Дякую що по-справжньому закохала мене в англійську &#10084;”
+                            </i>
+                        </p>
+
+                        <div class="w-100 border expand" role="button" style="display: flex; justify-content: center; border-radius: 5px; padding: 5px;">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="50" viewBox="0 0 148 34" fill="none">
+                                <path d="M2.5 2.5L73.5884 31.0884L144.68 2.5" stroke="#6e6e6e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+
+                        </div>
 
                     </div>
 
@@ -203,9 +239,9 @@
 
             </div>
 
-            <div style="width: 23%; border-radius: 25px; background-color: white; box-shadow: rgba(0, 0, 0, 0.13) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;">
+            <div style="width: 23%;">
 
-                <div style="padding: 20px; padding-bottom: 25px;">
+                <div style="background-color: white; border-radius: 25px; box-shadow: rgba(0, 0, 0, 0.13) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; padding: 20px; padding-bottom: 25px;">
 
                     <div style="display: flex;">
 
@@ -227,7 +263,19 @@
 
                     <div style="padding: 10px; padding-top: 20px; text-align: left;">
 
-                        <p style="color: #6e6e6e; font-weight: 400; font-size: 17.5px;"><i>“Тут буде написаний якийсь відгук від учня який абсолютно добровільно його напише :) І він може навіть ще щось добавити”</i></p>
+                        <p class="p" style="color: #6e6e6e; font-weight: 400; font-size: 17px; overflow: hidden;">
+                            <i>
+                                “Ірина - одна з найкращих викладачів, яких я зустрічала. Вона не тільки професіонал своєї справи, а і чудова людина, яка любить свою роботу. Її уроки завжди цікаві та насичені, вона створює дружню атмосферу, враховує всі потреби своїх учнів. Також Ірина вміло поєднує традиційні методи викладання із інтерактивними, додаючи до уроків цікаві та сучасні відео / аудіо завдання. Щиро і впевнено можу рекомендувати Ірину як викладача англійської як для тих хто хоче покращити свій рівень так і для тих хто лише розпочинає вивчення”
+                            </i>
+                        </p>
+
+                        <div class="w-100 border expand" role="button" style="display: flex; justify-content: center; border-radius: 5px; padding: 5px;">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="50" viewBox="0 0 148 34" fill="none">
+                                <path d="M2.5 2.5L73.5884 31.0884L144.68 2.5" stroke="#6e6e6e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+
+                        </div>
 
                     </div>
 
@@ -367,7 +415,7 @@
 
                 <div style="display: table;">
 
-                    <p style="display: table-cell; vertical-align: middle; font-family: Anybody; font-size: 23px; margin: 0; padding-left: 5px; padding-top: 3px;">some_email@gmail.com</p>
+                    <p style="display: table-cell; vertical-align: middle; font-family: Anybody; font-size: 23px; margin: 0; padding-left: 5px; padding-top: 3px;">rithlesscorp@gmail.com</p>
 
                 </div>
 
@@ -381,7 +429,11 @@
 
                 <div style="display: table;">
 
-                    <p style="display: table-cell; vertical-align: middle; font-family: Anybody; font-size: 23px; margin: 0; padding-left: 5px; padding-top: 3px;">@instagram_link</p>
+                    <p style="display: table-cell; vertical-align: middle; font-family: Anybody; font-size: 23px; margin: 0; padding-left: 5px; padding-top: 3px;">
+                        <a href="https://www.instagram.com/englishtime.com.ua/" style="text-decoration: none;">
+                            @englishtime.com.ua
+                        </a>
+                    </p>
 
                 </div>
 
@@ -437,7 +489,92 @@
 
         let llocale = document.querySelector('.locale').value
 
-        
+        let expands = document.querySelectorAll('.expand')
+        let ps = document.querySelectorAll('.p')
+
+        let id = null;
+
+        function shrink_f() {
+
+            let p = this.parentElement.children[0]
+
+            let height = 0
+            clearInterval(id);
+            id = setInterval(frame, 0);
+
+            function frame() {
+
+                if (p.style.height == '250px') {
+                    clearInterval(id);
+                } else {
+
+                    height = parseInt(p.style.height.slice(0, p.style.height.length-2))
+                    height = height-1
+
+                    p.style.height = height+'px'
+
+                }
+
+            }
+
+            this.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" viewBox="0 0 148 34" fill="none">
+                    <path d="M2.5 2.5L73.5884 31.0884L144.68 2.5" stroke="#6e6e6e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            `
+
+            this.removeEventListener('click', shrink_f)
+            this.addEventListener('click', expand_f)
+
+
+        }
+
+        function expand_f() {
+
+            let p = this.parentElement.children[0]
+
+            let height = 0
+            clearInterval(id);
+            id = setInterval(frame, 0);
+
+            function frame() {
+
+                if (p.style.height == p.attributes.start.value+'px') {
+                    clearInterval(id);
+                } else {
+
+                    height = parseInt(p.style.height.slice(0, p.style.height.length-2))
+                    height = height+1
+
+                    p.style.height = height+'px'
+
+                }
+
+            }
+
+            this.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" viewBox="0 0 148 34" fill="none">
+                    <path d="M2.5 31.5L73.5884 2.90997L144.68 31.5" stroke="black" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            `
+
+            this.removeEventListener('click', expand_f)
+            this.addEventListener('click', shrink_f)
+
+
+        }
+
+        ps.forEach(p => {
+
+            p.setAttribute('start', p.offsetHeight)
+            p.style.height = '250px'
+
+        });
+        expands.forEach(expand => {
+
+            expand.addEventListener('click', expand_f)
+
+        });
 
     })
 
