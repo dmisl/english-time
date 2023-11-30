@@ -14,7 +14,30 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('home.index');
+        $locale = App::currentLocale();
+
+        if($locale == 'en')
+        {
+
+            return view('home.en');
+
+        } else if($locale == 'ua')
+        {
+
+            return view('home.ua');
+
+        } else if($locale == 'pl')
+        {
+
+            return view('home.pl');
+
+        } else
+        {
+
+            return view('home.ua');
+
+        }
+
     }
 
     public function locale(Request $request)
