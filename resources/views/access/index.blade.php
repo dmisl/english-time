@@ -38,10 +38,12 @@
 
             foreach($courses as $course)
             {
-            $unallowed_courses[] = $course->id;
+                $unallowed_courses[$course->id] = $course->name;
             }
 
             $unallowed_courses = array_diff($unallowed_courses, $accessed_courses);
+            dd($accessed_courses);
+            dd($unallowed_courses);
 
             @endphp
             <tr>
@@ -79,9 +81,9 @@
                                                 <div class="form-floating">
                                                     <select name="course_store" class="form-select select{{ $user->id }}" id="floatingSelect" aria-label="Floating label select example">
                                                         <option selected></option>
-                                                        @foreach($unallowed_courses as $course)
-                                                        <option value="{{ $course_model->find($course)->id }}">
-                                                            {{ $course_model->find($course)->name }}
+                                                        @foreach($unallowed_courses as $id => $name)
+                                                        <option value="{{ $id }}">
+                                                            {{ $name }}
                                                         </option>
                                                         @endforeach
                                                         <x-input type="hidden" name="user_id" value="{{ $user->id }}"></x-input>
@@ -174,7 +176,7 @@
 
             foreach($courses as $course)
             {
-            $unallowed_courses[] = $course->id;
+                $unallowed_courses[$course->id] = $course->name;
             }
 
             $unallowed_courses = array_diff($unallowed_courses, $accessed_courses);
@@ -217,9 +219,9 @@
                                                 <div class="form-floating">
                                                     <select name="course_store" class="form-select select{{ $user->id }}" id="floatingSelect" aria-label="Floating label select example">
                                                         <option selected></option>
-                                                        @foreach($unallowed_courses as $course)
-                                                        <option value="{{ $course_model->find($course)->id }}">
-                                                            {{ $course_model->find($course)->name }}
+                                                        @foreach($unallowed_courses as $id => $name)
+                                                        <option value="{{ $id }}">
+                                                            {{ $name }}
                                                         </option>
                                                         @endforeach
                                                         <x-input type="hidden" name="user_id" value="{{ $user->id }}"></x-input>

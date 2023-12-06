@@ -24,6 +24,7 @@
     <h4>{!! __('main.to_create_a_lesson_use_the_button') !!}</h4>
 
     @else
+    <div class="row">
 
     @foreach ($lessons as $lesson)
         <div class="col-12 col-md-4 py-3">
@@ -89,6 +90,9 @@
         </div>
 
     @endforeach
+
+    </div>
+
 
     @endif
 

@@ -1179,7 +1179,7 @@ if(declared.children.length >= 3)
 
         let youtube_add = document.createElement('div')
         youtube_add.classList.add('youtube_add')
-        youtube_add.classList.setAttribute('role', 'button')
+        youtube_add.setAttribute('role', 'button')
         youtube_add.style.cssText = `display: table; margin: 0px auto; background: rgb(255, 15, 55); border: 1px solid rgb(0, 0, 0); border-radius: 10px; color: white;`
 
         youtube.appendChild(youtube_add)
@@ -1359,7 +1359,7 @@ tasks.forEach(parent => {
             let task_image_parent = document.createElement('div')
             task_image_parent.classList.add('abc_image')
             task_image_parent.setAttribute('role', 'button')
-            task_image_parent.style.cssText = `display: table; margin: 30px auto 20px; background-image: url('https://english/storage/icons/bg.jpg'); background-position: center center; background-size: cover; background-repeat: no-repeat; border: 1px solid black; border-radius: 10px; color: black;`
+            task_image_parent.style.cssText = `display: table; margin: 30px auto 20px; background-image: url('${bg_jpg}'); background-position: center center; background-size: cover; background-repeat: no-repeat; border: 1px solid black; border-radius: 10px; color: black;`
 
             task.appendChild(task_image_parent)
 

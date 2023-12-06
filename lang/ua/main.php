@@ -152,7 +152,7 @@ return [
     'select_picture_from_your_computer_or_delete_picture_clicking_this' => "Виберіть картинку зі свого комп'ютера, або видаліть її нажавши цю",
     'to_delete_picture_click_this' => 'Щоб видалити картинку - нажміть цю',
     'paste_the_correct_url' => 'Вставте працююче URL-посилання',
-    'upload_from_computer' => "Загрузити з ком'ютера",
+    'upload_from_computer' => "Загрузити з компютера",
     'upload_from_internet' => 'Загрузити з інтернета',
     'paste_image_url' => 'Вставте URL-посилання картинки',
 
@@ -218,9 +218,9 @@ return [
     'course_includes' => 'Курс включає',
     'course_includes_desc' => 'Ідеально підібраний для вас.',
 
-    'individual_lessons' => '<span class="course_includes_header" style="font-size: 27px;">Individual lessons</span><br>with a teacher and lessons on a convenient learning platform',
-    'personalized_program' => '<span class="course_includes_header" style="font-size: 27px;">Personalized Program</span><br>considers your interests, ensuring effective, tailored learning for you',
-    'interactive_learning' => '<span class="course_includes_header" style="font-size: 27px;">Interactive Learning</span><br>ensures 100% class practice with communicative methods for<br><span style="background-color: white; color: #FF234B; padding: 0 3px; border-radius: 5px; user-select: none;" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="'.'Active speaking'.' in English language learning refers to the active participation of students in verbal communication. It involves using words, expressions, and grammatical structures actively to express thoughts and ideas. During active speaking exercises, students engage in dialogues, discuss topics, and participate in role-playing scenarios. This approach fosters the development of speaking skills, expands vocabulary, and improves pronunciation. Active speaking, whether in the classroom or during language learning activities, creates a dynamic and practical experience in using the English language, enhancing overall language proficiency."><b>active speaking</b></span>',
+    'individual_lessons' => '<span class="course_includes_header">Особисті заняття</span><br>вивчайте англійську із викладачем та на платформі зручній для вас.',
+    'personalized_program' => "<span class='course_includes_header'>Персональна програма</span><br>це спеціалізований курс, призначений для поєднання ваших інтересів і навчальних потреб.",
+    'interactive_learning' => '<span class="course_includes_header">Інтерактивне навчання</span><br>забезпечує 100% практику в класі з комунікативними методами для<br><span style="background-color: white; color: #FF234B; padding: 0 3px; border-radius: 5px; user-select: none;" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Активне мовлення у вивченні англійської мови означає активну участь студентів у вербальному спілкуванні. Воно передбачає активне використання слів, виразів та граматичних структур для вираження думок та ідей. Під час активних мовленнєвих вправ студенти ведуть діалоги, обговорюють теми та беруть участь у рольових сценаріях. Такий підхід сприяє розвитку мовленнєвих навичок, розширенню словникового запасу та покращенню вимови. Активне говоріння, чи то в класі, чи то під час мовних заходів, створює динамічний і практичний досвід використання англійської мови, покращуючи загальний рівень володіння мовою."><b>активного спілкування</b></span>',
 
     'where_classes_are_held' => 'Де проходять заняття',
     'you_study_individually_with_teacher' => 'Ви навчаєтесь індивідуально з викладачем у Zoom та виконуєте завдання у своєму акаунті English Time',

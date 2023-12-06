@@ -5,7 +5,7 @@
 
             <div style="display: table;">
 
-                <p style="display: table-cell; vertical-align: middle; font-size: 25px;">{{ __('main.join_now') }}</p>
+                <p>{{ __('main.join_now') }}</p>
 
             </div>
 

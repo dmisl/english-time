@@ -14,6 +14,7 @@ class HomeController extends Controller
 {
     public function index()
     {
+
         $locale = App::currentLocale();
 
         if($locale == 'en')
@@ -68,4 +69,15 @@ class HomeController extends Controller
 
         return $response->withCookie($cookie);
     }
+
+    public function file(Request $request)
+    {
+
+        dd(1);
+        dd($request->all());
+
+        return back();
+
+    }
+
 }

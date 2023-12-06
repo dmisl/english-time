@@ -19,6 +19,7 @@ Route::middleware(['locale'])
     Route::get('/', [HomeController::class, 'index'])->name('home.index');
     Route::get('dark_mode', [HomeController::class, 'dark_mode'])->name('home.dark_mode');
     Route::get('locale', [HomeController::class, 'locale'])->name('home.locale');
+    Route::post('file', [HomeController::class, 'file'])->name('home.file');
 
     // Login + Registration
 

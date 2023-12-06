@@ -114,7 +114,7 @@
     let tr_write_text_here = `{{ __('main.write_text_here') }}`
     let tr_in_this_task_you_need_to_second = `{{ __('main.in_this_task_you_need_to_second') }}`
     let tr_in_this_task_you_need_3_second = `{{ __('main.in_this_task_you_need_3_second') }}`
-    
+
     let tr_add_video_from_youtube = `{{ __('main.add_video_from_youtube') }}`
     let tr_or = `{{ __('main.or') }}`
     let tr_to_delete_video_click_this = `{{ __('main.to_delete_video_click_this') }}`

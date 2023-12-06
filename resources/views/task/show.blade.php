@@ -1208,54 +1208,54 @@
             check_button.classList.add('check')
             check_button.innerText = `{{ __('tr_check') }}`
             check_button.setAttribute('disabled', '')
-    
+
             completedTask.appendChild(check_button)
-    
+
             check_button.addEventListener('click', function () {
-    
+
                 let right_count = 0
-    
+
                 let picked = document.querySelectorAll('.picked')
-    
+
                 picked.forEach(element => {
-    
+
                     if(element.classList.contains('right'))
                     {
-    
+
                         right_count = right_count + 1
-    
+
                         element.style.backgroundColor = `rgb(137, 255, 101)`
-    
+
                     } else
                     {
-    
+
                         element.style.backgroundColor = `rgb(255, 101, 101)`
-    
+
                     }
-    
+
                 });
-    
+
                 let asd = (100 * right_count) / tasks.length
                 let percentage = Math.round(asd)
-    
+
                 rightAnswers.innerHTML = `{{ __('main.correct_answers') }}: ${percentage}%`
                 document.querySelector('.task_percentage').value = percentage
-    
+
                 task_text.value = completedTask.innerHTML
-    
-    
+
+
                 window.setTimeout(() => {
-    
+
                     hiddenButton.click()
-    
+
                 }, 3000);
-    
+
             })
-    
+
             let tasks = document.querySelectorAll('.abc_task')
 
             tasks.forEach(task => {
-                
+
                 if(task.children.length == 3)
                 {
 
@@ -1265,51 +1265,51 @@
                 }
 
             });
-    
+
             function check_if_chosen()
             {
-    
+
                 let picked = document.querySelectorAll('.picked')
-    
+
                 if(picked.length == tasks.length)
                 {
-    
+
                     check_button.removeAttribute('disabled')
-    
+
                 } else
                 {
-    
+
                     check_button.setAttribute('disabled', '')
-    
+
                 }
-    
+
             }
-    
+
             function choose_answer()
             {
-    
+
                 let children = this.parentElement.children
-    
+
                 for (let i = 0; i < children.length; i++) {
-    
+
                     children[i].style.backgroundColor = ``
                     children[i].style.color = ``
                     children[i].classList.remove('picked')
-    
+
                 }
-    
+
                 this.classList.add('picked')
                 this.style.backgroundColor = `#88b5fc`
                 this.style.color = `black`
-    
+
                 check_if_chosen()
-    
+
             }
-    
+
             let answers = document.querySelectorAll('.abc_ans')
-    
+
             answers.forEach(answer => {
-    
+
                 answer.addEventListener('click', choose_answer)
                 answer.setAttribute('role', 'button')
 
@@ -1320,7 +1320,7 @@
                 answer.children[0].children[0].style.fontSize = '20px'
 
                 answer.children[1].children[0].style.fontSize = '18px'
-    
+
             });
 
         } else
@@ -1332,99 +1332,99 @@
             check_button.classList.add('check')
             check_button.innerText = `{{ __('main.check') }}`
             check_button.setAttribute('disabled', '')
-    
+
             completedTask.appendChild(check_button)
-    
+
             check_button.addEventListener('click', function () {
-    
+
                 let right_count = 0
-    
+
                 let picked = document.querySelectorAll('.picked')
-    
+
                 picked.forEach(element => {
-    
+
                     if(element.classList.contains('right'))
                     {
-    
+
                         right_count = right_count + 1
-    
+
                         element.style.backgroundColor = `rgb(137, 255, 101)`
-    
+
                     } else
                     {
-    
+
                         element.style.backgroundColor = `rgb(255, 101, 101)`
-    
+
                     }
-    
+
                 });
-    
+
                 let asd = (100 * right_count) / tasks.length
                 let percentage = Math.round(asd)
-    
+
                 rightAnswers.innerHTML = `{{ __('main.correct_answers') }}: ${percentage}%`
                 document.querySelector('.task_percentage').value = percentage
-    
+
                 task_text.value = completedTask.innerHTML
-    
-    
+
+
                 window.setTimeout(() => {
-    
+
                     hiddenButton.click()
-    
+
                 }, 3000);
-    
+
             })
-    
+
             let tasks = document.querySelectorAll('.abc_task')
-    
+
             function check_if_chosen()
             {
-    
+
                 let picked = document.querySelectorAll('.picked')
-    
+
                 if(picked.length == tasks.length)
                 {
-    
+
                     check_button.removeAttribute('disabled')
-    
+
                 } else
                 {
-    
+
                     check_button.setAttribute('disabled', '')
-    
+
                 }
-    
+
             }
-    
+
             function choose_answer()
             {
-    
+
                 let children = this.parentElement.children
-    
+
                 for (let i = 0; i < children.length; i++) {
-    
+
                     children[i].style.backgroundColor = ``
                     children[i].style.color = ``
                     children[i].classList.remove('picked')
-    
+
                 }
-    
+
                 this.classList.add('picked')
                 this.style.backgroundColor = `#88b5fc`
                 this.style.color = `black`
-    
+
                 check_if_chosen()
-    
+
             }
-    
+
             let answers = document.querySelectorAll('.abc_ans')
-    
+
             answers.forEach(answer => {
-    
+
                 answer.addEventListener('click', choose_answer)
                 answer.setAttribute('role', 'button')
-    
+
             });
 
         }
@@ -1450,11 +1450,19 @@
             document.querySelectorAll('th').forEach(e => {
                 e.classList.add('border')
             })
-            let table = document.querySelector('table')
-            document.querySelector('table').style.width = "100%"
+            if(document.querySelector('table'))
+            {
+
+                document.querySelectorAll('table').forEach(table => {
+
+                    table.style.width = '100%'
+
+                })
+
+            }
             let completed_task = document.querySelector('#completed_task')
             completed_task.classList.add('text-start')
-            comple
+            completed_task.classList.add('w-100')
 
         } else
         {
@@ -1468,8 +1476,16 @@
             document.querySelectorAll('th').forEach(e => {
                 e.classList.add('border')
             })
-            let table = document.querySelector('table')
-            document.querySelector('table').style.width = "100%"
+            if(document.querySelector('table'))
+            {
+
+                document.querySelectorAll('table').forEach(table => {
+
+                    table.style.width = '100%'
+
+                })
+
+            }
             let completed_task = document.querySelector('#completed_task')
             completed_task.classList.add('text-start')
             completed_task.classList.add('w-100')
