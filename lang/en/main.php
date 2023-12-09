@@ -64,6 +64,7 @@ return [
     'go_to_edit' => 'Go to edit',
     'add_word_translations' => 'Add word translations',
     'add_text_q' => 'Add text?',
+    'add_text' => 'Add text',
     'go_to_the_next_step' => 'Go to the next step',
     'add_answers_to_insert' => 'Add answers to insert',
     'add_a_question' => 'Add a question',
