@@ -1460,6 +1460,18 @@
                 })
 
             }
+            if(document.querySelector('img'))
+            {
+
+                document.querySelectorAll('img').forEach(img => {
+
+                    img.removeAttribute('width')
+                    img.removeAttribute('height')
+                    img.style.cssText = `width: 100%;`
+
+                })
+
+            }
             let completed_task = document.querySelector('#completed_task')
             completed_task.classList.add('text-start')
             completed_task.classList.add('w-100')

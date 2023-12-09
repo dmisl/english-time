@@ -473,7 +473,7 @@
 
             <h1 class="py-3">${task_name.value}</h1>
 
-            <textarea name="task_body" style="height: 500px;">
+            <textarea name="task_body" class="editor" style="height: 500px;">
 
             </textarea>
 
@@ -483,26 +483,17 @@
                 <input class="task_type" value="${task_type.value}" type="text" name="task_type">
             </div>
 
-            <button class="btn btn-primary mt-2">{{ __('main.create_a_task') }}</button>
+            <button class="btn btn-primary mt-2">{{ __('main.create_task') }}</button>
             `
 
-            if(dark_mode_input.checked)
-            {
-                tinymce.init({
-                    selector: 'textarea',
-                    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-                    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-                    skin: 'oxide-dark',
-                    content_css: 'dark'
-                });
-            } else
-            {
-                tinymce.init({
-                    selector: 'textarea',
-                    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-                    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-                });
-            }
+            ClassicEditor.create(document.querySelector('.editor'), {
+                ckfinder: {
+                    uploadUrl: "{{ route('task.uploadImage', ['_token' => csrf_token()]) }}"
+                }
+            }).catch(error => {
+                console.error(error)
+            })
+
         }
     })
 

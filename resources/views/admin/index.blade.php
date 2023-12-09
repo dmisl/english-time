@@ -12,12 +12,6 @@
 
 <div class="container">
 
-    <textarea name="text"></textarea>
-
-</div>
-
-<div class="container">
-
     <h1>{{ __('main.my_courses') }}</h1>
 
     <div class="row py-5">
@@ -138,18 +132,5 @@
         @endif
     </div>
 </div>
-
-<script>
-
-    tinymce.init({
-        selector: 'textarea',
-        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-
-        images_upload_url: '/file'
-    });
-
-
-</script>
 
 @endsection

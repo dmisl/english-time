@@ -44,6 +44,7 @@ Route::middleware(['locale'])
         Route::resource('access', AccessController::class);
         Route::get('completedtasks', [TaskController::class, 'completed'])->name('task.homework');
         Route::post('position', [TaskController::class, 'position'])->name('task.position');
+        Route::post('uploadImage', [TaskController::class, 'uploadImage'])->name('task.uploadImage');
         Route::prefix('course')
         ->group(function () {
             Route::resource('{course}/lesson', LessonController::class);
