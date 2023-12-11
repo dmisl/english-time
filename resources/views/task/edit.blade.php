@@ -33,7 +33,7 @@
 
         <div class="ov"></div>
 
-        <div class="declared" hidden>
+        <div class="declared">
             {!! $task->body !!}
         </div>
 
@@ -105,6 +105,11 @@
     let tr_add_answer_options = `{{ __('main.add_answer_options') }}`
     let tr_choose_correct_answer = `{{ __('main.choose_correct_answer') }}`
     let tr_review_before_completing_the_task = `{{ __('main.review_before_completing_the_task') }}`
+
+    let tr_to_delete_additional_text = `{{ __('main.to_delete_additional_text') }}`
+    let tr_text_cannot_be_so_short = `{{ __('main.text_cannot_be_so_short') }}`
+    let tr_add_text = `{{ __('main.add_text') }}`
+    let tr_change_text_content_or_delete_it = `{{ __('main.change_text_content_or_delete_it') }}`
 
 </script>
 {{-- SOME USEFUL FUNCTIONS --}}

@@ -446,7 +446,7 @@
             .personalized_course_cost
             {
 
-                font-size: 20px;
+                font-size: 25px;
                 margin-bottom: 5px;
 
             }
@@ -625,7 +625,7 @@
             .personalized_course_cost
             {
 
-                font-size: 23px;
+                font-size: 27px;
                 margin-bottom: 5px;
 
             }
@@ -792,7 +792,7 @@
             .personalized_course_cost
             {
 
-                font-size: 25px;
+                font-size: 30px;
 
             }
 
@@ -944,14 +944,14 @@
             .personalized_course_cost
             {
 
-                font-size: 20px; margin: 0; margin-bottom: 3px;
+                font-size: 25px; margin: 0; margin-bottom: 3px;
 
             }
 
             .personalized_course_desc
             {
 
-                font-size: 14px; padding-top: 0;
+                font-size: 14.5px; padding-top: 0;
 
             }
 
@@ -1122,7 +1122,7 @@
             .personalized_course_cost
             {
 
-                font-size: 23px;
+                font-size: 27px;
                 margin-bottom: 5px;
 
             }
@@ -1130,7 +1130,7 @@
             .personalized_course_desc
             {
 
-                font-size: 16px; padding-top: 5px;
+                font-size: 17px; padding-top: 5px;
 
             }
 
@@ -1290,14 +1290,14 @@
             .personalized_course_cost
             {
 
-                font-size: 25px;
+                font-size: 30px;
 
             }
 
             .personalized_course_desc
             {
 
-                font-size: 18px; padding-top: 5px;
+                font-size: 19px; padding-top: 5px;
 
             }
 

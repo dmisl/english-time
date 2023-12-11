@@ -222,9 +222,9 @@
 
                             <div style="display: table-cell; vertical-align: middle; padding-left: 10px;">
 
-                                <p style="font-family: Anybody; font-size: 4.6vw; font-weight: 500; margin-bottom: 0;">Lidia DONT KNOW</p>
+                                <p style="font-family: Anybody; font-size: 4.6vw; font-weight: 500; margin-bottom: 0;">Lidia Sorochka</p>
 
-                                <p style="color: #5F6FFD; font-size: 14px; margin-top: 0; margin-bottom: 0;">@10godturmi</p>
+                                <p style="color: #5F6FFD; font-size: 14px; margin-top: 0; margin-bottom: 0;">@lidia_sorochka</p>
 
                             </div>
 
@@ -260,15 +260,15 @@
 
                     <div style="display: flex;">
 
-                        <div class="avatar" style="width: 22vw; height: 22vw; background-image: url('{{ asset('storage/icons/avatar1.png') }}'); background-position: center; background-size: cover; background-repeat: no-repeat; border-radius: 100%;"></div>
+                        <div class="avatar" style="width: 22vw; height: 22vw; background-image: url('{{ asset('storage/icons/avatar2.png') }}'); background-position: center; background-size: cover; background-repeat: no-repeat; border-radius: 100%;"></div>
 
                         <div style="display: table; text-align: left;">
 
                             <div style="display: table-cell; vertical-align: middle; padding-left: 10px;">
 
-                                <p style="font-family: Anybody; font-size: 4.6vw; font-weight: 500; margin-bottom: 0;">Alexandro Pilov</p>
+                                <p style="font-family: Anybody; font-size: 4.6vw; font-weight: 500; margin-bottom: 0;">Olya Matviyiv</p>
 
-                                <p style="color: #5F6FFD; font-size: 14px; margin-top: 0; margin-bottom: 0;">@10godturmi</p>
+                                <p style="color: #5F6FFD; font-size: 14px; margin-top: 0; margin-bottom: 0;">@olichkamatviyiv</p>
 
                             </div>
 
@@ -280,7 +280,7 @@
 
                         <p class="p" style="color: #6e6e6e; font-weight: 400; overflow: hidden; font-size: 15px;">
                             <i>
-                                “Ірина - одна з найкращих викладачів, яких я зустрічала. Вона не тільки професіонал своєї справи, а і чудова людина, яка любить свою роботу. Її уроки завжди цікаві та насичені, вона створює дружню атмосферу, враховує всі потреби своїх учнів. Також Ірина вміло поєднує традиційні методи викладання із інтерактивними, додаючи до уроків цікаві та сучасні відео / аудіо завдання. Щиро і впевнено можу рекомендувати Ірину як викладача англійської як для тих хто хоче покращити свій рівень так і для тих хто лише розпочинає вивчення”
+                                “Проходила даний курс у викладачки Ірини. Чудовий підхід до студента практикує Ірина. Неймовірно легко запам'ятовується інформація, оскільки курс розроблений дуже професійно. Поєднання: аудіювання, нової лексики та граматики - неймовірно ефективне. Цікаві та насичені уроки. Не без домашнього завдання, але від нього і залежить ваш успіх закріплення матеріалу.<br>Однозначно рекомендую!”
                             </i>
                         </p>
 
@@ -315,11 +315,11 @@
 
             <p style="color: #FF2424; font-size: 19px; padding: 0; margin: 0;">#englishtime</p>
 
-            <h1 style="font-weight: 4700; font-size: 7vw; padding-top: 10px;">{{ __('main.personalized_course') }}</h1>
+            <h1 style="font-weight: 4700; font-size: 7vw; padding-top: 10px;">{!! __('main.personalized_course') !!}</h1>
 
-            <p style="font-size: 5vw; padding-bottom: 5px; margin: 0;">{{ __('main.personalized_course_cost') }}</p>
+            <p style="font-size: 5.5vw; text-decoration: underline; padding-bottom: 5px; margin: 0;">{{ __('main.personalized_course_cost') }}</p>
 
-            <p class="text-muted" style="font-size: 4vw;">{{ __('main.personalized_course_desc') }}</p>
+            <p class="text-muted" style="font-size: 4vw;">{!! __('main.personalized_course_desc') !!}</p>
 
         </div>
 
@@ -337,8 +337,6 @@
             <p style="color: #FF2424; font-size: 19px; padding: 0; margin: 0;">#englishtime</p>
 
             <h1 class="course_includes" style="font-weight: 400; font-size: 10vw;">{{ __('main.course_includes') }}</h1>
-
-            <p class="course_includes_desc text-muted">{{ __('main.course_includes_desc') }}</p>
 
         </div>
 
@@ -386,7 +384,7 @@
 
                 </div>
 
-                <div style="width: 80%; margin: 0 auto; border-radius: 20px; background-color: #FF234B;">
+                <div style="width: 80%; margin: 0 auto; border-radius: 20px; background-color: #6385FF;">
 
                     <p style="font-size: 5vw; padding: 20px 40px; color: white; font-weight: 300;">{!! __('main.interactive_learning') !!}</p>
 
@@ -501,6 +499,17 @@
         header.style.fontSize = '30px'
 
     });
+
+    document.querySelectorAll('p').forEach(p => {
+
+    if(p.innerText.length < 3)
+    {
+
+        p.remove()
+
+    }
+
+    })
 
     if(document.querySelector('.container').offsetWidth == 960)
     {
@@ -803,9 +812,9 @@
 
                             <div style="display: table-cell; vertical-align: middle; padding-left: 10px;">
 
-                                <p style="font-family: Anybody; font-size: 16px; font-weight: 500; margin-bottom: 0;">Lidia DONT KNOW</p>
+                                <p style="font-family: Anybody; font-size: 16px; font-weight: 500; margin-bottom: 0;">Lidia Sorochka</p>
 
-                                <p style="color: #5F6FFD; font-size: 13px; margin-top: 0; margin-bottom: 0;">@10godturmi</p>
+                                <p style="color: #5F6FFD; font-size: 13px; margin-top: 0; margin-bottom: 0;">@lidia_sorochka</p>
 
                             </div>
 
@@ -841,15 +850,15 @@
 
                     <div style="display: flex;">
 
-                        <div class="avatar" style="background-image: url('{{ asset('storage/icons/avatar1.png') }}');"></div>
+                        <div class="avatar" style="background-image: url('{{ asset('storage/icons/avatar2.png') }}');"></div>
 
                         <div style="display: table; text-align: left;">
 
                             <div style="display: table-cell; vertical-align: middle; padding-left: 10px;">
 
-                                <p style="font-family: Anybody; font-size: 16px; font-weight: 500; margin-bottom: 0;">Alexandro Pilov</p>
+                                <p style="font-family: Anybody; font-size: 16px; font-weight: 500; margin-bottom: 0;">Olya Matviyiv</p>
 
-                                <p style="color: #5F6FFD; font-size: 13px; margin-top: 0; margin-bottom: 0;">@10godturmi</p>
+                                <p style="color: #5F6FFD; font-size: 13px; margin-top: 0; margin-bottom: 0;">@olichkamatviyiv</p>
 
                             </div>
 
@@ -861,7 +870,7 @@
 
                         <p class="p" style="color: #6e6e6e; font-weight: 400; overflow: hidden;">
                             <i>
-                                “Ірина - одна з найкращих викладачів, яких я зустрічала. Вона не тільки професіонал своєї справи, а і чудова людина, яка любить свою роботу. Її уроки завжди цікаві та насичені, вона створює дружню атмосферу, враховує всі потреби своїх учнів. Також Ірина вміло поєднує традиційні методи викладання із інтерактивними, додаючи до уроків цікаві та сучасні відео / аудіо завдання. Щиро і впевнено можу рекомендувати Ірину як викладача англійської як для тих хто хоче покращити свій рівень так і для тих хто лише розпочинає вивчення”
+                                “Проходила даний курс у викладачки Ірини. Чудовий підхід до студента практикує Ірина. Неймовірно легко запам'ятовується інформація, оскільки курс розроблений дуже професійно. Поєднання: аудіювання, нової лексики та граматики - неймовірно ефективне. Цікаві та насичені уроки. Не без домашнього завдання, але від нього і залежить ваш успіх закріплення матеріалу.<br>Однозначно рекомендую!”
                             </i>
                         </p>
 
@@ -902,11 +911,11 @@
 
                 <p style="color: #FF2424; font-size: 19px; padding: 0; margin: 0;">#englishtime</p>
 
-                <h1 class="personalized_course">{{ __('main.personalized_course') }}</h1>
+                <h1 class="personalized_course">{!! __('main.personalized_course') !!}</h1>
 
                 <p class="personalized_course_cost">{{ __('main.personalized_course_cost') }}</p>
 
-                <p class="personalized_course_desc text-muted">{{ __('main.personalized_course_desc') }}</p>
+                <p class="personalized_course_desc text-muted">{!! __('main.personalized_course_desc') !!}</p>
 
             </div>
 
@@ -926,8 +935,6 @@
             <p style="color: #FF2424; font-size: 19px; padding: 0; margin: 0;">#englishtime</p>
 
             <h1 class="course_includes">{{ __('main.course_includes') }}</h1>
-
-            <p class="course_includes_desc text-muted">{{ __('main.course_includes_desc') }}</p>
 
             <x-join-now class="course_includes_join_now mt-3"></x-join-now>
 
@@ -951,7 +958,7 @@
 
                 </div>
 
-                <div style="width: 30%; border-radius: 20px; background-color: #FF234B;">
+                <div style="width: 30%; border-radius: 20px; background-color: #6385FF;">
 
                     <p class="course_includes_p" style="padding: 23px 15px;">{!! __('main.interactive_learning') !!}</p>
 
@@ -1066,6 +1073,17 @@
         personalized_course.parentElement.children[0].style.fontSize = '16px'
 
     }
+
+    document.querySelectorAll('p').forEach(p => {
+
+        if(p.innerText.length < 3)
+        {
+
+            p.remove()
+
+        }
+
+    })
 
     let footer_text = document.querySelector('.footer_text')
 

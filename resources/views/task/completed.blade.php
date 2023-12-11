@@ -42,11 +42,11 @@
         if(mobile)
         {
 
-            if(completed.children.length == 3)
+            if(document.querySelector('.image'))
             {
 
-                completed.children[0].style.width = '90%'
-                completed.children[0].style.height = '200px'
+                document.querySelector('.image').style.width = '90%'
+                document.querySelector('.image').style.height = '200px'
 
             }
 
@@ -72,11 +72,11 @@
         } else
         {
 
-            if(completed.children.length == 3)
+            if(document.querySelector('.image') == 3)
             {
 
-                completed.children[0].style.width = '550px'
-                completed.children[0].style.height = '320px'
+                document.querySelector('.image').style.width = '550px'
+                document.querySelector('.image').style.height = '320px'
 
             }
 
@@ -120,11 +120,11 @@
         if(mobile)
         {
 
-            if(completed.children.length == 5)
+            if(document.querySelector('.image'))
             {
 
-                completed.children[1].style.width = '90%'
-                completed.children[1].style.height = '200px'
+                document.querySelector('.image').style.width = '90%'
+                document.querySelector('.image').style.height = '200px'
 
             }
 
@@ -133,11 +133,11 @@
         } else
         {
 
-            if(completed.children.length == 5)
+            if(document.querySelector('.image'))
             {
 
-                completed.children[1].style.width = '550px'
-                completed.children[1].style.height = '320px'
+                document.querySelector('.image').style.width = '550px'
+                document.querySelector('.image').style.height = '320px'
 
             }
 
@@ -158,19 +158,19 @@
             if(mobile)
             {
 
-                if(completed.children.length == 4)
+                if(document.querySelector('.image'))
                 {
 
-                    completed.children[1].style.width = '90%'
-                    completed.children[1].style.height = '200px'
+                    document.querySelector('.image').style.width = '90%'
+                    document.querySelector('.image').style.height = '200px'
 
                     document.querySelector('.text_div').style.width = '90%'
 
                 } else
                 {
 
-                    completed.children[1].style.width = '550px'
-                    completed.children[1].style.height = '320px'
+                    document.querySelector('.image').style.width = '550px'
+                    document.querySelector('.image').style.height = '320px'
 
                     document.querySelector('.text_div').style.width = '80%'
 

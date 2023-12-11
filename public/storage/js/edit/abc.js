@@ -11,7 +11,7 @@ function url_image_edit_f()
     if(this.value.length >= 10)
     {
 
-        if(/\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(this.value))
+        if(this.value.includes('jpg') || this.value.includes('jpeg') || this.value.includes('png') || this.value.includes('webp') || this.value.includes('avif') || this.value.includes('gif') || this.value.includes('svg'))
         {
 
             test_img.src = dis.value

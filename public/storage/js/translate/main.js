@@ -12,6 +12,13 @@ finish.addEventListener('click', function () {
     // PARENT DIV
     body += `<div style="font-family: 'Inter', sans-serif;">`
 
+    if(document.querySelector('.add_text').style.backgroundColor !== 'rgb(130, 255, 132)')
+    {
+
+        body += `<h3 class="additional_text p-0 m-0 pt-4">${document.querySelector('.add_text').innerText}</h3>`
+
+    }
+
     // IMAGE IF ISSET
     if(document.querySelector('.add_image').children.length !== 1)
     {
@@ -20,7 +27,7 @@ finish.addEventListener('click', function () {
         {
 
             let immg = document.querySelector('.add_image').querySelector('input').value
-            body += `<div style="width: 550px; height: 320px; margin: 15px auto; background-image: url('${immg}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>`
+            body += `<div class="image" style="width: 550px; height: 320px; margin: 15px auto; background-image: url('${immg}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>`
 
         } else
         {
@@ -31,13 +38,13 @@ finish.addEventListener('click', function () {
             {
 
                 let num = name_value.slice(name_length-2, name_length-1)
-                body += `<div style="width: 550px; height: 320px; margin: 15px auto; background-image: url('change${num}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>`
+                body += `<div class="image" style="width: 550px; height: 320px; margin: 15px auto; background-image: url('change${num}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>`
 
             } else
             {
 
                 let num = name_value.slice(name_length-3, name_length-1)
-                body += `<div style="width: 550px; height: 320px; margin: 15px auto; background-image: url('change${num}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>`
+                body += `<div class="image" style="width: 550px; height: 320px; margin: 15px auto; background-image: url('change${num}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>`
 
             }
 
@@ -298,38 +305,113 @@ function check_task()
         add_translation.addEventListener('click', add_translation_f)
         add_translation.setAttribute('role', 'button')
 
-        if(image_has)
+        let add_text = document.querySelector('.add_text')
+        let add_text_hint = document.querySelector('.add_text_hint')
+
+        if(add_text.style.backgroundColor !== 'rgb(130, 255, 132)')
         {
 
-            if(image_good && translations.length >= 2)
+            let changed = false
+            let long = false
+
+            if(add_text.innerText == tr_click_to_edit)
             {
 
-                finish.removeAttribute('hidden')
+                add_text_hint.classList.replace('text-muted', 'text-danger')
+                add_text_hint.innerHTML = `${tr_change_text_content_or_delete_it} <span style="cursor: pointer; text-decoration: underline;" class="add_text_delete text-danger"><b>${tr_buttonchik}</b></span>`
+
+                document.querySelector('.add_text_delete').addEventListener('click', delete_text_f)
 
             } else
             {
 
-                finish.setAttribute('hidden', '')
+                changed = true
+
+            }
+
+            if(add_text.innerText.length < 4)
+            {
+
+                add_text_hint.classList.replace('text-muted', 'text-danger')
+                add_text_hint.innerHTML = `${tr_text_cannot_be_so_short} <span style="cursor: pointer; text-decoration: underline;" class="add_text_delete text-danger"><b>${tr_buttonchik}</b></span>`
+
+                document.querySelector('.add_text_delete').addEventListener('click', delete_text_f)
+
+            } else
+            {
+
+                long = true
+
+            }
+
+            if(image_has)
+            {
+
+                if(image_good && translations.length >= 2 && changed && long)
+                {
+
+                    finish.removeAttribute('hidden')
+
+                } else
+                {
+
+                    finish.setAttribute('hidden', '')
+
+                }
+
+            } else
+            {
+
+                if(translations.length >= 2 && changed && long)
+                {
+
+                    finish.removeAttribute('hidden')
+
+                } else
+                {
+
+                    finish.setAttribute('hidden', '')
+
+                }
 
             }
 
         } else
         {
 
-            if(translations.length >= 2)
+            if(image_has)
             {
 
-                finish.removeAttribute('hidden')
+                if(image_good && translations.length >= 2)
+                {
+
+                    finish.removeAttribute('hidden')
+
+                } else
+                {
+
+                    finish.setAttribute('hidden', '')
+
+                }
 
             } else
             {
 
-                finish.setAttribute('hidden', '')
+                if(translations.length >= 2)
+                {
+
+                    finish.removeAttribute('hidden')
+
+                } else
+                {
+
+                    finish.setAttribute('hidden', '')
+
+                }
 
             }
 
         }
-
 
     } else
     {
@@ -351,7 +433,7 @@ function url_image_edit_f()
     if(this.value.length >= 10)
     {
 
-        if(/\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(this.value))
+        if(this.value.includes('jpg') || this.value.includes('jpeg') || this.value.includes('png') || this.value.includes('webp') || this.value.includes('avif') || this.value.includes('gif') || this.value.includes('svg'))
         {
 
             test_img.src = dis.value
@@ -605,6 +687,79 @@ function add_url_image_f()
 let add_image = document.querySelector('.add_image')
 add_image.addEventListener('click', add_image_f)
 
+let add_text = document.querySelector('.add_text')
+let add_text_hint = document.querySelector('.add_text_hint')
+
+add_text.addEventListener('click', add_text_f)
+
+function add_text_f()
+{
+
+    this.style.backgroundColor = ''
+    this.style.color = ''
+    this.setAttribute('contenteditable', 'true')
+    this.removeAttribute('role')
+    this.children[0].innerText = tr_click_to_edit
+
+    add_image.parentElement.style.paddingTop = '20px'
+    add_text_hint.innerHTML = `${tr_to_delete_additional_text} <span style="cursor: pointer; text-decoration: underline;" class="add_text_delete text-danger"><b>${tr_buttonchik}</b></span>`
+
+    document.querySelector('.add_text_delete').addEventListener('click', delete_text_f)
+
+    this.addEventListener('keydown', prevent_deleting)
+    this.addEventListener('keyup', edit_text_f)
+
+    this.removeEventListener('click', add_text_f)
+
+    check_task()
+
+}
+
+function edit_text_f()
+{
+
+    if(this.innerText.length < 4)
+    {
+
+        add_text_hint.classList.replace('text-muted', 'text-danger')
+        add_text_hint.innerHTML = `${tr_text_cannot_be_so_short} <span style="cursor: pointer; text-decoration: underline;" class="add_text_delete text-danger"><b>${tr_buttonchik}</b></span>`
+
+        document.querySelector('.add_text_delete').addEventListener('click', delete_text_f)
+
+    } else
+    {
+
+        add_text_hint.classList.replace('text-danger', 'text-muted')
+        add_text_hint.innerHTML = `${tr_to_delete_additional_text} <span style="cursor: pointer; text-decoration: underline;" class="add_text_delete text-danger"><b>${tr_buttonchik}</b></span>`
+
+        document.querySelector('.add_text_delete').addEventListener('click', delete_text_f)
+
+    }
+
+    check_task()
+
+}
+
+function delete_text_f()
+{
+
+    add_text_hint.innerHTML = ''
+
+    add_text.style.backgroundColor = `rgb(130, 255, 132)`
+    add_text.style.color = 'black'
+    add_text.setAttribute('role', 'button')
+    add_text.removeAttribute('contenteditable')
+
+    add_text.children[0].innerText = tr_add_text
+
+    add_image.parentElement.style.paddingTop = '30px'
+
+    add_text.addEventListener('click', add_text_f)
+
+    check_task()
+
+}
+
 function prevent_deleting(e)
 {
 
@@ -618,7 +773,6 @@ function prevent_deleting(e)
     }
 
 }
-
 
 // DELETING
 

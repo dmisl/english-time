@@ -14,11 +14,18 @@ finish.addEventListener('click', function ()
     if(document.querySelector('.add_image').children.length !== 1)
     {
 
+        if(document.querySelector('.add_text').style.backgroundColor !== 'rgb(130, 255, 132)')
+        {
+
+            body += `<h3 class="additional_text p-0 m-0 pt-4">${document.querySelector('.add_text').innerText}</h3>`
+
+        }
+
         if(document.querySelector('.add_image').children[0].classList.contains('text-center'))
         {
 
             let immg = document.querySelector('.add_image').querySelector('input').value
-            body += `<div style="width: 550px; height: 320px; margin: 15px auto; background-image: url('${immg}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>`
+            body += `<div class="image" style="width: 550px; height: 320px; margin: 15px auto; background-image: url('${immg}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>`
 
         } else
         {
@@ -29,13 +36,13 @@ finish.addEventListener('click', function ()
             {
 
                 let num = name_value.slice(name_length-2, name_length-1)
-                body += `<div style="width: 550px; height: 320px; margin: 15px auto; background-image: url('change${num}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>`
+                body += `<div class="image" style="width: 550px; height: 320px; margin: 15px auto; background-image: url('change${num}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>`
 
             } else
             {
 
                 let num = name_value.slice(name_length-3, name_length-1)
-                body += `<div style="width: 550px; height: 320px; margin: 15px auto; background-image: url('change${num}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>`
+                body += `<div class="image" style="width: 550px; height: 320px; margin: 15px auto; background-image: url('change${num}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>`
 
             }
 
@@ -99,8 +106,6 @@ finish.addEventListener('click', function ()
 
     body += `</div>`
 
-    console.log(body)
-
     let ov = document.querySelector('.ov')
     ov.innerHTML = body
 
@@ -129,73 +134,179 @@ finish.addEventListener('click', function ()
 function check_task()
 {
 
-let bolds = document.querySelectorAll('.bold')
-let fill_gaps_hint = document.querySelector('.fill_gaps_hint')
+    let bolds = document.querySelectorAll('.bold')
+    let fill_gaps_hint = document.querySelector('.fill_gaps_hint')
 
-let image = document.querySelector('.add_image')
+    let image = document.querySelector('.add_image')
 
-if(bolds.length >= 3)
-{
-
-    if(image.children.length !== 1 && image.children.length !== 2)
+    if(bolds.length >= 3)
     {
 
-        let image_hint = image.children[1]
-
-        if(image.children[2].style.backgroundImage == 'url("https://english/storage/icons/empty.jpg")')
+        if(image.children.length !== 1 && image.children.length !== 2)
         {
 
-            if(image.children.length == 4)
+            let image_hint = image.children[1]
+
+            if(image.children[2].style.backgroundImage == 'url("https://english/storage/icons/empty.jpg")')
             {
 
-                image_hint.innerHTML = `${tr_enter_url_of_the_picture_or_delete_the_picture_by_clicking_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
-                deletes = document.querySelectorAll('.image_delete')
+                if(image.children.length == 4)
+                {
 
-                deletes.forEach(deletee => {
-                    deletee.addEventListener('click', image_delete_f)
-                });
+                    image_hint.innerHTML = `${tr_enter_url_of_the_picture_or_delete_the_picture_by_clicking_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
+                    deletes = document.querySelectorAll('.image_delete')
+
+                    deletes.forEach(deletee => {
+                        deletee.addEventListener('click', image_delete_f)
+                    });
+
+                } else
+                {
+
+                    image_hint.innerHTML = `${tr_select_picture_from_your_computer_or_delete_picture_clicking_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
+                    deletes = document.querySelectorAll('.image_delete')
+
+                    deletes.forEach(deletee => {
+                        deletee.addEventListener('click', image_delete_f)
+                    });
+
+                }
+
+                finish.setAttribute('hidden', '')
 
             } else
             {
 
-                image_hint.innerHTML = `${tr_select_picture_from_your_computer_or_delete_picture_clicking_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
+                image_hint.innerHTML = `${tr_to_delete_picture_click_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
                 deletes = document.querySelectorAll('.image_delete')
 
                 deletes.forEach(deletee => {
                     deletee.addEventListener('click', image_delete_f)
                 });
 
-            }
+                if(add_text.style.backgroundColor !== 'rgb(130, 255, 132)')
+                {
 
-            finish.setAttribute('hidden', '')
+                    let changed = false
+                    let long = false
+
+                    if(add_text.innerText == tr_click_to_edit)
+                    {
+
+                        add_text_hint.classList.replace('text-muted', 'text-danger')
+                        add_text_hint.innerHTML = `${tr_change_text_content_or_delete_it} <span style="cursor: pointer; text-decoration: underline;" class="add_text_delete text-danger"><b>${tr_buttonchik}</b></span>`
+
+                        document.querySelector('.add_text_delete').addEventListener('click', delete_text_f)
+
+                    } else
+                    {
+
+                        changed = true
+
+                    }
+
+                    if(add_text.innerText.length < 4)
+                    {
+
+                        add_text_hint.classList.replace('text-muted', 'text-danger')
+                        add_text_hint.innerHTML = `${tr_text_cannot_be_so_short} <span style="cursor: pointer; text-decoration: underline;" class="add_text_delete text-danger"><b>${tr_buttonchik}</b></span>`
+
+                        document.querySelector('.add_text_delete').addEventListener('click', delete_text_f)
+
+                    } else
+                    {
+
+                        long = true
+
+                    }
+
+                    if(long && changed)
+                    {
+
+                        finish.removeAttribute('hidden')
+
+                    } else
+                    {
+
+                        finish.setAttribute('hidden', '')
+
+                    }
+
+                } else
+                {
+
+                    finish.removeAttribute('hidden')
+
+                }
+
+            }
 
         } else
         {
 
-            image_hint.innerHTML = `${tr_to_delete_picture_click_this} <b class="image_delete text-danger user-select-none" style="text-decoration: underline;" role="button">${tr_buttonchik}</b>`
-            deletes = document.querySelectorAll('.image_delete')
+            if(add_text.style.backgroundColor !== 'rgb(130, 255, 132)')
+            {
 
-            deletes.forEach(deletee => {
-                deletee.addEventListener('click', image_delete_f)
-            });
+                let changed = false
+                let long = false
 
-            finish.removeAttribute('hidden')
+                if(add_text.innerText == tr_click_to_edit)
+                {
+
+                    add_text_hint.classList.replace('text-muted', 'text-danger')
+                    add_text_hint.innerHTML = `${tr_change_text_content_or_delete_it} <span style="cursor: pointer; text-decoration: underline;" class="add_text_delete text-danger"><b>${tr_buttonchik}</b></span>`
+
+                    document.querySelector('.add_text_delete').addEventListener('click', delete_text_f)
+
+                } else
+                {
+
+                    changed = true
+
+                }
+
+                if(add_text.innerText.length < 4)
+                {
+
+                    add_text_hint.classList.replace('text-muted', 'text-danger')
+                    add_text_hint.innerHTML = `${tr_text_cannot_be_so_short} <span style="cursor: pointer; text-decoration: underline;" class="add_text_delete text-danger"><b>${tr_buttonchik}</b></span>`
+
+                    document.querySelector('.add_text_delete').addEventListener('click', delete_text_f)
+
+                } else
+                {
+
+                    long = true
+
+                }
+
+                if(long && changed)
+                {
+
+                    finish.removeAttribute('hidden')
+
+                } else
+                {
+
+                    finish.setAttribute('hidden', '')
+
+                }
+
+            } else
+            {
+
+                finish.removeAttribute('hidden')
+
+            }
 
         }
 
     } else
     {
 
-        finish.removeAttribute('hidden')
+        finish.setAttribute('hidden', '')
 
     }
-
-} else
-{
-
-    finish.setAttribute('hidden', '')
-
-}
 
 }
 
@@ -256,6 +367,93 @@ function remove_bold_f()
     remove_bold.setAttribute('hidden', '')
 
     check_task()
+
+}
+
+let add_text = document.querySelector('.add_text')
+let add_text_hint = document.querySelector('.add_text_hint')
+
+add_text.addEventListener('click', add_text_f)
+
+function add_text_f()
+{
+
+    this.style.backgroundColor = ''
+    this.style.color = ''
+    this.setAttribute('contenteditable', 'true')
+    this.removeAttribute('role')
+    this.children[0].innerText = tr_click_to_edit
+
+    add_image.parentElement.style.paddingTop = '20px'
+    add_text_hint.innerHTML = `${tr_to_delete_additional_text} <span style="cursor: pointer; text-decoration: underline;" class="add_text_delete text-danger"><b>${tr_buttonchik}</b></span>`
+
+    document.querySelector('.add_text_delete').addEventListener('click', delete_text_f)
+
+    this.addEventListener('keydown', prevent_deleting)
+    this.addEventListener('keyup', edit_text_f)
+
+    this.removeEventListener('click', add_text_f)
+
+    check_task()
+
+}
+
+function edit_text_f()
+{
+
+    if(this.innerText.length < 4)
+    {
+
+        add_text_hint.classList.replace('text-muted', 'text-danger')
+        add_text_hint.innerHTML = `${tr_text_cannot_be_so_short} <span style="cursor: pointer; text-decoration: underline;" class="add_text_delete text-danger"><b>${tr_buttonchik}</b></span>`
+
+        document.querySelector('.add_text_delete').addEventListener('click', delete_text_f)
+
+    } else
+    {
+
+        add_text_hint.classList.replace('text-danger', 'text-muted')
+        add_text_hint.innerHTML = `${tr_to_delete_additional_text} <span style="cursor: pointer; text-decoration: underline;" class="add_text_delete text-danger"><b>${tr_buttonchik}</b></span>`
+
+        document.querySelector('.add_text_delete').addEventListener('click', delete_text_f)
+
+    }
+
+    check_task()
+
+}
+
+function delete_text_f()
+{
+
+    add_text_hint.innerHTML = ''
+
+    add_text.style.backgroundColor = `rgb(130, 255, 132)`
+    add_text.style.color = 'black'
+    add_text.setAttribute('role', 'button')
+    add_text.removeAttribute('contenteditable')
+
+    add_text.children[0].innerText = tr_add_text
+
+    add_image.parentElement.style.paddingTop = '30px'
+
+    add_text.addEventListener('click', add_text_f)
+
+    check_task()
+
+}
+
+function prevent_deleting(e)
+{
+
+    if (e.keyCode == 8 || e.keyCode == 46)
+    {
+        if (this.children.length === 1) { // last inner element
+            if (this.children[0].innerText < 1) { // last element is empty
+                e.preventDefault()
+            }
+        }
+    }
 
 }
 
@@ -380,7 +578,7 @@ function url_image_edit_f()
     if(this.value.length >= 10)
     {
 
-        if(/\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(this.value))
+        if(this.value.includes('jpg') || this.value.includes('jpeg') || this.value.includes('png') || this.value.includes('webp') || this.value.includes('avif') || this.value.includes('gif') || this.value.includes('svg'))
         {
 
             test_img.src = dis.value

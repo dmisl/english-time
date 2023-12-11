@@ -12,11 +12,18 @@ task_update.addEventListener('click', function () {
     if(document.querySelector('.add_image').children.length !== 1)
     {
 
+        if(document.querySelector('.add_text').style.backgroundColor !== 'rgb(130, 255, 132)')
+        {
+
+            body += `<h3 class="additional_text p-0 m-0 pt-4">${document.querySelector('.add_text').innerText}</h3>`
+
+        }
+
         if(document.querySelector('.add_image').children[0].classList.contains('text-center'))
         {
 
             let immg = document.querySelector('.add_image').querySelector('input').value
-            body += `<div style="width: 550px; height: 320px; margin: 15px auto; background-image: url('${immg}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>`
+            body += `<div class="image" style="width: 550px; height: 320px; margin: 15px auto; background-image: url('${immg}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>`
 
         } else
         {
@@ -27,13 +34,13 @@ task_update.addEventListener('click', function () {
             {
 
                 let num = name_value.slice(name_length-2, name_length-1)
-                body += `<div style="width: 550px; height: 320px; margin: 15px auto; background-image: url('change${num}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>`
+                body += `<div class="image" style="width: 550px; height: 320px; margin: 15px auto; background-image: url('change${num}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>`
 
             } else
             {
 
                 let num = name_value.slice(name_length-3, name_length-1)
-                body += `<div style="width: 550px; height: 320px; margin: 15px auto; background-image: url('change${num}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>`
+                body += `<div class="image" style="width: 550px; height: 320px; margin: 15px auto; background-image: url('change${num}'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>`
 
             }
 
@@ -155,6 +162,9 @@ function check_task()
     let bolds = document.querySelectorAll('.bold')
     let fill_gaps_hint = document.querySelector('.fill_gaps_hint')
 
+    let add_text = document.querySelector('.add_text')
+    let add_text_hint = document.querySelector('.add_text_hint')
+
     let image = document.querySelector('.add_image')
 
     if(bolds.length >= 3)
@@ -205,7 +215,60 @@ function check_task()
                 if(name.innerText.length > 2)
                 {
 
-                    task_update.removeAttribute('hidden')
+                    if(add_text.style.backgroundColor !== 'rgb(130, 255, 132)')
+                    {
+
+                        let changed = false
+                        let long = false
+
+                        if(add_text.innerText == tr_click_to_edit)
+                        {
+
+                            add_text_hint.classList.replace('text-muted', 'text-danger')
+                            add_text_hint.innerHTML = `${tr_change_text_content_or_delete_it} <span style="cursor: pointer; text-decoration: underline;" class="add_text_delete text-danger"><b>${tr_buttonchik}</b></span>`
+
+                            document.querySelector('.add_text_delete').addEventListener('click', delete_text_f)
+
+                        } else
+                        {
+
+                            changed = true
+
+                        }
+
+                        if(add_text.innerText.length < 4)
+                        {
+
+                            add_text_hint.classList.replace('text-muted', 'text-danger')
+                            add_text_hint.innerHTML = `${tr_text_cannot_be_so_short} <span style="cursor: pointer; text-decoration: underline;" class="add_text_delete text-danger"><b>${tr_buttonchik}</b></span>`
+
+                            document.querySelector('.add_text_delete').addEventListener('click', delete_text_f)
+
+                        } else
+                        {
+
+                            long = true
+
+                        }
+
+                        if(long && changed)
+                        {
+
+                            task_update.removeAttribute('hidden')
+
+                        } else
+                        {
+
+                            task_update.setAttribute('hidden', '')
+
+                        }
+
+                    } else
+                    {
+
+                        task_update.removeAttribute('hidden')
+
+                    }
 
                 } else
                 {
@@ -222,7 +285,60 @@ function check_task()
             if(name.innerText.length > 2)
             {
 
-                task_update.removeAttribute('hidden')
+                if(add_text.style.backgroundColor !== 'rgb(130, 255, 132)')
+                {
+
+                    let changed = false
+                    let long = false
+
+                    if(add_text.innerText == tr_click_to_edit)
+                    {
+
+                        add_text_hint.classList.replace('text-muted', 'text-danger')
+                        add_text_hint.innerHTML = `${tr_change_text_content_or_delete_it} <span style="cursor: pointer; text-decoration: underline;" class="add_text_delete text-danger"><b>${tr_buttonchik}</b></span>`
+
+                        document.querySelector('.add_text_delete').addEventListener('click', delete_text_f)
+
+                    } else
+                    {
+
+                        changed = true
+
+                    }
+
+                    if(add_text.innerText.length < 4)
+                    {
+
+                        add_text_hint.classList.replace('text-muted', 'text-danger')
+                        add_text_hint.innerHTML = `${tr_text_cannot_be_so_short} <span style="cursor: pointer; text-decoration: underline;" class="add_text_delete text-danger"><b>${tr_buttonchik}</b></span>`
+
+                        document.querySelector('.add_text_delete').addEventListener('click', delete_text_f)
+
+                    } else
+                    {
+
+                        long = true
+
+                    }
+
+                    if(long && changed)
+                    {
+
+                        task_update.removeAttribute('hidden')
+
+                    } else
+                    {
+
+                        task_update.setAttribute('hidden', '')
+
+                    }
+
+                } else
+                {
+
+                    task_update.removeAttribute('hidden')
+
+                }
 
             } else
             {
@@ -255,7 +371,7 @@ function url_image_edit_f()
     if(this.value.length >= 10)
     {
 
-        if(/\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(this.value))
+        if(this.value.includes('jpg') || this.value.includes('jpeg') || this.value.includes('png') || this.value.includes('webp') || this.value.includes('avif') || this.value.includes('gif') || this.value.includes('svg'))
         {
 
             test_img.src = dis.value
@@ -505,6 +621,96 @@ function add_url_image_f()
 
 }
 
+function add_text_f()
+{
+
+    let add_text_hint = document.querySelector('.add_text_hint')
+
+    this.style.backgroundColor = ''
+    this.style.color = ''
+    this.setAttribute('contenteditable', 'true')
+    this.removeAttribute('role')
+    this.children[0].innerText = tr_click_to_edit
+
+    document.querySelector('.add_image').parentElement.style.paddingTop = '20px'
+    add_text_hint.innerHTML = `${tr_to_delete_additional_text} <span style="cursor: pointer; text-decoration: underline;" class="add_text_delete text-danger"><b>${tr_buttonchik}</b></span>`
+
+    document.querySelector('.add_text_delete').addEventListener('click', delete_text_f)
+
+    this.addEventListener('keydown', prevent_deleting)
+    this.addEventListener('keyup', edit_text_f)
+
+    this.removeEventListener('click', add_text_f)
+
+    check_task()
+
+}
+
+function edit_text_f()
+{
+
+    let add_text_hint = document.querySelector('.add_text_hint')
+
+    if(this.innerText.length < 4)
+    {
+
+        add_text_hint.classList.replace('text-muted', 'text-danger')
+        add_text_hint.innerHTML = `${tr_text_cannot_be_so_short} <span style="cursor: pointer; text-decoration: underline;" class="add_text_delete text-danger"><b>${tr_buttonchik}</b></span>`
+
+        document.querySelector('.add_text_delete').addEventListener('click', delete_text_f)
+
+    } else
+    {
+
+        add_text_hint.classList.replace('text-danger', 'text-muted')
+        add_text_hint.innerHTML = `${tr_to_delete_additional_text} <span style="cursor: pointer; text-decoration: underline;" class="add_text_delete text-danger"><b>${tr_buttonchik}</b></span>`
+
+        document.querySelector('.add_text_delete').addEventListener('click', delete_text_f)
+
+    }
+
+    check_task()
+
+}
+
+function delete_text_f()
+{
+
+    let add_text = document.querySelector('.add_text')
+    let add_text_hint = document.querySelector('.add_text_hint')
+
+    add_text_hint.innerHTML = ''
+
+    add_text.style.backgroundColor = `rgb(130, 255, 132)`
+    add_text.style.color = 'black'
+    add_text.setAttribute('role', 'button')
+    add_text.removeAttribute('contenteditable')
+
+    add_text.children[0].innerText = tr_add_text
+
+    document.querySelector('.add_image').parentElement.style.paddingTop = '30px'
+
+    add_text.addEventListener('click', add_text_f)
+
+    check_task()
+
+}
+
+// PREVENTING DELETING P INSIDE WORD DIV OR TRANSLATION
+function prevent_deleting(e)
+{
+
+    if (e.keyCode == 8 || e.keyCode == 46)
+    {
+        if (this.children.length === 1) { // last inner element
+            if (this.children[0].innerText < 1) { // last element is empty
+                e.preventDefault()
+            }
+        }
+    }
+
+}
+
 // CREATING FROM DECLARED
 
 function create()
@@ -515,10 +721,10 @@ function create()
 
     editing.appendChild(fill_gaps)
 
-    if(declared.children.length == 3)
+    if(declared.querySelector('.image'))
     {
 
-        let declared_image = declared.children[0].style.backgroundImage
+        let declared_image = declared.querySelector('.image').style.backgroundImage
 
         let add_image_parent = document.createElement('div')
         add_image_parent.style.cssText = `padding-top: 30px;`
@@ -580,7 +786,7 @@ function create()
         let add_image = document.createElement('div')
         add_image.classList.add('add_image')
         add_image.setAttribute('role', 'button')
-        add_image.style.cssText = `display: table; margin: 0 auto; background-image: url('{{ asset('storage/icons/bg.jpg') }}'); background-position: center; background-size: cover; background-repeat: no-repeat; border: 1px solid black; border-radius: 10px; color: black;`
+        add_image.style.cssText = `display: table; margin: 0 auto; background-image: url('${bg_jpg}'); background-position: center; background-size: cover; background-repeat: no-repeat; border: 1px solid black; border-radius: 10px; color: black;`
 
         add_image_div.appendChild(add_image)
 
@@ -591,6 +797,72 @@ function create()
         add_image.appendChild(add_image_p)
 
         add_image.addEventListener('click', add_image_f)
+
+    }
+
+    if(document.querySelector('.additional_text'))
+    {
+
+        let add_text_div = document.createElement('div')
+        add_text_div.style.cssText = `padding-top: 30px;`
+
+        fill_gaps.insertBefore(add_text_div, fill_gaps.children[0])
+
+        let add_text = document.createElement('div')
+        add_text.classList.add('add_text')
+        add_text.setAttribute('contenteditable', 'true')
+        add_text.style.cssText = `max-width: 80%; display: table; margin: 0 auto; margin: 0 auto; border: 1px solid black; border-radius: 10px;`
+
+        add_text_div.appendChild(add_text)
+
+        let add_text_p = document.createElement('p')
+        add_text_p.style.cssText = `padding: 7px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;`
+        add_text_p.innerText = document.querySelector('.additional_text').innerText
+
+        add_text.appendChild(add_text_p)
+
+        let add_text_hint = document.createElement('p')
+        add_text_hint.classList.add('add_text_hint', 'small', 'text-muted', 'm-0', 'p-0')
+        add_text_hint.innerHTML = `${tr_to_delete_additional_text} <span style="cursor: pointer; text-decoration: underline;" class="add_text_delete text-danger"><b>${tr_buttonchik}</b></span>`
+
+        add_text_div.appendChild(add_text_hint)
+
+        document.querySelector('.add_image').parentElement.style.paddingTop = '20px'
+
+        document.querySelector('.add_text_delete').addEventListener('click', delete_text_f)
+
+        add_text.addEventListener('keydown', prevent_deleting)
+        add_text.addEventListener('keyup', edit_text_f)
+
+        add_text.removeEventListener('click', add_text_f)
+
+    } else
+    {
+
+        let add_text_div = document.createElement('div')
+        add_text_div.style.cssText = `padding-top: 30px;`
+
+        fill_gaps.insertBefore(add_text_div, fill_gaps.children[0])
+
+        let add_text = document.createElement('div')
+        add_text.classList.add('add_text')
+        add_text.setAttribute('role', 'button')
+        add_text.style.cssText = `max-width: 80%; display: table; margin: 0 auto; background-color:rgb(130, 255, 132); margin: 0 auto; border: 1px solid black; border-radius: 10px; color: black;`
+
+        add_text_div.appendChild(add_text)
+
+        let add_text_p = document.createElement('p')
+        add_text_p.style.cssText = `padding: 7px 20px; display: table-cell; vertical-align: middle; user-select: none; position: relative; text-align: center; font-size: 20px;`
+        add_text_p.innerText = tr_add_text
+
+        add_text.appendChild(add_text_p)
+
+        let add_text_hint = document.createElement('p')
+        add_text_hint.classList.add('add_text_hint', 'small', 'text-muted', 'm-0', 'p-0')
+
+        add_text_div.appendChild(add_text_hint)
+
+        add_text.addEventListener('click', add_text_f)
 
     }
 

@@ -101,7 +101,7 @@
         if(mobile)
         {
 
-            let image = completedTask.children[1].children[0]
+            let image = document.querySelector('.image')
 
             if(image.style.backgroundImage.length > 1)
             {
@@ -543,7 +543,7 @@
         if(mobile)
         {
 
-            let image = completedTask.children[1]
+            let image = document.querySelector('.image')
 
             if(image.style.backgroundImage.length > 1)
             {
@@ -974,7 +974,7 @@
         if(mobile)
         {
 
-            let image = completedTask.children[1]
+            let image = document.querySelector('.image')
 
             if(image.style.backgroundImage.length > 1)
             {
