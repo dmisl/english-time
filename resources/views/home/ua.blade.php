@@ -61,7 +61,7 @@
 </div>
 
 {{-- WHY US TEXT --}}
-<div style="font-family: 'Montserrat', sans-serif; width: 100%; height: 30vh; background-color: #F6F6F6; overflow: hidden;">
+<div style="font-family: 'Montserrat', sans-serif; width: 100%; height: 30vh; {{ is_dark() ? '' : 'background-color: #F6F6F6;' }} overflow: hidden;">
 
     <p style="color: #FF2424; margin-top: 4vh; font-size: 19px;">#englishtime</p>
 
@@ -108,7 +108,7 @@
 </div>
 
 {{-- TESTIMONIAL --}}
-<div style="width: 100%; padding-bottom: 23vh; background-color: #F6F6F6;">
+<div style="width: 100%; padding-bottom: 23vh; {{ is_dark() ? '' : 'background-color: #F6F6F6;' }}">
 
     <div class="container">
 
@@ -124,7 +124,7 @@
 
             <div style="width: 90%; margin: 0 auto;">
 
-                <div style="background-color: white; border-radius: 25px; box-shadow: rgba(0, 0, 0, 0.13) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; padding: 20px; padding-bottom: 25px;">
+                <div {{ is_dark() ? 'class=bg-dark-subtle' : '' }} style="background-color: white; border-radius: 25px; box-shadow: rgba(0, 0, 0, 0.13) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; padding: 20px; padding-bottom: 25px;">
 
                     <div style="display: flex;">
 
@@ -146,7 +146,7 @@
 
                     <div style="padding: 14px; padding-top: 20px; text-align: left;">
 
-                        <p class="p" style="color: #6e6e6e; font-weight: 400; overflow: hidden; font-size: 15px;">
+                        <p class="p" style="{{ is_dark() ? 'color: white;' : 'color: #6e6e6e;' }} font-weight: 400; overflow: hidden; font-size: 15px;">
                             <i>
                                 “Ірина - одна з найкращих викладачів, яких я зустрічала. Вона не тільки професіонал своєї справи, а і чудова людина, яка любить свою роботу. Її уроки завжди цікаві та насичені, вона створює дружню атмосферу, враховує всі потреби своїх учнів. Також Ірина вміло поєднує традиційні методи викладання із інтерактивними, додаючи до уроків цікаві та сучасні відео / аудіо завдання. Щиро і впевнено можу рекомендувати Ірину як викладача англійської як для тих хто хоче покращити свій рівень так і для тих хто лише розпочинає вивчення”
                             </i>
@@ -168,7 +168,7 @@
 
             <div style="width: 90%; margin: 0 auto; margin-top: 5vh;">
 
-                <div style="background-color: white; border-radius: 25px; box-shadow: rgba(0, 0, 0, 0.13) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; padding: 20px; padding-bottom: 25px;">
+                <div {{ is_dark() ? 'class=bg-dark-subtle' : '' }} style="background-color: white; border-radius: 25px; box-shadow: rgba(0, 0, 0, 0.13) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; padding: 20px; padding-bottom: 25px;">
 
                     <div style="display: flex;">
 
@@ -190,7 +190,7 @@
 
                     <div style="padding: 14px; padding-top: 20px; text-align: left;">
 
-                        <p class="p" style="color: #6e6e6e; font-weight: 400; overflow: hidden; font-size: 15px;">
+                        <p class="p" style="{{ is_dark() ? 'color: white;' : 'color: #6e6e6e;' }} font-weight: 400; overflow: hidden; font-size: 15px;">
                             <i>
                                 “Вітання Всім, мене звати Олеся Шкапко і тут я хочу поділитись моїм досвідом співпраці з Іриною, власне співпраці, бо Ірина - викладач який спонукає працювати, працювати плідно і результативно. Іра має чітке розуміння того, як сприяти засвоєнню мови, вона розробила дуже цікаву а основне результативну систему за допомогою якої легко вивчаються нові слова та засвоюється граматика. Особлива увага на уроках приділяється також і розвитку мовлення, Іра завжди будує запитання з врахуванням вивчених тем і граматики. Кожну секунду заняття Іра є супер включеною у процес: відслідковує вами сказане, відловлює помилки і виправляє їх, і що не менш важливо - відбувається це все в легкості і з гумором &#128522;. Для мене Іра найкращий репетитор, з яким я коли небудь працювала, вона цілеспрямована і відкрита особливість, високоерудована у своїй спеціальності”
                             </i>
@@ -212,7 +212,7 @@
 
             <div style="width: 90%; margin: 0 auto; margin-top: 5vh;">
 
-                <div style="background-color: white; border-radius: 25px; box-shadow: rgba(0, 0, 0, 0.13) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; padding: 20px; padding-bottom: 25px;">
+                <div {{ is_dark() ? 'class=bg-dark-subtle' : '' }} style="background-color: white; border-radius: 25px; box-shadow: rgba(0, 0, 0, 0.13) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; padding: 20px; padding-bottom: 25px;">
 
                     <div style="display: flex;">
 
@@ -234,7 +234,7 @@
 
                     <div style="padding: 14px; padding-top: 20px; text-align: left;">
 
-                        <p class="p" style="color: #6e6e6e; font-weight: 400; overflow: hidden; font-size: 15px;">
+                        <p class="p" style="{{ is_dark() ? 'color: white;' : 'color: #6e6e6e;' }} font-weight: 400; overflow: hidden; font-size: 15px;">
                             <i>
                                 “Іра, цей курс просто ВАУ! Теми підібрані дуже влучно, а лексика це окремий кайф, всі ці завдання, після яких, я якимсь чудом вивчала практично всі слова без зубріння і почала використовувати! Я реально пам'ятаю і використовую слова починаючи з першого нашого заняття. А відео до кожного уроку, Іра, я не знаю де ви їх знаходили, але вони супер-круті, вони завжди були ніби логічне завершення до теми! І коли я переглядала, виконувала завдання і просто чекала наступного уроку, щоб ми обговорили і я кайфувала! Більше того, я нарешті розібралася з Conditionals &#128517; бо то завше було з області фантастика) Дякую що по-справжньому закохала мене в англійську &#10084;”
                             </i>
@@ -256,7 +256,7 @@
 
             <div style="width: 90%; margin: 0 auto; margin-top: 5vh;">
 
-                <div style="background-color: white; border-radius: 25px; box-shadow: rgba(0, 0, 0, 0.13) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; padding: 20px; padding-bottom: 25px;">
+                <div {{ is_dark() ? 'class=bg-dark-subtle' : '' }} style="background-color: white; border-radius: 25px; box-shadow: rgba(0, 0, 0, 0.13) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; padding: 20px; padding-bottom: 25px;">
 
                     <div style="display: flex;">
 
@@ -278,7 +278,7 @@
 
                     <div style="padding: 14px; padding-top: 20px; text-align: left;">
 
-                        <p class="p" style="color: #6e6e6e; font-weight: 400; overflow: hidden; font-size: 15px;">
+                        <p class="p" style="{{ is_dark() ? 'color: white;' : 'color: #6e6e6e;' }} font-weight: 400; overflow: hidden; font-size: 15px;">
                             <i>
                                 “Проходила даний курс у викладачки Ірини. Чудовий підхід до студента практикує Ірина. Неймовірно легко запам'ятовується інформація, оскільки курс розроблений дуже професійно. Поєднання: аудіювання, нової лексики та граматики - неймовірно ефективне. Цікаві та насичені уроки. Не без домашнього завдання, але від нього і залежить ваш успіх закріплення матеріалу.<br>Однозначно рекомендую!”
                             </i>
@@ -305,7 +305,7 @@
 </div>
 
 {{-- COURSE DESCRIPTION --}}
-<div style="width: 100%; background-color: #F6F6F6; padding-bottom: 15vh; font-family: Montserrat;">
+<div style="width: 100%; {{ is_dark() ? '' : 'background-color: #F6F6F6;' }} padding-bottom: 15vh; font-family: Montserrat;">
 
     <div class="container">
 
@@ -328,7 +328,7 @@
 </div>
 
 {{-- COURSE INCLUDES --}}
-<div style="width: 100%; background-color: #F6F6F6; padding-bottom: 20vh; font-family: Montserrat;">
+<div style="width: 100%; {{ is_dark() ? '' : 'background-color: #F6F6F6;' }} padding-bottom: 20vh; font-family: Montserrat;">
 
     <div class="container">
 
@@ -424,7 +424,7 @@
 </div>
 
 {{-- FOOTER --}}
-<div style="width: 100%; background-color: white; font-family: Montserrat; padding: 4vh 0;">
+<div style="width: 100%; {{ is_dark() ? '' : 'background-color: white;' }} font-family: Montserrat; padding: 4vh 0;">
 
     <div class="container" style="width: 80%:">
 
@@ -653,7 +653,7 @@
 </div>
 
 {{-- WHY US TEXT --}}
-<div style="font-family: Montserrat; width: 100%; height: 30vh; background-color: #F6F6F6; overflow: hidden;">
+<div style="font-family: Montserrat; width: 100%; height: 30vh; {{ is_dark() ? '' : 'background-color: #F6F6F6;' }} overflow: hidden;">
 
     <p style="color: #FF2424; margin-top: 4vh; font-size: 19px;">#englishtime</p>
 
@@ -661,7 +661,7 @@
 
 </div>
 {{-- WHY US ANSWER --}}
-<div style="font-family: Montserrat; width: 100%; background: linear-gradient(180deg, #F6F6F6 15%, #6385FF 8%); overflow: hidden;">
+<div style="font-family: Montserrat; width: 100%; background: linear-gradient(180deg, {{ is_dark() ? '#f6f6f600' : '#F6F6F6' }} 15%, #6385FF 8%); overflow: hidden;">
 
     <div class="container d-flex" style="justify-content: space-between; padding-bottom: 50px;">
 
@@ -700,7 +700,7 @@
 </div>
 
 {{-- TESTIMONIAL --}}
-<div style="font-family: Montserrat; width: 100%; padding-bottom: 23vh; background-color: #F6F6F6;">
+<div style="font-family: Montserrat; width: 100%; padding-bottom: 23vh; {{ is_dark() ? '' : 'background-color: #F6F6F6;' }}">
 
     <div class="container">
 
@@ -716,7 +716,7 @@
 
             <div style="width: 23%;">
 
-                <div style="background-color: white; border-radius: 25px; box-shadow: rgba(0, 0, 0, 0.13) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; padding: 20px; padding-bottom: 25px;">
+                <div {{ is_dark() ? 'class=bg-dark-subtle' : '' }} style="background-color: white; border-radius: 25px; box-shadow: rgba(0, 0, 0, 0.13) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; padding: 20px; padding-bottom: 25px;">
 
                     <div style="display: flex;">
 
@@ -738,7 +738,7 @@
 
                     <div style="padding: 10px; padding-top: 20px; text-align: left;">
 
-                        <p class="p" style="color: #6e6e6e; font-weight: 400; overflow: hidden;">
+                        <p class="p" style="{{ is_dark() ? 'color: white;' : 'color: #6e6e6e;' }} font-weight: 400; overflow: hidden;">
                             <i>
                                 “Ірина - одна з найкращих викладачів, яких я зустрічала. Вона не тільки професіонал своєї справи, а і чудова людина, яка любить свою роботу. Її уроки завжди цікаві та насичені, вона створює дружню атмосферу, враховує всі потреби своїх учнів. Також Ірина вміло поєднує традиційні методи викладання із інтерактивними, додаючи до уроків цікаві та сучасні відео / аудіо завдання. Щиро і впевнено можу рекомендувати Ірину як викладача англійської як для тих хто хоче покращити свій рівень так і для тих хто лише розпочинає вивчення”
                             </i>
@@ -760,7 +760,7 @@
 
             <div style="width: 23%;">
 
-                <div style="background-color: white; border-radius: 25px; box-shadow: rgba(0, 0, 0, 0.13) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; padding: 20px; padding-bottom: 25px;">
+                <div {{ is_dark() ? 'class=bg-dark-subtle' : '' }} style="background-color: white; border-radius: 25px; box-shadow: rgba(0, 0, 0, 0.13) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; padding: 20px; padding-bottom: 25px;">
 
                     <div style="display: flex;">
 
@@ -782,7 +782,7 @@
 
                     <div style="padding: 10px; padding-top: 20px; text-align: left;">
 
-                        <p class="p" style="color: #6e6e6e; font-weight: 400; overflow: hidden;">
+                        <p class="p" style="{{ is_dark() ? 'color: white;' : 'color: #6e6e6e;' }} font-weight: 400; overflow: hidden;">
                             <i>
                                 “Вітання Всім, мене звати Олеся Шкапко і тут я хочу поділитись моїм досвідом співпраці з Іриною, власне співпраці, бо Ірина - викладач який спонукає працювати, працювати плідно і результативно. Іра має чітке розуміння того, як сприяти засвоєнню мови, вона розробила дуже цікаву а основне результативну систему за допомогою якої легко вивчаються нові слова та засвоюється граматика. Особлива увага на уроках приділяється також і розвитку мовлення, Іра завжди будує запитання з врахуванням вивчених тем і граматики. Кожну секунду заняття Іра є супер включеною у процес: відслідковує вами сказане, відловлює помилки і виправляє їх, і що не менш важливо - відбувається це все в легкості і з гумором &#128522;. Для мене Іра найкращий репетитор, з яким я коли небудь працювала, вона цілеспрямована і відкрита особливість, високоерудована у своїй спеціальності”
                             </i>
@@ -804,7 +804,7 @@
 
             <div style="width: 23%;">
 
-                <div style="background-color: white; border-radius: 25px; box-shadow: rgba(0, 0, 0, 0.13) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; padding: 20px; padding-bottom: 25px;">
+                <div {{ is_dark() ? 'class=bg-dark-subtle' : '' }} style="background-color: white; border-radius: 25px; box-shadow: rgba(0, 0, 0, 0.13) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; padding: 20px; padding-bottom: 25px;">
 
                     <div style="display: flex;">
 
@@ -826,7 +826,7 @@
 
                     <div style="padding: 10px; padding-top: 20px; text-align: left;">
 
-                        <p class="p" style="color: #6e6e6e; font-weight: 400; overflow: hidden;">
+                        <p class="p" style="{{ is_dark() ? 'color: white;' : 'color: #6e6e6e;' }} font-weight: 400; overflow: hidden;">
                             <i>
                                 “Іра, цей курс просто ВАУ! Теми підібрані дуже влучно, а лексика це окремий кайф, всі ці завдання, після яких, я якимсь чудом вивчала практично всі слова без зубріння і почала використовувати! Я реально пам'ятаю і використовую слова починаючи з першого нашого заняття. А відео до кожного уроку, Іра, я не знаю де ви їх знаходили, але вони супер-круті, вони завжди були ніби логічне завершення до теми! І коли я переглядала, виконувала завдання і просто чекала наступного уроку, щоб ми обговорили і я кайфувала! Більше того, я нарешті розібралася з Conditionals &#128517; бо то завше було з області фантастика) Дякую що по-справжньому закохала мене в англійську &#10084;”
                             </i>
@@ -848,7 +848,7 @@
 
             <div style="width: 23%;">
 
-                <div style="background-color: white; border-radius: 25px; box-shadow: rgba(0, 0, 0, 0.13) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; padding: 20px; padding-bottom: 25px;">
+                <div {{ is_dark() ? 'class=bg-dark-subtle' : '' }} style="background-color: white; border-radius: 25px; box-shadow: rgba(0, 0, 0, 0.13) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; padding: 20px; padding-bottom: 25px;">
 
                     <div style="display: flex;">
 
@@ -870,7 +870,7 @@
 
                     <div style="padding: 10px; padding-top: 20px; text-align: left;">
 
-                        <p class="p" style="color: #6e6e6e; font-weight: 400; overflow: hidden;">
+                        <p class="p" style="{{ is_dark() ? 'color: white;' : 'color: #6e6e6e;' }} font-weight: 400; overflow: hidden;">
                             <i>
                                 “Проходила даний курс у викладачки Ірини. Чудовий підхід до студента практикує Ірина. Неймовірно легко запам'ятовується інформація, оскільки курс розроблений дуже професійно. Поєднання: аудіювання, нової лексики та граматики - неймовірно ефективне. Цікаві та насичені уроки. Не без домашнього завдання, але від нього і залежить ваш успіх закріплення матеріалу.<br>Однозначно рекомендую!”
                             </i>
@@ -897,7 +897,7 @@
 </div>
 
 {{-- COURSE DESCRIPTION --}}
-<div style="font-family: Montserrat; width: 100%; background-color: #F6F6F6; padding-bottom: 15vh;">
+<div style="font-family: Montserrat; width: 100%; {{ is_dark() ? '' : 'background-color: #F6F6F6;' }} padding-bottom: 15vh;">
 
     <div class="container" style="display: flex;">
 
@@ -928,7 +928,7 @@
 </div>
 
 {{-- COURSE INCLUDES --}}
-<div style="font-family: Montserrat; width: 100%; background-color: #F6F6F6; padding-bottom: 20vh;">
+<div style="font-family: Montserrat; width: 100%; {{ is_dark() ? '' : 'background-color: #F6F6F6;' }} padding-bottom: 20vh;">
 
     <div class="container d-flex">
 
@@ -1000,7 +1000,7 @@
 </div>
 
 {{-- FOOTER --}}
-<div style="width: 100%; background-color: white; font-family: Montserrat; padding: 4vh 0;">
+<div style="width: 100%; {{ is_dark() ? '' : 'background-color: white;' }} font-family: Montserrat; padding: 4vh 0;">
 
     <div class="container d-flex" style="justify-content: space-between; width: 60%;">
 

@@ -35,7 +35,7 @@ class HomeController extends Controller
         } else
         {
 
-            return view('home.ua');
+            return view('home.en');
 
         }
 
