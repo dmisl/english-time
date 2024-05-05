@@ -628,7 +628,9 @@
 
             <div style="display: table-cell; vertical-align: middle;">
 
-                <img class="gif" style="width: 150%;" src="{{ asset('storage/icons/gif.gif') }}" alt="">
+                <div style="border-radius: 20px; width: 150%; background-color: white;">
+                    <img class="gif" style="width: 100%;" src="{{ asset('storage/icons/gif.gif') }}" alt="">
+                </div>
 
             </div>
 

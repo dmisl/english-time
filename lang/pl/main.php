@@ -138,6 +138,107 @@ return [
     'placement_of_elements' => 'Rozmieszczenie elementów',
     'change_location_of_tasks_you' => 'Przenieś zadania',
 
+    'placement_of_elements' => 'Rozmieszczenie elementów',
+    'change_location_of_tasks_you' => 'Zmień lokalizację zadań',
+
+    'add_image' => 'Dodaj obraz',
+    'add_words_for_translation' => 'Dodaj słowa do tłumaczenia',
+    'to_delete_one_of_the_translations_press_it' => 'Aby usunąć jedno z tłumaczeń, naciśnij je',
+    'click_this_button_to_add_another_translation' => 'Kliknij ten przycisk, aby dodać kolejne tłumaczenie',
+
+    'translate_you' => 'Tłumacz',
+    'drag_and_drop_translations_into_the_relevant_cells' => 'Przeciągnij i upuść tłumaczenia do odpowiednich komórek',
+    'to_add_another_translation_you_must_change_the_text_of_the_word_or_translation' => 'Aby dodać kolejne tłumaczenie, musisz zmienić tekst poprzedniego słowa lub tłumaczenia',
+    'both_word_and_translation_must_be_filled_in' => 'Zarówno słowo, jak i tłumaczenie muszą być wypełnione',
+
+    'enter_url_of_the_picture_or_delete_the_picture_by_clicking_this' => 'Wprowadź adres URL obrazu lub usuń obraz, klikając to',
+    'select_picture_from_your_computer_or_delete_picture_clicking_this' => "Wybierz obraz z komputera lub usuń obraz, klikając to",
+    'to_delete_picture_click_this' => 'Aby usunąć obraz, kliknij to',
+    'paste_the_correct_url' => 'Wklej poprawny adres URL',
+    'upload_from_computer' => "Prześlij z komputera",
+    'upload_from_internet' => 'Prześlij z internetu',
+    'paste_image_url' => 'Wklej adres URL obrazu',
+
+    'one_cell_cannot_contain_two_answers' => 'Jedna komórka nie może zawierać dwóch odpowiedzi',
+    'click_on_the_cell_you_want_to_move_answer_to' => 'Kliknij na komórkę, do której chcesz przenieść odpowiedź',
+
+    'click_to_change_task_name' => 'Kliknij, aby zmienić nazwę zadania',
+    'task_name_cannot_be_so_short' => 'Nazwa zadania nie może być tak krótka',
+
+    'buttonchik' => 'PRZYCISK',
+
+    'in_this_task_you_need_to_write' => 'W tym zadaniu musisz napisać',
+    'we_recommend_inserting_answers_after' => 'Zalecamy wstawianie odpowiedzi po PEŁNYM wypełnieniu tekstu, aby uniknąć problemów',
+    'in_this_task_you_need_3_places' => 'W tym zadaniu musisz napisać tekst, w którym musisz wybrać co najmniej 3 miejsca do wypełnienia odpowiedzią. Aby utworzyć takie miejsce, zaznacz wyrażenie myszą i kliknij przycisk; aby usunąć je, zaznacz je lub kliknij na słowo.',
+    'read_more_here' => 'Czytaj więcej tutaj',
+    'write_text_here' => '------> Wpisz tutaj tekst <-------',
+
+    'in_this_task_you_need_to_second' => 'W tym zadaniu musisz napisać tekst, w którym musisz wybrać miejsca (słowa), do których uczeń musi wpisać odpowiedź',
+    'in_this_task_you_need_3_second' => 'W tym zadaniu musisz napisać tekst, w którym musisz wybrać co najmniej 3 miejsca do wypełnienia odpowiedzią. Aby utworzyć takie miejsce, zaznacz wyrażenie myszą i kliknij przycisk; aby usunąć je, zaznacz je lub kliknij na słowo.',
+
+    'save_changes_b' => 'ZAPISZ ZMIANY',
+    'task_editing' => 'Edycja zadania',
+
+    'add_video_from_youtube' => 'Dodaj wideo z YouTube',
+    'to_delete_video_click_this' => 'Aby usunąć wideo, kliknij to',
+    'paste_link_from_youtube_or' => 'Wklej link z YouTube lub',
+    'paste_link_from_youtube' => 'Wklej link z YouTube',
+    'click_to_edit' => 'Kliknij, aby edytować',
+    'change_the_question' => 'Zmień pytanie',
+    'the_task_must_contain_2_answers' => 'Zadanie musi zawierać co najmniej 2 odpowiedzi',
+    'click_on_the_correct_answer' => 'Kliknij na poprawną odpowiedź',
+    'change_right_answer' => 'Zmień prawidłową odpowiedź',
+    'to_delete_one_of_answers_hover_and_click' => 'Aby usunąć jedną z odpowiedzi, najedź na nią myszą i kliknij',
+    'add_question' => 'Dodaj pytanie',
+    'change_question' => 'Zmień pytanie',
+    'question_cannot_be_short' => 'Pytanie nie może być tak krótkie',
+    'you_must_choose_the_correct_answer' => 'Musisz wybrać poprawną odpowiedź',
+    'add_answer_options' => 'Dodaj opcje odpowiedzi',
+    'choose_correct_answer' => 'Wybierz poprawną odpowiedź',
+    'review_before_completing_the_task' => 'Przejrzyj przed zakończeniem zadania',
+
+    "or" => 'LUB',
+    'delete_b' => 'USUŃ',
+
+    'online_school' => 'Szkoła Języka Angielskiego Online',
+    'online_school_desc' => 'To szkoła języka online dla tych, dla których ważny jest nie tylko wynik, ale także satysfakcja z procesu',
+    'join_now' => 'Dołącz teraz!',
+
+    'why_us' => 'Dlaczego my',
+    'real_media' => 'Filmy. Podcasty. Angielski!',
+    'real_media_desc' => 'Cały kurs opiera się na autentycznych filmach, podcastach i programach telewizyjnych, dzięki czemu możesz zanurzyć się w prawdziwy język angielski.',
+    'speak_confidently' => 'Mów płynnie po angielsku!',
+    'speak_confidently_desc' => "Opanuj umiejętności mówienia od pierwszego dnia, przełam bariery językowe i osiągnij swobodę komunikacji po angielsku",
+    'digital_learning' => 'Twój Grafik, Twój Kurs',
+    'digital_learning_desc' => 'Odkryj nowoczesne możliwości nauki online. Nasz kurs dostosowuje się do Twojego grafiku, zapewniając elastyczność dla nieprzerwanej nauki.',
+
+    'testimonial' => 'Opinie',
+
+    'personalized_course' => 'Kurs Indywidualny',
+    'personalized_course_cost' => '2400 UAH / 1 miesiąc (8 zajęć)',
+    'personalized_course_desc' => "<p class='personalized_course_desc text-muted'>Indywidualny kurs jest idealny dla tych, którzy przeszli wiele kursów, ale wciąż nie osiągnęli swobodnego posługiwania się językiem angielskim.</p><ul><li>Jeśli gramatyka sprawia trudności</li><li>Jeśli mówienie po angielsku jest trudne do zrozumienia</li><li>Jeśli wymowa wymaga poprawy</li></ul><p class='personalized_course_desc text-muted'>Ten kurs został stworzony, aby zainteresować Cię i motywować do postępu. Pokonaj bariery językowe i w końcu osiągnij pewność siebie i skuteczną komunikację po angielsku.</p>",
+
+    'course_includes' => 'Kurs Obejmuje',
+    'course_includes_desc' => 'Idealnie dopasowany dla Ciebie.',
+
+    'individual_lessons' => '<span class="course_includes_header">Zajęcia Indywidualne</span><br>Ucz się angielskiego z nauczycielem na platformie Zoom i wykonuj zadania na swoim koncie English Time.',
+    'personalized_program' => "<span class='course_includes_header'>Program Personalizowany</span><br>To specjalistyczny kurs, który łączy Twoje zainteresowania i potrzeby edukacyjne.",
+    'interactive_learning' => '<span class="course_includes_header">Nauka Interaktywna</span><br>Zapewnia 100% praktyki podczas zajęć zgodnie z metodologią komunikacyjną dla<br><span style="background-color: white; color: #6385FF; padding: 0 3px; border-radius: 5px; user-select: none;" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Aktywne mówienie w nauce języka angielskiego oznacza aktywne uczestnictwo uczniów w komunikacji werbalnej. Polega to na aktywnym wykorzystaniu słów, wyrażeń i struktur gramatycznych do wyrażania myśli i pomysłów. Podczas aktywnych ćwiczeń mówienia studenci prowadzą dialogi, omawiają tematy i biorą udział w scenariuszach rozmów. Taki podejście przyczynia się do rozwoju umiejętności mówienia, poszerzania słownictwa i poprawy wymowy. Aktywne mówienie, czy to w klasie, czy podczas wydarzeń językowych, tworzy dynamiczne i praktyczne doświadczenie z wykorzystaniem języka angielskiego, poprawiając ogólny poziom jego opanowania."><b>aktywną komunikację</b></span>',
+
+    'where_classes_are_held' => 'Gdzie odbywają się zajęcia',
+    'you_study_individually_with_teacher' => 'Uczysz się indywidualnie z nauczycielem na platformie Zoom i wykonujesz zadania na swoim koncie English Time',
+    'what_does_this_site_provide' => 'Co oferuje ta strona do nauki?',
+    'this_is_website_with_all_materials' => "To strona z wszystkimi materiałami i zadaniami, nad którymi można pracować zarówno z komputera, jak i telefonu. Zawiera ona ćwiczenia, nową leksykę, wyjaśnienia, wideo i audio zadania, co jest bardzo wygodne, ponieważ wszystko jest w jednym miejscu i zawsze pod ręką",
+    'duration_and_number_of_lessons' => 'Czas trwania i liczba zajęć w kursie',
+    'the_duration_of_one_course_is' => 'Czas trwania jednego kursu wynosi około 3,5 miesiąca (28 zajęć / 2 razy w tygodniu) w dogodnym dla Ciebie czasie',
+    'payment_options' => 'Opcje płatności',
+    'you_can_pay_for_1_month' => "Możesz zapłacić za 1 miesiąc nauki (8 zajęć) lub zapłacić za cały kurs od razu. W tym drugim przypadku otrzymasz 10% zniżki. Natychmiast po dokonaniu płatności nasz menedżer skontaktuje się z Tobą i udzieli dostępu do Twojego osobistego konta.",
+    'to_delete_additional_text' => 'Aby usunąć dodatkowy tekst, kliknij tutaj',
+    'text_cannot_be_so_short' => 'Tekst nie może być tak krótki, przedłuż go lub usuń, klikając tutaj',
+    'add_text' => 'Dodaj tekst',
+    'change_text_content_or_delete_it' => 'Zmień zawartość tekstu lub usuń go, klikając tutaj',
+
+
 ]
 
 ?>

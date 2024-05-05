@@ -101,6 +101,22 @@ if(!function_exists('dark_mode'))
     }
 }
 
+// check if darkmode
+
+if(!function_exists('is_dark'))
+{
+    function is_dark()
+    {
+        if(Cookie::get('dark_mode') == 'dark')
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
+    }
+}
+
 // dark mode text
 
 if(!function_exists('dark_mode_text'))
