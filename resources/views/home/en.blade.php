@@ -1066,8 +1066,6 @@
 
     document.querySelectorAll('p').forEach(p => {
 
-        console.log(p)
-
         if(p.innerText.length <= 2)
         {
 

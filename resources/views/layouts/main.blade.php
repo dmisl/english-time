@@ -67,8 +67,10 @@
             text-align: center;
             border-radius: 10px;
             transition: 1s;
+            {{ is_dark() ? 'background-color: white;' : '' }}
             border: 1px solid black;
             width: 170px;
+            color: black;
         }
 
         .fi_input:focus {
@@ -352,7 +354,7 @@
         @php
             if(App::currentLocale() == null)
             {
-                App::setLocale('ua');
+                App::setLocale('en');
             }
         @endphp
 
@@ -1859,8 +1861,6 @@
     {{-- BOOTSTRAP --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.bundle.min.js" integrity="sha512-ToL6UYWePxjhDQKNioSi4AyJ5KkRxY+F1+Fi7Jgh0Hp5Kk2/s8FD7zusJDdonfe5B00Qw+B8taXxF6CFLnqNCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" integrity="sha512-t4GWSVZO1eC8BM339Xd7Uphw5s17a86tIZIj8qRxhnKub6WoyhnrxeCIMeAqBPgdZGlCcG2PrZjMc+Wr78+5Xg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    {{-- TINYMCE --}}
-    <script src="https://cdn.tiny.cloud/1/tf00vuqa2n38x4aqny9piahlbvyngwss47cp0wqq0hfbyvij/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     {{-- JQUERY --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
     {{-- INTER FONT --}}

@@ -217,6 +217,8 @@
 
     let container = document.querySelector('#container')
 
+    let is_dark = {{ is_dark() }}
+
     let task_name = document.querySelector('.task_name')
     task_name.addEventListener('keyup', function () {
         check_name_type()
@@ -263,7 +265,7 @@
                     <p style="font-size: 25px; padding-top: 20px; padding-bottom: 0; margin-bottom: 0;">${tr_add_words_for_translation}</p>
                     <p class="deleting_hint small text-muted p-0 m-0">${tr_to_delete_one_of_the_translations_press_it}</p>
 
-                    <div class="add_translation" role="button" style="user-select: none; display: table; width: 250px; margin: 0 auto; overflow: hidden; margin-top: 20px; height: 40px; border: 1px solid black; border-radius: 10px;">
+                    <div class="add_translation" role="button" style="user-select: none; display: table; width: 250px; margin: 0 auto; overflow: hidden; margin-top: 20px; height: 40px; border: 1px solid {{ is_dark() ? 'white' : 'black' }}; border-radius: 10px;">
 
                         <p style="display: table-cell; vertical-align: middle; overflow: hidden;">+</p>
 

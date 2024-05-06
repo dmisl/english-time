@@ -30,7 +30,7 @@ class CourseController extends Controller
     public function show(string $id)
     {
         $course = Course::find($id);
-        $lessons = $course->lessons;
+        $lessons = $course->lessons()->orderBy('created_at', 'asc')->get();
 
         return view('course.show', compact('course', 'lessons'));
     }

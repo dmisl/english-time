@@ -6,8 +6,13 @@
 
     @if(is_admin())
 
-    <a href="{{ route('user.lesson.show', [$course, $lesson]) }}">{{ __('main.back') }}</a>
-    <h1>{{ $task->name }}</h1>
+
+    <a href="{{ route('user.lesson.show', [$course, $lesson]) }}">
+        <div class="py-3">
+            {{ __('main.back') }}
+        </div>
+    </a>
+    <h1 class="p-0 m-0">{{ $task->name }}</h1>
     <input class="task_type" type="hidden" value="{{ $task->task_type }}">
 
 
@@ -38,8 +43,12 @@
 
     @if(has_access($course))
 
-        <a href="{{ route('user.lesson.show', [$course, $lesson]) }}">{{ __('main.back') }}</a>
-        <h1>{{ $task->name }}</h1>
+        <a href="{{ route('user.lesson.show', [$course, $lesson]) }}">
+            <div class="py-3">
+                {{ __('main.back') }}
+            </div>
+        </a>
+        <h1 class="p-0 m-0">{{ $task->name }}</h1>
         <input class="task_type" type="hidden" value="{{ $task->task_type }}">
 
         <div id="completed_task" style="padding-bottom: 100px;">
@@ -94,6 +103,18 @@
     @if(str_contains(strtolower($_SERVER["HTTP_USER_AGENT"]), 'mobile'))
         mobile = true
     @endif
+
+    let is_dark = {{ is_dark() ? 1 : 0 }}
+
+    if(is_dark)
+    {
+        if(document.querySelector('.answers_hint'))
+        {
+            document.querySelector('.answers_hint').classList.remove('text-muted')
+            document.querySelector('.answers_hint').classList.add('text-dark')
+
+        }
+    }
 
     if (task_type.value == 1)
     {
@@ -251,7 +272,7 @@
                         selected_answer_from.appendChild(this_element)
 
                         answers_hint.innerText = `{{ __('main.drag_and_drop_translations_into_the_relevant_cells') }}`
-                        answers_hint.classList.add('text-muted')
+                        answers_hint.classList.add('text-dark')
                         answers_hint.classList.remove('text-primary')
                         inputs.forEach(input => {
 
@@ -267,7 +288,7 @@
                     } else
                     {
 
-                        answers_hint.classList.remove('text-muted')
+                        answers_hint.classList.remove('text-dark')
                         answers_hint.classList.remove('text-primary')
                         answers_hint.classList.add('text-danger')
                         answers_hint.innerText = `{{ __('main.one_cell_cannot_contain_two_answers') }}`
@@ -280,7 +301,7 @@
                     this.appendChild(selected_answer)
 
                     answers_hint.innerText = `{{ __('main.drag_and_drop_translations_into_the_relevant_cells') }}`
-                    answers_hint.classList.add('text-muted')
+                    answers_hint.classList.add('text-dark')
                     answers_hint.classList.remove('text-primary')
                     inputs.forEach(input => {
 
@@ -310,7 +331,7 @@
 
                 answers_hint.innerText = `{{ __('main.click_on_the_cell_you_want_to_move_answer_to') }}`
                 answers_hint.classList.add('text-primary')
-                answers_hint.classList.remove('text-muted')
+                answers_hint.classList.remove('text-dark')
                 selected_answer = this
                 selected_answer_from = this.parentElement
 
@@ -490,34 +511,41 @@
 
                     this.append(dragItem);
 
-                    answers_hint.classList.add('text-muted')
+                    answers_hint.classList.add('text-dark')
                     answers_hint.classList.remove('text-danger')
                     answers_hint.innerText = `{{ __('main.drag_and_drop_translations_into_the_relevant_cells') }}`
 
                 } else
                 {
-                    // IF INPUT IS FULL AND ELEMENT COME FROM ANOTHER IMPUT SWITCH THEM
-                    if(dragItem.parentElement.classList.contains('input'))
+
+                    if(this.children[0].innerText !== dragItem.innerText)
                     {
 
-                        let this_value = this.innerText
-                        let parentElement_value = dragItem.innerText
+                        // IF INPUT IS FULL AND ELEMENT COME FROM ANOTHER IMPUT SWITCH THEM
+                        if(dragItem.parentElement.classList.contains('input'))
+                        {
 
-                        this.children[0].innerText = parentElement_value
-                        dragItem.innerText = this_value
+                            let this_value = this.innerText
+                            let parentElement_value = dragItem.innerText
 
-                        answers_hint.classList.add('text-muted')
-                        answers_hint.classList.remove('text-danger')
-                        answers_hint.innerText = `{{ __('main.drag_and_drop_translations_into_the_relevant_cells') }}`
+                            this.children[0].innerText = parentElement_value
+                            dragItem.innerText = this_value
 
-                    } else
-                    {
+                            answers_hint.classList.add('text-dark')
+                            answers_hint.classList.remove('text-danger')
+                            answers_hint.innerText = `{{ __('main.drag_and_drop_translations_into_the_relevant_cells') }}`
 
-                        answers_hint.classList.remove('text-muted')
-                        answers_hint.classList.add('text-danger')
-                        answers_hint.innerText = `{{ __('main.one_cell_cannot_contain_two_answers') }}`
+                        } else
+                        {
+
+                            answers_hint.classList.remove('text-dark')
+                            answers_hint.classList.add('text-danger')
+                            answers_hint.innerText = `{{ __('main.one_cell_cannot_contain_two_answers') }}`
+
+                        }
 
                     }
+
 
                 }
 
@@ -677,7 +705,7 @@
                         selected_answer_from.appendChild(this_element)
 
                         answers_hint.innerText = `{{ __('main.drag_and_drop_translations_into_the_relevant_cells') }}`
-                        answers_hint.classList.add('text-muted')
+                        answers_hint.classList.add('text-dark')
                         answers_hint.classList.remove('text-primary')
                         inputs.forEach(input => {
 
@@ -693,7 +721,7 @@
                     } else
                     {
 
-                        answers_hint.classList.remove('text-muted')
+                        answers_hint.classList.remove('text-dark')
                         answers_hint.classList.remove('text-primary')
                         answers_hint.classList.add('text-danger')
                         answers_hint.innerText = `{{ __('main.one_cell_cannot_contain_two_answers') }}`
@@ -706,7 +734,7 @@
                     this.appendChild(selected_answer)
 
                     answers_hint.innerText = `{{ __('main.drag_and_drop_translations_into_the_relevant_cells') }}`
-                    answers_hint.classList.add('text-muted')
+                    answers_hint.classList.add('text-dark')
                     answers_hint.classList.remove('text-primary')
                     inputs.forEach(input => {
 
@@ -736,7 +764,7 @@
 
                 answers_hint.innerText = `{{ __('main.click_on_the_cell_you_want_to_move_answer_to') }}`
                 answers_hint.classList.add('text-primary')
-                answers_hint.classList.remove('text-muted')
+                answers_hint.classList.remove('text-dark')
                 selected_answer = this
                 selected_answer_from = this.parentElement
 
@@ -787,6 +815,10 @@
 
         } else
         {
+
+            document.querySelectorAll('br').forEach(br => {
+                br.remove()
+            });
 
             let answers = document.querySelectorAll('.answer')
             let inputs = document.querySelectorAll('.input')
@@ -923,7 +955,7 @@
 
                     this.append(dragItem);
 
-                    answers_hint.classList.add('text-muted')
+                    answers_hint.classList.add('text-dark')
                     answers_hint.classList.remove('text-danger')
                     answers_hint.innerText = `{{ __('main.drag_and_drop_translations_into_the_relevant_cells') }}`
 
@@ -939,14 +971,14 @@
                         this.children[0].innerText = parentElement_value
                         dragItem.innerText = this_value
 
-                        answers_hint.classList.add('text-muted')
+                        answers_hint.classList.add('text-dark')
                         answers_hint.classList.remove('text-danger')
                         answers_hint.innerText = `{{ __('main.drag_and_drop_translations_into_the_relevant_cells') }}`
 
                     } else
                     {
 
-                        answers_hint.classList.remove('text-muted')
+                        answers_hint.classList.remove('text-dark')
                         answers_hint.classList.add('text-danger')
                         answers_hint.innerText = `{{ __('main.one_cell_cannot_contain_two_answers') }}`
 
@@ -1086,6 +1118,14 @@
         } else
         {
 
+            for (let i = 0; i < document.querySelector('.text_div').children.length; i++) {
+                if(document.querySelector('.text_div').children[i].tagName == 'DIV')
+                {
+                    document.querySelector('.text_div').children[i].style.cssText = `display: flex; flex-wrap: wrap; justify-content: center; column-gap: 10px; row-gap: 5px;`
+                }
+            }
+
+
             // CREATING CHECK BUTTON AND ADDING EVENTLISTENER
             let check_button = document.createElement('button')
             check_button.classList.add('btn')
@@ -1189,6 +1229,14 @@
     }
 
     if (task_type.value == 4) {
+
+        if(is_dark)
+        {
+            document.querySelectorAll('.abc_ans').forEach(answer => {
+                answer.style.border = '1px solid white'
+                answer.children[0].style.borderRight = '1px solid white'
+            });
+        }
 
         if(mobile)
         {
@@ -1479,6 +1527,14 @@
         } else
         {
 
+            let completed_task = document.querySelector('#completed_task')
+
+            completed_task.classList.remove('w-100')
+            completed_task.style.width = '80%'
+            completed_task.classList.add('mx-auto')
+            completed_task.classList.add('text-start')
+            completed_task.classList.add('mt-4')
+
             document.querySelectorAll('tr').forEach(e => {
                 e.classList.add('border')
             })
@@ -1498,9 +1554,7 @@
                 })
 
             }
-            let completed_task = document.querySelector('#completed_task')
-            completed_task.classList.add('text-start')
-            completed_task.classList.add('w-100')
+
 
         }
 

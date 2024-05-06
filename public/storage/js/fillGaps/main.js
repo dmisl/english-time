@@ -66,7 +66,7 @@ finish.addEventListener('click', function ()
     body += `<div class="answers_div border">`
 
     body += `
-        <h2 class="m-0 p-0" style="color: black;">Відповіді</h2>
+        <h2 class="m-0 p-0" style="color: black;">${tr_answers}</h2>
         <p class="answers_hint small text-muted m-0 p-0">${tr_drag_and_drop_translations_into_the_relevant_cells}</p>
         <div class="mt-3">
             <div class="answers">
