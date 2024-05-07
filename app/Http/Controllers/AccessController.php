@@ -15,7 +15,7 @@ class AccessController extends Controller
      */
     public function index()
     {
-        $users = User::query()->where(['active' => true])->paginate(20);
+        $users = User::query()->where(['active' => true])->where(['admin' => false])->paginate(20);
         $courses = Course::query()->where('user_id', '=', Auth::id())->get();
         $courses_id = [];
         $course_model = Course::query();

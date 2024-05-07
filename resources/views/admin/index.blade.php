@@ -12,7 +12,7 @@
 
 <div class="container mt-5">
 
-    <h1>{{ __('main.my_courses') }}</h1>
+    <h1 style="font-size: 50px;">{{ __('main.my_courses') }}</h1>
 
     <div class="row py-5">
         <div class="col-12 col-md-4 mb-2">
