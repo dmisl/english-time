@@ -124,12 +124,15 @@
 
             let image = document.querySelector('.image')
 
-            if(image.style.backgroundImage.length > 1)
+            if(image)
             {
+                if(image.style.backgroundImage.length > 1)
+                {
 
-                image.style.width = '90%'
-                image.style.height = '200px'
+                    image.style.width = '90%'
+                    image.style.height = '200px'
 
+                }
             }
 
             document.querySelector('.answers_div').style.width = '90%'
@@ -578,12 +581,15 @@
 
             let image = document.querySelector('.image')
 
-            if(image.style.backgroundImage.length > 1)
+            if(image)
             {
+                if(image.style.backgroundImage.length > 1)
+                {
 
-                image.style.width = '90%'
-                image.style.height = '200px'
+                    image.style.width = '90%'
+                    image.style.height = '200px'
 
+                }
             }
 
             document.querySelector('.answers_div').style.width = '90%'
@@ -1021,13 +1027,19 @@
 
             let image = document.querySelector('.image')
 
-            if(image.style.backgroundImage.length > 1)
+            if(image)
             {
 
-                image.style.width = '90%'
-                image.style.height = '200px'
+                if(image.style.backgroundImage.length > 1)
+                {
+
+                    image.style.width = '90%'
+                    image.style.height = '200px'
+
+                }
 
             }
+
 
             document.querySelector('.text_div').style.width = '90%'
 
@@ -1267,7 +1279,7 @@
             check_button.classList.add('btn')
             check_button.classList.add('btn-primary')
             check_button.classList.add('check')
-            check_button.innerText = `{{ __('tr_check') }}`
+            check_button.innerText = `{{ __('main.check') }}`
             check_button.setAttribute('disabled', '')
 
             completedTask.appendChild(check_button)

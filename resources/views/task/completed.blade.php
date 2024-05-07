@@ -16,6 +16,9 @@
         {!! $completed->text !!}
 
     </div>
+    @if($task->task_type < 4)
+        <p class="text-muted small">click/hover on wrong answers to check correct answer</p>
+    @endif
     <input type="hidden" class="task_type" value="{{ $task->task_type }}">
 
 <script>
@@ -208,7 +211,12 @@
 
                     document.querySelector('.text_div').style.width = '90%'
 
-                } else
+                }
+
+            }  else
+            {
+
+                if(document.querySelector('.image'))
                 {
 
                     document.querySelector('.image').style.width = '550px'
