@@ -71,7 +71,7 @@
 
             </div>
 
-            <button type="submit" id="hidden_button"></button>
+            <button style="display: none;" type="submit" id="hidden_button"></button>
 
         </form>
 
@@ -210,7 +210,7 @@
 
                     hiddenButton.click()
 
-                }, 3000);
+                }, 1000);
 
             })
 
@@ -434,7 +434,7 @@
 
                     hiddenButton.click()
 
-                }, 3000);
+                }, 1000);
 
             })
 
@@ -568,6 +568,11 @@
     if (task_type.value == 2)
     {
 
+        let tx = document.querySelector('.text_div')
+        tx.querySelectorAll('div').forEach(div => {
+            div.style.cssText = `display: flex; flex-wrap: wrap; justify-content: center; column-gap: 10px; row-gap: 5px;`
+        })
+
         if(mobile)
         {
 
@@ -652,7 +657,7 @@
 
                     hiddenButton.click()
 
-                }, 3000);
+                }, 1000);
 
             })
 
@@ -880,7 +885,7 @@
 
                     hiddenButton.click()
 
-                }, 3000);
+                }, 1000);
 
             })
 
@@ -928,6 +933,10 @@
             let dragItem = null;
 
             function dragStart() {
+                if(this.parentElement.classList.contains('input'))
+                {
+                    this.parentElement.style.width = this.parentElement.offsetWidth+'px'
+                }
                 dragItem = this;
                 setTimeout(() => this.className = 'invisible', 0)
             }
@@ -961,27 +970,31 @@
 
                 } else
                 {
-                    // IF INPUT IS FULL AND ELEMENT COME FROM ANOTHER IMPUT SWITCH THEM
-                    if(dragItem.parentElement.classList.contains('input'))
+
+                    if(this.children[0].innerText !== dragItem.innerText)
                     {
+                        // IF INPUT IS FULL AND ELEMENT COME FROM ANOTHER IMPUT SWITCH THEM
+                        if(dragItem.parentElement.classList.contains('input'))
+                        {
 
-                        let this_value = this.innerText
-                        let parentElement_value = dragItem.innerText
+                            let this_value = this.innerText
+                            let parentElement_value = dragItem.innerText
 
-                        this.children[0].innerText = parentElement_value
-                        dragItem.innerText = this_value
+                            this.children[0].innerText = parentElement_value
+                            dragItem.innerText = this_value
 
-                        answers_hint.classList.add('text-dark')
-                        answers_hint.classList.remove('text-danger')
-                        answers_hint.innerText = `{{ __('main.drag_and_drop_translations_into_the_relevant_cells') }}`
+                            answers_hint.classList.add('text-dark')
+                            answers_hint.classList.remove('text-danger')
+                            answers_hint.innerText = `{{ __('main.drag_and_drop_translations_into_the_relevant_cells') }}`
 
-                    } else
-                    {
+                        } else
+                        {
 
-                        answers_hint.classList.remove('text-dark')
-                        answers_hint.classList.add('text-danger')
-                        answers_hint.innerText = `{{ __('main.one_cell_cannot_contain_two_answers') }}`
+                            answers_hint.classList.remove('text-dark')
+                            answers_hint.classList.add('text-danger')
+                            answers_hint.innerText = `{{ __('main.one_cell_cannot_contain_two_answers') }}`
 
+                        }
                     }
 
                 }
@@ -1073,7 +1086,7 @@
 
                     hiddenButton.click()
 
-                }, 3000);
+                }, 1000);
 
             }
 
@@ -1181,7 +1194,7 @@
 
                     hiddenButton.click()
 
-                }, 3000);
+                }, 1000);
 
             }
 
@@ -1296,7 +1309,7 @@
 
                     hiddenButton.click()
 
-                }, 3000);
+                }, 1000);
 
             })
 
@@ -1420,7 +1433,7 @@
 
                     hiddenButton.click()
 
-                }, 3000);
+                }, 1000);
 
             })
 

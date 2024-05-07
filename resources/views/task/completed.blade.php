@@ -43,6 +43,17 @@
         let words = document.querySelectorAll('.word')
         let inputs = document.querySelectorAll('.input')
 
+        inputs.forEach(input => {
+            if(input.classList.contains('bg-danger'))
+            {
+                input.setAttribute('tabindex', '0')
+                input.setAttribute('data-bs-toggle', 'popover')
+                input.setAttribute('data-bs-trigger', 'hover focus')
+                input.setAttribute('data-bs-content', 'Correct answer: '+input.attributes.answer.value)
+                input.setAttribute('data-bs-placement', 'top')
+            }
+        })
+
         if(mobile)
         {
 
@@ -111,6 +122,17 @@
     if(task_type == 2)
     {
 
+        document.querySelectorAll('.input').forEach(input => {
+            if(input.classList.contains('bg-danger'))
+            {
+                input.setAttribute('tabindex', '0')
+                input.setAttribute('data-bs-toggle', 'popover')
+                input.setAttribute('data-bs-trigger', 'hover focus')
+                input.setAttribute('data-bs-content', 'Correct answer: '+input.attributes.answer.value)
+                input.setAttribute('data-bs-placement', 'top')
+            }
+        });
+
         completed = document.querySelector('.completed')
 
         let answers = document.querySelectorAll('.answer')
@@ -154,6 +176,22 @@
     if(task_type == 3)
     {
 
+        document.querySelectorAll('.fi_input').forEach(input => {
+            input.setAttribute('disabled', '')
+            if(input.style.backgroundColor == 'red')
+            {
+                input.style.backgroundColor = `#fd4141`
+                input.setAttribute('tabindex', '0')
+                input.setAttribute('data-bs-toggle', 'popover')
+                input.setAttribute('data-bs-trigger', 'hover focus')
+                input.setAttribute('data-bs-content', 'Correct answer: '+input.attributes.answer.value)
+                input.setAttribute('data-bs-placement', 'top')
+            } else
+            {
+                input.style.backgroundColor = '#51f151'
+            }
+        });
+
         if(mobile)
         {
 
@@ -190,6 +228,11 @@
 
     if(task_type == 4)
     {
+
+        document.querySelectorAll('.right').forEach(right => {
+            right.style.backgroundColor = `rgb(137, 255, 101)`
+            right.style.color = `black`
+        })
 
         let tasks = document.querySelectorAll('.abc_task')
         let answers = document.querySelectorAll('.abc_ans')

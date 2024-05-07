@@ -198,9 +198,9 @@
                                         <p class="p-0 m-0" style="font-size: 19px;">{{ $task->name }}</p>
                                         <p class="small text-muted m-0 p-0">{{ $task->created_at }}</p>
                                     </x-card-body>
-                                    <x-card-body>
+                                    <div class="card-body m-0 p-0">
                                         <p class="p-0 m-0 text-success">{{ __('main.completed') }}</p>
-                                    </x-card-body>
+                                    </div>
                                 </a>
                             </x-card>
                         </div>

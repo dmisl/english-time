@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Access;
+use App\Models\CompletedTask;
 use App\Models\User;
 use App\Models\Task;
 use App\Models\Course;
+use App\Models\Lesson;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\App;
@@ -35,6 +38,8 @@ class HomeController extends Controller
         } else
         {
 
+            session(['locale' => 'en']);
+            App::setLocale('en');
             return view('home.en');
 
         }
