@@ -25,7 +25,7 @@
 
             <p class="text-muted mt-4" style="font-size: 15px;">{{ __('main.online_school_desc') }}</p>
 
-            <a href="{{ route('register.index') }}">
+            <a href="{{ Auth::check() ? route('user.index') : route('register.index') }}">
                 <div class="mt-4" style="display: inline-block;" role="button">
 
                     <div style="color: white; display: flex; column-gap: 15px; background-color: #6385FF; padding: 13px 25px; border-radius: 20px; transition: 0.5s; border: 2px solid #6385FF;">
@@ -340,7 +340,7 @@
 
         </div>
 
-        <a href="{{ route('register.index') }}">
+        <a href="{{ Auth::check() ? route('user.index') : route('register.index') }}">
             <div class="mt-4" style="display: inline-block;" role="button">
 
                 <div style="color: white; display: flex; column-gap: 15px; background-color: #6385FF; padding: 13px 25px; border-radius: 20px; transition: 0.5s; border: 2px solid #6385FF;">

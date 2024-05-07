@@ -1,4 +1,4 @@
-<a href="{{ route('register.index') }}">
+<a href="{{ Auth::check() ? route('user.index') : route('register.index') }}">
     <div {{ $attributes }} style="display: inline-block;" role="button">
 
         <div class="join_now">
