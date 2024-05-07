@@ -56,7 +56,7 @@ class LessonController extends Controller
     {
         $lesson = Lesson::find($lesson);
         $course = $lesson->course;
-        $tasks = Task::query()->where('lesson_id', '=', $lesson->id)->orderBy('position', 'asc')->get();
+        $tasks = Task::query()->where(['lesson_id' => $lesson->id])->orderBy('position', 'asc')->get();
         if($course->id == $lesson->course_id)
         {
             return view('lesson.show', compact('tasks', 'course', 'lesson'));
