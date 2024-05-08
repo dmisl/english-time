@@ -42,8 +42,6 @@
             }
 
             $unallowed_courses = array_diff($unallowed_courses, $accessed_courses);
-            dd($accessed_courses);
-            dd($unallowed_courses);
 
             @endphp
             <tr>
