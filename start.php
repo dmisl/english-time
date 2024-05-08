@@ -91,19 +91,27 @@ system("php artisan config:cache");
 
 say("- Progress [7/{$process}]");
 
-$conn = new PDO("mysql:host=localhost;", 'root', '');
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+try {
+    $conn = new mysqli($host, $user, $password);
 
-$query = "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = ?";
-$stmt = $conn->prepare($query);
-$stmt->execute(["english"]);
+    if (!$conn->connect_error) {
+        $conn = new PDO("mysql:host=localhost;", 'root', '');
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$result = $stmt->fetch();
+        $query = "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->execute(["english"]);
 
-if ($result) {
-    system("php artisan migrate:refresh --seed");
-} else {
-    system("php artisan migrate --seed");
+        $result = $stmt->fetch();
+
+        if ($result) {
+            system("php artisan migrate:refresh --seed");
+        } else {
+            system("php artisan migrate --seed");
+        }
+    }
+} catch (mysqli_sql_exception $e) {
+} catch (Exception $e) {
 }
 
 say("- Progress [8/{$process}]");
