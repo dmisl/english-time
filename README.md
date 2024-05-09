@@ -68,8 +68,6 @@ This will set up the program environment using Docker, allowing you to run it se
 
 ## 💡 Features <a id = "features"></a>
 
-## Project Features
-
 1. **User-Friendly Interface**: 
    - Designed to cater to both students and teachers, ensuring a seamless experience for course creation, management, and learning.
 
