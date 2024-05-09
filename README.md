@@ -1,72 +1,104 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+![Alt text](https://www.itctraductionscanada.ca/wp-content/uploads/sites/2/2020/08/english-words-1210x423.jpg)
+---
+## 📋 Roadmap
 
+- [About](#about)
+- [Tech Stack](#tech_stack)
+- [Server Requiremenets](#requirements)
+- [Running the Program](#running)
+- [Features](#features)
 
-## Intro
-Hello, this is a project made to make learning English easier. Made by Dmytro Slutyi
+## 🧐 About <a id = "about"></a>
 
-## How to install the project
-Everything is quite simple, first you need to download the project to your computer, git bash will help us with this
-To do this, use the command
+Using this platform, you can easily create your own English courses for native speakers of any language. The project works using a user-friendly and simplified interface, which will greatly facilitate the work of both the course owner and the students who will take this course. 
+
+Due to the fact that the project development process was carried out with the help of my English teacher, the learning process on such a platform will be as effective as possible in learning the necessary English language
+
+You can try this platform at https://englishtime.cloud/ (available in 3 languages)
+
+## 🏗️ Tech Stack <a id = "tech_stack"></a>
+
+- [Laravel](https://laravel.com/)
+- [JavaScript]()
+- [MySQL database](https://www.mysql.com/)
+- [Bootstrap](https://getbootstrap.com/)
+- [Figma](https://www.figma.com/)
+- [Docker](https://www.docker.com/products/docker-desktop/)
+
+## ⚙️ Requiremenets <a id = "requirements"></a>
+
+Server requirements to run locally:
+- PHP >= 8.1
+- MySQL 8.0
+
+To run on Docker:
+- [Docker](https://www.docker.com/products/docker-desktop/)
+
+## 🚀 Running the Program <a id = "running"></a>
+
+To run the program locally, simply clone the repository and execute the start script:
 ```
-git clone https://github.com/dmisl/english.git
+git clone https://github.com/dmisl/EnglishTime.git
+cd <project_directory>
+php start.php
 ```
-After installation, in the console, go to the project location on your computer and download the Laravel files we need
+This script automates all necessary setup steps, including installing PHP/JS dependencies, setting up environment variables, running migrations, starting the development server
+
+Once the script completes, your program will be up and running, ready for you to use.
+
+---
+
+To run the program using Docker:
+
+Before running Docker commands, update the .env file with your database configuration.
+
 ```
-composer install
+DB_HOST=database
+DB_USERNAME=someone
+DB_PASSWORD=secret
 ```
-After which we create an .env file in the project folder, copying the prepared text from .env.example. Customize if necessary and move on.
-
-Enter the following commands into the console
-
+then run
 ```
-php artisan key:generate
-php artisan migrate
-```
-
-After entering these commands, you need to rename the storage folder from the ../public/ folder to some other name and enter the command
-```
-php artisan storage:link
+php start.php
+docker-compose build
+docker-compose up
 ```
 
-Then transfer all files from the folder you renamed to the /public/storage folder
+This will set up the program environment using Docker, allowing you to run it seamlessly. (If you encounter any issues with the environment run `docker-compose down` then `docker-compose up`)
 
-You're done :) The project is successfully installed on your computer, but that's not all
+## 💡 Features <a id = "features"></a>
 
-## How this project works
-There are two roles in this project: 
-- Teacher
-- Student
+## Project Features
 
-To start working with the site, you need to register on the site and then grant yourself administrator rights through the database. 
+1. **User-Friendly Interface**: 
+   - Designed to cater to both students and teachers, ensuring a seamless experience for course creation, management, and learning.
 
-After that, you will be able to log in to your profile. In your profile, you will be able to see the basic functionality of this site. Going to the **account activation page**, you will be able to see a list of users, specifically students, who are waiting for their account to be activated, i.e. to **be granted access to go to their profile page**. 
+2. **Course Management (CRUD)**:
+   - Teachers can effortlessly Create, Read, Update, and Delete courses, streamlining the organization of educational content.
 
-Once their account is activated, you **can give them access to any course you have created** to start their training. Once the learner has access to the course, they will be able to complete the assignments you have created.
+3. **Lesson Management (CRUD)**:
+   - Teachers have full control over creating, editing, and deleting lessons, enabling structured and comprehensive curriculum development.
 
-## How the course system works
-Above I wrote about how to give a student access to a course you created. 
+4. **Task Management (CRUD)**:
+   - Utilizing Laravel and native JavaScript, tasks can be created swiftly, empowering teachers to generate engaging exercises in minutes.
 
-But **how courses are made** on this site is simple.
+5. **Variety of Task Types**:
+   - Offers five task types: Translate, Fill in the Gaps (with ready-made answers), Fill in the Gaps (manual input), ABC, and Info, catering to diverse learning styles and objectives.
 
-**There can be many lessons in one course, and in one lesson there can be many tasks** that we can give to the student, for example, for homework. 
+6. **Cross-Platform Compatibility**:
+   - Accessible across various devices, including mobile phones, ensuring flexibility and convenience for users on-the-go.
 
-By the way, creating tasks will be easy and intuitive, all thanks to a simplified interface, so you can even create a task in a few minutes.
+7. **Multilanguage Support**:
+   - Supports English, Polish, and Ukrainian languages out of the box, with an easy mechanism for adding additional languages as needed.
 
+8. **Account Activation Workflow**:
+   - Implements a system where newly registered accounts require activation by a teacher, ensuring authenticity and control over user access.
 
-Available types of tasks at the moment:
-- Translate words
-- Fill in the blanks (with ready-made answers)
-- Fill in the blanks (by entering answers manually)
-- ABC, choose the correct answer
+9. **Customized Course Access**:
+   - Teachers can grant access to specific courses based on the user's English proficiency level, ensuring tailored learning experiences.
 
-You can also create an information page where your student can repeat or learn new rules of the language he`s learning.
+10. **Task Feedback and Correction**:
+    - Enables teachers to review and provide feedback on student tasks, facilitating active engagement and personalized learning support.
 
-## Available languages
-- English
-- Poland
-- Ukrainian
-
-## Outro
-This is not the final version of this site, over time it will be improved with new interface languages and new functionality.
-
-That's why we don't say goodbye :)
+11. **Dark Mode Support**:
+    - Seamlessly integrates dark fashion elements with the design for users who prefer a darker aesthetic, enhancing visual comfort and usability.
