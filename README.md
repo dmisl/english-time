@@ -14,7 +14,7 @@ Using this platform, you can easily create your own English courses for native s
 
 Due to the fact that the project development process was carried out with the help of my English teacher, the learning process on such a platform will be as effective as possible in learning the necessary English language
 
-You can try this platform at https://englishtime.cloud/ (available in 3 languages)
+You can try this platform at https://englishtime.website/ (available in 3 languages)
 
 ## 🏗️ Tech Stack <a id = "tech_stack"></a>
 
