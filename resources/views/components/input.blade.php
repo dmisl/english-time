@@ -1,6 +1,7 @@
 @props([
     'name' => '',
     'value' => old($name),
+    'placeholder' => ''
 ])
 
 @if($errors->has($name))
@@ -8,8 +9,8 @@
         {{ $errors->first($name) }}
     </div>
 @endif
-<input name="{{ $name }}" value="{{ $value }}" {{ $attributes->class([
-    'form-control', 'text-center',
+<input name="{{ $name }}" value="{{ $value }}" placeholder="{{ $placeholder }}" {{ $attributes->class([
+    'form-control', 'text-start',
     ])->merge([
     'type' => 'text',
 ]) }}>
