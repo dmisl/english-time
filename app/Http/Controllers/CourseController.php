@@ -66,7 +66,7 @@ class CourseController extends Controller
     {
         $course = Course::find($course);
         $validated = $request->validate([
-            'name' => ['required'],
+            'name' => ['required', 'min:4'],
         ]);
         $course->update(['name' => $validated['name']]);
         session(['alert' => __('main.you_have_successfully_changed_the_course_name_to')." {$validated['name']}"]);
@@ -106,7 +106,6 @@ class CourseController extends Controller
         if($course && $course->user_id = $user->id)
         {
             return response()->json([
-                'user_id' => Auth::id(),
                 'course' => $course->name
             ]);
         }

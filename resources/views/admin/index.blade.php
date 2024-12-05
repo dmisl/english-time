@@ -80,7 +80,7 @@
                 </a>
                     <x-card-body class="py-1 d-flex">
                         <div class="w-50">
-                            <svg class="edit" course_id="{{ $course->id }}" role="button" style="margin-top: 2.5px;" data-bs-toggle="modal" data-bs-target="#editCourseModal" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="25" height="25" viewBox="0 0 256 256" xml:space="preserve">
+                            <svg class="edit" course_id="{{ $course->id }}" role="button" style="margin-top: 2.5px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="25" height="25" viewBox="0 0 256 256" xml:space="preserve">
                                 <defs>
                                 </defs>
                                 <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)" >
@@ -120,7 +120,7 @@
     </div>
 </div>
 
-<div class="editModal modal fade" id="editCourseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="editModal modal fade" id="editCourseModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -130,11 +130,11 @@
             <div class="modal-body text-start">
                 <x-label>{{ __('main.enter_a_new_course_name') }}</x-label>
                 <x-input class="name" placeholder="Enter your new course name" name="" type="text" value="" />
-                <input type="hidden">
+                <p class="error text-danger" style="font-size: 12px; margin: 0; margin-left: 10px; height: 18px; font-weight: 500;"></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary rounded-5" data-bs-dismiss="modal">{{ __('main.close') }}</button>
-                <button type="submit" class="btn btn-primary rounded-5">{{ __('main.change') }}</button>
+                <button type="button" class="btn btn-primary rounded-5">{{ __('main.change') }}</button>
             </div>
         </div>
     </div>
@@ -160,21 +160,66 @@
 </div>
 
 <script>
-    // EDITS MODAL SCRIPT
+    let course_id
+
+    // EDIT COURSE MODAL
+    let editBootstrapModal = new bootstrap.Modal(document.querySelector('#editCourseModal'))
+
     let edits = document.querySelectorAll('.edit')
     edits.forEach(edit => {
         edit.addEventListener('click', function () {
-            console.log(edit.attributes.course_id.value)
+            course_id = edit.attributes.course_id.value
+            axios.post(`{{ route('course.getData') }}`,{id:1})
+                .then(res => {
+                    console.log(res.data)
+                    editBootstrapModal.show()
+                })
+                .catch(err => {
+                    console.error(err); 
+                })
         })
     });
 
-    // axios.post(`{{ route('course.getData') }}`,{id:1})
-    // .then(res => {
-    //     console.log(res.data)
-    // })
-    // .catch(err => {
-    //     console.error(err); 
-    // })
+    let editModal = document.querySelector('.editModal')
+    let editModalInput = editModal.querySelector('input')
+    let editModalSubmit = editModal.querySelector('.btn-primary')
+    let editModalError = editModal.querySelector('.error')
+
+    let editModalTimeout
+
+    editModalInput.addEventListener('keyup', function () {
+        clearTimeout(editModalTimeout)
+        editModalTimeout = setTimeout(editModalValidate, 500)
+    })
+    editModalSubmit.addEventListener('mouseenter', editModalValidate)
+
+    function editModalValidate()
+    {
+        console.log('checking')
+        let error = editModalError
+        let submit = editModalSubmit
+        if(editModalInput.value.length == 0)
+        {
+            error.innerHTML = `required field`
+            submit.setAttribute('disabled', '')
+        } else if(editModalInput.value.length < 5)
+        {
+            error.innerHTML = `course name must be at least 5 symbols long`
+            submit.setAttribute('disabled', '')
+        } else
+        {
+            error.innerHTML = ``
+            submit.removeAttribute('disabled')
+        }
+    }
+
+    editModalSubmit.addEventListener('click', editModalSend)
+
+    function editModalSend()
+    {
+        console.log('sendind data')
+    }
+
 </script>
 
 @endsection
