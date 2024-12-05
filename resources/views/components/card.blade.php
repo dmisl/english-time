@@ -3,7 +3,7 @@
             col-md-6 - заняти половину екрану на планшеті
             offset-md-3 - зробити по центру
 --}}
-    <div {{ $attributes }} class="card">
+    <div {{ $attributes->merge(['class' => 'card']) }}>
         {{ $slot }}
     </div>
 

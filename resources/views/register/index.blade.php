@@ -6,8 +6,8 @@
 
 <div class="container">
     <div class="row mt-5">
-        <div class="col-12 col-md-6 mx-auto mt-3">
-            <x-card>
+        <div class="col-12 col-md-4 mx-auto mt-3">
+            <x-card class="rounded-5">
                 <x-card-body class="d-flex justify-content-between">
                     <h2>{{ __('main.registration') }}</h2>
                     <x-slot name="right">
