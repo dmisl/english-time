@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Access;
 use App\Models\Course;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -98,8 +99,19 @@ class CourseController extends Controller
         return view('lesson.create', compact('id'));
     }
 
-    public function lesson_store($id, Request $request)
+    public function getData(Request $request)
     {
-
+        $course = Course::select('name')->where('id', $request->id)->first();
+        $user = User::find(Auth::id());
+        if($course && $course->user_id = $user->id)
+        {
+            return response()->json([
+                'user_id' => Auth::id(),
+                'course' => $course->name
+            ]);
+        }
+        return response()->json([
+            'message' => 'Course doesnt exist or is not owned by authenticated user' 
+        ], 404);
     }
 }

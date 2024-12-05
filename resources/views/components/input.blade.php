@@ -10,7 +10,7 @@
     </div>
 @endif
 <input name="{{ $name }}" value="{{ $value }}" placeholder="{{ $placeholder }}" {{ $attributes->class([
-    'form-control', 'text-start',
+    'form-control', 'text-start', 'rounded-5'
     ])->merge([
     'type' => 'text',
 ]) }}>

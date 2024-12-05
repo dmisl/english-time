@@ -1876,6 +1876,8 @@
     {{-- CKEDITOR --}}
     <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
     <link rel="icon" type="image/x-icon" href="{{ asset('storage/icons/eng.png') }}">
+    {{-- AXIOS --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.8/axios.min.js" integrity="sha512-v8+bPcpk4Sj7CKB11+gK/FnsbgQ15jTwZamnBf/xDmiQDcgOIYufBo6Acu1y30vrk8gg5su4x0CG3zfPaq5Fcg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>

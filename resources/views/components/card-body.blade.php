@@ -1,6 +1,4 @@
-<div {{ $attributes->class([
-    'card-body'
-]) }}>
+<div {{ $attributes->merge(['class' => 'card-body']) }}>
     {{ $slot }}
     @if(isset($right))
             <div>

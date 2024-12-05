@@ -16,7 +16,7 @@
                             </a>
                         </x-slot>
                 </x-card-body>
-                <x-card-body>
+                <x-card-body class="pt-0">
                     <x-form action="{{ route('register.store') }}">
                         <x-form-item>
                             <x-label required>{{ __('main.email') }}</x-label>

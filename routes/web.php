@@ -40,6 +40,7 @@ Route::middleware(['locale'])
         Route::get('/', [UserController::class, 'index'])->name('admin.index');
         Route::get('logout', [UserController::class, 'logout'])->name('admin.logout');
         Route::resource('course', CourseController::class);
+        Route::post('getData', [CourseController::class, 'getData'])->name('course.getData');
         Route::resource('active', ActiveController::class);
         Route::resource('access', AccessController::class);
         Route::get('completedtasks', [TaskController::class, 'completed'])->name('task.homework');
