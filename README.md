@@ -1,5 +1,3 @@
-![Alt text](https://www.itctraductionscanada.ca/wp-content/uploads/sites/2/2020/08/english-words-1210x423.jpg)
----
 ## 📋 Roadmap
 
 - [About](#about)
