@@ -62,15 +62,28 @@ class CourseController extends Controller
         return view('course.edit', $id);
     }
 
-    public function update(Request $request, $course)
+    public function update(Request $request)
     {
-        $course = Course::find($course);
-        $validated = $request->validate([
-            'name' => ['required', 'min:4'],
+        $request->validate([
+            'id' => ['required', 'exists:courses'],
+            'name' => ['required', 'min:5']
         ]);
-        $course->update(['name' => $validated['name']]);
-        session(['alert' => __('main.you_have_successfully_changed_the_course_name_to')." {$validated['name']}"]);
-        return back();
+        $user = User::find(Auth::id());
+        $course = Course::find($request->id);
+        if($user->id == $course->user_id)
+        {
+            $course->update([
+                'name' => $request->name,
+            ]);
+            return response()->json([
+                'message' => 'something'
+            ]);
+        } else
+        {
+            return response()->json([
+                'message' => 'Course is not owned by the authorized user'
+            ], 404);
+        }
     }
 
     public function destroy($course)

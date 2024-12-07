@@ -10,6 +10,16 @@
     </title>
     <style>
 
+        @keyframes appear
+        {
+            0% {
+                opacity: 0; top: -40px;
+            }
+            100% {
+                opacity: 1; top: 0;
+            }
+        }
+
         .dark_mode_label {
             border: 1px solid white;
         }
@@ -1855,7 +1865,7 @@
         }
 
         @endif
-
+        {{ '.asd { display: none; }' }}
 
     </style>
     {{-- BOOTSTRAP --}}
@@ -1889,7 +1899,10 @@
             {{ session('alert') }}
         </x-alert>
         @endif
-        <main class='flex-grow-1' style="overflow: hidden;">
+        <main class='flex-grow-1' style="overflow: hidden; position: relative;">
+            <div class="alert alert-success rounded-0 small py-2 w-100 position-absolute" style="animation: appear 1s forwards;" role="alert">
+                Something
+            </div>
             @yield('main.content')
         </main>
 

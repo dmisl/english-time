@@ -41,6 +41,7 @@ Route::middleware(['locale'])
         Route::get('logout', [UserController::class, 'logout'])->name('admin.logout');
         Route::resource('course', CourseController::class);
         Route::post('getData', [CourseController::class, 'getData'])->name('course.getData');
+        Route::post('sendData', [CourseController::class, 'update'])->name('course.update');
         Route::resource('active', ActiveController::class);
         Route::resource('access', AccessController::class);
         Route::get('completedtasks', [TaskController::class, 'completed'])->name('task.homework');

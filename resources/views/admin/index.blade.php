@@ -162,6 +162,7 @@
 <script>
 
     let course_id
+    let selected
 
     // EDIT COURSE MODAL
     let editBootstrapModal = new bootstrap.Modal(document.querySelector('#editCourseModal'))
@@ -170,6 +171,7 @@
     edits.forEach(edit => {
         edit.addEventListener('click', function () {
             course_id = edit.attributes.course_id.value
+            selected = edit.parentElement.parentElement.parentElement.querySelector('h3')
             axios.post(`{{ route('course.getData') }}`,{id:1})
                 .then(res => {
                     editBootstrapModal.show()
@@ -230,6 +232,14 @@
     function editModalSend()
     {
         console.log('sendind data')
+        axios.post(`{{ route('course.update') }}`, {id: course_id, name: editModalInput.value})
+            .then(res => {
+                selected.innerHTML = editModalInput.value
+                editBootstrapModal.hide()
+            })
+            .catch(error => {
+                console.error(error)
+            })
     }
 
 </script>
