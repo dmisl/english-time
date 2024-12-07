@@ -19,6 +19,15 @@
                 opacity: 1; top: 0;
             }
         }
+        @keyframes disappear
+        {
+            0% {
+                opacity: 1; top: 0;
+            }
+            100% {
+                opacity: 0; top: -40px;
+            }
+        }
 
         .dark_mode_label {
             border: 1px solid white;
@@ -1900,7 +1909,7 @@
         </x-alert>
         @endif
         <main class='flex-grow-1' style="overflow: hidden; position: relative;">
-            <div class="alert alert-success rounded-0 small py-2 w-100 position-absolute" style="animation: appear 1s forwards;" role="alert">
+            <div class="alert alert-success rounded-0 small py-2 d-none w-100 position-absolute" role="alert">
                 Something
             </div>
             @yield('main.content')
@@ -1909,6 +1918,20 @@
     </div>
 
     <script>
+
+        function alert(text)
+        {
+            let alert = document.querySelector('.alert-success')
+            alert.innerHTML = text
+            alert.classList.remove('d-none')
+            alert.style.animation = `appear 1s forwards`
+            setTimeout(() => {
+                alert.style.animation = `disappear 1s forwards`
+                setTimeout(() => {
+                    alert.classList.add('d-none')
+                }, 1000);
+            }, 5000);
+        }
 
         const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
         const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))

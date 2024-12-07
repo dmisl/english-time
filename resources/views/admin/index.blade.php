@@ -204,7 +204,6 @@
 
     function editModalValidate()
     {
-        console.log('checking')
         let error = editModalError
         let submit = editModalSubmit
         if(editModalInput.value.length == 0)
@@ -231,11 +230,11 @@
 
     function editModalSend()
     {
-        console.log('sendind data')
         axios.post(`{{ route('course.update') }}`, {id: course_id, name: editModalInput.value})
             .then(res => {
                 selected.innerHTML = editModalInput.value
                 editBootstrapModal.hide()
+                alert("Your course`s name has been successfully changed")
             })
             .catch(error => {
                 console.error(error)
