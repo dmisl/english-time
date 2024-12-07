@@ -160,6 +160,7 @@
 </div>
 
 <script>
+
     let course_id
 
     // EDIT COURSE MODAL
@@ -171,8 +172,12 @@
             course_id = edit.attributes.course_id.value
             axios.post(`{{ route('course.getData') }}`,{id:1})
                 .then(res => {
-                    console.log(res.data)
                     editBootstrapModal.show()
+                    editModalInput.value = res.data.course
+                    default_value = res.data.course
+                    setTimeout(() => {
+                        editModalInput.focus()
+                    }, 500);
                 })
                 .catch(err => {
                     console.error(err); 
@@ -193,6 +198,8 @@
     })
     editModalSubmit.addEventListener('mouseenter', editModalValidate)
 
+    let default_value
+
     function editModalValidate()
     {
         console.log('checking')
@@ -206,7 +213,12 @@
         {
             error.innerHTML = `course name must be at least 5 symbols long`
             submit.setAttribute('disabled', '')
-        } else
+        } else if(editModalInput.value == default_value)
+        {
+            error.innerHTML = `new course name cant be equal to the previous one`
+            submit.setAttribute('disabled', '')
+        }
+        else
         {
             error.innerHTML = ``
             submit.removeAttribute('disabled')
