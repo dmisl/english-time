@@ -39,14 +39,14 @@ class CourseController extends Controller
     public function store(Request $request)
     {
 
-        $course = Course::query()->create([
+        $course = Course::create([
             'user_id' => Auth::id(),
-            'name' => $request->input('name'),
+            'name' => $request->course_name,
         ]);
 
         if($course)
         {
-            session(['alert' => __('main.you_have_successfully_created_a_course_called')." {$request->input('name')}"]);
+            session(['alert' => __('main.you_have_successfully_created_a_course_called')." {$request->course_name}"]);
 
             return redirect()->route('admin.index');
         }

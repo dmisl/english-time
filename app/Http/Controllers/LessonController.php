@@ -30,17 +30,17 @@ class LessonController extends Controller
     public function store($id, Request $request)
     {
         $validated = $request->validate([
-            'name' => ['required', 'string'],
+            'lesson_name' => ['required', 'string'],
         ]);
 
         $lesson = Lesson::query()->create([
             'course_id' => $request->course_id,
-            'name' => $validated['name'],
+            'name' => $validated['lesson_name'],
         ]);
 
         if($lesson)
         {
-            session(['alert' => __('main.you_have_successfully_created_a_lesson')." {$validated['name']}"]);
+            session(['alert' => __('main.you_have_successfully_created_a_lesson')." {$validated['lesson_name']}"]);
 
             return redirect()->route('course.show', [$request->course_id]);
         }

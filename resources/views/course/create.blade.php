@@ -19,7 +19,7 @@
                                 {{ __('main.course_name') }}
                             </x-label>
                             <input type="hidden" value="{{ Auth::id() }}">
-                            <x-input name="name" />
+                            <x-input name="course_name" />
                         </x-form-item>
                         <x-form-item class="text-center">
                             <x-button class="rounded-5 px-3 mt-1" type="submit">

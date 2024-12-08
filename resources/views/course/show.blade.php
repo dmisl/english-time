@@ -11,7 +11,7 @@
     <div class="py-2">
         <a href="{{ route('admin.index') }}">{{ __('main.back') }}</a>
     </div>
-    <x-card>
+    <x-card class="rounded-5">
         <a class='text-decoration-none text-success' href="{{ route('lesson.create', [$course->id]) }}">
             <x-card-body>
                 <h1>
@@ -32,7 +32,7 @@
     @foreach ($lessons as $lesson)
         <div class="col-12 col-md-4 py-3">
 
-            <x-card>
+            <x-card class="rounded-4">
                 <a class="text-decoration-none" href="{{ route('lesson.show', ['course' => $course->id, 'lesson' => $lesson->id]) }}">
                     <x-card-body class="border-bottom">
                         <p class="p-0 m-0" style="font-size: 19px;">

@@ -17,7 +17,7 @@
     <div class="row py-5">
         <div class="col-12 col-md-4 mb-2">
             <x-card class="rounded-4">
-                <a class="text-decoration-none" href="{{ route('active.index') }}">
+                <a class="text-decoration-none" style="position:relative; top: 3px;" href="{{ route('active.index') }}">
                     <x-card-body>
                         <h4>
                             {{ __('main.applications_for_registration') }}
@@ -28,7 +28,7 @@
         </div>
         <div class="col-12 col-md-4 mb-2">
             <x-card class="rounded-4">
-                <a class="text-decoration-none" href="{{ route('access.index') }}">
+                <a class="text-decoration-none" style="position:relative; top: 3px;" href="{{ route('access.index') }}">
                     <x-card-body>
                         <h4>
                             {{ __('main.access_to_the_course') }}
@@ -39,7 +39,7 @@
         </div>
         <div class="col-12 col-md-4 mb-2">
             <x-card class="rounded-4">
-                <a class="text-decoration-none" href="{{ route('task.homework') }}">
+                <a class="text-decoration-none" style="position:relative; top: 3px;" href="{{ route('task.homework') }}">
                     <x-card-body>
                         <h4>
                             {{ __('main.check_tasks') }}
