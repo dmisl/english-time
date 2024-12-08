@@ -95,7 +95,7 @@
                             </svg>
                         </div>
                         <div class="w-50">
-                            <svg role="button" data-bs-toggle="modal" data-bs-target="#deleteCourseModal{{ $course->id }}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="27.5" height="27.5" viewBox="0 0 256 256" xml:space="preserve">
+                            <svg class="delete" role="button" course_id="{{ $course->id }}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="27.5" height="27.5" viewBox="0 0 256 256" xml:space="preserve">
 
                                 <defs>
                                 </defs>
@@ -122,7 +122,7 @@
 
 <div class="editModal modal fade" id="editCourseModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content rounded-5">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">{{ __('main.change_the_name_of_the_lesson') }}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -141,7 +141,7 @@
 </div>
 <div class="deleteModal modal fade" id="deleteCourseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content rounded-5">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">{{ __('main.deleting_a_course') }}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -150,10 +150,8 @@
                 <h4>{{ __('main.do_you_really_want_to_delete_a_course_called') }} <span class="text-danger course_name">""</span>, {{ __('main.all_the_lessons_and_all_the_tasks_that_are_in_it') }}</h4>
             </div>
             <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('main.no') }}</button>
-            <x-form action="" method="DELETE">
-                <button type="submit" class="btn btn-primary">{{ __('main.delete') }}</button>
-            </x-form>
+                <button type="button" class="btn btn-secondary rounded-5 px-4" data-bs-dismiss="modal">{{ __('main.no') }}</button>
+                <button type="button" class="btn btn-primary rounded-5 submit px-3">{{ __('main.delete') }}</button>
             </div>
         </div>
     </div>
@@ -164,6 +162,36 @@
     let course_id
     let selected
 
+    // DELETE COURSE MODAL
+    let deleteBootstrapModal = new bootstrap.Modal(document.querySelector('#deleteCourseModal'))
+
+    let deletes = document.querySelectorAll(".delete")
+    deletes.forEach(deletee => {
+        deletee.addEventListener('click', () => {
+            course_id = deletee.attributes.course_id.value
+            selected = deletee.parentElement.parentElement.parentElement.querySelector('h3')
+            axios.post(`{{ route('course.getData') }}`,{id:course_id})
+                .then(res => {
+                    deleteBootstrapModal.show()
+                    document.querySelector('.deleteModal .course_name').innerHTML = res.data.course
+                })
+                .catch(err => {
+                    console.error(err); 
+                })
+        })
+    })
+
+    let deleteSubmit = document.querySelector('.deleteModal .submit')
+    deleteSubmit.addEventListener('click', function () {
+        axios.post(`{{ route('course.destroy') }}`, {id: course_id})
+            .then(res => {
+                console.log(res.data)
+            })
+            .catch(error => {
+                console.error(error)
+            })
+    })
+
     // EDIT COURSE MODAL
     let editBootstrapModal = new bootstrap.Modal(document.querySelector('#editCourseModal'))
 
@@ -172,7 +200,7 @@
         edit.addEventListener('click', function () {
             course_id = edit.attributes.course_id.value
             selected = edit.parentElement.parentElement.parentElement.querySelector('h3')
-            axios.post(`{{ route('course.getData') }}`,{id:1})
+            axios.post(`{{ route('course.getData') }}`,{id:course_id})
                 .then(res => {
                     editBootstrapModal.show()
                     editModalInput.value = res.data.course

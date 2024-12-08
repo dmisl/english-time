@@ -86,25 +86,34 @@ class CourseController extends Controller
         }
     }
 
-    public function destroy($course)
+    public function destroy(Request $request)
     {
-        $course = Course::find($course);
-        foreach ($course->lessons as $lesson) {
-            foreach ($lesson->tasks as $task) {
-                foreach ($task->completedTasks as $completed) {
-                    $completed->delete();
+        $request->validate([
+            'id' => ['required', 'exists:courses']
+        ]);
+        $user = User::find(Auth::id());
+        $course = Course::find($request->id);
+        if($user->id == $course->user_id)
+        {
+            foreach($course->lessons as $lesson)
+            {
+                foreach ($lesson->tasks as $task) {
+                    $task->delete();
                 }
-                $task->delete();
+                $lesson->delete();
             }
-            $lesson->delete();
+            $acceses = Access::query()->where(['course_id' => $course->id])->get();
+            foreach ($acceses as $access) {
+                $access->delete();
+            }
+            $course->delete();
+            return response()->json([
+                'message' => 'success'
+            ]);
         }
-        $acceses = Access::query()->where(['course_id' => $course->id])->get();
-        foreach ($acceses as $access) {
-            $access->delete();
-        }
-        session(['alert' => __('main.you_have_successfully_deleted_the_course_called')." {$course->name}, ".__('main.all_lessons_and_all_assignments_that_were_in_it')]);
-        $course->delete();
-        return back();
+        return response()->json([
+            'message' => 'Course doesnt exist, or is not owned by authorized user'
+        ], 404);
     }
 
     public function lesson_create($id)
