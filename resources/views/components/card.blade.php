@@ -1,9 +1,5 @@
-{{--
-            col-12 - заняти повну ширину на телефоні
-            col-md-6 - заняти половину екрану на планшеті
-            offset-md-3 - зробити по центру
---}}
-    <div {{ $attributes->merge(['class' => 'card']) }}>
-        {{ $slot }}
-    </div>
+
+<div {{ $attributes->merge(['class' => 'card']) }}>
+    {{ $slot }}
+</div>
 
