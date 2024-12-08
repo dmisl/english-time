@@ -62,22 +62,22 @@
     <div class="row parent_row pt-5">
         @if($courses->count() == 0)
 
-        <h3>{{ __('main.you_have_not_created_any_courses_yet') }}</h3>
-        <h4>{!! __('main.to_create_a_course_click_the_button') !!}</h4>
+            <h3>{{ __('main.you_have_not_created_any_courses_yet') }}</h3>
+            <h4>{!! __('main.to_create_a_course_click_the_button') !!}</h4>
 
         @else
 
-        @foreach ($courses as $course)
-            <div class="col-12 col-md-4 py-3 course" course_id="{{ $course->id }}">
-                <x-card class="rounded-4">
-                    <a class="text-decoration-none" href="{{ route('course.show', $course->id) }}">
-                        <x-card-body class="border-bottom">
-                            <h3 class="m-0 p-0">
-                                {{ $course->name }}
-                            </h3>
-                            <p class="small text-muted m-0 p-0">{{ $course->created_at }}</p>
-                        </x-card-body>
-                    </a>
+            @foreach ($courses as $course)
+                <div class="col-12 col-md-4 py-3 course" course_id="{{ $course->id }}">
+                    <x-card class="rounded-4">
+                        <a class="text-decoration-none" href="{{ route('course.show', $course->id) }}">
+                            <x-card-body class="border-bottom">
+                                <h3 class="m-0 p-0">
+                                    {{ $course->name }}
+                                </h3>
+                                <p class="small text-muted m-0 p-0">{{ $course->created_at }}</p>
+                            </x-card-body>
+                        </a>
                         <x-card-body class="py-1 d-flex">
                             <div class="w-50">
                                 <svg class="edit" course_id="{{ $course->id }}" role="button" style="margin-top: 2.5px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="25" height="25" viewBox="0 0 256 256" xml:space="preserve">
@@ -112,9 +112,9 @@
                                 </svg>
                             </div>
                         </x-card-body>
-                </x-card>
-            </div>
-        @endforeach
+                    </x-card>
+                </div>
+            @endforeach
 
         @endif
     </div>
