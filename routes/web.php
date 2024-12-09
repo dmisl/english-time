@@ -40,9 +40,15 @@ Route::middleware(['locale'])
         Route::get('/', [UserController::class, 'index'])->name('admin.index');
         Route::get('logout', [UserController::class, 'logout'])->name('admin.logout');
         Route::resource('course', CourseController::class);
+        // COURSE API
         Route::post('getData', [CourseController::class, 'getData'])->name('course.getData');
         Route::post('sendData', [CourseController::class, 'update'])->name('course.update');
         Route::post('destroy', [CourseController::class, 'destroy'])->name('course.destroy');
+        // LESSON API
+        Route::post('lesson/getData', [LessonController::class, 'getData'])->name('lesson.getData');
+        Route::post('lesson/updatee', [LessonController::class, 'updatee'])->name('lesson.updatee');
+        Route::post('lesson/deletee', [LessonController::class, 'deletee'])->name('lesson.deletee');
+
         Route::resource('active', ActiveController::class);
         Route::resource('access', AccessController::class);
         Route::get('completedtasks', [TaskController::class, 'completed'])->name('task.homework');

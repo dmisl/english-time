@@ -27,15 +27,15 @@
     <h4>{!! __('main.to_create_a_lesson_use_the_button') !!}</h4>
 
     @else
-    <div class="row">
+    <div class="row parent_row">
 
     @foreach ($lessons as $lesson)
-        <div class="col-12 col-md-4 py-3">
+        <div class="col-12 col-md-4 py-3" lesson_id="{{ $lesson->id }}">
 
             <x-card class="rounded-4">
                 <a class="text-decoration-none" href="{{ route('lesson.show', ['course' => $course->id, 'lesson' => $lesson->id]) }}">
                     <x-card-body class="border-bottom">
-                        <p class="p-0 m-0" style="font-size: 19px;">
+                        <p class="lesson_name p-0 m-0" style="font-size: 19px;">
                             {{ $lesson->name }}
                         </p>
                         <p class="small text-muted m-0 p-0">{{ $lesson->created_at }}</p>
@@ -93,15 +93,16 @@
                 <div class="modal-body text-start">
                     <x-label>{{ __('main.enter_a_new_lesson_title') }}</x-label>
                     <x-input class="name" placeholder="Lesson name" name="lesson_name" />
+                    <p class="error text-danger" style="font-size: 12px; margin: 0; margin-left: 10px; height: 18px; font-weight: 500;"></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary rounded-5 px-3" data-bs-dismiss="modal">{{ __('main.close') }}</button>
-                    <button type="submit" class="btn btn-primary rounded-5">{{ __('main.change') }}</button>
+                    <button type="button" class="btn btn-primary rounded-5">{{ __('main.change') }}</button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="deleteModal modal fade" id="deleteLessonModal{{ $lesson->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="deleteModal modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content rounded-5">
                 <div class="modal-header">
@@ -109,13 +110,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <h4>{{ __('main.do_you_really_want_to_delete_the_lesson_named') }} <span class="text-danger">"{{ $lesson->name }}"</span> {{ __('main.and_all_the_tasks_that_are_in_it') }}</h4>
+                    <h4>{{ __('main.do_you_really_want_to_delete_the_lesson_named') }} "<span class="text-danger lesson_name"></span>" {{ __('main.and_all_the_tasks_that_are_in_it') }}</h4>
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('main.no') }}</button>
-                <x-form action="{{ route('lesson.destroy', [$course->id, $lesson->id]) }}" method="DELETE">
-                    <button type="submit" class="btn btn-primary">{{ __('main.delete') }}</button>
-                </x-form>
+                    <button type="button" class="btn btn-secondary rounded-5 px-3" data-bs-dismiss="modal">{{ __('main.no') }}</button>
+                    <button type="button" class="btn btn-primary submit rounded-5">{{ __('main.delete') }}</button>
                 </div>
             </div>
         </div>
@@ -166,6 +165,46 @@
     let selected
     let lesson_id
 
+    // DELETE LESSON MODAL
+    let deleteBootstrapModal = new bootstrap.Modal(document.querySelector('#deleteModal'))
+    let parent_row = document.querySelector('.parent_row')
+
+    let deletes = document.querySelectorAll(".delete")
+    deletes.forEach(deletee => {
+        deletee.addEventListener('click', () => {
+            lesson_id = deletee.attributes.lesson_id.value
+            selected = deletee.parentElement.parentElement.parentElement.querySelector('h3')
+            axios.post(`{{ route('lesson.getData') }}`,{id:lesson_id})
+                .then(res => {
+                    deleteBootstrapModal.show()
+                    document.querySelector('.deleteModal .lesson_name').innerHTML = res.data.lesson
+                })
+                .catch(err => {
+                    console.error(err); 
+                })
+        })
+    })
+
+    let deleteSubmit = document.querySelector('.deleteModal .submit')
+    deleteSubmit.addEventListener('click', function () {
+        axios.post(`{{ route('lesson.deletee') }}`, {id: lesson_id})
+            .then(res => {
+                parent_row.querySelector(`.lesson[lesson_id="${lesson_id}"]`).remove()
+                deleteBootstrapModal.hide()
+                alert('Lesson has been successfully deleted')
+                if(parent_row.children.length == 0)
+                {
+                    parent_row.innerHTML = `
+                        <h3 class="mt-3">{{ __('main.you_have_not_yet_created_a_lesson_in_this_course') }}</h3>
+                        <h4>{!! __('main.to_create_a_lesson_use_the_button') !!}</h4>
+                    `
+                }
+            })
+            .catch(error => {
+                console.error(error)
+            })
+    })
+
     // EDITING LESSON MODAL
 
     let editBootstrapModal = new bootstrap.Modal(document.querySelector('#editModal'))
@@ -173,14 +212,74 @@
     let edits = document.querySelectorAll('.edit')
 
     edits.forEach(edit => {
+        lesson_id = edit.attributes.lesson_id.value
+        selected = edit.parentElement.parentElement.parentElement.querySelector('.lesson_name')
         edit.addEventListener('click', function () {
-            editModalInput.value = res.data.lesson
-            editBootstrapModal.show()
+            axios.post(`{{ route('lesson.getData') }}`, {id:lesson_id})
+                .then(res => {
+                    editModalInput.value = res.data.lesson
+                    default_value = res.data.lesson
+                    editBootstrapModal.show()
+                })
+                .catch(error => {
+                    console.error(error)
+                })
         })
     });
 
     let editModal = document.querySelector('.editModal')
-    let editModalInput = editModal.querySelector('.name')
+    let editModalInput = editModal.querySelector('input')
+    let editModalSubmit = editModal.querySelector('.btn-primary')
+    let editModalError = editModal.querySelector('.error')
+
+    let editModalTimeout
+
+    editModalInput.addEventListener('keyup', function () {
+        clearTimeout(editModalTimeout)
+        editModalTimeout = setTimeout(editModalValidate, 500)
+    })
+    editModalSubmit.addEventListener('mouseenter', editModalValidate)
+
+    let default_value
+
+    function editModalValidate()
+    {
+        let error = editModalError
+        let submit = editModalSubmit
+        if(editModalInput.value.length == 0)
+        {
+            error.innerHTML = `required field`
+            submit.setAttribute('disabled', '')
+        } else if(editModalInput.value.length < 5)
+        {
+            error.innerHTML = `lessons name must be at least 5 symbols long`
+            submit.setAttribute('disabled', '')
+        } else if(editModalInput.value == default_value)
+        {
+            error.innerHTML = `new lessons name cant be equal to the previous one`
+            submit.setAttribute('disabled', '')
+        }
+        else
+        {
+            error.innerHTML = ``
+            submit.removeAttribute('disabled')
+        }
+    }
+
+    editModalSubmit.addEventListener('click', editModalSend)
+
+    function editModalSend()
+    {
+        axios.post(`{{ route('lesson.updatee') }}`, {id: lesson_id, name: editModalInput.value})
+            .then(res => {
+                selected.innerHTML = editModalInput.value
+                editBootstrapModal.hide()
+                alert("Your lesson`s name has been successfully changed")
+            })
+            .catch(error => {
+                console.error(error)
+            })
+    }
 
 </script>
 

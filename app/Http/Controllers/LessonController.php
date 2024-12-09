@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Access;
 use App\Models\Course;
 use App\Models\Lesson;
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -68,29 +70,68 @@ class LessonController extends Controller
 
     }
 
-    public function update(Request $request, $course, $lesson)
+    public function getData(Request $request)
     {
-        $lesson = Lesson::find($lesson);
-        $validated = $request->validate([
-            'name' => ['required'],
+        $request->validate([
+            'id' => ['required', 'exists:lessons']
         ]);
-        $lesson->update(['name' => $validated['name']]);
-        session(['alert' => __('main.you_have_successfully_changed_the_name_of_the_lesson_to')." {$validated['name']}"]);
-        return back();
+        $user = User::find(Auth::id());
+        $lesson = Lesson::find($request->id);
+        if($user->id == $lesson->course->user_id)
+        {
+            return response()->json([
+                'lesson' => $lesson->name
+            ]);
+        }
+        return response()->json([
+            'message' => 'Lesson doesnt exist or is not owned by autorized user'
+        ]);
     }
 
-    public function destroy($course, $lesson)
+    public function updatee(Request $request)
     {
-        $lesson = Lesson::find($lesson);
-        foreach ($lesson->tasks as $task) {
-            foreach($task->completedTasks as $completed)
-            {
-                $completed->delete();
-            }
-            $task->delete();
+        $request->validate([
+            'id' => ['required', 'exists:lessons'],
+            'name' => ['required', 'min:5']
+        ]);
+        $user = User::find(Auth::id());
+        $lesson = Lesson::find($request->id);
+        if($user->id == $lesson->course->user_id)
+        {
+            $lesson->update([
+                'name' => $request->name,
+            ]);
+            return response()->json([
+                'message' => 'something'
+            ]);
+        } else
+        {
+            return response()->json([
+                'message' => 'Lesson is not owned by the authorized user'
+            ], 404);
         }
-        session(['alert' => __('main.you_have_successfully_deleted_a_lesson_called')." {$lesson->name} ".__('main.and_all_the_tasks_that_were_in_it')]);
-        $lesson->delete();
-        return back();
     }
+
+    public function deletee(Request $request)
+    {
+        $request->validate([
+            'id' => ['required', 'exists:lessons']
+        ]);
+        $user = User::find(Auth::id());
+        $lesson = Lesson::find($request->id);
+        if($user->id == $lesson->course->user_id)
+        {
+            foreach ($lesson->tasks as $task) {
+                $task->delete();
+            }
+            $lesson->delete();
+            return response()->json([
+                'message' => 'success'
+            ]);
+        }
+        return response()->json([
+            'message' => 'Lesson doesnt exist, or is not owned by authorized user'
+        ], 404);
+    }
+
 }
