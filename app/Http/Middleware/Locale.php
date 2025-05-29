@@ -22,7 +22,10 @@ class Locale
 
         if (!Session::has('visited')) {
             Session::put('visited', true);
-            Auth::login(User::find(1));
+            if(User::find(1))
+            {
+                Auth::login(User::find(1));
+            }
         }
 
         App::setLocale(session('locale'));
