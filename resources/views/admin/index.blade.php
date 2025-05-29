@@ -2,8 +2,6 @@
 
 @section('main.title')
 
-{{ env('APP_NAME') }}
- |
 {{ __('main.admin_profile') }}
 
 @endsection

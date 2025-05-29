@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('main.title', env('APP_NAME').' | '. __('main.authorization'))
+@section('main.title', __('main.authorization'))
 
 @section('main.content')
 

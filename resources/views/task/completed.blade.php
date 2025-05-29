@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('main.title', env('APP_NAME').' | Перевірка завдання '.$task->name)
+@section('main.title', 'Перевірка завдання '.$task->name)
 
 @section('main.content')
 

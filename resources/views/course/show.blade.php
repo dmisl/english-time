@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('main.title', env('APP_NAME').' | '.$course->name)
+@section('main.title', $course->name)
 
 @section('main.content')
 

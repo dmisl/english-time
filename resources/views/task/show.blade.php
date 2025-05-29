@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('main.title', env('APP_NAME').' | '.$task->name)
+@section('main.title', $task->name)
 
 @section('main.content')
 <div class="container" style="font-family: Inter, sans-serif">

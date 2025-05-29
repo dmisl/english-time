@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('main.title', env('APP_NAME').' | Створити нове завдання')
+@section('main.title', 'Створити нове завдання')
 
 @section('main.content')
 

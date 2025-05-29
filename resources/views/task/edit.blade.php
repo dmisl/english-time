@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('main.title', env('APP_NAME').' | '.__('main.task_editing'))
+@section('main.title', __('main.task_editing'))
 
 @section('main.content')
 

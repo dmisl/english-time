@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('main.title', env('APP_NAME').' | '.__('main.registration'))
+@section('main.title', __('main.registration'))
 
 @section('main.content')
 

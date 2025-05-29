@@ -2,7 +2,7 @@
 
 @section('main.title', )
 
-{{ env('APP_NAME') }} | {{ __('main.profile') }}
+{{ __('main.profile') }}
 
 @endsection
 

@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('main.title')
 
-{{ env('APP_NAME') }} | {{ __('main.applications_for_registration') }}
+{{ __('main.applications_for_registration') }}
 
 @endsection
 
