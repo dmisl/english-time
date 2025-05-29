@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md bg-body-tertiary border-bottom">
     <div class="container-fluid">
         <a class="navbar-brand text-primary-emphasis text-decoration-none {{ active_link('home.index') }}" href="{{ route('home.index') }}">
-            {{ env('APP_NAME') }}
+            English Nexus
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
